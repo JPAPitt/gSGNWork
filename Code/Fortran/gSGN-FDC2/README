@@ -1,0 +1,5 @@
+This is a naive solver for the generalised Serre-Green-Naghdi Equations, that just takes the centered second-order finite difference approximation to all derivatives. This is an extension to the finite difference method for the SGN equations as described in my honours thesis. 
+
+I have included a working analytic solution example - the soliton and a working forced solution example. The initial condition program also contains methods to generate different initial conditions. These have been chosen as I have performed the most analysis with these programs, and so they demonstrate the full capability of the solver - i.e calculating convergence norms and conservation norms, as well as producing solutions at intermediate times. 
+
+I have split these two up, since the forced solution solver is a little different due to the added forcing terms. 

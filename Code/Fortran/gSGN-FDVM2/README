@@ -1,0 +1,7 @@
+This is the solver for the generalised Serre-Green-Naghdi Equations as described in the Applied Numerical Mathematics paper.
+
+It uses a second order finite difference method to obtain u from h and G as well as a Finite Volume Method with limited second-order reconstructions of h,G and unlimited reconstructions of dh/dx,d^2h/dx^2 and du/dx (finite difference approximations). Finally SSP RK2 time stepping is used to obtain second order in time.
+
+I have included a working analytic solution example - the soliton and a working forced solution example. The initial condition program also contains methods to generate different initial conditions. These have been chosen as I have performed the most analysis with these programs, and so they demonstrate the full capability of the solver - i.e calculating convergence norms and conservation norms, as well as producing solutions at intermediate times. 
+
+I have split these two up, since the forced solution solver is a little different due to the added forcing terms. 
