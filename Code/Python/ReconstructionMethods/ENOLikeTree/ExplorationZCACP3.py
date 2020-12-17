@@ -366,11 +366,11 @@ def PlotBuild3(x,q,dx,nG,np):
         
         #undecided
         if (I1 == 0):
-            if( abs(P3jm3tojSI-P3jtojp3SI) < 10.0**(-12)  and  abs(P3jtojp3a33 -P3jm3toja33) < 10.0**(-12)  and  abs(P3jtojp3a31 -P3jm3toja31) < 10.0**(-12) ):
-                Ra3 = P3jm3toja33
-                Ra2 = P3jm3toja32
-                Ra1 = P3jm3toja31
-                Ra0 = P3jm3toja30  
+            if( abs(P3jm3tojSI-P3jtojp3SI) < 10.0**(-12) ):
+                Ra3 = 0.5*(P3jm3toja33 +  P3jtojp3a33)
+                Ra2 = 0.5*(P3jm3toja32 +  P3jtojp3a33)
+                Ra1 = 0.5*(P3jm3toja31 +  P3jtojp3a33)
+                Ra0 = 0.5*(P3jm3toja30 +  P3jtojp3a33) 
                 print('a')
             elif( P2jm1tojp1SI == min(P2jm2tojSI,P2jm1tojp1SI, P2jtojp2SI )  ):
                 Ra3 = 0
@@ -378,11 +378,11 @@ def PlotBuild3(x,q,dx,nG,np):
                 Ra1 = P2jm1tojp1a21
                 Ra0 = P2jm1tojp1a20
                 print('b')
-            elif( abs(P1jtojp1SI- P1jm1tojSI) < 10.0**(-14)  and P1jtojp1a11 == P1jm1toja11 ):
+            elif( abs(P1jtojp1SI- P1jm1tojSI) < 10.0**(-14)):
                 Ra3 = 0
                 Ra2 = 0
-                Ra1 = P1jtojp1a11
-                Ra0 = P1jtojp1a10
+                Ra1 = 0.5*(P1jtojp1a11 + P1jm1toja11 )
+                Ra0 = 0.5*(P1jtojp1a10 + P1jm1toja10 )
                 print('c')
             else:
                 Ra3 = 0
@@ -393,7 +393,7 @@ def PlotBuild3(x,q,dx,nG,np):
         print (i,xmh,xph,'I1',I1)   
         print (i,xmh,xph,'SI 1',P1jtojp1SI,P1jm1tojSI, abs(P1jtojp1SI-P1jm1tojSI)  )      
         print (i,xmh,xph,'SI 2',P2jm2tojSI,P2jm1tojp1SI, P2jtojp2SI , P2jm1tojp1SI == min(P2jm2tojSI,P2jm1tojp1SI, P2jtojp2SI ) )    
-        print (i,xmh,xph,'SI 3',P3jm3tojSI,P3jtojp3SI, abs(P3jm3tojSI-P3jtojp3SI) ) 
+        print (i,xmh,xph,'SI 3',P3jm3tojSI,P3jtojp3SI, abs(P3jm3tojSI-P3jtojp3SI) ,abs(P3jtojp3a33 -P3jm3toja33),abs(P3jtojp3a31 -P3jm3toja31) ) 
         print(i,xmh,xph,'Poly 3p', P3jtojp3a30,P3jtojp3a31,P3jtojp3a32,P3jtojp3a33)
         print(i,xmh,xph,'Poly 3m', P3jm3toja30,P3jm3toja31,P3jm3toja32,P3jm3toja33)
         print(i,xmh,xph,'Poly', Ra0,Ra1,Ra2,Ra3)
