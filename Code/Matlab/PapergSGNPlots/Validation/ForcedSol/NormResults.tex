@@ -1,0 +1,67 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=4.521in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+xmode=log,
+xmin=0.0001,
+xmax=10,
+xtick={0.0001,  0.001,   0.01,    0.1,      1,     10},
+xminorticks=true,
+xlabel style={font=\color{white!15!black}},
+xlabel={$\Delta\text{ x}$},
+ymode=log,
+ymin=1e-10,
+ymax=1,
+ytick={ 1e-10,  1e-08,  1e-06, 0.0001,   0.01,      1,    100},
+yminorticks=true,
+ylabel style={font=\color{white!15!black}},
+ylabel={$\text{L}_\text{2}$},
+axis background/.style={fill=white}
+]
+\addplot [color=blue, draw=none, mark=square, mark options={solid, blue}, forget plot]
+  table[row sep=crcr]{%
+2.02020202020202	0.0072704447092386\\
+1.00502512562814	0.00165800152107545\\
+0.50125313283208	0.000333162960620208\\
+0.250312891113892	7.2988346283929e-05\\
+0.125078173858662	1.74031309648508e-05\\
+0.0625195373554236	4.27125969776954e-06\\
+0.0312548835755587	1.05896460951425e-06\\
+0.0156262207984999	2.63674275629626e-07\\
+0.00781280518770264	6.57872360157292e-08\\
+};
+\addplot [color=red, draw=none, mark=o, mark options={solid, red}, forget plot]
+  table[row sep=crcr]{%
+2.02020202020202	0.33458155149861\\
+1.00502512562814	0.0829457892179536\\
+0.50125313283208	0.017253852972452\\
+0.250312891113892	0.0037630888393527\\
+0.125078173858662	0.000886986990787408\\
+0.0625195373554236	0.000216004870066766\\
+0.0312548835755587	5.33203715327275e-05\\
+0.0156262207984999	1.32470706930155e-05\\
+0.00781280518770264	3.30144898234133e-06\\
+};
+\addplot [color=black, draw=none, mark=triangle, mark options={solid, black}, forget plot]
+  table[row sep=crcr]{%
+2.02020202020202	0.345782630119893\\
+1.00502512562814	0.080574745270202\\
+0.50125313283208	0.0168353427205489\\
+0.250312891113892	0.00379725385381852\\
+0.125078173858662	0.000915557057722004\\
+0.0625195373554236	0.000225608567669048\\
+0.0312548835755587	5.60293547985105e-05\\
+0.0156262207984999	1.39625246890597e-05\\
+0.00781280518770264	3.48509241008241e-06\\
+};
+\end{axis}
+\end{tikzpicture}%

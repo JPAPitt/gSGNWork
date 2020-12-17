@@ -1,0 +1,38 @@
+My ideas for the papers are as follows:
+
+
+
+Paper 1 - Constant Beta Values
+   Equations:
+      Reformulation
+      Conservation
+      Wavespeeds
+    Method:
+      Small - just FDVM2
+      Add comments about limiting on gradients
+    Validation:
+      Analytic Solutions
+      Forced Solutions
+    Study:
+      Convergence of Beta Values
+      Interpretation of Different Regimes using Wave Speeds
+      
+Paper 2 - Varying Beta Values
+   Equations:
+      Conservation
+   Validation:
+      A Couple of Scenarios :
+          (varying beta in x,t)
+          having beta depend on h,dh/dx
+   Studies
+      Beta switching:
+         - Serre 2 SWWE - wave speed collapse
+         - SWWE 2 Serre - Dispersive wave expansion
+      Robust Method for Transitioning from Serre 2 SWWE in problem areas
+         - low depths
+         - large gradients in u,h,G?
+      
+      
+      
+      
+   

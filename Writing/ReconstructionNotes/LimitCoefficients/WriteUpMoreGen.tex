@@ -1,0 +1,263 @@
+\documentclass[10pt]{article}
+
+  \usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+%% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+\usepackage{amsmath}
+\usepackage{lineno}
+
+
+%\usepackage{fullpage}
+\usepackage[top=1in, bottom=1in, left=0.8in, right=1in]{geometry}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx,psfrag}
+\usepackage[pdf]{pstricks}
+
+\definecolor{lightblue}{rgb}{.80,.9,1}
+\newcommand{\hl}[1]
+    {\par\colorbox{lightblue}{\parbox{\linewidth}{#1}}}
+
+\newcommand{\defn}{\stackrel{\textrm{\scriptsize def}}{=}}
+
+\setlength{\columnsep}{0.1pc}
+
+\title{Arbitrarily High Order TVD Reconstruction Polynomials}
+\author{Jordan Pitt -- \texttt{jordan.pitt@anu.edu.au}}
+
+% TIME ON EVERY PAGE AS WELL AS THE FILE NAME
+\usepackage{fancyhdr}
+\usepackage{currfile}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{\emph{\footnotesize \textcopyright  Serre Notes by  J. Pitt, C. Zoppou and S. Roberts.}
+ \\ File Name: {\currfilename} \\ Date: {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+\definecolor{mycolor5}{rgb}{0.46600,0.67400,0.18800}% 
+\definecolor{mycolor6}{rgb}{0.30100,0.74500,0.93300}%
+\definecolor{mycolor7}{rgb}{0.63500,0.07800,0.18400}%
+
+\newcommand\minmod{\text{minmod}}  
+
+\newcommand\T{\rule{0pt}{3ex }}       % Top table strut
+\newcommand\B{\rule[-4ex]{0pt}{4ex }} % Bottom table strut
+
+\newcommand\TM{\rule{0pt}{2.8ex }}       % Top matrix strut
+\newcommand\BM{\rule[-2ex]{0pt}{2ex }} % Bottom matrix strut
+
+\newcommand{\vecn}[1]{\boldsymbol{#1}}
+\DeclareRobustCommand{\solidrule}[1][0.25cm]{\rule[0.5ex]{#1}{1.5pt}}
+
+\DeclareRobustCommand{\dashedrule}{\mbox{%
+		\solidrule[2mm]\hspace{2mm}\solidrule[2mm]}}
+
+\DeclareRobustCommand{\tikzcircle}[1]{\tikz{\filldraw[#1] (0,0) circle (0.5ex);}}	
+	
+	
+\DeclareRobustCommand{\squaret}[1]{\tikz{\draw[#1,thick] (0,0) rectangle (0.2cm,0.2cm);}}
+\DeclareRobustCommand{\circlet}[1]{\tikz{\draw[#1,thick] (0,0) circle [radius=0.1cm];}}
+\DeclareRobustCommand{\trianglet}[1]{\tikz{\draw[#1,thick] (0,0) --
+		(0.25cm,0) -- (0.125cm,0.25cm) -- (0,0);}}
+\DeclareRobustCommand{\crosst}[1]{\tikz{\draw[#1,thick] (0cm,0cm) --
+		(0.1cm,0.1cm) -- (0cm,0.2cm) -- (0.1cm,0.1cm) -- (0.2cm,0.2cm) -- (0.1cm,0.1cm)-- (0.2cm,0cm);}}
+\DeclareRobustCommand{\diamondt}[1]{\tikz{\draw[#1,thick] (0,0) --(0.1cm,0.15cm) -- (0.2cm,0cm) -- (0.1cm,-0.15cm) -- (0,0)  ;}}
+\DeclareRobustCommand{\squareF}[1]{\tikz{\filldraw[#1,fill opacity= 0.3] (0,0) rectangle (0.2cm,0.2cm);}}
+
+\begin{document}
+
+\maketitle
+
+\vspace{-0.3in}
+\noindent
+\rule{\linewidth}{0.4pt}
+
+\section{Goal}
+Suppose we are given a domain $\left[a,b\right]$ discretised into n cells of fixed width $\Delta x$ so that we have the $i^{th}$ cell with midpoint $x_i$ and defined by $\left[x_{i-1/2}, x_{i+1/2}\right]$ where $x_{i\pm 1/2} = x_i \pm \Delta x/ 2$. We are then given a vector of length $n$ $\vecn{\bar{q}} = \left[\bar{q}_0, \dots, \bar{q}_{n-1}\right]$ where each element represents the cell average of some function $q(x)$.
+
+Such that
+\[\bar{q}_i = \frac{1}{\Delta x}\int_{x_{i-1/2}}^{x_{i-1/2}} q(x) dx\]
+
+The task then is to for each cell in the domain to find some polynomial approximation to $q(x)$ over each cell, $P^r_i(x) : \left[x_{i-1/2}, x_{i+1/2}\right] \rightarrow \Re $ where $r$ is the order of the polynomial. 
+
+These polynomial approximations should follow these rules:
+\begin{enumerate}
+	\item Conserve the cell average in that cell so that
+		\[\int_{x_{i-1/2}}^{x_{i+1/2}} P^r_i(x) dx   = \Delta x \bar{q}_i \]
+	\item Achieve desired $r$ theoretical order of accuracy over the associated cell (when $q$ is smooth). Let's restrict ourselves to $L^p$ so we would want
+	\[\left(\int_{x_{i-1/2}}^{x_{i+1/2}} \left|P^r_i(x) - q(x) \right|^p dx \right)^{1/p}  = \mathcal{O}\left(\Delta x^{r+1}\right) \]
+	\item Be total variation diminishing so that
+	\[\int_{x_{i-1/2}}^{x_{i+1/2}}  \left|\frac{\partial P^r_i(x)}{\partial x}\right| dx \le \int_{x_{i-1/2}}^{x_{i+1/2}}  \left|\frac{\partial q(x)}{\partial x}\right| dx \]
+\end{enumerate}
+
+Satisfying these assumptions allows the reconstruction to be utilised in MUSCL type schemes. 
+
+The development of these reconstructions has faded away as other schemes have taken root. WENO- TVB (so generates oscillations). MUSCL - Serre - Need derivative approximations as well - hence the need to think about polynomials instead of just pointwise values as done previously. Deeply sceptical about peoples claims about TVD being only first order, especially because any reconstruction that is situation agnostic (i.e doesnt have detailed knowledge of the space the function lives in) will be quite poor.
+
+
+etc.
+
+\section{Notation}
+We are going to use the following notation for all polynomials
+\[P^r_i(x) = a^{(r)}_r(x  - x_i)^r + a^{(r-1)}_r(x  - x_i)^{r-1} + \dots + a^{(0)}_r\]
+
+\section{Implications}
+\subsection{Cell Averages}
+If we use an equally spaced cell then we have the following property, that the cell average value of $P^r_i(x)$ only depends on the even powers in the following way
+
+
+\[\int_{x_{i-1/2}}^{x_{i+1/2}} P^r_i(x) dx = \int_{x_{i-1/2}}^{x_{i+1/2}} a^{(r)}_r(x  - x_i)^r + a^{(r-1)}_r(x  - x_i)^{r-1} + \dots + a^{(0)}_rdx   =  \]
+\[=\left[  \frac{1}{r+1} a^{(r)}_r(x  - x_i)^{r+1} + \frac{1}{r}a^{(r-1)}_r(x  - x_i)^{r} + \dots + a^{(0)}_r \left(x - x_i\right)\right]_{x_{i-1/2}}^{x_{i+1/2}}\]
+
+All the even powers in the difference cancel, lets define $\phi(n) = 0$ if $n$ even and $1$ is n is odd
+
+\[=\frac{2 \phi\left(r+1\right)}{r+1} a^{(r)}_r \left(\frac{\Delta x}{2} \right)^{r+1} + \frac{2 \phi\left(r\right)}{r} a^{(r-1)}_{r} \left(\frac{\Delta x}{2} \right)^{r} + \dots +  2a^{(0)}_r \left(\frac{\Delta x}{2}\right) \]
+
+For our ones of interest $r<3$
+\[\int_{x_{i-1/2}}^{x_{i+1/2}} P^0_i(x) dx = 2a^{(0)}_0 \left(\frac{\Delta x}{2}\right) = \Delta x \bar{q}_i\]
+\[\int_{x_{i-1/2}}^{x_{i+1/2}} P^1_i(x) dx = 2a^{(0)}_1 \left(\frac{\Delta x}{2}\right) = \Delta x \bar{q}_i\]
+
+\[\int_{x_{i-1/2}}^{x_{i+1/2}} P^2_i(x) dx = \frac{2 }{3} a^{(2)}_{2} \left(\frac{\Delta x}{2} \right)^{3}  + 2a^{(0)}_2 \left(\frac{\Delta x}{2}\right) = \Delta x \bar{q}_i\]
+\[\int_{x_{i-1/2}}^{x_{i+1/2}} P^3_i(x) dx = \frac{2 }{3} a^{(2)}_{3} \left(\frac{\Delta x}{2} \right)^{3}  + 2a^{(0)}_3 \left(\frac{\Delta x}{2}\right) = \Delta x \bar{q}_i\]
+
+
+So we can maintain conservation if we just alter the odd coefficients.
+
+\subsection{TVD}
+
+\[\int_{x_{i-1/2}}^{x_{i+1/2}}  \left|\frac{\partial P^r_i(x)}{\partial x}\right| dx = \int_{x_{i-1/2}}^{x_{i+1/2}}  \left|\frac{\partial} {\partial x}\left(a^{(r)}_r(x  - x_i)^r + a^{(r-1)}_r(x  - x_i)^{r-1} + \dots + a^{(0)}_r\right) \right| dx\]
+
+\[=\int_{x_{i-1/2}}^{x_{i+1/2}}  \left| \left(r\right)a^{(r)}_r(x  - x_i)^{\left(r-1\right)} +  \left(r-1\right)a^{(r-1)}_r(x  - x_i)^{r-2} + \dots + a^{(1)}_r \right| dx\]
+
+Now we do have that
+\[\left| \left(r\right)a^{(r)}_r(x  - x_i)^{\left(r-1\right)} +  \left(r-1\right)a^{(r-1)}_r(x  - x_i)^{r-2} + \dots + a^{(1)}_r \right| \le\left| \left(r\right)a^{(r)}_r(x  - x_i)^{\left(r-1\right)}\right| +  \left|\left(r-1\right)a^{(r-1)}_r(x  - x_i)^{r-2}\right| + \dots + \left| a^{(1)}_r \right|
+ \]
+
+Assuming $r$ is even (otherwise its odd we have)
+\begin{align*}
+\left| \left(r\right)a^{(r)}_r(x  - x_i)^{\left(r-1\right)} +  \left(r-1\right)a^{(r-1)}_r(x  - x_i)^{r-2} + \dots + a^{(1)}_r \right| &\le\\  r\left| \left(r\right)a^{(r)}_r(x  - x_i)^{\left(r-1\right)}\right| +  \left(r-1\right)(x  - x_i)^{r-2}\left|a^{(r-1)}_r\right| + \dots +  3\left| a^{(3)}_r  \right| (x  - x_i)^{2} +  2\left| a^{(2)}_r(x  - x_i)^{1}  \right|+ \left| a^{(1)}_r \right|
+\end{align*}
+
+For third order we have
+\[\int_{x_{i-1/2}}^{x_{i+1/2}}  \left|\frac{\partial P^3_i(x)}{\partial x}\right| dx = \int_{x_{i-1/2}}^{x_{i+1/2}}  \left|\frac{\partial} {\partial x}\left(a^{(3)}_3(x  - x_i)^3 + a^{(2)}_3(x  - x_i)^2 + a^{(1)}_3(x  - x_i) + a^{(0)}_3\right) \right| dx\]
+\[ = \int_{x_{i-1/2}}^{x_{i+1/2}}  \left|3a^{(3)}_3(x  - x_i)^2 + 2a^{(2)}_3(x  - x_i) + a^{(1)}_3\right| dx\]
+By triangle inequality
+\[ \le \int_{x_{i-1/2}}^{x_{i+1/2}}  \left|3a^{(3)}_3(x  - x_i)^2 \right| dx +  \int_{x_{i-1/2}}^{x_{i+1/2}} \left|2a^{(2)}_3(x  - x_i)\right|dx  +  \int_{x_{i-1/2}}^{x_{i+1/2}} \left|a^{(1)}_3\right| dx\]
+
+\[ \le 3\int_{x_{i-1/2}}^{x_{i+1/2}}  \left|a^{(3)}_3 \right|(x  - x_i)^2 dx +  2\int_{x_{i-1/2}}^{x_{i+1/2}} \left|a^{(2)}_3(x  - x_i)\right|dx  +  \int_{x_{i-1/2}}^{x_{i+1/2}} \left|a^{(1)}_3\right| dx\]
+
+\[ \le 3 \left|a^{(3)}_3 \right| \int_{x_{i-1/2}}^{x_{i+1/2}}  (x  - x_i)^2 dx +  2\left| a^{(2)}_3\right| \int_{x_{i-1/2}}^{x_{i+1/2}}  \left|(x  - x_i)\right|dx  +  \int_{x_{i-1/2}}^{x_{i+1/2}} \left|a^{(1)}_3\right| dx\]
+
+\[ \le 3 \left|a^{(3)}_3 \right| \left[\frac{1}{3}(x  - x_i)^3\right]_{x_{i-1/2}}^{x_{i+1/2}}  +  2\left| a^{(2)}_3\right| \int_{x_{i-1/2}}^{x_{i+1/2}}  \left|(x  - x_i)\right|dx  +  \int_{x_{i-1/2}}^{x_{i+1/2}} \left|a^{(1)}_3\right| dx\]
+
+
+\[ \le 2 \left|a^{(3)}_3\right|\left(\frac{\Delta x}{2}\right)^3   +  2\left| a^{(2)}_3\right| \int_{x_{i-1/2}}^{x_{i+1/2}}  \left|(x  - x_i)\right|dx  +   \left|a^{(1)}_3\right| \Delta x \]
+
+\[ \le 2 \left|a^{(3)}_3\right|\left(\frac{\Delta x}{2}\right)^3   +  2\left| a^{(2)}_3\right| \Delta x ^2 +   \left|a^{(1)}_3\right| \Delta x \]
+
+What this means is that if we want to build a system to go from high-order polynomial approximations to low order ones to maintain cell averages we can get away with only altering the odd degree coefficients which can be used to alter the TV over the interval. However, to get it to $0$ will require altering all coefficients, except the constant term. 
+
+
+\section{Suggestions}
+Construct Polynomials of this form
+
+
+\[P^r_i = \bar{q}_i + \sum_{n=1}^{r} a^{(n)}_r\left(x - x_i\right)^n - \frac{a^{(n)}_r}{RightBound - LeftBound}\int_{LeftBound}^{RightBound}(x  - x_i)^n dx \]
+
+Where $RightBound$ is the right edge of the integrating region, and $LeftBound$ is the left edge of the integrating region
+
+(Can we not only do this with cell average but also cancel any lower order contributions?)
+
+Thus we add polynomials that do not contribute to the average value in the $i^{th}$ cell. As we can see (linearity of integrals)
+
+
+\[ \int_{x_{j-1/2}}^{x_{j+1/2}} P^r_i dx =  \int_{x_{j-1/2}}^{x_{j+1/2}} \bar{q}_i dx + \sum_{n=1}^{r}  \int_{x_{j-1/2}}^{x_{j+1/2}} a^{(n)}_r\left(x - x_i\right)^n - \frac{a^{(n)}_r}{x_{j+1/2} - x_{j-1/2}}\int_{x_{j-1/2}}^{x_{j+1/2}}(x  - x_i)^n dx dx \]
+
+Since $\frac{a^{(n)}_r}{x_{j+1/2} - x_{j-1/2}}\int_{x_{j-1/2}}^{x_{j+1/2}}(x  - x_i)^n dx$ is constant in $x$ we have
+
+
+\[ \int_{x_{j-1/2}}^{x_{j+1/2}} P^r_i dx =  \int_{x_{j-1/2}}^{x_{j+1/2}} \bar{q}_i dx + \sum_{n=1}^{r}  \int_{x_{j-1/2}}^{x_{j+1/2}} a^{(n)}_r\left(x - x_i\right)^n dx  - \frac{a^{(n)}_r}{x_{j+1/2} - x_{j-1/2}}\int_{x_{j-1/2}}^{x_{j+1/2}}(x  - x_i)^n dx \int_{x_{j-1/2}}^{x_{j+1/2}} 1 dx  \] 
+
+\[ \int_{x_{j-1/2}}^{x_{j+1/2}} P^r_i dx =  \int_{x_{j-1/2}}^{x_{j+1/2}} \bar{q}_i dx + \sum_{n=1}^{r}  \int_{x_{j-1/2}}^{x_{j+1/2}} a^{(n)}_r\left(x - x_i\right)^n dx  - \frac{a^{(n)}_r}{x_{j+1/2} - x_{j-1/2}}\int_{x_{j-1/2}}^{x_{j+1/2}}(x  - x_i)^n dx \left({x_{j+1/2} - x_{j-1/2}}\right)  \] 
+
+\[ \int_{x_{j-1/2}}^{x_{j+1/2}} P^r_i dx =  \int_{x_{j-1/2}}^{x_{j+1/2}} \bar{q}_i dx + \sum_{n=1}^{r}   a^{(n)}_r  \int_{x_{j-1/2}}^{x_{j+1/2}} \left(x - x_i\right)^n - (x  - x_i)^n dx   \] 
+
+\[ \int_{x_{j-1/2}}^{x_{j+1/2}} P^r_i dx =  \Delta x  \bar{q}_i dx   \] 
+
+As desired. 
+
+Also since this is independent of the choices of the coefficients $a^{(n)}_r$ the task is now to choose coefficients that go to zero when $q(x)$ is not smooth (to allow TVD) and maintain accuracy in regions where $q(x)$ is smooth (accuracy requirement). Additionally it would also be good to have a property that, the reconstruction is recursive in the sense that the highest degree terms will zero out first, reverting to a lower degree polynomial. 
+
+\subsection{Increasing Powers}
+
+I will break the coefficients up into a weight component $w_r$ which for each polynomial order $r$ indicates when the limiting is engaged with $0 \le w_r \le 1$ and $w_r =1$ when no limiting is needed and $w_r = 0$ when the higher order polynomial terms should be completely off. I have made these weights constant for all coefficients, but they could also be different. The other component is the normal/preferred coefficient that gives the correct accuracy when $w_r = 1$.  
+
+Thus I propose the following scheme, showing the lowest order examples
+
+To accomplish this task we propose the following scheme:
+First order
+\[P^0_i(x) = \bar{q}_i\]
+
+Second order:
+\[P^1_i(x) = w_1 a^{(1)}_1(x  - x_i)^1   +  \bar{q}_i\]
+Since odd powers do not contribute to the average, there is no average correction.
+
+Where \[a^{(1)}_1 = \frac{\bar{q}_{i+1} - \bar{q}_{i-1}}{2 \Delta x} \]
+and \[w_1 =\frac{1}{a^{(1)}_1} \minmod\left(\frac{\bar{q}_{i+1} - \bar{q}_{i}}{\Delta x},\frac{\bar{q}_{i+1} - \bar{q}_{i-1}}{2 \Delta x}, \frac{\bar{q}_{i} - \bar{q}_{i-1}}{\Delta x}\right)  \]
+
+Thus our $P^1_i(x)$ reduces to the generalised minmod limiter reconstruction with $\theta = 1$. 
+
+
+
+
+Third Order
+\begin{align*}
+P^2_i(x) =& w_2a^{(2)}_2(x  - x_i)^2 \\
+&+ \left[w_2\left(a^{(1)}_2 - w_1a^{(1)}_1\right) + w_1a^{(1)}_1\right](x  - x_i)^1 \\
+&+ \bar{q}_i  - \frac{ w_2}{\Delta x}\int_{x_{j-1/2}}^{x_{j+1/2}}a^{(2)}_2(x  - x_i)^2 dx
+\end{align*}
+
+With
+\[a^{(2)}_2 = \frac{\bar{q}_{i+1} - 2\bar{q}_{i} - \bar{q}_{i-1}}{2 \Delta x^2} \]
+\[a^{(2)}_1 = \frac{\bar{q}_{i+1} - \bar{q}_{i-1}}{2 \Delta x} \]
+
+and
+\[w_2 = \frac{1}{a^{(2)}_2} \minmod\left(\frac{\bar{q}_{i} - 2\bar{q}_{i-1} - \bar{q}_{i-2}}{2 \Delta x^2},\frac{\bar{q}_{i+1} - 2\bar{q}_{i} - \bar{q}_{i-1}}{2 \Delta x^2}, \frac{\bar{q}_{i+2} - 2\bar{q}_{i+1} - \bar{q}_{i}}{2 \Delta x^2}\right)\]
+
+Now it is possible that $w_2 \neq 1$ when the minmod just chooses the smallest of the options, in this case the solution is still smooth and so $w_2 = 1 - \mathcal{O}\left(\Delta x^3\right)$ (Conjecture.) So it doesnt cause a loss of order for the coefficients. Notice that $a^{(2)}_2$ and $a^{(2)}_1$ are taken from the naive interpolating polynomial that agrees with cell averages in $j-1$, $j$ and $j+1$. While minmod compares the different possible interpolating polynomials. 
+
+Fourth Order
+\begin{align*}
+P^3_i(x) = &  w_3a^{(3)}_3(x  - x_i)^3 \\ &+  \left[w_3\left(a^{(3)}_2 - w_2a^{(2)}_2\right) + w_2a^{(2)}_2\right] (x  - x_i)^2 - \frac{\left[w_3\left(a^{(3)}_2 - w_2a^{(2)}_2\right) + w_2a^{(2)}_2\right]}{\Delta x}\int_{x_{j-1/2}}^{x_{j+1/2}}(x  - x_i)^2 dx \\ & + \left[w_3\left(a^{(1)}_3 - \left[w_2\left(a^{(1)}_2 - w_1a^{(1)}_1\right) + w_1a^{(1)}_1\right]\right) + \left[w_2\left(a^{(1)}_2 - w_1a^{(1)}_1\right) + w_1a^{(1)}_1\right]\right](x  - x_i)^1 \\ &+ \bar{q}_i
+\end{align*}
+
+With
+\[a^{(3)}_3 = \frac{ \bar{q}_{i+2} -3\bar{q}_{i+1} +3 \bar{q}_{i} - \bar{q}_{i-1}}{6 \Delta x^3} \]
+\[a^{(3)}_2 = \frac{\bar{q}_{i+1} - 2\bar{q}_{i} + \bar{q}_{i-1}}{2 \Delta x} \]
+\[a^{(3)}_1 = \frac{-5\bar{q}_{i+2} + 27\bar{q}_{i+1}  - 15\bar{q}_{i} - 7\bar{q}_{i-1}}{24 \Delta x} \]
+
+\begin{align*}
+w_3 =& \frac{1}{a^{(3)}_3} \minmod\Bigg(\frac{ -\bar{q}_{i-3} + 3\bar{q}_{i-2} -3\bar{q}_{i-1} + \bar{q}_{i} }{6 \Delta x^3}
+,\frac{-\bar{q}_{i-2} + 3\bar{q}_{i-1} -3\bar{q}_{i} + \bar{q}_{i+1} }{6 \Delta x^3}, \\ &\frac{ \bar{q}_{i+2} -3\bar{q}_{i+1} +3 \bar{q}_{i} - \bar{q}_{i-1}}{6 \Delta x^3} ,\frac{ \bar{q}_{i+3} -3\bar{q}_{i+2} +3 \bar{q}_{i+1} - \bar{q}_{i}}{6 \Delta x^3}\Bigg)
+\end{align*}
+
+Actually theres some interesting patterns there, the operator for the highest order term is the same for all just shifted. Also the coefficients of the second highest order term is the same as the highest order term of the lower polynomial. Not so for the third highest - is there a way to counteract it in the polynomial reconstruction form?
+
+
+
+
+\end{document} 

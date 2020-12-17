@@ -1,0 +1,59 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: gSGNpaper_Outline.aux
+The style file: unsrtnat.bst
+Database file #1: Bibliography.bib
+You're missing a field part---line 233 of file Bibliography.bib
+ :  number      = 
+ :                ,
+I'm skipping whatever remains of this entry
+You're missing a field part---line 244 of file Bibliography.bib
+ :  number      = 
+ :                ,
+I'm skipping whatever remains of this entry
+You're missing a field part---line 584 of file Bibliography.bib
+ :  PUBLISHER = 
+ :              'The Royal Society'
+I'm skipping whatever remains of this entry
+You've used 18 entries,
+            2481 wiz_defined-function locations,
+            680 strings with 8160 characters,
+and the built_in function-call counts, 6648 in all, are:
+= -- 548
+> -- 334
+< -- 7
++ -- 132
+- -- 96
+* -- 543
+:= -- 1089
+add.period$ -- 54
+call.type$ -- 18
+change.case$ -- 33
+chr.to.int$ -- 18
+cite$ -- 18
+duplicate$ -- 333
+empty$ -- 618
+format.name$ -- 118
+if$ -- 1404
+int.to.chr$ -- 1
+int.to.str$ -- 19
+missing$ -- 17
+newline$ -- 98
+num.names$ -- 54
+pop$ -- 125
+preamble$ -- 1
+purify$ -- 18
+quote$ -- 0
+skip$ -- 188
+stack$ -- 0
+substring$ -- 309
+swap$ -- 38
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 123
+warning$ -- 0
+while$ -- 49
+width$ -- 0
+write$ -- 244
+(There were 3 error messages)

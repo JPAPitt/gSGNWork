@@ -1,0 +1,5 @@
+\documentclass{article} % Not really important
+\usepackage{pdfpages}
+\begin{document}
+\includepdf[pages={1}]{gSGNpaperOutline.pdf}
+\end{document}

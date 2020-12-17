@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Generalised Serre-Green-Naghdi Equations}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Alternative Conservative Form of the gSGN}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Dispersion Relation of Linearised gSGN}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Wave Speed Bounds}{subsection.2.2}% 5
+\BOOKMARK [1][-]{section.3}{Numerical Method}{}% 6
+\BOOKMARK [1][-]{section.4}{Validation}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Analytic Solutions}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.1.1}{Serre Equations \(1=2 =0\) - Solitary Travelling Wave Solution}{subsection.4.1}% 9
+\BOOKMARK [3][-]{subsubsection.4.1.2}{SWWE \( 1= -23 and \0402 =0 \) - Dambreak Solution }{subsection.4.1}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Forced Solutions}{section.4}% 11
+\BOOKMARK [1][-]{section.5}{Smooth Dambreak Study}{}% 12
+\BOOKMARK [2][-]{subsection.5.1}{Regularised SWWE Family 2 = 23 + 1}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.2}{Modified Dispersion Serre Family 2 = 1}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.3}{Serre To SWWE Family 2 = 0 and -23 1 0}{section.5}% 15

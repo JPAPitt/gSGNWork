@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Introduction}{1}{section.1}
+\contentsline {section}{\numberline {2}Generalised Serre-Green-Naghdi Equations}{1}{section.2}
+\contentsline {subsection}{\numberline {2.1}Alternative Conservative Form of the gSGN}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Dispersion Relation of Linearised gSGN}{3}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Wave Speed Bounds}{5}{subsubsection.2.2.1}
+\contentsline {section}{\numberline {3}Numerical Method}{6}{section.3}
+\contentsline {section}{\numberline {4}Validation}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}Analytic Solutions}{6}{subsection.4.1}
+\contentsline {subsubsection}{\numberline {4.1.1}Serre Equations ($\beta _1=\beta _2 =0$) - Solitary Travelling Wave Solution}{6}{subsubsection.4.1.1}
+\contentsline {subsubsection}{\numberline {4.1.2}SWWE ( $\beta _1= -\frac {2}{3}$ and $ \beta _2 =0$ ) - Dambreak Solution }{7}{subsubsection.4.1.2}
+\contentsline {subsection}{\numberline {4.2}Forced Solutions}{7}{subsection.4.2}
+\contentsline {section}{\numberline {5}Smooth Dambreak Study}{8}{section.5}
+\contentsline {subsection}{\numberline {5.1}Regularised SWWE Family $\beta _2 = \frac {2}{3} + \beta _1$}{8}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Modified Dispersion Serre Family $\beta _2 = \beta _1$}{8}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Serre To SWWE Family $\beta _2 = 0$ and $-\frac {2}{3} \le \beta _1 \le 0$}{11}{subsection.5.3}

@@ -1,0 +1,132 @@
+\begin{thebibliography}{18}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Zoppou(2014)]{Zoppou-2014}
+C.~Zoppou.
+\newblock \emph{Numerical Solution of the {O}ne-dimensional and {C}ylindrical
+  {S}erre {E}quations for {R}apidly {V}arying {F}ree {S}urface {F}lows}.
+\newblock PhD thesis, Australian National University, Mathematical Sciences
+  Institute, College of Physical and Mathematical Sciences, Australian National
+  University, Canberra, ACT 2600, Australia, 2014.
+
+\bibitem[Zoppou et~al.(2016)Zoppou, Roberts, and Pitt]{Zoppou-etal-2016}
+C.~Zoppou, S.G Roberts, and J.~Pitt.
+\newblock A solution of the conservation law form of the serre equations.
+\newblock \emph{The Australia and New Zealand Industrial and Applied
+  Mathematics Journal}, 57\penalty0 (4):\penalty0 385--394, 2016.
+
+\bibitem[Zoppou et~al.(2017)Zoppou, Pitt, and Roberts]{Zoppou-etal-2017}
+C.~Zoppou, J.~Pitt, and S.~Roberts.
+\newblock Numerical solution of the fully non-linear weakly dispersive {S}erre
+  equations for steep gradient flows.
+\newblock \emph{Applied Mathematical Modelling}, 48:\penalty0 70--95, 2017.
+
+\bibitem[Pitt(2019)]{Pitt-2019}
+J.P.A. Pitt.
+\newblock \emph{Simulation of Rapidly Varying and Dry Bed Flow using the Serre
+  equations solved by a Finite Element Volume Method}.
+\newblock PhD thesis, Australian National University, Mathematical Sciences
+  Institute, College of Physical and Mathematical Sciences, Australian National
+  University, Canberra, ACT 2600, Australia, 2019.
+
+\bibitem[Pitt et~al.(2018)Pitt, Zoppou, and Roberts]{Pitt-2018-61}
+J.P.A. Pitt, C.~Zoppou, and S.G. Roberts.
+\newblock Behaviour of the {S}erre equations in the presence of steep gradients
+  revisited.
+\newblock \emph{Wave Motion}, 76\penalty0 (1):\penalty0 61--77, 2018.
+
+\bibitem[Clamond and Dutykh(2018)]{Clamond-Dutykh-2018-237}
+D.~Clamond and D.~Dutykh.
+\newblock Non-dispersive conservative regularisation of nonlinear shallow water
+  (and isentropic euler equations).
+\newblock \emph{Communications in Nonlinear Science and Numerical Simulation},
+  55, 2018.
+
+\bibitem[Clamond et~al.(2017)Clamond, Dutykh, and
+  Mitsotakis]{Clamond-et.al-2017-245}
+D.~Clamond, D.~Dutykh, and D.~Mitsotakis.
+\newblock Conservative modified {S}erre-{G}reen-{N}aghdi equations with
+  improved dispersion characteristics.
+\newblock \emph{Communications in Nonlinear Science and Numerical Simulation},
+  45, 2017.
+
+\bibitem[Tissier et~al.(2011)Tissier, Bonneton, Marche, Chazel, and
+  Lannes]{Tissier-2011}
+M.~Tissier, P.~Bonneton, F.~Marche, F.~Chazel, and D.~Lannes.
+\newblock {S}erre {G}reen-{N}aghdi modelling of wave transformation breaking
+  and run-up using a high-order finite-volume finite-difference scheme.
+\newblock \emph{Coastal Engineering Proceedings}, 1\penalty0 (32):\penalty0
+  1--13, 2011.
+
+\bibitem[Filippini et~al.(2016)Filippini, Kazolea, and
+  Ricchiuto]{Filippini-etal-2016-381}
+A.~G. Filippini, M.~Kazolea, and M.~Ricchiuto.
+\newblock A flexible genuinely nonlinear approach for nonlinear wave
+  propagation, breaking and run-up.
+\newblock \emph{Journal of Computational Physics}, 310:\penalty0 381--417,
+  2016.
+
+\bibitem[Pu et~al.(2018)Pu, Pego, Dutykh, and Clamond]{Pu-2018-1361}
+Y.~Pu, R.L. Pego, D.~Dutykh, and D.~Clamond.
+\newblock Weakly singular shock profiles for a non-dispersive regularization of
+  shallow-water equations.
+\newblock \emph{Communications in Mathematical Sciences}, 16:\penalty0
+  1361--1378, 2018.
+
+\bibitem[Le~M\'{e}tayer et~al.(2010)Le~M\'{e}tayer, Gavrilyuk, and
+  Hank]{Hank-etal-2010-2034}
+O.~Le~M\'{e}tayer, S.~Gavrilyuk, and S.~Hank.
+\newblock A numerical scheme for the {G}reen-{N}aghdi model.
+\newblock \emph{Journal of Computational Physics}, 229\penalty0 (6):\penalty0
+  2034--2045, 2010.
+
+\bibitem[do~Carmo et~al.(2019)do~Carmo, Ferreira, and Pinto]{DoCarmo-2019-125}
+J.S.A. do~Carmo, J.A. Ferreira, and L.~Pinto.
+\newblock On the accurate simulation of nearshore and dam break problems
+  involving dispersive breaking waves.
+\newblock \emph{Wave Motion}, 85:\penalty0 125 -- 143, 2019.
+
+\bibitem[Kurganov et~al.(2002)Kurganov, Noelle, and
+  Petrova]{Kurganov-etal-2001-707}
+A.~Kurganov, S.~Noelle, and G.~Petrova.
+\newblock Semidiscrete central-upwind schemes for hyperbolic conservation laws
+  and {H}amilton-{J}acobi equations.
+\newblock \emph{Journal of Scientific Computing, Society for Industrial and
+  Applied Mathematics}, 23\penalty0 (3):\penalty0 707--740, 2002.
+
+\bibitem[Whitham(1967)]{Whitham-1967-399}
+G.~B. Whitham.
+\newblock Non-linear dispersion of water waves.
+\newblock \emph{Journal of Fluid Mechanics}, 27\penalty0 (2):\penalty0
+  399–412, 1967.
+
+\bibitem[Li et~al.(2014)Li, Guyenne, Li, and Xu]{Li-2014-169}
+M.~Li, P.~Guyenne, F.~Li, and L.~Xu.
+\newblock High order well-balanced {C}{D}{G}-{F}{E} methods for shallow water
+  waves by a {G}reen-{N}aghdi model.
+\newblock \emph{Journal of Computational Physics}, 257\penalty0 (1):\penalty0
+  169--192, 2014.
+
+\bibitem[Gottlieb et~al.(2001)Gottlieb, Shu, and Tadmor]{Gottlieb-etal-2003-89}
+S.~Gottlieb, C.~Shu, and E.~Tadmor.
+\newblock Strong stability-preserving high-order time discretization methods.
+\newblock \emph{Review, Society for Industrial and Applied Mathematics},
+  43\penalty0 (1):\penalty0 89--112, 2001.
+
+\bibitem[Lax and Richtmyer(1956)]{Lax-Richtmyer-1956-267}
+P.~Lax and R.~Richtmyer.
+\newblock Survey of the stability of linear finite difference equations.
+\newblock \emph{Communications on Pure and Applied Mathematics}, 9\penalty0
+  (2):\penalty0 267--293, 1956.
+
+\bibitem[LeVeque(2002)]{LeVeque-2002}
+R.J. LeVeque.
+\newblock \emph{Finite volume methods for hyperbolic problems}, volume~54 of
+  \emph{Cambridge Texts in Applied Mathematics}.
+\newblock Cambridge University Press, New York, 2002.
+
+\end{thebibliography}
