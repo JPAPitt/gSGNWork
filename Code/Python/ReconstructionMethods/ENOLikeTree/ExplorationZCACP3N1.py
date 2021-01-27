@@ -59,7 +59,7 @@ def EXPPeakS_IC(x):
     
     n = len(x)
     # q = exp(-(x**2))
-    q = 4 -(x**4)
+    q = 4 -(x**2)
     return q  
 
 def Lin_IC(x):
@@ -118,6 +118,7 @@ def PolyIntegralError(LE,RE,AV,dx,Coeffs):
 
 def PlotBuildUpToQuad(x,q,dx,nG,np):
     n = len(x)
+    errtol = 10.0**(-14)
     for i in range(nG,n-nG):
         xmh = x[i] - 0.5*dx
         xph = x[i] + 0.5*dx
@@ -141,7 +142,7 @@ def PlotBuildUpToQuad(x,q,dx,nG,np):
         P1jm1toja11,P1jm1toja10,P1jm1tojSI  =  P1jm1toj(qaj,qajm1,dx)
         
         #Need more information to decide
-        if (abs(P1jtojp1SI -P1jm1tojSI) < 10.0**(-14)):
+        if (abs(P1jtojp1SI -P1jm1tojSI) < errtol):
             I1 = 0
         #To left is more smooth
         elif P1jtojp1SI > P1jm1tojSI:
@@ -156,55 +157,112 @@ def PlotBuildUpToQuad(x,q,dx,nG,np):
             Ra0 = P1jtojp1a10 
             
             
-            
         # Quadratic Terms
         P2jm2toja22,P2jm2toja21,P2jm2toja20,P2jm2tojSI = P2jm2toj(qajm2,qajm1,qaj,dx)   
         P2jm1tojp1a22,P2jm1tojp1a21,P2jm1tojp1a20,P2jm1tojp1SI  = P2jm1tojp1(qajp1,qaj,qajm1,dx)
         P2jtojp2a22,P2jtojp2a21,P2jtojp2a20,P2jtojp2SI =   P2jtojp2(qaj,qajp1,qajp2,dx) 
         
+        
         #Right
-        if I1 == 1:
-            if(P2jm1tojp1SI > P2jtojp2SI ):
-                Ra2 = P2jtojp2a22
-            else:
-                Ra2 = P2jm1tojp1a22
-            Ra1 = Ra1 - dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-        #Left
-        elif I1 == -1:
-            if(P2jm1tojp1SI > P2jm2tojSI ):
-                Ra2 = P2jm2toja22
-            else:
-                Ra2 = P2jm1tojp1a22
-            
-            Ra1 = Ra1 + dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-       #undecided
+        if ( abs(P2jtojp2SI - P2jm1tojp1SI) < errtol or abs(P2jm2tojSI - P2jm1tojp1SI) < errtol ):
+            I1 = 0
         else:
+            if I1 == 1:
+                if (P2jtojp2SI < P2jm1tojp1SI):
+                    Ra2 = P2jtojp2a22
+                    Ra1 = Ra1 - dx*Ra2
+                    Ra0 = Ra0 - dx**2/12*Ra2
+                else:
+                    I1 = 0
+            #Left
+            elif I1 == -1:
+                
+                if (P2jm2tojSI < P2jm1tojp1SI):
+                    Ra2 = P2jm2toja22
+                    Ra1 = Ra1 + dx*Ra2
+                    Ra0 = Ra0 - dx**2/12*Ra2
+                else:
+                    I1 = 0
+
+        #Cubics Terms
+        P3jm3toja33,P3jm3toja32,P3jm3toja31,P3jm3toja30,P3jm3tojSI = P3jm3toj(qaj,qajm1,qajm2,qajm3,dx)
+        P3jtojp3a33,P3jtojp3a32,P3jtojp3a31,P3jtojp3a30,P3jtojp3SI = P3jtojp3(qaj,qajp1,qajp2,qajp3,dx)
+
+        #Right
+        if ( abs(P3jm3tojSI - P3jtojp3SI) < errtol):
+            I1 = 0
+        else:
+            if I1 == 1:
+                if ( P3jm3tojSI > P3jtojp3SI):
+                    Ra3 = P3jtojp3a33
+                    Ra2 = Ra2 - 3*dx*Ra3
+                    Ra1 = Ra1 + 7*dx**2/4*Ra3
+                    Ra0 = Ra0 + dx**3/4*Ra3
+                else:
+                    I1 = 0
+            #Left
+            elif I1 == -1:
+                if (P3jm3tojSI < P3jtojp3SI):
+                    Ra3 = P3jm3toja33            
+                    Ra2 = Ra2 + 3*dx*Ra3
+                    Ra1 = Ra1 + 7*dx**2/4*Ra3
+                    Ra0 = Ra0 - dx**3/4*Ra3     
+                else:
+                    I1 = 0        
+                
+        if I1 == 0:
+            #Third order options
+            #if both directions incredibly similar
+            if (abs( P3jm3tojSI - P3jtojp3SI)  < errtol):
+                
+                #either both are incredibly similar
+                if ( abs(P3jm3toja33 - P3jtojp3a33) < errtol \
+                    and  abs(P3jm3toja32 - P3jtojp3a32) < errtol \
+                    and  abs(P3jm3toja31 - P3jtojp3a31) < errtol \
+                    and  abs(P3jm3toja30 - P3jtojp3a30) < errtol ):
+                    Ra3 = P3jm3toja33
+                    Ra2 = P3jm3toja32
+                    Ra1 = P3jm3toja31
+                    Ra0 = P3jm3toja30
             
-            if( abs(P2jtojp2SI- P2jm2tojSI) < 10.0**(-14)  and P2jm1tojp1SI < P2jm2tojSI  ):
-                Ra2 = P2jm1tojp1a22
-                Ra1 = P2jm1tojp1a21
-                Ra0 = P2jm1tojp1a20
-            elif(P1jtojp1a11 == P1jm1toja11 and P1jtojp1a10 == P1jm1toja10 ):
-                Ra2 = 0
-                Ra1 = P1jtojp1a11
-                Ra0 = P1jtojp1a10
+                #or we should go down to second, first then 0
+                elif( abs(P2jtojp2SI- P2jm2tojSI) < errtol and P2jm1tojp1SI < P2jm2tojSI  ):
+                    Ra3 = 0
+                    Ra2 = P2jm1tojp1a22
+                    Ra1 = P2jm1tojp1a21
+                    Ra0 = P2jm1tojp1a20
+                elif(P1jtojp1a11 == P1jm1toja11 and P1jtojp1a10 == P1jm1toja10 ):
+                    Ra3 = 0
+                    Ra2 = 0
+                    Ra1 = P1jtojp1a11
+                    Ra0 = P1jtojp1a10
+                else:
+                    Ra3 = 0
+                    Ra2 =0
+                    Ra1 = 0
+                    Ra0 = qaj     
             else:
-                Ra2 =0
-                Ra1 = 0
-                Ra0 = qaj     
-            
+                if ( P3jm3tojSI > P3jtojp3SI):
+                    Ra3 = P3jtojp3a33
+                    Ra2 = P3jtojp3a32
+                    Ra1 = P3jtojp3a31
+                    Ra0 = P3jtojp3a30
+                else:
+                    Ra3 = P3jm3toja33
+                    Ra2 = P3jm3toja32
+                    Ra1 = P3jm3toja31
+                    Ra0 = P3jm3toja30       
 
         print(i,xmh,xph,I1,'SI 1:',P1jm1tojSI,P1jtojp1SI )
         print(i,xmh,xph,I1,'SI 2:',P2jm2tojSI,P2jm1tojp1SI,P2jtojp2SI )
-        print(i,xmh,xph,I1,Ra0,Ra1,Ra2)
+        print(i,xmh,xph,I1,'SI 3:',P3jm3tojSI ,P3jtojp3SI )
+        print(i,xmh,xph,I1,Ra0,Ra1,Ra2,Ra3)
 
-        LimP2R = Ra2*(xplot - x[i])**2 + Ra1*(xplot - x[i])   +Ra0
+        LimP2R = Ra3*(xplot - x[i])**3 + Ra2*(xplot - x[i])**2 + Ra1*(xplot - x[i])   +Ra0
 
         
-        RIxjph = Ra2/3*(dx/2)**3 + Ra1/2*(dx/2)**2 + Ra0*(dx/2)
-        RIxjmh = Ra2/3*(-dx/2)**3 + Ra1/2*(-dx/2)**2 + Ra0*(-dx/2)
+        RIxjph = Ra3/4*(dx/2)**4 + Ra2/3*(dx/2)**3 + Ra1/2*(dx/2)**2 + Ra0*(dx/2)
+        RIxjmh = Ra3/4*(-dx/2)**4 + Ra2/3*(-dx/2)**3 + Ra1/2*(-dx/2)**2 + Ra0*(-dx/2)
         print(i,xmh,xph,'CA', (RIxjph -  RIxjmh)/dx,qaj,(RIxjph -  RIxjmh)/dx-qaj )
         
         

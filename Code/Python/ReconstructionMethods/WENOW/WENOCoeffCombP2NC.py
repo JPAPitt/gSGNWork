@@ -48,6 +48,19 @@ def DB_IC(x,dx,ldx):
     
     return q  
 
+def PP_IC(x,dx,ldx):
+    
+    n = len(x)
+    q = ones(n)
+    
+    for i in range(n):
+        if (x[i] < 0.1*ldx):
+            q[i] = 2 - (x[i])**2
+        else:
+            q[i] = 1 + (x[i])**2
+    
+    return q  
+
 def EXPPeak_IC(x):
     
     n = len(x)
@@ -59,7 +72,7 @@ def EXPPeakS_IC(x):
     
     n = len(x)
     # q = exp(-(x**2))
-    q = 4 -(x**4)
+    q = 4 -(x**3)
     return q  
 
 def Lin_IC(x):
@@ -118,6 +131,7 @@ def PolyIntegralError(LE,RE,AV,dx,Coeffs):
 
 def PlotBuildUpToQuad(x,q,dx,nG,np):
     n = len(x)
+    eps = 10.0**(-12)
     for i in range(nG,n-nG):
         xmh = x[i] - 0.5*dx
         xph = x[i] + 0.5*dx
@@ -140,104 +154,162 @@ def PlotBuildUpToQuad(x,q,dx,nG,np):
         P1jtojp1a11,P1jtojp1a10,P1jtojp1SI  =  P1jtojp1(qaj,qajp1,dx)
         P1jm1toja11,P1jm1toja10,P1jm1tojSI  =  P1jm1toj(qaj,qajm1,dx)
         
-        #Need more information to decide
-        if (abs(P1jtojp1SI -P1jm1tojSI) < 10.0**(-14)):
-            I1 = 0
-        #To left is more smooth
-        elif P1jtojp1SI > P1jm1tojSI:
-            I1 = -1
-            Ra1 = P1jm1toja11
-            Ra0 = P1jm1toja10
-
-        #To right is more smooth
-        else:
-            I1 = 1
-            Ra1 = P1jtojp1a11 
-            Ra0 = P1jtojp1a10 
-            
-            
-            
-        # Quadratic Terms
+        #Quadratic Terms
         P2jm2toja22,P2jm2toja21,P2jm2toja20,P2jm2tojSI = P2jm2toj(qajm2,qajm1,qaj,dx)   
         P2jm1tojp1a22,P2jm1tojp1a21,P2jm1tojp1a20,P2jm1tojp1SI  = P2jm1tojp1(qajp1,qaj,qajm1,dx)
         P2jtojp2a22,P2jtojp2a21,P2jtojp2a20,P2jtojp2SI =   P2jtojp2(qaj,qajp1,qajp2,dx) 
         
-        #Right
-        if I1 == 1:
-            if(P2jm1tojp1SI > P2jtojp2SI ):
-                Ra2 = P2jtojp2a22
-            else:
-                Ra2 = P2jm1tojp1a22
-            Ra1 = Ra1 - dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-        #Left
-        elif I1 == -1:
-            if(P2jm1tojp1SI > P2jm2tojSI ):
-                Ra2 = P2jm2toja22
-            else:
-                Ra2 = P2jm1tojp1a22
+        d1a2 = (-1.0/8.0) 
+        d2a2 = (10.0/8.0)
+        d3a2 = (-1.0/8.0) 
+        
+        d1a1 = (5.0/24.0)
+        d2a1 = (14.0/24.0)
+        d3a1 = (5.0/24.0)
+                    
+        b1 = P2jm2tojSI 
+        b2 = P2jm1tojp1SI
+        b3 = P2jtojp2SI
+        
+        if (b1 < eps and b2 < eps and b3 < eps):
+            M1 = 1.0
+            M2= 1.0
+            M3 = 1.0
             
-            Ra1 = Ra1 + dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-       #undecided
+            d1a2 = (-1.0/8.0) 
+            d2a2 = (10.0/8.0)
+            d3a2 = (-1.0/8.0) 
+            
+            d1a1 = (5.0/24.0)
+            d2a1 = (14.0/24.0)
+            d3a1 = (5.0/24.0)
+            
+        elif (b1 > eps and b2 > eps and b3 > eps):
+            M1 = (3.0/2)*(b2 + b3)/(b1 + b2 + b3)
+            M2 = (3.0/2)*(b1 + b2)/(b1 + b2 + b3)
+            M3 = (3.0/2)*(b2 + b3)/(b1 + b2 + b3)
+            
+            d1a2 = (-1.0/8.0) 
+            d2a2 = (10.0/8.0)
+            d3a2 = (-1.0/8.0) 
+            
+            d1a1 = (5.0/24.0)
+            d2a1 = (14.0/24.0)
+            d3a1 = (5.0/24.0)
+            
+        elif(b1 <eps and b2 < eps):
+            M1 = 1
+            M2 = 1
+            M3 = 0
+ 
+            d1a2 = 0.5
+            d2a2 = 0.5
+            d3a2 = 0
+            
+            d1a1 = 0.5
+            d2a1 = 0.5
+            d3a1 = 0
+        elif(b1 <eps and b3 < eps):
+            M1 = 1
+            M2 = 0
+            M3 = 1
+            
+            d1a2 = 0.5
+            d2a2 = 0
+            d3a2 = 0.5
+            
+            d1a1 = 0.5
+            d2a1 = 0
+            d3a1 = 0.5
+        elif(b2 <eps and b3 < eps):
+            M1 = 0
+            M2 = 1
+            M3 = 1
+            
+            d1a2 = 0
+            d2a2 = 0.5
+            d3a2 = 0.5
+            
+            d1a1 = 0
+            d2a1 = 0.5
+            d3a1 = 0.5
+        elif(b1 <eps):
+            M1 = 1
+            M2 = 0
+            M3 = 0
+            
+            d1a2 = 1
+            d2a2 = 0
+            d3a2 = 0
+            
+            d1a1 = 1
+            d2a1 = 0
+            d3a1 = 0
+        elif(b2 <eps):
+            M1 = 0
+            M2 = 1
+            M3 = 0
+                        
+            d1a2 = 0
+            d2a2 = 1
+            d3a2 = 0
+            
+            d1a1 = 0
+            d2a1 = 1
+            d3a1 = 0
         else:
+            M1 = 0
+            M2 = 0
+            M3 = 1
             
-            if( abs(P2jtojp2SI- P2jm2tojSI) < 10.0**(-14)  and P2jm1tojp1SI < P2jm2tojSI  ):
-                Ra2 = P2jm1tojp1a22
-                Ra1 = P2jm1tojp1a21
-                Ra0 = P2jm1tojp1a20
-            elif(P1jtojp1a11 == P1jm1toja11 and P1jtojp1a10 == P1jm1toja10 ):
-                Ra2 = 0
-                Ra1 = P1jtojp1a11
-                Ra0 = P1jtojp1a10
-            else:
-                Ra2 =0
-                Ra1 = 0
-                Ra0 = qaj     
+            d1a2 = 0
+            d2a2 = 0
+            d3a2 = 1
             
-
-        print(i,xmh,xph,I1,'SI 1:',P1jm1tojSI,P1jtojp1SI )
-        print(i,xmh,xph,I1,'SI 2:',P2jm2tojSI,P2jm1tojp1SI,P2jtojp2SI )
-        print(i,xmh,xph,I1,Ra0,Ra1,Ra2)
-
-        LimP2R = Ra2*(xplot - x[i])**2 + Ra1*(xplot - x[i])   +Ra0
-
+            d1a1 = 0
+            d2a1 = 0
+            d3a1 = 1
+            
+        Ra2 = M1*d1a2*P2jm2toja22 + M2*d2a2*P2jm1tojp1a22 + M3*d3a2*P2jtojp2a22
+        Ra1 = M1*d1a1*P2jm2toja21 + M2*d2a1*P2jm1tojp1a21 + M3*d3a1*P2jtojp2a21
+        Ra0 = qaj - Ra2/3*(dx/2)**2  
+        
+        # print(i,xmh,xph,'bs',b1,b2,b3)
+        # print(i,xmh,xph,'Ms',M1,M2,M3)
+        # print(i,xmh,xph,'ds',d1a2,d2a2,d3a2)
+        # print(i,xmh,xph,'M2ds s',M1*d1a2 , M2*d2a2 ,M3*d3a2 )
+        # print(i,xmh,xph,'M2ds',M1*d1a2 + M2*d2a2  + M3*d3a2 )
+        # print(i,xmh,xph,'M1ds s',M1*d1a1 , M2*d2a1 , M3*d3a1 )
+        # print(i,xmh,xph,'M1ds',M1*d1a1 + M2*d2a1  + M3*d3a1 )
         
         RIxjph = Ra2/3*(dx/2)**3 + Ra1/2*(dx/2)**2 + Ra0*(dx/2)
         RIxjmh = Ra2/3*(-dx/2)**3 + Ra1/2*(-dx/2)**2 + Ra0*(-dx/2)
         print(i,xmh,xph,'CA', (RIxjph -  RIxjmh)/dx,qaj,(RIxjph -  RIxjmh)/dx-qaj )
         
+        P2jm2tojP = P2jm2toja22*(xplot - x[i])**2 + P2jm2toja21*(xplot - x[i]) + P2jm2toja20
+        P2jm1tojp1P = P2jm1tojp1a22*(xplot - x[i])**2 + P2jm1tojp1a21*(xplot - x[i]) + P2jm1tojp1a20
+        P2jtojp2P = P2jtojp2a22*(xplot - x[i])**2 + P2jtojp2a21*(xplot - x[i]) + P2jtojp2a20
         
-        P0jplot =  0*(xplot - x[i])  +P0ja0      
-        LimP1Plotjm1j = P1jm1toja11*(xplot - x[i])   +P1jm1toja10
-        LimP1Plotjjp1 = P1jtojp1a11*(xplot - x[i])   +P1jtojp1a10
+        RaP = Ra2*(xplot - x[i])**2 +Ra1*(xplot - x[i]) +qaj
         
+        P0P = 0*(xplot - x[i]) + qaj
 
         if i == nG:
-            plot(xplot, P0jplot, '-b',label='Recon P0')   
-            # plot(xplot, LimP1Plotjm1j, '-r',label='Recon Lin j-1,j')
-            # plot(xplot, LimP1Plotjjp1, '-g',label='Recon Lin j,j+1')
-            # # plot(xplot, LimP2Plotjm1tojp1, '-y',label='Recon P2 j-1,j+1')
-            # plot(xplot, LimP1R, '-r',label='Recon P1 j-1,j+1')
+            plot(xplot, P0P, '-k',label='Recon P0')   
             
-            plot(xplot, LimP2R, '-y',label='Recon P2 j-2,j+2')
+            plot(xplot, P2jm2tojP, '-r',label='Recon P2 -')   
+            plot(xplot, P2jm1tojp1P, '-g',label='Recon P2 0')
+            plot(xplot, P2jtojp2P, '-b',label='Recon P2 +')
             
-            # plot(xplot, LimP2Plot, '-g',label='Recon P2')   
-            # plot(xplot, LimP3Plot, '-y',label='Recon P3')   
-            # plot(xplot, ReconPlot, '--c',label='Choose Small')   
+            plot(xplot,RaP,'y',label='Recon 2')
         else:
-            plot(xplot, P0jplot, '-b')   
-            # plot(xplot, LimP1Plotjm1j, '-r')
-            # plot(xplot, LimP1Plotjjp1, '-g')
-            # plot(xplot, LimP2Plotjm1tojp1, '-y')
-            # plot(xplot, LimP1R, '-r')
+            plot(xplot, P0P, '-k')   
             
-            plot(xplot, LimP2R, '-y')
+            plot(xplot, P2jm2tojP, '-r')   
+            plot(xplot, P2jm1tojp1P, '-g')
+            plot(xplot, P2jtojp2P, '-b')
             
-            # plot(xplot, LimLinPlot, '-r')   
-            # plot(xplot, LimP2Plot, '-g')   
-            # plot(xplot, LimP3Plot, '-y')  
-            # plot(xplot, ReconPlot, '--c')   
+            plot(xplot,RaP,'y')
 
 
 
@@ -379,8 +451,11 @@ xh = arange(sx- nG*dx,ex + (nG+1)*dx,hdx)
 # q = Lin_IC(x)
 # qh = Lin_IC(xh)
 
-q = PB_IC(x,dx)
-qh = PB_IC(xh,dx)
+# q = PB_IC(x,dx)
+# qh = PB_IC(xh,dx)
+
+q =  PP_IC(x,dx,dx) 
+qh =  PP_IC(xh,hdx,dx)
 
 plot(xh,qh,'--k', label='Analytic Value')
 plot(x,q,'.k', label='Average Values')

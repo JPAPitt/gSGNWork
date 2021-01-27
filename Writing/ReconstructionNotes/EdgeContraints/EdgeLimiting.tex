@@ -1,0 +1,257 @@
+\documentclass[10pt]{article}
+
+  \usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+%% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+\usepackage{amsmath}
+\usepackage{lineno}
+
+
+%\usepackage{fullpage}
+\usepackage[top=1in, bottom=1in, left=0.8in, right=1in]{geometry}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx,psfrag}
+\usepackage[pdf]{pstricks}
+
+\definecolor{lightblue}{rgb}{.80,.9,1}
+\newcommand{\hl}[1]
+    {\par\colorbox{lightblue}{\parbox{\linewidth}{#1}}}
+
+\newcommand{\defn}{\stackrel{\textrm{\scriptsize def}}{=}}
+
+\setlength{\columnsep}{0.1pc}
+
+\title{Montonicity Preserving Polynomial Reconstruction}
+\author{Jordan Pitt -- \texttt{jordan.pitt@anu.edu.au}}
+
+% TIME ON EVERY PAGE AS WELL AS THE FILE NAME
+\usepackage{fancyhdr}
+\usepackage{currfile}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{\emph{\footnotesize \textcopyright  Serre Notes by  J. Pitt, C. Zoppou and S. Roberts.}
+ \\ File Name: {\currfilename} \\ Date: {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+\definecolor{mycolor5}{rgb}{0.46600,0.67400,0.18800}% 
+\definecolor{mycolor6}{rgb}{0.30100,0.74500,0.93300}%
+\definecolor{mycolor7}{rgb}{0.63500,0.07800,0.18400}%
+
+\newcommand\minmod{\text{minmod}}  
+
+\newcommand\T{\rule{0pt}{3ex }}       % Top table strut
+\newcommand\B{\rule[-4ex]{0pt}{4ex }} % Bottom table strut
+
+\newcommand\TM{\rule{0pt}{2.8ex }}       % Top matrix strut
+\newcommand\BM{\rule[-2ex]{0pt}{2ex }} % Bottom matrix strut
+
+\newcommand{\vecn}[1]{\boldsymbol{#1}}
+\DeclareRobustCommand{\solidrule}[1][0.25cm]{\rule[0.5ex]{#1}{1.5pt}}
+
+\DeclareRobustCommand{\dashedrule}{\mbox{%
+		\solidrule[2mm]\hspace{2mm}\solidrule[2mm]}}
+
+\DeclareRobustCommand{\tikzcircle}[1]{\tikz{\filldraw[#1] (0,0) circle (0.5ex);}}	
+	
+	
+\DeclareRobustCommand{\squaret}[1]{\tikz{\draw[#1,thick] (0,0) rectangle (0.2cm,0.2cm);}}
+\DeclareRobustCommand{\circlet}[1]{\tikz{\draw[#1,thick] (0,0) circle [radius=0.1cm];}}
+\DeclareRobustCommand{\trianglet}[1]{\tikz{\draw[#1,thick] (0,0) --
+		(0.25cm,0) -- (0.125cm,0.25cm) -- (0,0);}}
+\DeclareRobustCommand{\crosst}[1]{\tikz{\draw[#1,thick] (0cm,0cm) --
+		(0.1cm,0.1cm) -- (0cm,0.2cm) -- (0.1cm,0.1cm) -- (0.2cm,0.2cm) -- (0.1cm,0.1cm)-- (0.2cm,0cm);}}
+\DeclareRobustCommand{\diamondt}[1]{\tikz{\draw[#1,thick] (0,0) --(0.1cm,0.15cm) -- (0.2cm,0cm) -- (0.1cm,-0.15cm) -- (0,0)  ;}}
+\DeclareRobustCommand{\squareF}[1]{\tikz{\filldraw[#1,fill opacity= 0.3] (0,0) rectangle (0.2cm,0.2cm);}}
+
+\begin{document}
+
+\maketitle
+
+\vspace{-0.3in}
+\noindent
+\rule{\linewidth}{0.4pt}
+
+\section{Goal}
+We are going to use the following notation for all polynomials
+\[P^r_i(x) = a^{(r)}_r(x  - x_i)^r + a^{(r-1)}_r(x  - x_i)^{r-1} + \dots + a^{(0)}_r\]
+
+We want to generate a reconstruction that maintains monotonicity (when considered as a function over the whole domain) and can achieve sufficient order when things are smooth.
+
+In the smoothcase it would be sufficient to ensure that the derivative of the reconstruction matches the monotonicity in the region (see for instance monotonicity cubic spline interpolation).
+
+However, in the discontinuous case we also have to restrict this even more, we require both a restriction on the derivatives for the piecewise polynomials and a condition across the edges to match the monotonicity. The derivative condition is no longer enough since  the discontinuity can break the monotonicity overall while maintaining the correct derivative. 
+
+\subsection{Jumping Off Point - Slope Limited Linear Reconstruction}
+The case of linears is a bit special it has some nice features working in its favour \\
+1. Can think about interpolating between points \\
+2. Most well studied.  \\
+
+Point 1 is very important because it means that we can ensure monotonicity quite easily in the reconstruction all that is required is to always pick the minimum slope when all gradients agree, and 0 otherwise. 
+
+The different gradients being:
+
+\begin{align}
+D^+ &= \dfrac{\bar{q}_{j+1} - \bar{q}_{j}}{\Delta x}  \\
+D^c &= \dfrac{\bar{q}_{j+1} - \bar{q}_{j-1}}{2\Delta x}  \\
+D^- &= \dfrac{\bar{q}_{j} - \bar{q}_{j-1}}{\Delta x}
+\end{align}
+
+Reuslting in the following reconstructions
+\begin{align}
+P_1^+ &= D^+ \left(x - x_j\right) + \bar{q}_{j} \\
+P_1^c &= D^c \left(x - x_j\right) + \bar{q}_{j} \\
+P_1^- &=D^- \left(x - x_j\right) + \bar{q}_{j}1
+\end{align}
+This formulations can be thought of in a couple different ways: \\
+1. As linears maintaining the appropriate cell average values \\ 
+2. By approximations to the derivatives appropriately added to the constant term \\
+3. By the interpolation between 2 midpoints (j+1,j) , (j-1,j) with the middle one being an average of both $D^c = 0.5\left(D^+ + D^-\right)$. \\
+
+These naive reconstructions are then combined in many different ways, the one of interest for us is the generalised minmod limiter
+Which calculate the reconstruction slope $R$ as
+\begin{align}
+R = \text{minmod}\left( \theta D^+,D^c,\theta D^-\right)
+\end{align}
+
+\begin{align}
+R = \text{minmod}\left( \theta D^+,0.5\left(D^+ + D^-\right),\theta D^-\right)
+\end{align}
+
+with $\theta \in \left[1,2\right]$. \\
+
+When the set of points is monotone, all these derivative approximations will have the same sign and then the minmod limiter picks the one with the smallest absolute gradient. Since these gradients can be thought of as connecting cell centres, this ensures both the : \\
+
+1. Derivative constraints - matching sign with monotonicity \\
+2. Jump conditions since we choose the minimum gradient approximation of a collection of lines that contain the line that connects the cell centers (when theta = 1, this is obvious, different values will require a bit more work), the value at the edges will maintain the necessary jump condition.
+
+\subsubsection{Proof of points }
+WLOG lets assume that we have increasing monotonicity so that $\bar{q}_{i-1} \le \bar{q}_{i}$. Then we have that
+
+Point 1:
+\begin{align}
+D^+_j &= \dfrac{\bar{q}_{j+1} - \bar{q}_{j}}{\Delta x} \\
+D^c_j &= \dfrac{\bar{q}_{j+1} - \bar{q}_{j-1}}{2\Delta x} \\
+D^-_j &= \dfrac{\bar{q}_{j} - \bar{q}_{j-1}}{\Delta x}  \ge 0
+\end{align}
+
+So we must have that
+\begin{align}
+R_j = \text{minmod}\left( \theta D^+_j,0.5\left(D^+_j + D^-_j\right),\theta D^-_j\right)
+\end{align} 
+
+Therefore we have that 
+\[ 0 \le R_j \le D^-_j\]
+Therefore, point 1 is satisfied and our gradients over the cell agree with the monotonicity between neighbouring cells
+
+Point 2:
+We need to show that 
+\[q^{-}_{j-1/2} = R_{j-1}\left(\frac{\Delta x}{2} \right) + \bar{q}_{j-1} \le q^{+}_{j-1/2} = R_{j}\left(-\frac{\Delta x}{2} \right) + \bar{q}_{j} \]
+
+We will reformulate and try to prove that
+\[0 \le q^{+}_{j-1/2} - q^{-}_{j-1/2} \]
+From which we will obtain monotonicity since
+\[\bar{q}_{i-1} \le q^{-}_{j-1/2}  \le q^{+}_{j-1/2}  \le \bar{q}_{i}\]
+as desired. 
+
+Ok lets begin
+\begin{align}
+q^{+}_{j-1/2} - q^{-}_{j-1/2} &= R_j\left(\frac{-\Delta x}{2}\right) + q_{j} - \left[R_{j-1}\left(\frac{\Delta x}{2}\right) + q_{j-1}\right] \\
+q^{+}_{j-1/2} - q^{-}_{j-1/2} &= R_j\left(\frac{-\Delta x}{2}\right) + q_{j} + R_{j-1}\left(\frac{-\Delta x}{2}\right) - q_{j-1} \\
+q^{+}_{j-1/2} - q^{-}_{j-1/2} &= R_j\left(\frac{-\Delta x}{2}\right) + R_{j-1}\left(-\frac{\Delta x}{2}\right) + q_{j} - q_{j-1} \\
+q^{+}_{j-1/2} - q^{-}_{j-1/2} &= \left(R_j +R_{j-1}\right) \left(\frac{-\Delta x}{2}\right) + q_{j} - q_{j-1}\\
+q^{+}_{j-1/2} - q^{-}_{j-1/2} &=  q_{j} - q_{j-1} - \left(\frac{1}{2}\right)\left(\Delta x  R_j + \Delta x R_{j-1}\right)
+\end{align}
+
+So now we just need to show that
+\[0 \le q_{j} - q_{j-1} - \left(\frac{1}{2}\right)\left(\Delta x  R_j + \Delta x R_{j-1}\right) \]
+
+Looking at the $R$'s we have that
+\begin{align}
+R_j = \text{minmod}\left( \theta \dfrac{\bar{q}_{j+1} - \bar{q}_{j}}{\Delta x},\dfrac{\bar{q}_{j+1} - \bar{q}_{j-1}}{2\Delta x},\theta\dfrac{\bar{q}_{j} - \bar{q}_{j-1}}{\Delta x} \right) 
+\end{align} 
+\begin{align}
+R_{j-1} = \text{minmod}\left( \theta\dfrac{\bar{q}_{j} - \bar{q}_{j-1}}{\Delta x},\dfrac{\bar{q}_{j} - \bar{q}_{j-2}}{2\Delta x},\theta\dfrac{\bar{q}_{j-1} - \bar{q}_{j-2}}{\Delta x} \right) 
+\end{align} 
+
+Importantly we have that 
+\begin{align*}
+0 &\le R_j \le  \theta \dfrac{\bar{q}_{j} - \bar{q}_{j-1}}{\Delta x} \\
+0 &\le R_{j-1} \le \theta  \dfrac{\bar{q}_{j} - \bar{q}_{j-1}}{\Delta x}
+\end{align*}
+
+But we also have that (from rewriting centered ones as)
+\begin{align*}
+0 &\le R_j \le  \frac{1}{2}\left(\dfrac{\bar{q}_{j} - \bar{q}_{j-1}}{\Delta x} + \dfrac{\bar{q}_{j+1} - \bar{q}_{j}}{\Delta x} \right) \\
+0 &\le R_{j-1} \le \frac{1}{2}\left(\dfrac{\bar{q}_{j} - \bar{q}_{j-1}}{\Delta x} + \dfrac{\bar{q}_{j-1} - \bar{q}_{j-2}}{\Delta x} \right)
+\end{align*}
+
+Multiplying across we have
+\begin{align*}
+0 &\le \Delta x R_j \le  \frac{1}{2}\left(\left[\bar{q}_{j} - \bar{q}_{j-1}\right] + \left[\bar{q}_{j+1} - \bar{q}_{j}\right]\right) \\
+0 &\le\Delta x R_{j-1} \le \frac{1}{2}\left(\left[\bar{q}_{j} - \bar{q}_{j-1}\right] + \left[\bar{q}_{j-1} - \bar{q}_{j-2}\right] \right)
+\end{align*}
+
+We can also add across the inequality chains, while preseving them so we get
+\[0 \le \Delta x R_j + \Delta x R_{j-1} \le  \frac{1}{2}\left(\left[\bar{q}_{j} - \bar{q}_{j-1}\right] + \left[\bar{q}_{j+1} - \bar{q}_{j}\right]\right) +\frac{1}{2}\left(\left[\bar{q}_{j} - \bar{q}_{j-1}\right] + \left[\bar{q}_{j-1} - \bar{q}_{j-2}\right] \right)    \]
+
+\[0 \le \Delta x R_j + \Delta x R_{j-1} \le\left[\bar{q}_{j} - \bar{q}_{j-1}\right] + \frac{1}{2}\left(\left[\bar{q}_{j+1} - \bar{q}_{j}\right] +  \left[\bar{q}_{j-1} - \bar{q}_{j-2}\right]\right)    \]
+
+\[0 \le \frac{1}{2}\left(\Delta x R_j + \Delta x R_{j-1}\right) \le \frac{1}{2}\left[\bar{q}_{j} - \bar{q}_{j-1}\right] + \frac{1}{4}\left(\left[\bar{q}_{j+1} - \bar{q}_{j}\right] +  \left[\bar{q}_{j-1} - \bar{q}_{j-2}\right]\right)    \]
+
+Multiply by $-$ to get
+\[0 \ge -\frac{1}{2}\left(\Delta x R_j + \Delta x R_{j-1}\right) \ge - \frac{1}{2}\left[\bar{q}_{j} - \bar{q}_{j-1}\right] -\frac{1}{4}\left(\left[\bar{q}_{j+1} - \bar{q}_{j}\right] +  \left[\bar{q}_{j-1} - \bar{q}_{j-2}\right]\right)    \]
+
+\[\bar{q}_j - \bar{q}_{j-1} \ge \left(\bar{q}_j - \bar{q}_{j-1}\right) -\frac{1}{2}\left(\Delta x R_j + \Delta x R_{j-1}\right) \ge \left(\bar{q}_j - \bar{q}_{j-1}\right) - \frac{1}{2}\left[\bar{q}_{j} - \bar{q}_{j-1}\right] -\frac{1}{4}\left(\left[\bar{q}_{j+1} - \bar{q}_{j}\right] +  \left[\bar{q}_{j-1} - \bar{q}_{j-2}\right]\right)    \]
+
+\[\bar{q}_j - \bar{q}_{j-1} \ge \left(\bar{q}_j - \bar{q}_{j-1}\right) -\frac{1}{2}\left(\Delta x R_j + \Delta x R_{j-1}\right) \ge  \frac{1}{2}\left[\bar{q}_{j} - \bar{q}_{j-1}\right] -\frac{1}{4}\left(\left[\bar{q}_{j+1} - \bar{q}_{j}\right] +  \left[\bar{q}_{j-1} - \bar{q}_{j-2}\right]\right)    \]
+
+\[\bar{q}_j - \bar{q}_{j-1} \ge \left(\bar{q}_j - \bar{q}_{j-1}\right) -\frac{1}{2}\left(\Delta x R_j + \Delta x R_{j-1}\right) \ge  \frac{1}{2}\left[\bar{q}_{j} - \bar{q}_{j-1}\right] -\frac{1}{4}\left(\left[\bar{q}_{j+1} -\bar{q}_{j-2} \right] + \bar{q}_{j-1} -\bar{q}_{j}  \right)    \]
+
+\[\bar{q}_j - \bar{q}_{j-1} \ge \left(\bar{q}_j - \bar{q}_{j-1}\right) -\frac{1}{2}\left(\Delta x R_j + \Delta x R_{j-1}\right) \ge  \frac{1}{2}\left[\bar{q}_{j} - \bar{q}_{j-1}\right] -\frac{1}{4}\left(\left[\bar{q}_{j+1} -\bar{q}_{j-2} \right] - \left[\bar{q}_{j} - \bar{q}_{j-1} \right] \right)    \]
+
+\[\bar{q}_j - \bar{q}_{j-1} \ge \left(\bar{q}_j - \bar{q}_{j-1}\right) -\frac{1}{2}\left(\Delta x R_j + \Delta x R_{j-1}\right) \ge  \frac{3}{4}\left[\bar{q}_{j} - \bar{q}_{j-1}\right] -\frac{1}{4}\left(\left[\bar{q}_{j+1} -\bar{q}_{j-2} \right] \right)    \]
+
+Which is true as long as 
+\[\bar{q}_{j+1} -\bar{q}_{j-2} \ge 3 \left[\bar{q}_{j} - \bar{q}_{j-1}\right] \ge 0 \]
+
+\[\dfrac{\bar{q}_{j+1} -\bar{q}_{j-2}}{\bar{q}_{j} - \bar{q}_{j-1}} \ge 3\]
+
+%So need to show that
+%\[\frac{1}{2}\left[\bar{q}_{j} - \bar{q}_{j-1}\right] -\frac{1}{4}\left(\left[\bar{q}_{j+1} - \bar{q}_{j}\right] +  \left[\bar{q}_{j-1} - \bar{q}_{j-2}\right]\right) \ge 0  \]
+%\[\frac{1}{2}\left[\bar{q}_{j} - \bar{q}_{j-1}\right] \ge \frac{1}{4}\left(\left[\bar{q}_{j+1} - \bar{q}_{j}\right] +  \left[\bar{q}_{j-1} - \bar{q}_{j-2}\right]\right) \]
+%
+%Which is true if $\left[\bar{q}_{j+1} - \bar{q}_{j}\right] \le \left[\bar{q}_{j} - \bar{q}_{j-1}\right] $ and $\left[\bar{q}_{j-1} - \bar{q}_{j-2}\right] \le \left[\bar{q}_{j} - \bar{q}_{j-1}\right] $.
+%
+%We have some other cases, in particular if $\left[\bar{q}_{j+1} - \bar{q}_{j}\right] \ge \left[\bar{q}_{j} - \bar{q}_{j-1}\right] $ or $\left[\bar{q}_{j-1} - \bar{q}_{j-2}\right] \ge \left[\bar{q}_{j} - \bar{q}_{j-1}\right] $
+
+Multiplying across we have
+\begin{align*}
+0 &\le \Delta x R_j \le  \theta\left(\bar{q}_{j} - \bar{q}_{j-1}\right)  \\
+0 &\le \Delta x R_{j-1} \le \theta\left(\bar{q}_{j} - \bar{q}_{j-1}\right)
+\end{align*}
+
+We can also add across the inequality chains, while preseving them so we get
+\[0 \le \Delta x R_j +  \Delta x R_{j-1} \le 2 \theta \left(\bar{q}_{j} - \bar{q}_{j-1}\right) \]
+\[0 \le \frac{1}{2} \left( \Delta x R_j +  \Delta x R_{j-1}\right) \le \theta \left(\bar{q}_{j} - \bar{q}_{j-1}\right) \]
+So we get that
+\[0 \le \theta \left(q_{j} - q_{j-1}\right) - \left(\frac{1}{2}\right)\left(\Delta x  R_j + \Delta x R_{j-1}\right) \]
+
+Which is what we want if $\theta = 1$.  
+
+
+\end{document} 

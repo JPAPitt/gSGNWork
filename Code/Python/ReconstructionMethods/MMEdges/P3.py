@@ -4,6 +4,23 @@ from matplotlib.pyplot import plot,loglog,title,xlabel,ylabel,legend,xlim,ylim
 
 
 
+def Monotone(qa):
+    n = len(qa)
+    IS =  sign(qa[1] - qa[0])
+
+    for i in range(2,n):
+        
+        CS =sign(qa[i] - qa[i-1]) 
+        
+        if IS == 0:
+            IS = CS
+        
+        if IS != CS and CS != 0 :
+            return False
+        
+    return True
+        
+    
 def minmodL(q):
     qmin = min(q)
     qmax = max(q)
@@ -17,12 +34,10 @@ def minmodL(q):
 def SAL(q):
     qmin = min(q)
     qmax = max(q)
-    if qmin>0:
-        return 1
-    if qmax<0 :
-        return 1
+    if qmin>0 or qmax<0:
+        return True
     else:
-        return 0
+        return False
 
 def SP_IC(x,dx):
     
@@ -48,6 +63,19 @@ def DB_IC(x,dx,ldx):
     
     return q  
 
+def PP_IC(x,dx,ldx):
+    
+    n = len(x)
+    q = ones(n)
+    
+    for i in range(n):
+        if (x[i] < 0.1*ldx):
+            q[i] = 2 - (x[i])**2
+        else:
+            q[i] = 1 + 0.01*(x[i])**4
+    
+    return q  
+
 def EXPPeak_IC(x):
     
     n = len(x)
@@ -59,7 +87,7 @@ def EXPPeakS_IC(x):
     
     n = len(x)
     # q = exp(-(x**2))
-    q = 4 -(x**4)
+    q = 4 -(x**3)
     return q  
 
 def Lin_IC(x):
@@ -70,7 +98,7 @@ def Lin_IC(x):
         if x[i] <= 0:
             q[i] = 20
         else:
-            q[i] = 20 - (x[i])
+            q[i] = 20 - 0.001*(x[i])**3
     
     return q
 
@@ -92,10 +120,18 @@ def PB_IC(x,dx):
     
     return q
     
-   
 
+def EdgeValuesPjm2j(qajm2,qajm1,qaj):
+    return qaj/3 + 5*qajm1/6 - qajm2/6,11*qaj/6 - 7*qajm1/6 + qajm2/3
 
+def EdgeValuesPjm1jp1(qajm1,qaj,qajp1):
+    return 5*qaj/6 - qajp1/6 + qajm1/3,5*qaj/6 + qajp1/3 - qajm1/6
 
+def EdgeValuesPjjp2(qaj,qajp1,qajp2):
+    return 11*qaj/6 - 7*qajp1/6 + qajp2/3 , qaj/3 + 5*qajp1/6 - qajp2/6
+
+def MaxP2Coeffs(a,b,c):
+    return a*(-b/(2*a))**2 +  b*(-b/(2*a))  + c,-b/(2*a)
 
 def PlotAverages(x,q,dx):
     n = len(x)
@@ -116,14 +152,24 @@ def PolyIntegralError(LE,RE,AV,dx,Coeffs):
     CA = (REInt - LEInt)/dx
     return abs(CA - AV)
 
+def EvalPoly(Coeffs,x):
+    PolyVal = Coeffs[0]
+    n = len(Coeffs)
+    for i in range(1,n):
+        PolyVal = PolyVal + Coeffs[i]*x**i
+    return PolyVal
+
 def PlotBuildUpToQuad(x,q,dx,nG,np):
     n = len(x)
+    eps = 10.0**(-12)
     for i in range(nG,n-nG):
         xmh = x[i] - 0.5*dx
         xph = x[i] + 0.5*dx
         
         ndx = (xph - xmh)/np
         xplot = arange(xmh,xph + 0.5*ndx ,ndx)
+        xplotm = arange(xmh-dx,xph + 0.5*ndx-dx ,ndx)
+        xplotp = arange(xmh+dx,xph + 0.5*ndx+ dx ,ndx)
         
         qaj = q[i]
         qajp1 = q[i+1]
@@ -135,110 +181,123 @@ def PlotBuildUpToQuad(x,q,dx,nG,np):
         
         #Start with constant
         P0ja0 = qaj
-
+        
         #Linear
         P1jtojp1a11,P1jtojp1a10,P1jtojp1SI  =  P1jtojp1(qaj,qajp1,dx)
         P1jm1toja11,P1jm1toja10,P1jm1tojSI  =  P1jm1toj(qaj,qajm1,dx)
-        
-        #Need more information to decide
-        if (abs(P1jtojp1SI -P1jm1tojSI) < 10.0**(-14)):
-            I1 = 0
-        #To left is more smooth
-        elif P1jtojp1SI > P1jm1tojSI:
-            I1 = -1
-            Ra1 = P1jm1toja11
-            Ra0 = P1jm1toja10
 
-        #To right is more smooth
-        else:
-            I1 = 1
-            Ra1 = P1jtojp1a11 
-            Ra0 = P1jtojp1a10 
-            
-            
-            
-        # Quadratic Terms
+        P1jtojp1P =P1jtojp1a11*(xplot - x[i]) + P1jtojp1a10
+        P1jm1tojP =P1jm1toja11*(xplot - x[i]) + P1jm1toja10
+                    
+        Ra1MM = minmodL([P1jtojp1a11,0.5*(P1jtojp1a11 +P1jm1toja11 ),P1jm1toja11])
+        Ra0MM = qaj
+
+        RaMMP =  Ra1MM*(xplot - x[i]) + Ra0MM
+        
+        P0P =  0*(xplot - x[i]) + qaj
+        
+        
+        #Quadratics
         P2jm2toja22,P2jm2toja21,P2jm2toja20,P2jm2tojSI = P2jm2toj(qajm2,qajm1,qaj,dx)   
         P2jm1tojp1a22,P2jm1tojp1a21,P2jm1tojp1a20,P2jm1tojp1SI  = P2jm1tojp1(qajp1,qaj,qajm1,dx)
         P2jtojp2a22,P2jtojp2a21,P2jtojp2a20,P2jtojp2SI =   P2jtojp2(qaj,qajp1,qajp2,dx) 
         
-        #Right
-        if I1 == 1:
-            if(P2jm1tojp1SI > P2jtojp2SI ):
-                Ra2 = P2jtojp2a22
-            else:
-                Ra2 = P2jm1tojp1a22
-            Ra1 = Ra1 - dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-        #Left
-        elif I1 == -1:
-            if(P2jm1tojp1SI > P2jm2tojSI ):
-                Ra2 = P2jm2toja22
-            else:
-                Ra2 = P2jm1tojp1a22
-            
-            Ra1 = Ra1 + dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-       #undecided
-        else:
-            
-            if( abs(P2jtojp2SI- P2jm2tojSI) < 10.0**(-14)  and P2jm1tojp1SI < P2jm2tojSI  ):
-                Ra2 = P2jm1tojp1a22
-                Ra1 = P2jm1tojp1a21
-                Ra0 = P2jm1tojp1a20
-            elif(P1jtojp1a11 == P1jm1toja11 and P1jtojp1a10 == P1jm1toja10 ):
-                Ra2 = 0
-                Ra1 = P1jtojp1a11
-                Ra0 = P1jtojp1a10
-            else:
-                Ra2 =0
-                Ra1 = 0
-                Ra0 = qaj     
-            
-
-        print(i,xmh,xph,I1,'SI 1:',P1jm1tojSI,P1jtojp1SI )
-        print(i,xmh,xph,I1,'SI 2:',P2jm2tojSI,P2jm1tojp1SI,P2jtojp2SI )
-        print(i,xmh,xph,I1,Ra0,Ra1,Ra2)
-
-        LimP2R = Ra2*(xplot - x[i])**2 + Ra1*(xplot - x[i])   +Ra0
-
+        P4jm2tojp2a44,P4jm2tojp2a43,P4jm2tojp2a42,P4jm2tojp2a41,P4jm2tojp2a40,P4SI =P4jm2tojp2(qajm2,qajm1,qaj,qajp1,qajp2,dx)
         
-        RIxjph = Ra2/3*(dx/2)**3 + Ra1/2*(dx/2)**2 + Ra0*(dx/2)
-        RIxjmh = Ra2/3*(-dx/2)**3 + Ra1/2*(-dx/2)**2 + Ra0*(-dx/2)
-        print(i,xmh,xph,'CA', (RIxjph -  RIxjmh)/dx,qaj,(RIxjph -  RIxjmh)/dx-qaj )
+        Pjm2tojLEVj,Pjm2tojREVj =   EdgeValuesPjm2j(qajm2,qajm1,qaj)
+        Pjm1tojp1LEVj,Pjm1tojp1REVj = EdgeValuesPjm1jp1(qajm1,qaj,qajp1)
+        Pjtojp2LEVj,Pjtojp2REVj =  EdgeValuesPjjp2(qaj,qajp1,qajp2)
         
+        qmh = Ra1MM*(-dx/2) + qaj
+        qph = Ra1MM*(dx/2) + qaj
         
-        P0jplot =  0*(xplot - x[i])  +P0ja0      
-        LimP1Plotjm1j = P1jm1toja11*(xplot - x[i])   +P1jm1toja10
-        LimP1Plotjjp1 = P1jtojp1a11*(xplot - x[i])   +P1jtojp1a10
+        RELV = minmodL([Pjm2tojLEVj - qmh,Pjm1tojp1LEVj - qmh,Pjtojp2LEVj - qmh]) + qmh
+        RERV = minmodL([Pjm2tojREVj - qph,Pjm1tojp1REVj - qph,Pjtojp2REVj - qph]) + qph
         
+        PolyB = P2jm2toja22*(xplot - x[i])**2 + P2jm2toja21*(xplot - x[i]) +P2jm2toja20
+        PolyCH = P4jm2tojp2a42*(xplot - x[i])**2 + P4jm2tojp2a41*(xplot - x[i]) +P4jm2tojp2a40
+        PolyCL = P2jm1tojp1a22*(xplot - x[i])**2 + P2jm1tojp1a21*(xplot - x[i]) +P2jm1tojp1a20
+        PolyF = P2jtojp2a22*(xplot - x[i])**2 + P2jtojp2a21*(xplot - x[i]) +P2jtojp2a20
+ 
+        
+        Ra2,Ra1,Ra0 = P2AvgEdges(qaj,RELV,RERV,dx)
+        
+        #Cubics
+        P3jm3toja33,P3jm3toja32,P3jm3toja31,P3jm3toja30,P3jm3tojSI = P3jm3toj(qaj,qajm1,qajm2,qajm3,dx)
+        P3jm2tojp1a33,P3jm2tojp1a32,P3jm2tojp1a31,P3jm2tojp1a30,P3jm2tojp1SI = P3jm1tojp2(qaj,qajm1,qajp1,qajp2,dx)
+        P3jm1tojp2a33,P3jm1tojp2a32,P3jm1tojp2a31,P3jm1tojp2a30,P3jm1tojp2SI = P3jm2tojp1(qaj,qajm1,qajm2,qajp1,dx)
+        P3jtojp3a33,P3jtojp3a32,P3jtojp3a31,P3jtojp3a30,P3jtojp3SI = P3jtojp3(qaj,qajp1,qajp2,qajp3,dx)
 
+
+        Pjm3tojLEV = EvalPoly([P3jm3toja30,P3jm3toja31,P3jm3toja32,P3jm3toja33],-dx/2)
+        Pjm3tojREV = EvalPoly([P3jm3toja30,P3jm3toja31,P3jm3toja32,P3jm3toja33],dx/2)
+
+        Pjm2tojp1LEV = EvalPoly([P3jm2tojp1a30,P3jm2tojp1a31,P3jm2tojp1a32,P3jm2tojp1a33],-dx/2)
+        Pjm2tojp1REV = EvalPoly([P3jm2tojp1a30,P3jm2tojp1a31,P3jm2tojp1a32,P3jm2tojp1a33],dx/2)        
+
+        Pjm1tojp2LEV = EvalPoly([P3jm1tojp2a30,P3jm1tojp2a31,P3jm1tojp2a32,P3jm1tojp2a33],-dx/2)
+        Pjm1tojp2REV = EvalPoly([P3jm1tojp2a30,P3jm1tojp2a31,P3jm1tojp2a32,P3jm1tojp2a33],dx/2)     
+
+        Pjtojp3LEV = EvalPoly([P3jtojp3a30,P3jtojp3a31,P3jtojp3a32,P3jtojp3a33],-dx/2)
+        Pjtojp3REV = EvalPoly([P3jtojp3a30,P3jtojp3a31,P3jtojp3a32,P3jtojp3a33],dx/2)   
+ 
+        REL3V = minmodL([Pjm3tojLEV - RELV,Pjm1tojp2LEV - RELV,Pjm2tojp1LEV - RELV,Pjtojp3LEV - RELV]) + RELV
+        RER3V = minmodL([Pjm3tojREV - RERV,Pjm1tojp2REV - RERV,Pjm2tojp1REV - RERV,Pjtojp3REV - RERV]) + RERV
+       
+        RaNP2 =  Ra2*(xplot - x[i])**2 + Ra1*(xplot - x[i]) + Ra0
+        
+        
+        RP3pa3,RP3pa2,RP3pa1,RP3pa0 = P3Avgjjm1Edges(qaj,qajm1,REL3V,RER3V,dx)
+        RP3ma3,RP3ma2,RP3ma1,RP3ma0 = P3Avgjjp1Edges(qaj,qajp1,REL3V,RER3V,dx)
+
+        RP3pP =  RP3pa3*(xplot - x[i])**3 + RP3pa2*(xplot - x[i])**2 + RP3pa1*(xplot - x[i]) + RP3pa0
+        RP3mP =  RP3ma3*(xplot - x[i])**3 + RP3ma2*(xplot - x[i])**2 + RP3ma1*(xplot - x[i]) + RP3ma0
+        
+        RP3na3 = 0.5*( RP3pa3 + RP3ma3) 
+        RP3na2 = 0.5*( RP3pa2 + RP3ma2) 
+        RP3na1 = 0.5*( RP3pa1 + RP3ma1) 
+        RP3na0 = 0.5*( RP3pa0 + RP3ma0) 
+        
+        RP3nP =  RP3na3*(xplot - x[i])**3 + RP3na2*(xplot - x[i])**2 + RP3na1*(xplot - x[i]) + RP3na0
         if i == nG:
-            plot(xplot, P0jplot, '-b',label='Recon P0')   
-            # plot(xplot, LimP1Plotjm1j, '-r',label='Recon Lin j-1,j')
-            # plot(xplot, LimP1Plotjjp1, '-g',label='Recon Lin j,j+1')
-            # # plot(xplot, LimP2Plotjm1tojp1, '-y',label='Recon P2 j-1,j+1')
-            # plot(xplot, LimP1R, '-r',label='Recon P1 j-1,j+1')
+            plot(xplot, P0P, '-k',label='Recon P0')  
             
-            plot(xplot, LimP2R, '-y',label='Recon P2 j-2,j+2')
+            # plot(xplot, PolyB, '-b',label='Recon P2 -')         
+            # plot(xplot, PolyCL, '-g',label='Recon P2 ML')     
+            # plot(xplot, PolyCH, '-y',label='Recon P2 MH')   
+            # plot(xplot, PolyF, '-r',label='Recon P2 +')   
             
-            # plot(xplot, LimP2Plot, '-g',label='Recon P2')   
-            # plot(xplot, LimP3Plot, '-y',label='Recon P3')   
-            # plot(xplot, ReconPlot, '--c',label='Choose Small')   
+            plot(xplot, RaMMP, '-g',label='MinMod P1')   
+            
+            plot(xplot, RaNP2, '-y',label='Mont P2') 
+            
+            plot(xplot,  RP3pP, '-r',label='Mont P3 +')   
+            plot(xplot,  RP3mP, '-b',label='Mont P3 -')   
+            
+            plot(xplot,  RP3nP, '-k',label='Mont P3 m') 
+            
+            
+            plot(xmh,REL3V,'+b',label='Recon Mon LE')
+            plot(xph,RER3V,'*r',label='Recon Mon RE')
+            
         else:
-            plot(xplot, P0jplot, '-b')   
-            # plot(xplot, LimP1Plotjm1j, '-r')
-            # plot(xplot, LimP1Plotjjp1, '-g')
-            # plot(xplot, LimP2Plotjm1tojp1, '-y')
-            # plot(xplot, LimP1R, '-r')
+            plot(xplot, P0P, '-k')  
             
-            plot(xplot, LimP2R, '-y')
+            # plot(xplot, PolyB, '-b')         
+            # plot(xplot, PolyCL, '-g')     
+            # plot(xplot, PolyCH, '-y')   
+            # plot(xplot, PolyF, '-r')  
             
-            # plot(xplot, LimLinPlot, '-r')   
-            # plot(xplot, LimP2Plot, '-g')   
-            # plot(xplot, LimP3Plot, '-y')  
-            # plot(xplot, ReconPlot, '--c')   
-
+            plot(xplot, RaMMP, '-g')   
+            
+            plot(xplot, RaNP2, '-y')   
+            
+            plot(xplot,  RP3pP, '-r')   
+            plot(xplot,  RP3mP, '-b')  
+            plot(xplot,  RP3nP, '-k') 
+            
+            plot(xmh,REL3V,'+b')
+            plot(xph,RER3V,'*r')
 
 
 
@@ -285,6 +344,26 @@ def P4jm2tojp2(qajm2,qajm1,qaj,qajp1,qajp2,dx):
     SI = 77051*qaj**2/1680 - 24923*qaj*qajm1/420 + 7547*qaj*qajm2/560 - 24923*qaj*qajp1/420 + 7547*qaj*qajp2/560 + 104963*qajm1**2/5040 - 51001*qajm1*qajm2/5040 + 89549*qajm1*qajp1/2520 - 38947*qajm1*qajp2/5040 + 1727*qajm2**2/1260 - 38947*qajm2*qajp1/5040 + 8209*qajm2*qajp2/5040 + 104963*qajp1**2/5040 - 51001*qajp1*qajp2/5040 + 1727*qajp2**2/1260
     
     return a,b,c,d,e,SI
+
+def P3Avgjjm1Edges(qaj,qajm1,qjmh,qjph,dx):
+    pa =(-5*qaj - qajm1 + 4*qjmh + 2*qjph)/dx**3
+    pb = 3*(-2*qaj + qjmh + qjph)/dx**2
+    pc = (5*qaj + qajm1 - 8*qjmh + 2*qjph)/(4*dx)
+    pd = 3*qaj/2 - qjmh/4 - qjph/4
+    return pa,pb,pc,pd
+
+def P3Avgjjp1Edges(qaj,qajp1,qjmh,qjph,dx):
+    pa =( 5*qaj + qajp1 - 2*qjmh - 4*qjph)/dx**3
+    pb = 3*(-2*qaj + qjmh + qjph)/dx**2
+    pc = (-5*qaj - qajp1 - 2*qjmh + 8*qjph)/(4*dx)
+    pd = 3*qaj/2 - qjmh/4 - qjph/4
+    return pa,pb,pc,pd
+
+def P2AvgEdges(qaj,qjmh,qjph,dx):
+    pa =3*(qjmh + qjph - 2*qaj)/ (dx**2)
+    pb = (qjph - qjmh)/dx
+    pc = (6*qaj - qjmh - qjph)/(4)
+    return pa,pb,pc
 
 def P3jtojp3(qaj,qajp1,qajp2,qajp3,dx):
     a=(3*qajp1 - 3*qajp2 + qajp3 - qaj)/(6*dx**3)
@@ -355,7 +434,7 @@ def P6jm3tojp3(qajm3,qajm2,qajm1,qaj,qajp1,qajp2,qajp3,dx):
     return a,b,c,d,e,f,g,SI
 
 nG = 5
-sx = -2.0
+sx = -2.1
 ex = 2.0
 dx = 0.25
 hdx = dx/20.0
@@ -370,8 +449,8 @@ xh = arange(sx- nG*dx,ex + (nG+1)*dx,hdx)
 # q =  DB_IC(x,dx,dx) 
 # qh =  DB_IC(xh,hdx,dx)
 
-# q =  EXPPeak_IC(x)
-# qh =  EXPPeak_IC(xh)
+q =  EXPPeak_IC(x)
+qh =  EXPPeak_IC(xh)
 
 # q =  EXPPeakS_IC(x)
 # qh =  EXPPeakS_IC(xh)
@@ -379,8 +458,11 @@ xh = arange(sx- nG*dx,ex + (nG+1)*dx,hdx)
 # q = Lin_IC(x)
 # qh = Lin_IC(xh)
 
-q = PB_IC(x,dx)
-qh = PB_IC(xh,dx)
+# q = PB_IC(x,dx)
+# qh = PB_IC(xh,dx)
+
+# q =  PP_IC(x,dx,dx) 
+# qh =  PP_IC(xh,hdx,dx)
 
 plot(xh,qh,'--k', label='Analytic Value')
 plot(x,q,'.k', label='Average Values')

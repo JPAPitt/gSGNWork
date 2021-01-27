@@ -1,0 +1,180 @@
+\documentclass[10pt]{article}
+
+  \usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+%% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usepackage{grffile}
+\usepackage{amsmath}
+\usepackage{lineno}
+
+
+%\usepackage{fullpage}
+\usepackage[top=1in, bottom=1in, left=0.8in, right=1in]{geometry}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx,psfrag}
+\usepackage[pdf]{pstricks}
+
+\definecolor{lightblue}{rgb}{.80,.9,1}
+\newcommand{\hl}[1]
+    {\par\colorbox{lightblue}{\parbox{\linewidth}{#1}}}
+
+\newcommand{\defn}{\stackrel{\textrm{\scriptsize def}}{=}}
+
+\setlength{\columnsep}{0.1pc}
+
+\title{Montonicity Preserving Polynomial Reconstruction}
+\author{Jordan Pitt -- \texttt{jordan.pitt@anu.edu.au}}
+
+% TIME ON EVERY PAGE AS WELL AS THE FILE NAME
+\usepackage{fancyhdr}
+\usepackage{currfile}
+\usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
+\fancypagestyle{plain}{
+\fancyhf{}
+\rfoot{\emph{\footnotesize \textcopyright  Serre Notes by  J. Pitt, C. Zoppou and S. Roberts.}
+ \\ File Name: {\currfilename} \\ Date: {\ddmmyyyydate\today} at \currenttime}
+\lfoot{Page \thepage}
+\renewcommand{\headrulewidth}{0pt}}
+\pagestyle{plain}
+
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+\definecolor{mycolor3}{rgb}{0.92900,0.69400,0.12500}%
+\definecolor{mycolor4}{rgb}{0.49400,0.18400,0.55600}%
+\definecolor{mycolor5}{rgb}{0.46600,0.67400,0.18800}% 
+\definecolor{mycolor6}{rgb}{0.30100,0.74500,0.93300}%
+\definecolor{mycolor7}{rgb}{0.63500,0.07800,0.18400}%
+
+\newcommand\minmod{\text{minmod}}  
+
+\newcommand\T{\rule{0pt}{3ex }}       % Top table strut
+\newcommand\B{\rule[-4ex]{0pt}{4ex }} % Bottom table strut
+
+\newcommand\TM{\rule{0pt}{2.8ex }}       % Top matrix strut
+\newcommand\BM{\rule[-2ex]{0pt}{2ex }} % Bottom matrix strut
+
+\newcommand{\vecn}[1]{\boldsymbol{#1}}
+\DeclareRobustCommand{\solidrule}[1][0.25cm]{\rule[0.5ex]{#1}{1.5pt}}
+
+\DeclareRobustCommand{\dashedrule}{\mbox{%
+		\solidrule[2mm]\hspace{2mm}\solidrule[2mm]}}
+
+\DeclareRobustCommand{\tikzcircle}[1]{\tikz{\filldraw[#1] (0,0) circle (0.5ex);}}	
+	
+	
+\DeclareRobustCommand{\squaret}[1]{\tikz{\draw[#1,thick] (0,0) rectangle (0.2cm,0.2cm);}}
+\DeclareRobustCommand{\circlet}[1]{\tikz{\draw[#1,thick] (0,0) circle [radius=0.1cm];}}
+\DeclareRobustCommand{\trianglet}[1]{\tikz{\draw[#1,thick] (0,0) --
+		(0.25cm,0) -- (0.125cm,0.25cm) -- (0,0);}}
+\DeclareRobustCommand{\crosst}[1]{\tikz{\draw[#1,thick] (0cm,0cm) --
+		(0.1cm,0.1cm) -- (0cm,0.2cm) -- (0.1cm,0.1cm) -- (0.2cm,0.2cm) -- (0.1cm,0.1cm)-- (0.2cm,0cm);}}
+\DeclareRobustCommand{\diamondt}[1]{\tikz{\draw[#1,thick] (0,0) --(0.1cm,0.15cm) -- (0.2cm,0cm) -- (0.1cm,-0.15cm) -- (0,0)  ;}}
+\DeclareRobustCommand{\squareF}[1]{\tikz{\filldraw[#1,fill opacity= 0.3] (0,0) rectangle (0.2cm,0.2cm);}}
+
+\begin{document}
+
+\maketitle
+
+\vspace{-0.3in}
+\noindent
+\rule{\linewidth}{0.4pt}
+
+\section{Goal}
+We are going to use the following notation for all polynomials
+\[P^r_i(x) = a^{(r)}_r(x  - x_i)^r + a^{(r-1)}_r(x  - x_i)^{r-1} + \dots + a^{(0)}_r\]
+
+We want to generate a reconstruction that maintains monotonicity (when considered as a function over the whole domain) and can achieve sufficient order when things are smooth.
+
+In the smoothcase it would be sufficient to ensure that the derivative of the reconstruction matches the monotonicity in the region (see for instance monotonicity cubic spline interpolation).
+
+However, in the discontinuous case we also have to restrict this even more, we require both a restriction on the derivatives for the piecewise polynomials and a condition across the edges to match the monotonicity. The derivative condition is no longer enough since  the discontinuity can break the monotonicity overall while maintaining the correct derivative. 
+
+\subsection{Jumping Off Point - Slope Limited Linear Reconstruction}
+The case of linears is a bit special it has some nice features working in its favour \\
+1. Can think about interpolating between points \\
+2. Most well studied.  \\
+
+Point 1 is very important because it means that we can ensure monotonicity quite easily in the reconstruction all that is required is to always pick the minimum slope when all gradients agree, and 0 otherwise. 
+
+The different gradients being:
+
+\begin{align}
+d^+ &= \dfrac{\bar{q}_{j+1} - \bar{q}_{j}}{\Delta x}  \\
+d^c &= \dfrac{\bar{q}_{j+1} - \bar{q}_{j-1}}{2\Delta x}  \\
+d^- &= \dfrac{\bar{q}_{j} - \bar{q}_{j-1}}{\Delta x}
+\end{align}
+
+Reuslting in the following reconstructions
+\begin{align}
+P_1^+ &= d^+ \left(x - x_j\right) + \bar{q}_{j} \\
+P_1^c &= d^c \left(x - x_j\right) + \bar{q}_{j} \\
+P_1^- &=d^- \left(x - x_j\right) + \bar{q}_{j}1
+\end{align}
+This formulations can be thought of in a couple different ways: \\
+1. As linears maintaining the appropriate cell average values \\ 
+2. By approximations to the derivatives appropriately added to the constant term \\
+3. By the interpolation between 2 midpoints (j+1,j) , (j-1,j) with the middle one being an average of both $D^c = 0.5\left(D^+ + D^-\right)$. \\
+
+Let's write this for just the edges and so we get that
+
+\begin{align}
+D^+_j &= \bar{q}_{j+1} - \bar{q}_{j} = D^-_{j+1}  \\
+D^-_j &= \bar{q}_{j} - \bar{q}_{j-1}\\
+D^c_j &= \bar{q}_{j+1} - \bar{q}_{j-1} = \frac{1}{4}\left(D^-_{j+1} +D^-_{j}\right)  \\
+\end{align}
+
+Then we define $\frac{1}{2}\le \alpha \le 1$, we reconstruct our slopes and get at the edges
+
+\begin{align}
+S_j = \text{minmod}\left(\alpha D^-_j, \frac{1}{4}\left(D^-_{j+1} +D^-_{j}\right),\alpha D^-_{j+1}\right)
+\end{align}
+
+and we have
+\begin{align}
+q^+_{j-1/2} &= \bar{q}_{j} - S_j \\
+q^-_{j-1/2} &= \bar{q}_{j-1} + S_{j-1} \\
+\end{align}
+
+Want to show $q^-_{j-1/2} \le q^+_{j-1/2}  $.
+
+We have that
+\[q^+_{j-1/2} - q^-_{j-1/2} = \bar{q}_{j} - \bar{q}_{j-1} - \left(S_j + S_{j-1}\right)  \]
+\[q^+_{j-1/2} - q^-_{j-1/2} = D^- - \left(S_j + S_{j-1}\right)  \]
+
+So we need to show that
+\[\left(S_j + S_{j-1}\right) \le D^-\]
+
+Assume that $D^-_{j-1}$,$D^-_{j}$,$D^-_{j+1}$ are all greater than $0$. Otherwise we get that either $S_j$ or $S_{j-1}$ are $0$ in which case since $0 \le S_j \le \alpha D^- \le D^-$ we obtain the required condition -  $\left(S_j + S_{j-1}\right) \le D^-$.
+
+So since $D^-_{j-1}$,$D^-_{j}$,$D^-_{j+1}$ are all greater than $0$ we have
+
+\begin{align}
+S_j + S_{j-1} & = \text{minmod}\left(\alpha D^-_j, \frac{1}{4}\left(D^-_{j+1} +D^-_{j}\right),\alpha D^-_{j+1}\right) + \text{minmod}\left(\alpha D^-_{j-1}, \frac{1}{4}\left(D^-_{j} +D^-_{j-1}\right),\alpha D^-_{j}\right)\\
+& = \text{minmod}\bigg(\alpha D^-_j +\alpha D^-_{j-1}, \alpha D^-_j + \frac{1}{4}\left(D^-_{j} +D^-_{j-1}\right)  , \alpha D^-_j + \alpha D^-_{j} , \\
+& \frac{1}{4}\left(D^-_{j+1} +D^-_{j}\right) +\alpha D^-_{j-1}, \frac{1}{4}\left(D^-_{j+1} +D^-_{j}\right) + \frac{1}{4}\left(D^-_{j} +D^-_{j-1}\right)  , \frac{1}{4}\left(D^-_{j+1} +D^-_{j}\right) + \alpha D^-_{j}, \\
+& \alpha D^-_{j+1} +\alpha D^-_{j-1}, \alpha D^-_{j+1} + \frac{1}{4}\left(D^-_{j} +D^-_{j-1}\right)  , \alpha D^-_{j+1} + \alpha D^-_{j} \bigg)\\
+& = \text{minmod}\bigg(\alpha D^-_j +\alpha D^-_{j-1}, \left(\alpha + \frac{1}{4} \right) D^-_j + \frac{1}{4}D^-_{j-1}  , \alpha D^-_j + \alpha D^-_{j} , \\
+& \frac{1}{4}D^-_{j+1} + \frac{1}{4} D^-_{j} +\alpha D^-_{j-1}, \frac{1}{4}D^-_{j-1} + \frac{1}{2} D^-_{j} + \frac{1}{4}D^-_{j+1}   , \left(\alpha + \frac{1}{4} \right)D^-_{j} + \frac{1}{4}D^-_{j+1},  \\
+& \alpha D^-_{j-1} + \alpha D^-_{j+1}, \frac{1}{4} D^-_{j-1} + \frac{1}{4}D^-_{j} +  \alpha D^-_{j+1},\alpha D^-_{j} +  \alpha D^-_{j+1} \bigg)\\
+& = \text{minmod}\bigg(\alpha D^-_{j-1} + \alpha D^-_j , \frac{1}{4}D^-_{j-1} +  \left(\alpha + \frac{1}{4} \right) D^-_j  , 2 \alpha D^-_j , \\
+& \alpha D^-_{j-1} + \frac{1}{4} D^-_{j} + \frac{1}{4}D^-_{j+1}, \frac{1}{4}D^-_{j-1} + \frac{1}{2} D^-_{j} + \frac{1}{4}D^-_{j+1}   , \left(\alpha + \frac{1}{4} \right)D^-_{j} + \frac{1}{4}D^-_{j+1},  \\
+& \alpha D^-_{j-1} + \alpha D^-_{j+1}, \frac{1}{4} D^-_{j-1} + \frac{1}{4}D^-_{j} +  \alpha D^-_{j+1},\alpha D^-_{j} +  \alpha D^-_{j+1} \bigg)
+\end{align}
+
+\begin{align}
+S_j + S_{j-1} & = \text{minmod}\bigg(\alpha D^-_{j-1} + \alpha D^-_j , \frac{1}{4}D^-_{j-1} +  \left(\alpha + \frac{1}{4} \right) D^-_j  , 2 \alpha D^-_j , \\
+& \alpha D^-_{j-1} + \frac{1}{4} D^-_{j} + \frac{1}{4}D^-_{j+1}, \frac{1}{4}D^-_{j-1} + \frac{1}{2} D^-_{j} + \frac{1}{4}D^-_{j+1}   , \left(\alpha + \frac{1}{4} \right)D^-_{j} + \frac{1}{4}D^-_{j+1},  \\
+& \alpha D^-_{j-1} + \alpha D^-_{j+1}, \frac{1}{4} D^-_{j-1} + \frac{1}{4}D^-_{j} +  \alpha D^-_{j+1},\alpha D^-_{j} +  \alpha D^-_{j+1} \bigg) \\
+ & = \text{minmod}\bigg(\alpha  \left(\bar{q}_{j} - \bar{q}_{j-2} \right) , \frac{1}{4} \left(\bar{q}_{j} - \bar{q}_{j-2} \right) +  \alpha D^-_j  , 2 \alpha D^-_j , \\
+& \alpha D^-_{j-1} + \frac{1}{4} \left(\bar{q}_{j+1} - \bar{q}_{j-1} \right),\left(\bar{q}_{j+1} - \bar{q}_{j-2} \right) - \frac{1}{2} D^-_{j}  , \alpha D^-_{j} + \frac{1}{4}\left(\bar{q}_{j+1} - \bar{q}_{j-1} \right),  \\
+& \alpha D^-_{j-1} + \alpha D^-_{j+1}, + \frac{1}{4}\left(\bar{q}_{j} - \bar{q}_{j-2} \right) +  \alpha D^-_{j+1},\alpha D^-_{j} +  \alpha D^-_{j+1} \bigg)
+\end{align}
+
+\end{document} 

@@ -48,6 +48,19 @@ def DB_IC(x,dx,ldx):
     
     return q  
 
+def PP_IC(x,dx,ldx):
+    
+    n = len(x)
+    q = ones(n)
+    
+    for i in range(n):
+        if (x[i] < 0.1*ldx):
+            q[i] = -5 - 0.01*(x[i])**4
+        else:
+            q[i] = 5 + 0.01*(x[i])**4
+    
+    return q  
+
 def EXPPeak_IC(x):
     
     n = len(x)
@@ -59,7 +72,7 @@ def EXPPeakS_IC(x):
     
     n = len(x)
     # q = exp(-(x**2))
-    q = 4 -(x**4)
+    q = 4 -(x**3)
     return q  
 
 def Lin_IC(x):
@@ -118,6 +131,7 @@ def PolyIntegralError(LE,RE,AV,dx,Coeffs):
 
 def PlotBuildUpToQuad(x,q,dx,nG,np):
     n = len(x)
+    eps = 10.0**(-12)
     for i in range(nG,n-nG):
         xmh = x[i] - 0.5*dx
         xph = x[i] + 0.5*dx
@@ -129,115 +143,172 @@ def PlotBuildUpToQuad(x,q,dx,nG,np):
         qajp1 = q[i+1]
         qajp2 = q[i+2]
         qajp3 = q[i+3]
+        qajp4 = q[i+4]
         qajm1 = q[i-1]
         qajm2 = q[i-2]
         qajm3 = q[i-3]
+        qajm4 = q[i-4]
         
         #Start with constant
         P0ja0 = qaj
+        
+        PlusCAErrp0 = abs(qajp1 - qaj)
+        MinusCAErrp0 = abs(qajm1 - qaj)
+        print(i,xmh,xph,'P+ in CA p0', PlusCAErrp0)
+        print(i,xmh,xph,'P- in CA p0', MinusCAErrp0)
 
         #Linear
         P1jtojp1a11,P1jtojp1a10,P1jtojp1SI  =  P1jtojp1(qaj,qajp1,dx)
         P1jm1toja11,P1jm1toja10,P1jm1tojSI  =  P1jm1toj(qaj,qajm1,dx)
-        
-        #Need more information to decide
-        if (abs(P1jtojp1SI -P1jm1tojSI) < 10.0**(-14)):
-            I1 = 0
-        #To left is more smooth
-        elif P1jtojp1SI > P1jm1tojSI:
-            I1 = -1
-            Ra1 = P1jm1toja11
-            Ra0 = P1jm1toja10
 
-        #To right is more smooth
-        else:
-            I1 = 1
-            Ra1 = P1jtojp1a11 
-            Ra0 = P1jtojp1a10 
-            
-            
-            
-        # Quadratic Terms
+        P1jtojp1P =P1jtojp1a11*(xplot - x[i]) + P1jtojp1a10
+        P1jm1tojP =P1jm1toja11*(xplot - x[i]) + P1jm1toja10
+        
+        #ExpLeftIn
+        P1jm2tojm1a11,P1jm2tojm1a10,P1jm2tojm1SI  =  P1jm1toj(qajm1,qajm2,dx)
+
+        #ExpRightIn
+        P1jp1tojp2a11,P1jp1tojp2a10,P1jp1tojp2SI  =   P1jtojp1(qajp1,qajp2,dx) 
+        
+        P0P = 0*(xplot - x[i]) + P0ja0
+    
+        P1jm2tojm1P =  P1jm2tojm1a11*(xplot - x[i-1]) + P1jm2tojm1a10
+        P1jp1tojp2P =  P1jp1tojp2a11*(xplot - x[i+1]) + P1jp1tojp2a10
+
+        RIxjph = P1jp1tojp2a11/2*(-dx/2)**2 + P1jp1tojp2a10*(-dx/2)
+        RIxjmh = P1jp1tojp2a11/2*(-3*dx/2)**2 + P1jp1tojp2a10*(-3*dx/2)
+        PlusCAErrp1 = abs((RIxjph -  RIxjmh)/dx-qaj )
+        print(i,xmh,xph,'P+ in CA p1', PlusCAErrp1)
+
+
+        RIxjph = P1jm2tojm1a11/2*(3*dx/2)**2 + P1jm2tojm1a10*(3*dx/2)
+        RIxjmh = P1jm2tojm1a11/2*(dx/2)**2 + P1jm2tojm1a10*(dx/2)
+        MinusCAErrp1 = abs((RIxjph -  RIxjmh)/dx-qaj )
+        print(i,xmh,xph,'P- in CA p1', MinusCAErrp1)
+
+
+        #Quadratic
         P2jm2toja22,P2jm2toja21,P2jm2toja20,P2jm2tojSI = P2jm2toj(qajm2,qajm1,qaj,dx)   
         P2jm1tojp1a22,P2jm1tojp1a21,P2jm1tojp1a20,P2jm1tojp1SI  = P2jm1tojp1(qajp1,qaj,qajm1,dx)
         P2jtojp2a22,P2jtojp2a21,P2jtojp2a20,P2jtojp2SI =   P2jtojp2(qaj,qajp1,qajp2,dx) 
+
+        P2jtojp2P = P2jtojp2a22*(xplot - x[i])**2 + P2jtojp2a21*(xplot - x[i])   +P2jtojp2a20
+        P2jm1tojp1P = P2jm1tojp1a22*(xplot - x[i])**2 + P2jm1tojp1a21*(xplot - x[i])   +P2jm1tojp1a20
+        P2jm2tojP = P2jm2toja22*(xplot - x[i])**2 + P2jm2toja21*(xplot - x[i])   +P2jm2toja20
         
-        #Right
-        if I1 == 1:
-            if(P2jm1tojp1SI > P2jtojp2SI ):
-                Ra2 = P2jtojp2a22
-            else:
-                Ra2 = P2jm1tojp1a22
-            Ra1 = Ra1 - dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-        #Left
-        elif I1 == -1:
-            if(P2jm1tojp1SI > P2jm2tojSI ):
-                Ra2 = P2jm2toja22
-            else:
-                Ra2 = P2jm1tojp1a22
-            
-            Ra1 = Ra1 + dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-       #undecided
+        #ExpLeftIn
+        P2jm3tojm1a22,P2jm3tojm1a21,P2jm3tojm1a20,P2jm3tojm1SI = P2jm2toj(qajm3,qajm2,qajm1,dx)  
+
+        #ExpRightIn
+        P2jp1tojp3a22,P2jp1tojp3a21,P2jp1tojp3a20,P2jp1tojp3SI = P2jtojp2(qajp1,qajp2,qajp3,dx) 
+        
+    
+        P2jp1tojp3P = P2jp1tojp3a22*(xplot - x[i+1])**2 + P2jp1tojp3a21*(xplot - x[i+1])   +P2jp1tojp3a20
+        
+        RIxjph = P2jp1tojp3a22/3*(-dx/2)**3 + P2jp1tojp3a21/2*(-dx/2)**2 + P2jp1tojp3a20*(-dx/2)
+        RIxjmh = P2jp1tojp3a22/3*(-3*dx/2)**3 + P2jp1tojp3a21/2*(-3*dx/2)**2 + P2jp1tojp3a20*(-3*dx/2)
+        PlusCAErrp2 = abs((RIxjph -  RIxjmh)/dx-qaj )
+        print(i,xmh,xph,'P+ in CA p2', PlusCAErrp2 )
+
+
+        RIxjph = P2jm3tojm1a22/3*(3*dx/2)**3 + P2jm3tojm1a21/2*(3*dx/2)**2 + P2jm3tojm1a20*(3*dx/2)
+        RIxjmh = P2jm3tojm1a22/3*(dx/2)**3 + P2jm3tojm1a21/2*(dx/2)**2 + P2jm3tojm1a20*(dx/2)
+        MinusCAErrp2 = abs((RIxjph -  RIxjmh)/dx-qaj )
+        print(i,xmh,xph,'P- in CA p2',MinusCAErrp2)
+        
+        
+         #Cubic
+        pjm3toja33,pjm3toja32,pjm3toja31,pjm3toja30,Bjm3toj = P3jm3toj(qaj,qajm1,qajm2,qajm3,dx)
+        pjm2tojp1a33,pjm2tojp1a32,pjm2tojp1a31,pjm2tojp1a30,Bjm2tojp1 = P3jm2tojp1(qaj,qajm1,qajm2,qajp1,dx)
+        pjm1tojp2a33,pjm1tojp2a32,pjm1tojp2a31,pjm1tojp2a30,Bjm1tojp2 = P3jm1tojp2(qaj,qajm1,qajp1,qajp2,dx)
+        pjtojp3a33,pjtojp3a32,pjtojp3a31,pjtojp3a30,Bjtojp3 = P3jtojp3(qaj,qajp1,qajp2,qajp3,dx)
+
+        
+        #ExpLeftIn
+        pjm4tojm1a33,pjm4tojm1a32,pjm4tojm1a31,pjm4tojm1a30,pjm4tojm1SI = P3jm3toj(qajm1,qajm2,qajm3,qajm4,dx)
+
+        #ExpRightIn
+        pjp1tojp4a33,pjp1tojp4a32,pjp1tojp4a31,pjp1tojp4a30,pjp1tojp4SI = P3jtojp3(qajp1,qajp2,qajp3,qajp4,dx)
+        
+        #ExpLeftIn
+        P2jm3tojm1a22,P2jm3tojm1a21,P2jm3tojm1a20,P2jm3tojm1SI = P2jm2toj(qajm3,qajm2,qajm1,dx)  
+
+        #ExpRightIn
+        P2jp1tojp3a22,P2jp1tojp3a21,P2jp1tojp3a20,P2jp1tojp3SI = P2jtojp2(qajp1,qajp2,qajp3,dx) 
+        
+    
+        P3jp1tojp4P = pjp1tojp4a33*(xplot - x[i+1])**3 + pjp1tojp4a32*(xplot - x[i+1])**2 + pjp1tojp4a31*(xplot - x[i+1]) + pjp1tojp4a30
+        
+        RIxjph = pjp1tojp4a33/4*(-dx/2)**4 + pjp1tojp4a32/3*(-dx/2)**3 + pjp1tojp4a31/2*(-dx/2)**2 + pjp1tojp4a30*(-dx/2)
+        RIxjmh = pjp1tojp4a33/4*(-3*dx/2)**4 + pjp1tojp4a32/3*(-3*dx/2)**3 + pjp1tojp4a31/2*(-3*dx/2)**2 + pjp1tojp4a30*(-3*dx/2) 
+        PlusCAErrp3 = abs((RIxjph -  RIxjmh)/dx-qaj )
+        print(i,xmh,xph,'P+ in CA p3', PlusCAErrp3 )
+
+
+        RIxjph = pjm4tojm1a33/4*(3*dx/2)**4 + pjm4tojm1a32/3*(3*dx/2)**3 + pjm4tojm1a31/2*(3*dx/2)**2 + pjm4tojm1a30*(3*dx/2)
+        RIxjmh = pjm4tojm1a33/4*(dx/2)**4 + pjm4tojm1a32/3*(dx/2)**3 + pjm4tojm1a31/2*(dx/2)**2 + pjm4tojm1a30*(dx/2) 
+        MinusCAErrp3 = abs((RIxjph -  RIxjmh)/dx-qaj )
+        print(i,xmh,xph,'P- in CA p3', MinusCAErrp3 )
+        
+        P3jm1tojm4P = pjm4tojm1a33*(xplot - x[i-1])**3 + pjm4tojm1a32*(xplot - x[i-1])**2 + pjm4tojm1a31*(xplot - x[i-1]) + pjm4tojm1a30
+        
+        #constant good enough
+        Ra3 = 0
+        Ra2 = 0
+        Ra1 = 0
+        if (abs(PlusCAErrp0) < eps or abs(MinusCAErrp0) < eps ):
+            Ra0 = qaj
         else:
-            
-            if( abs(P2jtojp2SI- P2jm2tojSI) < 10.0**(-14)  and P2jm1tojp1SI < P2jm2tojSI  ):
-                Ra2 = P2jm1tojp1a22
-                Ra1 = P2jm1tojp1a21
-                Ra0 = P2jm1tojp1a20
-            elif(P1jtojp1a11 == P1jm1toja11 and P1jtojp1a10 == P1jm1toja10 ):
-                Ra2 = 0
-                Ra1 = P1jtojp1a11
-                Ra0 = P1jtojp1a10
+            if (abs(PlusCAErrp1) < eps):
+                Ra1= P1jtojp1a11
+                Ra0= P1jtojp1a10
+            elif (abs(MinusCAErrp1) < eps ):
+                Ra1= P1jm1toja11
+                Ra0= P1jm1toja10
             else:
-                Ra2 =0
-                Ra1 = 0
-                Ra0 = qaj     
-            
-
-        print(i,xmh,xph,I1,'SI 1:',P1jm1tojSI,P1jtojp1SI )
-        print(i,xmh,xph,I1,'SI 2:',P2jm2tojSI,P2jm1tojp1SI,P2jtojp2SI )
-        print(i,xmh,xph,I1,Ra0,Ra1,Ra2)
-
-        LimP2R = Ra2*(xplot - x[i])**2 + Ra1*(xplot - x[i])   +Ra0
-
+                if (abs(PlusCAErrp2) < eps):
+                    Ra2= P2jtojp2a22
+                    Ra1= P2jtojp2a21
+                    Ra0= P2jtojp2a20
+                elif (abs(MinusCAErrp2) < eps ):
+                    Ra2= P2jm2toja22
+                    Ra1= P2jm2toja21
+                    Ra0= P2jm2toja20
+                else:
+                    if (min(PlusCAErrp3,MinusCAErrp3) < min(PlusCAErrp2,MinusCAErrp2,PlusCAErrp1,MinusCAErrp1,PlusCAErrp0,MinusCAErrp0)):
+                        if (abs(PlusCAErrp3 -MinusCAErrp3)<eps):   
+                            if ( PlusCAErrp3 < min(MinusCAErrp2,MinusCAErrp1,MinusCAErrp0,PlusCAErrp0,PlusCAErrp1,PlusCAErrp2)):
+                                a66,a65,a64,Ra3,Ra2,Ra1,Ra0,SI = P6jm3tojp3(qajm3,qajm2,qajm1,qaj,qajp1,qajp2,qajp3,dx)
+                            else:
+                                Ra0 = qaj
+                        elif(PlusCAErrp3 > MinusCAErrp3):
+                            Ra3 = pjm3toja33
+                            Ra2 = pjm3toja32
+                            Ra1 = pjm3toja31
+                            Ra0 = pjm3toja30
+                        else:
+                            Ra3 = pjtojp3a33
+                            Ra2 = pjtojp3a32
+                            Ra1 = pjtojp3a31
+                            Ra0 = pjtojp3a30
+                    else:
+                        Ra0 = qaj
+        RaP = Ra3*(xplot - x[i])**3  + Ra2*(xplot - x[i])**2 +  Ra1*(xplot - x[i]) + Ra0
         
-        RIxjph = Ra2/3*(dx/2)**3 + Ra1/2*(dx/2)**2 + Ra0*(dx/2)
-        RIxjmh = Ra2/3*(-dx/2)**3 + Ra1/2*(-dx/2)**2 + Ra0*(-dx/2)
-        print(i,xmh,xph,'CA', (RIxjph -  RIxjmh)/dx,qaj,(RIxjph -  RIxjmh)/dx-qaj )
-        
-        
-        P0jplot =  0*(xplot - x[i])  +P0ja0      
-        LimP1Plotjm1j = P1jm1toja11*(xplot - x[i])   +P1jm1toja10
-        LimP1Plotjjp1 = P1jtojp1a11*(xplot - x[i])   +P1jtojp1a10
-        
+        # print(i,xmh,xph,'P1 j,j+1',P1jtojp1a11,P1jtojp1a10)
+        # print(i,xmh,xph,'P1C j-1,j+1',P2jm1tojp1a21,P2jm1tojp1a20)
 
         if i == nG:
-            plot(xplot, P0jplot, '-b',label='Recon P0')   
-            # plot(xplot, LimP1Plotjm1j, '-r',label='Recon Lin j-1,j')
-            # plot(xplot, LimP1Plotjjp1, '-g',label='Recon Lin j,j+1')
-            # # plot(xplot, LimP2Plotjm1tojp1, '-y',label='Recon P2 j-1,j+1')
-            # plot(xplot, LimP1R, '-r',label='Recon P1 j-1,j+1')
+            plot(xplot, P0P, '-k',label='Recon P0')  
             
-            plot(xplot, LimP2R, '-y',label='Recon P2 j-2,j+2')
+            plot(xplot, RaP, '-g',label='Recon M P1 +')   
             
-            # plot(xplot, LimP2Plot, '-g',label='Recon P2')   
-            # plot(xplot, LimP3Plot, '-y',label='Recon P3')   
-            # plot(xplot, ReconPlot, '--c',label='Choose Small')   
         else:
-            plot(xplot, P0jplot, '-b')   
-            # plot(xplot, LimP1Plotjm1j, '-r')
-            # plot(xplot, LimP1Plotjjp1, '-g')
-            # plot(xplot, LimP2Plotjm1tojp1, '-y')
-            # plot(xplot, LimP1R, '-r')
+            plot(xplot, P0P, '-k')  
+
             
-            plot(xplot, LimP2R, '-y')
-            
-            # plot(xplot, LimLinPlot, '-r')   
-            # plot(xplot, LimP2Plot, '-g')   
-            # plot(xplot, LimP3Plot, '-y')  
-            # plot(xplot, ReconPlot, '--c')   
+            plot(xplot, RaP, '-g')   
+
 
 
 
@@ -355,7 +426,7 @@ def P6jm3tojp3(qajm3,qajm2,qajm1,qaj,qajp1,qajp2,qajp3,dx):
     return a,b,c,d,e,f,g,SI
 
 nG = 5
-sx = -2.0
+sx = -2.1
 ex = 2.0
 dx = 0.25
 hdx = dx/20.0
@@ -370,8 +441,8 @@ xh = arange(sx- nG*dx,ex + (nG+1)*dx,hdx)
 # q =  DB_IC(x,dx,dx) 
 # qh =  DB_IC(xh,hdx,dx)
 
-# q =  EXPPeak_IC(x)
-# qh =  EXPPeak_IC(xh)
+q =  EXPPeak_IC(x)
+qh =  EXPPeak_IC(xh)
 
 # q =  EXPPeakS_IC(x)
 # qh =  EXPPeakS_IC(xh)
@@ -379,8 +450,11 @@ xh = arange(sx- nG*dx,ex + (nG+1)*dx,hdx)
 # q = Lin_IC(x)
 # qh = Lin_IC(xh)
 
-q = PB_IC(x,dx)
-qh = PB_IC(xh,dx)
+# q = PB_IC(x,dx)
+# qh = PB_IC(xh,dx)
+
+# q =  PP_IC(x,dx,dx) 
+# qh =  PP_IC(xh,hdx,dx)
 
 plot(xh,qh,'--k', label='Analytic Value')
 plot(x,q,'.k', label='Average Values')

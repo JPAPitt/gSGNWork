@@ -2,7 +2,16 @@ from numpy import *
 from numpy.linalg import solve,norm
 from matplotlib.pyplot import plot,loglog,title,xlabel,ylabel,legend,xlim,ylim
 
-
+def DegreeP(q,eps):
+    print(q)
+    n = len(q)
+    m = n
+    for i in range(n):
+        if( abs(q[i]) < eps):
+            m = m -1
+        else:
+            break
+    return m
 
 def minmodL(q):
     qmin = min(q)
@@ -48,6 +57,20 @@ def DB_IC(x,dx,ldx):
     
     return q  
 
+def PP_IC(x,dx,ldx):
+    
+    n = len(x)
+    q = ones(n)
+    
+    for i in range(n):
+        # if (x[i] < 0.1*ldx):
+        if (x[i] < 0):
+            q[i] = 2 - (x[i])**2
+        else:
+            q[i] = 1 + (x[i])**3
+    
+    return q  
+
 def EXPPeak_IC(x):
     
     n = len(x)
@@ -59,7 +82,7 @@ def EXPPeakS_IC(x):
     
     n = len(x)
     # q = exp(-(x**2))
-    q = 4 -(x**4)
+    q = 4 -(x**3)
     return q  
 
 def Lin_IC(x):
@@ -118,6 +141,7 @@ def PolyIntegralError(LE,RE,AV,dx,Coeffs):
 
 def PlotBuildUpToQuad(x,q,dx,nG,np):
     n = len(x)
+    eps = 10.0**(-12)
     for i in range(nG,n-nG):
         xmh = x[i] - 0.5*dx
         xph = x[i] + 0.5*dx
@@ -129,115 +153,116 @@ def PlotBuildUpToQuad(x,q,dx,nG,np):
         qajp1 = q[i+1]
         qajp2 = q[i+2]
         qajp3 = q[i+3]
+        qajp4 = q[i+4]
         qajm1 = q[i-1]
         qajm2 = q[i-2]
         qajm3 = q[i-3]
+        qajm4 = q[i-4]
         
-        #Start with constant
-        P0ja0 = qaj
+        #Cubic
+        pjm3toja33,pjm3toja32,pjm3toja31,pjm3toja30,Bjm3toj = P3jm3toj(qaj,qajm1,qajm2,qajm3,dx)
+        pjm2tojp1a33,pjm2tojp1a32,pjm2tojp1a31,pjm2tojp1a30,Bjm2tojp1 = P3jm2tojp1(qaj,qajm1,qajm2,qajp1,dx)
+        pjm1tojp2a33,pjm1tojp2a32,pjm1tojp2a31,pjm1tojp2a30,Bjm1tojp2 = P3jm1tojp2(qaj,qajm1,qajp1,qajp2,dx)
+        pjtojp3a33,pjtojp3a32,pjtojp3a31,pjtojp3a30,Bjtojp3 = P3jtojp3(qaj,qajp1,qajp2,qajp3,dx)
 
-        #Linear
-        P1jtojp1a11,P1jtojp1a10,P1jtojp1SI  =  P1jtojp1(qaj,qajp1,dx)
-        P1jm1toja11,P1jm1toja10,P1jm1tojSI  =  P1jm1toj(qaj,qajm1,dx)
         
-        #Need more information to decide
-        if (abs(P1jtojp1SI -P1jm1tojSI) < 10.0**(-14)):
-            I1 = 0
-        #To left is more smooth
-        elif P1jtojp1SI > P1jm1tojSI:
-            I1 = -1
-            Ra1 = P1jm1toja11
-            Ra0 = P1jm1toja10
+        #ExpLeftIn
+        pjm4tojm1a33,pjm4tojm1a32,pjm4tojm1a31,pjm4tojm1a30,pjm4tojm1SI = P3jm3toj(qajm1,qajm2,qajm3,qajm4,dx)
 
-        #To right is more smooth
+        #ExpRightIn
+        pjp1tojp4a33,pjp1tojp4a32,pjp1tojp4a31,pjp1tojp4a30,pjp1tojp4SI = P3jtojp3(qajp1,qajp2,qajp3,qajp4,dx)
+        
+        #ExpLeftIn
+        P2jm3tojm1a22,P2jm3tojm1a21,P2jm3tojm1a20,P2jm3tojm1SI = P2jm2toj(qajm3,qajm2,qajm1,dx)  
+
+        #ExpRightIn
+        P2jp1tojp3a22,P2jp1tojp3a21,P2jp1tojp3a20,P2jp1tojp3SI = P2jtojp2(qajp1,qajp2,qajp3,dx) 
+        
+    
+        P3jp1tojp4P = pjp1tojp4a33*(xplot - x[i+1])**3 + pjp1tojp4a32*(xplot - x[i+1])**2 + pjp1tojp4a31*(xplot - x[i+1]) + pjp1tojp4a30
+        
+        RIxjph = pjp1tojp4a33/4*(-dx/2)**4 + pjp1tojp4a32/3*(-dx/2)**3 + pjp1tojp4a31/2*(-dx/2)**2 + pjp1tojp4a30*(-dx/2)
+        RIxjmh = pjp1tojp4a33/4*(-3*dx/2)**4 + pjp1tojp4a32/3*(-3*dx/2)**3 + pjp1tojp4a31/2*(-3*dx/2)**2 + pjp1tojp4a30*(-3*dx/2) 
+        PlusCAErr = abs((RIxjph -  RIxjmh)/dx-qaj )
+        print(i,xmh,xph,'P+ in CA', (RIxjph -  RIxjmh)/dx,qaj,(RIxjph -  RIxjmh)/dx-qaj )
+
+
+        RIxjph = pjm4tojm1a33/4*(3*dx/2)**4 + pjm4tojm1a32/3*(3*dx/2)**3 + pjm4tojm1a31/2*(3*dx/2)**2 + pjm4tojm1a30*(3*dx/2)
+        RIxjmh = pjm4tojm1a33/4*(dx/2)**4 + pjm4tojm1a32/3*(dx/2)**3 + pjm4tojm1a31/2*(dx/2)**2 + pjm4tojm1a30*(dx/2) 
+        MinusCAErr = abs((RIxjph -  RIxjmh)/dx-qaj )
+        print(i,xmh,xph,'P- in CA', (RIxjph -  RIxjmh)/dx,qaj,(RIxjph -  RIxjmh)/dx-qaj )
+        
+        P3jm1tojm4P = pjm4tojm1a33*(xplot - x[i-1])**3 + pjm4tojm1a32*(xplot - x[i-1])**2 + pjm4tojm1a31*(xplot - x[i-1]) + pjm4tojm1a30
+
+        
+        P0P = 0*(xplot - x[i]) + qaj
+        
+        P3jm3tojD = DegreeP([pjm3toja33,pjm3toja32,pjm3toja31,pjm3toja30],eps)
+        P3jm2tojp1D = DegreeP([pjm2tojp1a33,pjm2tojp1a32,pjm2tojp1a31,pjm2tojp1a30],eps)
+        P3jm1tojp2D =DegreeP([pjm1tojp2a33,pjm1tojp2a32,pjm1tojp2a31,pjm1tojp2a30],eps)
+        P3jtojp3D =  DegreeP([pjtojp3a33,pjtojp3a32,pjtojp3a31,pjtojp3a30],eps)
+        
+        print(i,xmh,xph,P3jm3tojD,P3jm2tojp1D,P3jm1tojp2D,P3jtojp3D)
+        if (abs(PlusCAErr -MinusCAErr)<eps):
+            
+            #Pick lowest order one
+            if( min(P3jm3tojD,P3jm2tojp1D,P3jm1tojp2D,P3jtojp3D)< 4):
+                if(P3jm3tojD <= min(P3jm2tojp1D,P3jm1tojp2D,P3jtojp3D) ):
+                    Ra3 = pjm3toja33
+                    Ra2 = pjm3toja32
+                    Ra1 = pjm3toja31
+                    Ra0 = pjm3toja30
+                elif(P3jm2tojp1D <= min(P3jm3tojD,P3jm1tojp2D,P3jtojp3D) ):
+                    Ra3 = pjm2tojp1a33
+                    Ra2 = pjm2tojp1a32
+                    Ra1 = pjm2tojp1a31
+                    Ra0 = pjm2tojp1a30
+                elif(P3jm1tojp2D <= min(P3jm3tojD,P3jm2tojp1D,P3jtojp3D) ):
+                    Ra3 = pjm1tojp2a33
+                    Ra2 = pjm1tojp2a32
+                    Ra1 = pjm1tojp2a31
+                    Ra0 = pjm1tojp2a30
+                else:
+                    Ra3 = pjm3toja33
+                    Ra2 = pjm3toja32
+                    Ra1 = pjm3toja31
+                    Ra0 = pjm3toja30
+            else:     
+                a66,a65,a64,Ra3,Ra2,Ra1,Ra0,SI = P6jm3tojp3(qajm3,qajm2,qajm1,qaj,qajp1,qajp2,qajp3,dx)
+        elif(PlusCAErr > MinusCAErr):
+            Ra3 = pjm3toja33
+            Ra2 = pjm3toja32
+            Ra1 = pjm3toja31
+            Ra0 = pjm3toja30
         else:
-            I1 = 1
-            Ra1 = P1jtojp1a11 
-            Ra0 = P1jtojp1a10 
-            
-            
-            
-        # Quadratic Terms
-        P2jm2toja22,P2jm2toja21,P2jm2toja20,P2jm2tojSI = P2jm2toj(qajm2,qajm1,qaj,dx)   
-        P2jm1tojp1a22,P2jm1tojp1a21,P2jm1tojp1a20,P2jm1tojp1SI  = P2jm1tojp1(qajp1,qaj,qajm1,dx)
-        P2jtojp2a22,P2jtojp2a21,P2jtojp2a20,P2jtojp2SI =   P2jtojp2(qaj,qajp1,qajp2,dx) 
+            Ra3 = pjtojp3a33
+            Ra2 = pjtojp3a32
+            Ra1 = pjtojp3a31
+            Ra0 = pjtojp3a30
         
-        #Right
-        if I1 == 1:
-            if(P2jm1tojp1SI > P2jtojp2SI ):
-                Ra2 = P2jtojp2a22
-            else:
-                Ra2 = P2jm1tojp1a22
-            Ra1 = Ra1 - dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-        #Left
-        elif I1 == -1:
-            if(P2jm1tojp1SI > P2jm2tojSI ):
-                Ra2 = P2jm2toja22
-            else:
-                Ra2 = P2jm1tojp1a22
+    
             
-            Ra1 = Ra1 + dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-       #undecided
-        else:
             
-            if( abs(P2jtojp2SI- P2jm2tojSI) < 10.0**(-14)  and P2jm1tojp1SI < P2jm2tojSI  ):
-                Ra2 = P2jm1tojp1a22
-                Ra1 = P2jm1tojp1a21
-                Ra0 = P2jm1tojp1a20
-            elif(P1jtojp1a11 == P1jm1toja11 and P1jtojp1a10 == P1jm1toja10 ):
-                Ra2 = 0
-                Ra1 = P1jtojp1a11
-                Ra0 = P1jtojp1a10
-            else:
-                Ra2 =0
-                Ra1 = 0
-                Ra0 = qaj     
-            
+        RaP3 =  Ra3*(xplot - x[i])**3 + Ra2*(xplot - x[i])**2  + Ra1*(xplot - x[i]) + Ra0
 
-        print(i,xmh,xph,I1,'SI 1:',P1jm1tojSI,P1jtojp1SI )
-        print(i,xmh,xph,I1,'SI 2:',P2jm2tojSI,P2jm1tojp1SI,P2jtojp2SI )
-        print(i,xmh,xph,I1,Ra0,Ra1,Ra2)
-
-        LimP2R = Ra2*(xplot - x[i])**2 + Ra1*(xplot - x[i])   +Ra0
-
-        
-        RIxjph = Ra2/3*(dx/2)**3 + Ra1/2*(dx/2)**2 + Ra0*(dx/2)
-        RIxjmh = Ra2/3*(-dx/2)**3 + Ra1/2*(-dx/2)**2 + Ra0*(-dx/2)
-        print(i,xmh,xph,'CA', (RIxjph -  RIxjmh)/dx,qaj,(RIxjph -  RIxjmh)/dx-qaj )
-        
-        
-        P0jplot =  0*(xplot - x[i])  +P0ja0      
-        LimP1Plotjm1j = P1jm1toja11*(xplot - x[i])   +P1jm1toja10
-        LimP1Plotjjp1 = P1jtojp1a11*(xplot - x[i])   +P1jtojp1a10
-        
 
         if i == nG:
-            plot(xplot, P0jplot, '-b',label='Recon P0')   
-            # plot(xplot, LimP1Plotjm1j, '-r',label='Recon Lin j-1,j')
-            # plot(xplot, LimP1Plotjjp1, '-g',label='Recon Lin j,j+1')
-            # # plot(xplot, LimP2Plotjm1tojp1, '-y',label='Recon P2 j-1,j+1')
-            # plot(xplot, LimP1R, '-r',label='Recon P1 j-1,j+1')
+            plot(xplot, P0P, '-k',label='Recon P0')  
             
-            plot(xplot, LimP2R, '-y',label='Recon P2 j-2,j+2')
+            plot(xplot, P3jp1tojp4P, '--b',label='Recon P3 + In')            
+            plot(xplot, P3jm1tojm4P, '--r',label='Recon P3 - In')   
             
-            # plot(xplot, LimP2Plot, '-g',label='Recon P2')   
-            # plot(xplot, LimP3Plot, '-y',label='Recon P3')   
-            # plot(xplot, ReconPlot, '--c',label='Choose Small')   
+            plot(xplot, RaP3, '-g',label='Recon P3 +')  
+
+            
         else:
-            plot(xplot, P0jplot, '-b')   
-            # plot(xplot, LimP1Plotjm1j, '-r')
-            # plot(xplot, LimP1Plotjjp1, '-g')
-            # plot(xplot, LimP2Plotjm1tojp1, '-y')
-            # plot(xplot, LimP1R, '-r')
+            plot(xplot, P0P, '-k')  
             
-            plot(xplot, LimP2R, '-y')
+            plot(xplot, P3jp1tojp4P, '--b')            
+            plot(xplot, P3jm1tojm4P, '--r')   
             
-            # plot(xplot, LimLinPlot, '-r')   
-            # plot(xplot, LimP2Plot, '-g')   
-            # plot(xplot, LimP3Plot, '-y')  
-            # plot(xplot, ReconPlot, '--c')   
+            plot(xplot, RaP3, '-g')  
+            
 
 
 
@@ -379,8 +404,11 @@ xh = arange(sx- nG*dx,ex + (nG+1)*dx,hdx)
 # q = Lin_IC(x)
 # qh = Lin_IC(xh)
 
-q = PB_IC(x,dx)
-qh = PB_IC(xh,dx)
+# q = PB_IC(x,dx)
+# qh = PB_IC(xh,dx)
+
+q =  PP_IC(x,dx,dx) 
+qh =  PP_IC(xh,hdx,dx)
 
 plot(xh,qh,'--k', label='Analytic Value')
 plot(x,q,'.k', label='Average Values')

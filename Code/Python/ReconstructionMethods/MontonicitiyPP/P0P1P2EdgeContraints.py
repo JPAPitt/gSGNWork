@@ -4,6 +4,23 @@ from matplotlib.pyplot import plot,loglog,title,xlabel,ylabel,legend,xlim,ylim
 
 
 
+def Monotone(qa):
+    n = len(qa)
+    IS =  sign(qa[1] - qa[0])
+
+    for i in range(2,n):
+        
+        CS =sign(qa[i] - qa[i-1]) 
+        
+        if IS == 0:
+            IS = CS
+        
+        if IS != CS and CS != 0 :
+            return False
+        
+    return True
+        
+    
 def minmodL(q):
     qmin = min(q)
     qmax = max(q)
@@ -17,12 +34,10 @@ def minmodL(q):
 def SAL(q):
     qmin = min(q)
     qmax = max(q)
-    if qmin>0:
-        return 1
-    if qmax<0 :
-        return 1
+    if qmin>0 or qmax<0:
+        return True
     else:
-        return 0
+        return False
 
 def SP_IC(x,dx):
     
@@ -48,6 +63,19 @@ def DB_IC(x,dx,ldx):
     
     return q  
 
+def PP_IC(x,dx,ldx):
+    
+    n = len(x)
+    q = ones(n)
+    
+    for i in range(n):
+        if (x[i] < 0.1*ldx):
+            q[i] = 2 - (x[i])**2
+        else:
+            q[i] = 1 + 0.01*(x[i])**4
+    
+    return q  
+
 def EXPPeak_IC(x):
     
     n = len(x)
@@ -59,7 +87,7 @@ def EXPPeakS_IC(x):
     
     n = len(x)
     # q = exp(-(x**2))
-    q = 4 -(x**4)
+    q = 4 -(x**3)
     return q  
 
 def Lin_IC(x):
@@ -92,10 +120,18 @@ def PB_IC(x,dx):
     
     return q
     
-   
 
+def EdgeValuesPjm2j(qajm2,qajm1,qaj):
+    return qaj/3 + 5*qajm1/6 - qajm2/6,11*qaj/6 - 7*qajm1/6 + qajm2/3
 
+def EdgeValuesPjm1jp1(qajm1,qaj,qajp1):
+    return 5*qaj/6 - qajp1/6 + qajm1/3,5*qaj/6 + qajp1/3 - qajm1/6
 
+def EdgeValuesPjjp2(qaj,qajp1,qajp2):
+    return 11*qaj/6 - 7*qajp1/6 + qajp2/3 , qaj/3 + 5*qajp1/6 - qajp2/6
+
+def MaxP2Coeffs(a,b,c):
+    return a*(-b/(2*a))**2 +  b*(-b/(2*a))  + c,-b/(2*a)
 
 def PlotAverages(x,q,dx):
     n = len(x)
@@ -118,12 +154,15 @@ def PolyIntegralError(LE,RE,AV,dx,Coeffs):
 
 def PlotBuildUpToQuad(x,q,dx,nG,np):
     n = len(x)
+    eps = 10.0**(-12)
     for i in range(nG,n-nG):
         xmh = x[i] - 0.5*dx
         xph = x[i] + 0.5*dx
         
         ndx = (xph - xmh)/np
         xplot = arange(xmh,xph + 0.5*ndx ,ndx)
+        xplotm = arange(xmh-dx,xph + 0.5*ndx-dx ,ndx)
+        xplotp = arange(xmh+dx,xph + 0.5*ndx+ dx ,ndx)
         
         qaj = q[i]
         qajp1 = q[i+1]
@@ -135,109 +174,156 @@ def PlotBuildUpToQuad(x,q,dx,nG,np):
         
         #Start with constant
         P0ja0 = qaj
-
+        
         #Linear
         P1jtojp1a11,P1jtojp1a10,P1jtojp1SI  =  P1jtojp1(qaj,qajp1,dx)
         P1jm1toja11,P1jm1toja10,P1jm1tojSI  =  P1jm1toj(qaj,qajm1,dx)
-        
-        #Need more information to decide
-        if (abs(P1jtojp1SI -P1jm1tojSI) < 10.0**(-14)):
-            I1 = 0
-        #To left is more smooth
-        elif P1jtojp1SI > P1jm1tojSI:
-            I1 = -1
-            Ra1 = P1jm1toja11
-            Ra0 = P1jm1toja10
 
-        #To right is more smooth
-        else:
-            I1 = 1
-            Ra1 = P1jtojp1a11 
-            Ra0 = P1jtojp1a10 
-            
-            
-            
-        # Quadratic Terms
+        P1jtojp1P =P1jtojp1a11*(xplot - x[i]) + P1jtojp1a10
+        P1jm1tojP =P1jm1toja11*(xplot - x[i]) + P1jm1toja10
+                    
+        Ra1MM = minmodL([P1jtojp1a11,0.5*(P1jtojp1a11 +P1jm1toja11 ),P1jm1toja11])
+        Ra0MM = qaj
+
+        RaMMP =  Ra1MM*(xplot - x[i]) + Ra0MM
+        
+        P0P =  0*(xplot - x[i]) + qaj
+        
+        
+        #Quadratics
         P2jm2toja22,P2jm2toja21,P2jm2toja20,P2jm2tojSI = P2jm2toj(qajm2,qajm1,qaj,dx)   
         P2jm1tojp1a22,P2jm1tojp1a21,P2jm1tojp1a20,P2jm1tojp1SI  = P2jm1tojp1(qajp1,qaj,qajm1,dx)
         P2jtojp2a22,P2jtojp2a21,P2jtojp2a20,P2jtojp2SI =   P2jtojp2(qaj,qajp1,qajp2,dx) 
         
-        #Right
-        if I1 == 1:
-            if(P2jm1tojp1SI > P2jtojp2SI ):
-                Ra2 = P2jtojp2a22
-            else:
-                Ra2 = P2jm1tojp1a22
-            Ra1 = Ra1 - dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-        #Left
-        elif I1 == -1:
-            if(P2jm1tojp1SI > P2jm2tojSI ):
+        Pjm2tojLEVj,Pjm2tojREVj =   EdgeValuesPjm2j(qajm2,qajm1,qaj)
+        Pjm1tojp1LEVj,Pjm1tojp1REVj = EdgeValuesPjm1jp1(qajm1,qaj,qajp1)
+        Pjtojp2LEVj,Pjtojp2REVj =  EdgeValuesPjjp2(qaj,qajp1,qajp2)
+        
+        MaxLEj = max(Pjm2tojLEVj,Pjm1tojp1LEVj,Pjtojp2LEVj)
+        MinLEj = min(Pjm2tojLEVj,Pjm1tojp1LEVj,Pjtojp2LEVj)
+        
+        MaxREj = max(Pjm2tojREVj,Pjm1tojp1REVj,Pjtojp2REVj)
+        MinREj = min(Pjm2tojREVj,Pjm1tojp1REVj,Pjtojp2REVj)
+
+        PbLEVjm1,PbREVjm1 =   EdgeValuesPjm2j(qajm3,qajm2,qajm1)
+        PmLEVjm1,PmREVjm1 = EdgeValuesPjm1jp1(qajm2,qajm1,qaj)
+        PfLEVjm1,PfREVjm1 =  EdgeValuesPjjp2(qajm1,qaj,qajp1)        
+
+        MaxLEjm1 = max(PbLEVjm1,PmLEVjm1,PfLEVjm1)
+        MinLEjm1 = min(PbLEVjm1,PmLEVjm1,PfLEVjm1)
+        
+        MaxREjm1 = max(PbREVjm1,PmREVjm1,PfREVjm1)
+        MinREjm1 = min(PbREVjm1,PmREVjm1,PfREVjm1)
+
+        PbLEVjp1,PbREVjp1 =   EdgeValuesPjm2j(qajm1,qaj,qajp1)
+        PmLEVjp1,PmREVjp1 = EdgeValuesPjm1jp1(qaj,qajp1,qajp2)
+        PfLEVjp1,PfREVjp1 =  EdgeValuesPjjp2(qajp1,qajp2,qajp3)      
+
+        MaxLEjp1 = max(PbLEVjp1,PmLEVjp1,PfLEVjp1)
+        MinLEjp1 = min(PbLEVjp1,PmLEVjp1,PfLEVjp1)
+        
+        MaxREjp1 = max(PbREVjp1,PmREVjp1,PfREVjp1)
+        MinREjp1 = min(PbREVjp1,PmREVjp1,PfREVjp1)
+
+ 
+    
+        Ra2 = 0
+        Ra1 = 0
+        Ra0 = qaj
+        
+        print(i,xmh,xph,'Look at Cell')
+        print('Left Cell Right Edge Values',PbREVjm1,PmREVjm1,PfREVjm1)
+        print('Right Cell LEft Edge Values',PbLEVjp1,PmLEVjp1,PfLEVjp1)
+        if (qajm1 >= qaj and qaj >= qajp1):
+           
+            print('Edge Values j-1/2',MinREjm1,Pjm2tojLEVj,Pjm1tojp1LEVj,Pjtojp2LEVj )
+            print('Edge Values j+1/2 ',MaxLEjp1,Pjm2tojREVj,Pjm1tojp1REVj,Pjtojp2REVj  )
+            
+            if( MinREjm1 >= Pjm2tojLEVj and Pjm2tojREVj >= MaxLEjp1):
                 Ra2 = P2jm2toja22
-            else:
-                Ra2 = P2jm1tojp1a22
-            
-            Ra1 = Ra1 + dx*Ra2
-            Ra0 = Ra0 - dx**2/12*Ra2
-       #undecided
-        else:
-            
-            if( abs(P2jtojp2SI- P2jm2tojSI) < 10.0**(-14)  and P2jm1tojp1SI < P2jm2tojSI  ):
+                Ra1 = P2jm2toja21
+                Ra0 = P2jm2toja20                
+            if( MinREjm1 >= Pjtojp2LEVj and Pjtojp2REVj >= MaxLEjp1):
+                Ra2 = P2jtojp2a22
+                Ra1 = P2jtojp2a21
+                Ra0 = P2jtojp2a20    
+            if( MinREjm1 >= Pjm1tojp1LEVj and Pjm1tojp1REVj  >= MaxLEjp1):
                 Ra2 = P2jm1tojp1a22
                 Ra1 = P2jm1tojp1a21
-                Ra0 = P2jm1tojp1a20
-            elif(P1jtojp1a11 == P1jm1toja11 and P1jtojp1a10 == P1jm1toja10 ):
-                Ra2 = 0
-                Ra1 = P1jtojp1a11
-                Ra0 = P1jtojp1a10
-            else:
-                Ra2 =0
-                Ra1 = 0
-                Ra0 = qaj     
+                Ra0 = P2jm1tojp1a20  
+        elif (qajm1 <= qaj and qaj <= qajp1):
             
+            print('Edge Values j-1/2',MaxREjm1,Pjm2tojLEVj,Pjm1tojp1LEVj,Pjtojp2LEVj )
+            print('Edge Values j+1/2',MinLEjp1,Pjm2tojREVj,Pjm1tojp1REVj,Pjtojp2REVj  )
+            if( MaxREjm1 <= Pjm2tojLEVj and Pjm2tojREVj <= MinLEjp1 ):
+                Ra2 = P2jm2toja22
+                Ra1 = P2jm2toja21
+                Ra0 = P2jm2toja20                
+            if( MaxREjm1 <= Pjtojp2LEVj and Pjtojp2REVj <= MinLEjp1 ):
+                Ra2 = P2jtojp2a22
+                Ra1 = P2jtojp2a21
+                Ra0 = P2jtojp2a20    
+            if( MaxREjm1 <= Pjm1tojp1LEVj and Pjm1tojp1REVj  <= MinLEjp1 ):
+                Ra2 = P2jm1tojp1a22
+                Ra1 = P2jm1tojp1a21
+                Ra0 = P2jm1tojp1a20    
+        print('\n\n')
+        # #Montone Decreasing - ensure less than average, doesnt work. 
+        # qjmh = (qajm1 + qaj)/2
+        # qjph = (qaj + qajp1)/2
+        # if (qajm1 >= qaj and qaj >= qajp1):
+            
+        #     if( qjmh >= Pjm2tojLEV and Pjm2tojREV >= qjph):
+        #         Ra2 = P2jm2toja22
+        #         Ra1 = P2jm2toja21
+        #         Ra0 = P2jm2toja20                
+        #     if( qjmh >= Pjtojp2LEV and Pjtojp2REV >= qjph):
+        #         Ra2 = P2jtojp2a22
+        #         Ra1 = P2jtojp2a21
+        #         Ra0 = P2jtojp2a20    
+        #     if( qjmh >= Pjm1tojp1LEV and Pjm1tojp1REV  >= qjph):
+        #         Ra2 = P2jm1tojp1a22
+        #         Ra1 = P2jm1tojp1a21
+        #         Ra0 = P2jm1tojp1a20  
+        # elif (qajm1 <= qaj and qaj <= qajp1):
+        #     if( qjmh <= Pjm2tojLEV and Pjm2tojREV <= qjph):
+        #         Ra2 = P2jm2toja22
+        #         Ra1 = P2jm2toja21
+        #         Ra0 = P2jm2toja20                
+        #     if( qjmh <= Pjtojp2LEV and Pjtojp2REV <= qjph):
+        #         Ra2 = P2jtojp2a22
+        #         Ra1 = P2jtojp2a21
+        #         Ra0 = P2jtojp2a20    
+        #     if( qjmh <= Pjm1tojp1LEV and Pjm1tojp1REV  <= qjph):
+        #         Ra2 = P2jm1tojp1a22
+        #         Ra1 = P2jm1tojp1a21
+        #         Ra0 = P2jm1tojp1a20         
 
-        print(i,xmh,xph,I1,'SI 1:',P1jm1tojSI,P1jtojp1SI )
-        print(i,xmh,xph,I1,'SI 2:',P2jm2tojSI,P2jm1tojp1SI,P2jtojp2SI )
-        print(i,xmh,xph,I1,Ra0,Ra1,Ra2)
-
-        LimP2R = Ra2*(xplot - x[i])**2 + Ra1*(xplot - x[i])   +Ra0
-
+        # print(i,xmh,xph,'Averages', qajm1,qaj,qajp1,  (qajm1 >= qaj and qaj >= qajp1) or (qajm1 <= qaj and qaj <= qajp1) )
+        # print(i,xmh,xph,'Edge Values j-2 j',Pjm2tojLEV,Pjm2tojREV, qjmh, qjph, qjmh >= Pjm2tojLEV,Pjm2tojREV >= qjph )
+        # print(i,xmh,xph,'Edge Values j-1 j+1',Pjm1tojp1LEV,Pjm1tojp1REV,qjmh, qjph, qjmh >= Pjm1tojp1LEV,Pjm1tojp1REV >= qjph  )
+        # print(i,xmh,xph,'Edge Values j j+2',Pjtojp2LEV,Pjtojp2REV, qjmh, qjph, qjmh >= Pjtojp2LEV,Pjtojp2REV >= qjph  )
         
-        RIxjph = Ra2/3*(dx/2)**3 + Ra1/2*(dx/2)**2 + Ra0*(dx/2)
-        RIxjmh = Ra2/3*(-dx/2)**3 + Ra1/2*(-dx/2)**2 + Ra0*(-dx/2)
-        print(i,xmh,xph,'CA', (RIxjph -  RIxjmh)/dx,qaj,(RIxjph -  RIxjmh)/dx-qaj )
-        
-        
-        P0jplot =  0*(xplot - x[i])  +P0ja0      
-        LimP1Plotjm1j = P1jm1toja11*(xplot - x[i])   +P1jm1toja10
-        LimP1Plotjjp1 = P1jtojp1a11*(xplot - x[i])   +P1jtojp1a10
-        
-
+        RaNP2 =  Ra2*(xplot - x[i])**2 + Ra1*(xplot - x[i]) + Ra0
         if i == nG:
-            plot(xplot, P0jplot, '-b',label='Recon P0')   
-            # plot(xplot, LimP1Plotjm1j, '-r',label='Recon Lin j-1,j')
-            # plot(xplot, LimP1Plotjjp1, '-g',label='Recon Lin j,j+1')
-            # # plot(xplot, LimP2Plotjm1tojp1, '-y',label='Recon P2 j-1,j+1')
-            # plot(xplot, LimP1R, '-r',label='Recon P1 j-1,j+1')
+            plot(xplot, P0P, '-k',label='Recon P0')  
             
-            plot(xplot, LimP2R, '-y',label='Recon P2 j-2,j+2')
+            plot(xplot, P1jm1tojP, '-b',label='Recon P1 -')            
+            plot(xplot, P1jtojp1P, '-r',label='Recon P1 +')   
             
-            # plot(xplot, LimP2Plot, '-g',label='Recon P2')   
-            # plot(xplot, LimP3Plot, '-y',label='Recon P3')   
-            # plot(xplot, ReconPlot, '--c',label='Choose Small')   
+            plot(xplot, RaMMP, '-g',label='MinMod P1')   
+            
+            plot(xplot, RaNP2, '-y',label='Mont P2')   
+            
         else:
-            plot(xplot, P0jplot, '-b')   
-            # plot(xplot, LimP1Plotjm1j, '-r')
-            # plot(xplot, LimP1Plotjjp1, '-g')
-            # plot(xplot, LimP2Plotjm1tojp1, '-y')
-            # plot(xplot, LimP1R, '-r')
+            plot(xplot, P0P, '-k')  
             
-            plot(xplot, LimP2R, '-y')
+            plot(xplot, P1jm1tojP, '-b')            
+            plot(xplot, P1jtojp1P, '-r')   
             
-            # plot(xplot, LimLinPlot, '-r')   
-            # plot(xplot, LimP2Plot, '-g')   
-            # plot(xplot, LimP3Plot, '-y')  
-            # plot(xplot, ReconPlot, '--c')   
+            plot(xplot, RaMMP, '-g')   
+            
+            plot(xplot, RaNP2, '-y')   
 
 
 
@@ -370,8 +456,8 @@ xh = arange(sx- nG*dx,ex + (nG+1)*dx,hdx)
 # q =  DB_IC(x,dx,dx) 
 # qh =  DB_IC(xh,hdx,dx)
 
-# q =  EXPPeak_IC(x)
-# qh =  EXPPeak_IC(xh)
+q =  EXPPeak_IC(x)
+qh =  EXPPeak_IC(xh)
 
 # q =  EXPPeakS_IC(x)
 # qh =  EXPPeakS_IC(xh)
@@ -379,8 +465,11 @@ xh = arange(sx- nG*dx,ex + (nG+1)*dx,hdx)
 # q = Lin_IC(x)
 # qh = Lin_IC(xh)
 
-q = PB_IC(x,dx)
-qh = PB_IC(xh,dx)
+# q = PB_IC(x,dx)
+# qh = PB_IC(xh,dx)
+
+# q =  PP_IC(x,dx,dx) 
+# qh =  PP_IC(xh,hdx,dx)
 
 plot(xh,qh,'--k', label='Analytic Value')
 plot(x,q,'.k', label='Average Values')
