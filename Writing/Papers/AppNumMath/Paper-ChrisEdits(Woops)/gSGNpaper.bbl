@@ -1,4 +1,4 @@
-\begin{thebibliography}{21}
+\begin{thebibliography}{25}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -65,6 +65,35 @@ J.P.A. Pitt, C.~Zoppou, and S.G. Roberts.
 \newblock Behaviour of the {S}erre equations in the presence of steep gradients
   revisited.
 \newblock \emph{Wave Motion}, 76\penalty0 (1):\penalty0 61--77, 2018.
+
+\bibitem[Dong and Li(2016)]{DONG-2016-110}
+H.~Dong and M.~Li.
+\newblock A reconstructed central discontinuous galerkin-finite element method
+  for the fully nonlinear weakly dispersive green–naghdi model.
+\newblock \emph{Applied Numerical Mathematics}, 110:\penalty0 110--127, 2016.
+
+\bibitem[Lannes and Marche(2015)]{LANNES-2015-238}
+D.~Lannes and F.~Marche.
+\newblock A new class of fully nonlinear and weakly dispersive green–naghdi
+  models for efficient 2d simulations.
+\newblock \emph{Journal of Computational Physics}, 282:\penalty0 238--268,
+  2015.
+
+\bibitem[Panda et~al.(2014)Panda, Dawson, Zhang, Kennedy, Westerink, and
+  Donahue]{PANDA-2014-572}
+N.~Panda, C.~Dawson, Y.~Zhang, A.~B. Kennedy, J.~J. Westerink, and A.~S.
+  Donahue.
+\newblock Discontinuous galerkin methods for solving
+  boussinesq–green–naghdi equations in resolving non-linear and dispersive
+  surface water waves.
+\newblock \emph{Journal of Computational Physics}, 273:\penalty0 572--588,
+  2014.
+
+\bibitem[Li et~al.(2019)Li, Xu, and Cheng]{LI-2019-108953}
+M.~Li, L.~Xu, and Y.~Cheng.
+\newblock A cdg-fe method for the two-dimensional green-naghdi model with the
+  enhanced dispersive property.
+\newblock \emph{Journal of Computational Physics}, 399:\penalty0 108953, 2019.
 
 \bibitem[Pu et~al.(2018)Pu, Pego, Dutykh, and Clamond]{Pu-2018-1361}
 Y.~Pu, R.L. Pego, D.~Dutykh, and D.~Clamond.

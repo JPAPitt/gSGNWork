@@ -109,6 +109,11 @@ This paper begins by introducing the gSGNE and highlighting their important prop
 The numerical method is then validated against analytic solutions of the SGNE and the Shallow Water Wave Equations (SWWE) which are solutions of the gSGNE for the appropriate $\beta$ values, demonstrating its convergence rate and conservation properties. Forced solutions are also used to validate that all terms in the gSGNE are being approximated to the correct order of accuracy. Forced solutions are necessary to validate the numerical method for other members of this family of equations, because no analytic solutions are currently known. Together these validations demonstrate the capability of the numerical scheme to produce robust and accurate numerical solutions. 
 
 
+%Additional citations to make -
+a \cite{DONG-2016-110}  - DG method, conservative form
+b \cite{LANNES-2015-238} - splitting method dispersive + hyperbolic - modified equations
+c \cite{PANDA-2014-572} - DG method , linear stability, experimental validation
+d \cite{LI-2019-108953} - CDG method , improved dispersion - different dispersion change
 %-------------------------------------------------
 \section{Generalised Serre-Green-Naghdi Equations}
 %-------------------------------------------------
@@ -143,10 +148,28 @@ Equation \eqref{eq:gSGNE} contains three partial differential equations with onl
 
 When solutions are sufficiently smooth all equations hold simultaneously and the total amounts of all these quantities remain constant in time if the system is closed. This can be seen by integrating \eqref{eq:gSGNE} over the domain, and observing that the temporal derivative of the spatial integrals of mass ($h$), momentum ($uh$) and energy ($\mathcal{E}$) is zero when there is no flux across the domain boundaries. This conservation property of the gSGNE will be used to validate the numerical method and its solution. 
 
-\subsection{Dispersion Relation of the Linearised gSGNE}
+\subsection{Linearised gSGNE}
 The linear dispersion properties of water wave equations have been of particular interest \cite{Clamond-et.al-2017-245,Filippini-etal-2016-381,DoCarmo-2019-125}, as the scope of wave modelling expands to include dispersive effects. Indeed, the gSGNE are especially relevant because they provide better dispersion properties when compared to the linear theory for water waves \cite{Whitham-1967-399} than the SWWE where $\beta_1 = \beta_2 = 0$.
 
-The linear dispersion relationship for the gSGNE, \eqref{eq:gSGNE} is obtained by considering small waves superimposed on water with a mean depth $h_0$ and a mean velocity $u_0$. The dispersion relationship of the resulting linearised gSGNE is then obtained by seeking travelling wave solutions of the form $\exp\left(i (k x - \omega t)\right)$ to obtain
+The linearised gSGNE \eqref{eq:gSGNE} are obtained by considering small perturbations, $h_1(x,t)$ in depth and $u_1(x,t)$ in velocity with a background mean water depth $h_0$ and a mean velocity $u_0$. By using these assumptions and neglecting all terms significantly smaller than the perturbations we arrive at the linearised gSGNE
+\begin{subequations}
+\begin{align}
+\begin{split}
+&\dfrac{\partial h_1}{\partial t} + \dfrac{\partial }{\partial x} \left( u_0 h_1 +  h_0 u_1 \right) = 0
+\label{eq:gSGNE_linear_h}
+\end{split} \\
+\begin{split}
+&\dfrac{\partial u_1}{\partial t}  + \dfrac{\partial }{\partial x} \left( u_0u_1+ g  h_1 -\frac{\beta_1}{2}h_0^2\left[\frac{\partial^2 u_1}{\partial x \partial t} + u_0\frac{\partial^2 u_1}{\partial x^2} \right]  - \frac{\beta_2}{2} g h_0^2\frac{\partial^2 h_1}{\partial x^2}\right) = 0.
+\label{eq:gSGNE_linear_uh}
+\end{split}
+\end{align}
+\label{eq:gSGNE_linear}
+\end{subequations}
+The presence of the $\beta_2$ term and the choice of $\beta_1$ values distinguishes the linearised gSGNE from the linearised SGNE \cite{Zoppou-etal-2017}.
+
+
+\subsubsection{Dispersion Relation}
+The dispersion relationship of the linearised gSGNE is obtained by seeking non-trivial travelling wave solutions of the form $\exp\left(i (k x - \omega t)\right)$ of \eqref{eq:gSGNE_linear} to obtain
 \begin{equation}
 \omega^\pm_\text{gSGNE} = u_0 k \pm k \sqrt{gh_0} \sqrt{\dfrac{\beta_2 h_0^2 k^2 + 2}{\beta_1 h_0^2 k^2 + 2} }
 \label{eq:DispRelgSGNE}
