@@ -91,6 +91,8 @@
 %-------------------------------------------------
 We describe a numerical scheme for solving the generalised Serre-Green-Naghdi equations. This numerical scheme is an extension to the numerical scheme for the classical Serre-Green-Naghdi equations written in conservation law form. This numerical scheme solves an elliptic equation for the non-conservative variable and then evolves the conserved variables through time using the finite volume method. We then describe a typical second-order implementation of this numerical scheme which is validated using known analytic solutions; the travelling solitary wave and the dam-break problem. The numerical method is further validated for general members of this family of equations using forced solutions. The described numerical method is shown to be conservative, robust and second-order accurate.
 
+[]
+
 \begin{keyword}
 	Generalised Serre-Green-Naghdi Equations\sep Regularised Shallow Water Wave Equations \sep Improved Serre-Green-Naghdi Equations
 \end{keyword}
@@ -100,22 +102,17 @@ We describe a numerical scheme for solving the generalised Serre-Green-Naghdi eq
 %-------------------------------------------------
 The generalised Serre-Green-Naghdi Equations (gSGNE) were recently derived by \citet{Clamond-Dutykh-2018-237}. They are a family of equations that generalise the classical Serre-Green-Naghdi Equations (SGNE) first derived by \citet{Serre-F-1953-857}. The equations describe the behaviour of water waves in shallow water where the typical water depth $h_0$ is much smaller than the wavelength $\lambda$ so that the shallowness parameter $\sigma = h_0/\lambda \ll 1$. The gSGNE are of particular interest to the wave modelling community as their dispersion relationship well approximates the dispersion relationship of the linear wave theory \cite{Whitham-1967-399}. The choice of two free parameters $\beta_1$ and $\beta_2$ allows for the dispersion relationship of the gSGNE to be accurate up to $\mathcal{O}\left(\sigma^2\right)$ terms, $\mathcal{O}\left(\sigma^4\right)$ terms and even $\mathcal{O}\left(\sigma^6\right)$ terms \cite{Clamond-Dutykh-2018-237,Clamond-et.al-2017-245}. Therefore, these equations provide a way to study the behaviour of water waves as higher powers of $\sigma$ are retained in the wave model. 
 
-%interesting new behaviours
+{\color{red}Since this family of equations contains dispersive and non-dispersive members, this family of equations also provides a way to study the inclusion of dispersion on non-linear shallow water equations. This has been the objective underpinning much of the current research in the area of dispersive wave modelling. To accomplish this goal multiple investigations have been performed with various numerical methods such as finite element methods \cite{Clamond-et.al-2017-245}, discontinuous Galerkin methods \cite{DONG-2016-110,PANDA-2014-572,LI-2019-108953}, hybrid finite volume methods \cite{Hank-etal-2010-2034,Zoppou-etal-2016} and splitting methods \cite{LANNES-2015-238,Filippini-etal-2016-381,doCarmo-etal-2018-404} on a number of different dispersive wave equations. This has left the underlying question of the effect of dispersion on non-linear shallow water wave equations answered in a piecemeal way with comparisons of numerical solutions with different numerical methods applied to different equations. To provide a more focused answer to this question we propose one numerical method for this entire family of equations to comprehensively investigate the effect of dispersion on non-linear shallow water equations.}
 
 In previous work we have developed and validated numerical methods for a conservative reformulation of the SGNE \cite{Zoppou-2014,Zoppou-etal-2016,Zoppou-etal-2017,Pitt-2019} given by $\beta_1 = 2/3$ and $\beta_2 =0$ in the gSGNE. These numerical methods have all been based on the following approach, firstly solve an auxiliary elliptic equation for the non-conservative quantity. Secondly, evolve the equations in conservation law form using the finite volume method which requires the non-conserved quantity. The benefit of the approach was its ability to maintain the fundamental conservation properties of the SGNE \cite{Pitt-2019} and the robustness of the method in the presence of steep gradients \cite{Pitt-2018-61}. The approach has been shown to produce the theoretical accuracy of the underlying methods \cite{Zoppou-etal-2017,Pitt-2019} with the desired conservation and linear dispersion properties \cite{Pitt-2019}. The approach has also been successfully extended to include the effects of varying bathymetry and allow for the presence of dry beds \cite{Pitt-2019}.  
 
-It was demonstrated by \citet{Clamond-Dutykh-2018-237} that the gSGNE can also be written in conservation law form and thus the technique described above for the SGNE can be extended to the gSGNE. The success of this technique for the SGNE makes this an attractive option resulting in an explicit, robust and conservative method for solving the gSGNE. Hence, the purpose of this paper is to describe an extension of the numerical scheme of \citet{Zoppou-etal-2017} for the recently derived gSGNE \cite{Clamond-Dutykh-2018-237}. 
+It was demonstrated by \citet{Clamond-Dutykh-2018-237} that the gSGNE can also be written in conservation law form and thus the technique described above for the SGNE can be extended to the gSGNE. The success of this technique for the SGNE makes this an attractive option resulting in an explicit, robust and conservative method for solving the gSGNE. Hence, the purpose of this paper is to describe an extension of the numerical scheme of \citet{Zoppou-etal-2017} for the recently derived gSGNE \cite{Clamond-Dutykh-2018-237} that allows for arbitrary values of $\beta_1$ and $\beta_2$. 
 
-This paper begins by introducing the gSGNE and highlighting their important properties. The second-order extension of the numerical scheme of \citet{Zoppou-etal-2017} is then described. 
+This paper begins by introducing the gSGNE and highlighting their important properties. Of particular note, is that the free parameters $\beta_1$ and $\beta_2$ provide control of the width of the dispersive wave train. This allows for the family of equations to be classified by their respective dispersive wave train limits, and provides the basis for previously unobserved behaviours in dispersive wave trains. The second-order extension of the numerical scheme of \citet{Zoppou-etal-2017} is then described. 
 
 The numerical method is then validated against analytic solutions of the SGNE and the Shallow Water Wave Equations (SWWE) which are solutions of the gSGNE for the appropriate $\beta$ values, demonstrating its convergence rate and conservation properties. Forced solutions are also used to validate that all terms in the gSGNE are being approximated to the correct order of accuracy. Forced solutions are necessary to validate the numerical method for other members of this family of equations, because no analytic solutions are currently known. Together these validations demonstrate the capability of the numerical scheme to produce robust and accurate numerical solutions. 
 
 
-%Additional citations to make -
-a \cite{DONG-2016-110}  - DG method, conservative form
-b \cite{LANNES-2015-238} - splitting method dispersive + hyperbolic - modified equations
-c \cite{PANDA-2014-572} - DG method , linear stability, experimental validation
-d \cite{LI-2019-108953} - CDG method , improved dispersion - different dispersion change
 %-------------------------------------------------
 \section{Generalised Serre-Green-Naghdi Equations}
 %-------------------------------------------------
@@ -171,12 +168,12 @@ The presence of the $\beta_2$ term and the choice of $\beta_1$ values distinguis
 
 
 \subsubsection{Dispersion Relation}
-The dispersion relationship of the linearised gSGNE is obtained by seeking non-trivial travelling wave solutions of the form $\exp\left(i (k x - \omega t)\right)$ of \eqref{eq:gSGNE_linear} to obtain
+The dispersion relationship of the linearised gSGNE is obtained by seeking non-trivial travelling wave solutions of the form $\exp\left(i (k x - \omega t)\right)$ of \eqref{eq:gSGNE_linear} for $h_1(x,t)$ and $u_1(x,t)$. By substituting in the assumed solution form, we obtain the following relationship between the frequency $\omega$ in time and the wavenumber $k$ in space
 \begin{equation}
-\omega^\pm_\text{gSGNE} = u_0 k \pm k \sqrt{gh_0} \sqrt{\dfrac{\beta_2 h_0^2 k^2 + 2}{\beta_1 h_0^2 k^2 + 2} }
+\omega^\pm_\text{gSGNE} = u_0 k \pm k \sqrt{gh_0} \sqrt{\dfrac{\beta_2 h_0^2 k^2 + 2}{\beta_1 h_0^2 k^2 + 2} }.
 \label{eq:DispRelgSGNE}
 \end{equation}
-which provides the angular frequency $\omega$ of travelling wave solutions in terms of the wavenumber $k$. The dispersion relation has a positive and negative branch corresponding to the direction of these waves. This dispersion relation \eqref{eq:DispRelgSGNE} is equivalent to the dispersion relation derived by \citet{Clamond-Dutykh-2018-237} for the gSGNE who assumed that $u_0 = 0$. 
+The dispersion relation has a positive and negative branch corresponding to the direction of these waves. This dispersion relation \eqref{eq:DispRelgSGNE} is equivalent to the dispersion relation derived by \citet{Clamond-Dutykh-2018-237} for the gSGNE who assumed that $u_0 = 0$. 
 
 The dispersion relationship for the linear water wave theory \cite{Whitham-1967-399} is 
 \begin{equation}
