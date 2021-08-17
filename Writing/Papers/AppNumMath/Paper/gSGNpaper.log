@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.14)  20 OCT 2020 08:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2020.4.14)  17 AUG 2021 15:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -6,8 +6,8 @@ entering extended mode
 (./gSGNpaper.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
-(./elsarticle.cls
-Document Class: elsarticle 2019/02/25, 3.2: Elsevier Ltd
+(/usr/share/texlive/texmf-dist/tex/latex/elsarticle/elsarticle.cls
+Document Class: elsarticle 2009/09/17, 1.2.0: Elsevier Ltd
 \@bls=\dimen102
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
@@ -50,6 +50,18 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen104
 \Gin@req@width=\dimen105
 )
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/pifont.sty
+Package: pifont 2005/04/12 PSNFSS-v9.2a Pi font support (SPQR) 
+LaTeX Font Info:    Try loading font information for U+pzd on input line 63.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/upzd.fd
+File: upzd.fd 2001/06/04 font definitions for U/pzd.
+)
+LaTeX Font Info:    Try loading font information for U+psy on input line 64.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/upsy.fd
+File: upsy.fd 2001/06/04 font definitions for U/psy.
+))
 \c@tnote=\count87
 \c@fnote=\count88
 \c@cnote=\count89
@@ -58,19 +70,17 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \@eadauthor=\toks15
 \c@affn=\count92
 \absbox=\box26
-\elsarticlehighlightsbox=\box27
-\elsarticlegrabsbox=\box28
-\keybox=\box29
+\keybox=\box27
 \Columnwidth=\dimen106
 \space@left=\dimen107
-\els@boxa=\box30
-\els@boxb=\box31
+\els@boxa=\box28
+\els@boxb=\box29
 \leftMargin=\dimen108
 \@enLab=\toks16
 \@sep=\skip43
 \@@sep=\skip44
-
-(./gSGNpaper.spl) (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+ (./gSGNpaper.spl)
+(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip45
 \bibsep=\skip46
@@ -80,7 +90,6 @@ LaTeX Info: Redefining \cite on input line 694.
 \splwrite=\write3
 \openout3 = `gSGNpaper.spl'.
 
-\appnamewidth=\dimen109
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
@@ -91,12 +100,12 @@ Package: pgfplots 2017/06/05 v1.15 Data Visualization (1.15)
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks17
-\pgfutil@tempdima=\dimen110
-\pgfutil@tempdimb=\dimen111
+\pgfutil@tempdima=\dimen109
+\pgfutil@tempdimb=\dimen110
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
 ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box32
+\pgfutil@abb=\box30
 (/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
 Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
 ))
@@ -118,14 +127,14 @@ Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 ex
 \pgfkeys@tmptoks=\toks20
 ))
-\pgf@x=\dimen112
-\pgf@y=\dimen113
-\pgf@xa=\dimen114
-\pgf@ya=\dimen115
-\pgf@xb=\dimen116
-\pgf@yb=\dimen117
-\pgf@xc=\dimen118
-\pgf@yc=\dimen119
+\pgf@x=\dimen111
+\pgf@y=\dimen112
+\pgf@xa=\dimen113
+\pgf@ya=\dimen114
+\pgf@xb=\dimen115
+\pgf@yb=\dimen116
+\pgf@xc=\dimen117
+\pgf@yc=\dimen118
 \w@pgf@writea=\write4
 \r@pgf@reada=\read1
 \c@pgf@counta=\count94
@@ -180,9 +189,9 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen120
+\pgfmath@dimen=\dimen119
 \pgfmath@count=\count100
-\pgfmath@box=\box33
+\pgfmath@box=\box31
 \pgfmath@toks=\toks24
 \pgfmath@stack@operand=\toks25
 \pgfmath@stack@operation=\toks26
@@ -210,52 +219,52 @@ thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
-\pgf@picminx=\dimen121
-\pgf@picmaxx=\dimen122
-\pgf@picminy=\dimen123
-\pgf@picmaxy=\dimen124
-\pgf@pathminx=\dimen125
-\pgf@pathmaxx=\dimen126
-\pgf@pathminy=\dimen127
-\pgf@pathmaxy=\dimen128
-\pgf@xx=\dimen129
-\pgf@xy=\dimen130
-\pgf@yx=\dimen131
-\pgf@yy=\dimen132
-\pgf@zx=\dimen133
-\pgf@zy=\dimen134
+\pgf@picminx=\dimen120
+\pgf@picmaxx=\dimen121
+\pgf@picminy=\dimen122
+\pgf@picmaxy=\dimen123
+\pgf@pathminx=\dimen124
+\pgf@pathmaxx=\dimen125
+\pgf@pathminy=\dimen126
+\pgf@pathmaxy=\dimen127
+\pgf@xx=\dimen128
+\pgf@xy=\dimen129
+\pgf@yx=\dimen130
+\pgf@yy=\dimen131
+\pgf@zx=\dimen132
+\pgf@zy=\dimen133
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
 code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
-\pgf@path@lastx=\dimen135
-\pgf@path@lasty=\dimen136
+\pgf@path@lastx=\dimen134
+\pgf@path@lasty=\dimen135
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
 .tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
-\pgf@shorten@end@additional=\dimen137
-\pgf@shorten@start@additional=\dimen138
+\pgf@shorten@end@additional=\dimen136
+\pgf@shorten@start@additional=\dimen137
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
 x
 File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
-\pgfpic=\box34
-\pgf@hbox=\box35
-\pgf@layerbox@main=\box36
+\pgfpic=\box32
+\pgf@hbox=\box33
+\pgf@layerbox@main=\box34
 \pgf@picture@serial@count=\count102
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
-\pgflinewidth=\dimen139
+\pgflinewidth=\dimen138
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
 s.code.tex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
-\pgf@pt@x=\dimen140
-\pgf@pt@y=\dimen141
-\pgf@pt@temp=\dimen142
+\pgf@pt@x=\dimen139
+\pgf@pt@y=\dimen140
+\pgf@pt@temp=\dimen141
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
@@ -271,11 +280,11 @@ File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
 x
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
-\pgfarrowsep=\dimen143
+\pgfarrowsep=\dimen142
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen144
+\pgf@max=\dimen143
 \pgf@sys@shading@range@num=\count103
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
@@ -284,7 +293,7 @@ File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
 tex
 File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
-\pgfexternal@startupbox=\box37
+\pgfexternal@startupbox=\box35
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
 x
@@ -300,15 +309,15 @@ File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
-\pgfnodeparttextbox=\box38
+\pgfnodeparttextbox=\box36
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
 .sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen145
-\pgf@nodesepend=\dimen146
+\pgf@nodesepstart=\dimen144
+\pgf@nodesepend=\dimen145
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
 .sty
@@ -322,8 +331,8 @@ Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen147
-\pgffor@skip=\dimen148
+\pgffor@iter=\dimen146
+\pgffor@skip=\dimen147
 \pgffor@stack=\toks27
 \pgffor@toks=\toks28
 ))
@@ -334,18 +343,18 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 .code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
 \pgf@plot@mark@count=\count104
-\pgfplotmarksize=\dimen149
+\pgfplotmarksize=\dimen148
 )
-\tikz@lastx=\dimen150
-\tikz@lasty=\dimen151
-\tikz@lastxsaved=\dimen152
-\tikz@lastysaved=\dimen153
-\tikzleveldistance=\dimen154
-\tikzsiblingdistance=\dimen155
-\tikz@figbox=\box39
-\tikz@figbox@bg=\box40
-\tikz@tempbox=\box41
-\tikz@tempbox@bg=\box42
+\tikz@lastx=\dimen149
+\tikz@lasty=\dimen150
+\tikz@lastxsaved=\dimen151
+\tikz@lastysaved=\dimen152
+\tikzleveldistance=\dimen153
+\tikzsiblingdistance=\dimen154
+\tikz@figbox=\box37
+\tikz@figbox@bg=\box38
+\tikz@tempbox=\box39
+\tikz@tempbox@bg=\box40
 \tikztreelevel=\count105
 \tikznumberofchildren=\count106
 \tikznumberofcurrentchild=\count107
@@ -368,7 +377,7 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 \t@pgfplots@toka=\toks29
 \t@pgfplots@tokb=\toks30
 \t@pgfplots@tokc=\toks31
-\pgfplots@tmpa=\dimen156
+\pgfplots@tmpa=\dimen155
 \c@pgfplots@coordindex=\count113
 \c@pgfplots@scanlineindex=\count114
 
@@ -441,16 +450,16 @@ e.tex)
 zlibrarydecorations.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.cod
 e.tex
-\pgfdecoratedcompleteddistance=\dimen157
-\pgfdecoratedremainingdistance=\dimen158
-\pgfdecoratedinputsegmentcompleteddistance=\dimen159
-\pgfdecoratedinputsegmentremainingdistance=\dimen160
-\pgf@decorate@distancetomove=\dimen161
+\pgfdecoratedcompleteddistance=\dimen156
+\pgfdecoratedremainingdistance=\dimen157
+\pgfdecoratedinputsegmentcompleteddistance=\dimen158
+\pgfdecoratedinputsegmentremainingdistance=\dimen159
+\pgf@decorate@distancetomove=\dimen160
 \pgf@decorate@repeatstate=\count119
-\pgfdecorationsegmentamplitude=\dimen162
-\pgfdecorationsegmentlength=\dimen163
+\pgfdecorationsegmentamplitude=\dimen161
+\pgfdecorationsegmentlength=\dimen162
 )
-\tikz@lib@dec@box=\box43
+\tikz@lib@dec@box=\box41
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarydecorations.pathmorphing.code.tex
@@ -461,12 +470,12 @@ zlibrarydecorations.pathreplacing.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrary
 decorations.pathreplacing.code.tex))
 \pgfplots@numplots=\count120
-\pgfplots@xmin@reg=\dimen164
-\pgfplots@xmax@reg=\dimen165
-\pgfplots@ymin@reg=\dimen166
-\pgfplots@ymax@reg=\dimen167
-\pgfplots@zmin@reg=\dimen168
-\pgfplots@zmax@reg=\dimen169
+\pgfplots@xmin@reg=\dimen163
+\pgfplots@xmax@reg=\dimen164
+\pgfplots@ymin@reg=\dimen165
+\pgfplots@ymax@reg=\dimen166
+\pgfplots@zmin@reg=\dimen167
+\pgfplots@zmax@reg=\dimen168
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibraryplotmarks.code.tex
@@ -479,10 +488,10 @@ File: pgflibraryplotmarks.code.tex 2015/08/03 v3.0.1a (rcs-revision 1.14)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.
 code.tex
 File: pgflibraryarrows.meta.code.tex 2015/05/13 v3.0.1a (rcs-revision 1.13)
-\pgfarrowinset=\dimen170
-\pgfarrowlength=\dimen171
-\pgfarrowwidth=\dimen172
-\pgfarrowlinewidth=\dimen173
+\pgfarrowinset=\dimen169
+\pgfarrowlength=\dimen170
+\pgfarrowwidth=\dimen171
+\pgfarrowlinewidth=\dimen172
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.pa
 tchplots.code.tex)
@@ -543,11 +552,11 @@ Package: amstext 2000/06/29 v2.01 AMS text
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks33
-\ex@=\dimen174
+\ex@=\dimen173
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen175
+\pmbraise@=\dimen174
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
@@ -562,9 +571,9 @@ LaTeX Info: Redefining \overline on input line 375.
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box44
-\strutbox@=\box45
-\big@size=\dimen176
+\Mathstrutbox@=\box42
+\strutbox@=\box43
+\big@size=\dimen175
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \macc@depth=\count126
@@ -577,12 +586,12 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 \column@=\count131
 \maxfields@=\count132
 \andhelp@=\toks35
-\eqnshift@=\dimen177
-\alignsep@=\dimen178
-\tagshift@=\dimen179
-\tagwidth@=\dimen180
-\totwidth@=\dimen181
-\lineht@=\dimen182
+\eqnshift@=\dimen176
+\alignsep@=\dimen177
+\tagshift@=\dimen178
+\tagwidth@=\dimen179
+\totwidth@=\dimen180
+\lineht@=\dimen181
 \@envbody=\toks36
 \multlinegap=\skip48
 \multlinetaggap=\skip49
@@ -595,17 +604,17 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \linenopenalty=\count133
 \output=\toks38
 \linenoprevgraf=\count134
-\linenumbersep=\dimen183
-\linenumberwidth=\dimen184
+\linenumbersep=\dimen182
+\linenumberwidth=\dimen183
 \c@linenumber=\count135
 \c@pagewiselinenumber=\count136
 \c@LN@truepage=\count137
 \c@internallinenumber=\count138
 \c@internallinenumbers=\count139
-\quotelinenumbersep=\dimen185
-\bframerule=\dimen186
-\bframesep=\dimen187
-\bframebox=\box46
+\quotelinenumbersep=\dimen184
+\bframerule=\dimen185
+\bframesep=\dimen186
+\bframebox=\box44
 LaTeX Info: Redefining \\ on input line 3056.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
@@ -618,39 +627,41 @@ Package ifvtex Info: VTeX not detected.
 \Gm@cnth=\count140
 \Gm@cntv=\count141
 \c@Gm@tempcnt=\count142
-\Gm@bindingoffset=\dimen188
-\Gm@wd@mp=\dimen189
-\Gm@odd@mp=\dimen190
-\Gm@even@mp=\dimen191
-\Gm@layoutwidth=\dimen192
-\Gm@layoutheight=\dimen193
-\Gm@layouthoffset=\dimen194
-\Gm@layoutvoffset=\dimen195
+\Gm@bindingoffset=\dimen187
+\Gm@wd@mp=\dimen188
+\Gm@odd@mp=\dimen189
+\Gm@even@mp=\dimen190
+\Gm@layoutwidth=\dimen191
+\Gm@layoutheight=\dimen192
+\Gm@layouthoffset=\dimen193
+\Gm@layoutvoffset=\dimen194
 \Gm@dimlist=\toks39
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \c@tracingmulticols=\count143
-\mult@box=\box47
-\multicol@leftmargin=\dimen196
+\mult@box=\box45
+\multicol@leftmargin=\dimen195
 \c@unbalance=\count144
 \c@collectmore=\count145
 \doublecol@number=\count146
 \multicoltolerance=\count147
 \multicolpretolerance=\count148
-\full@width=\dimen197
-\page@free=\dimen198
-\premulticols=\dimen199
-\postmulticols=\dimen256
+\full@width=\dimen196
+\page@free=\dimen197
+\premulticols=\dimen198
+\postmulticols=\dimen199
 \multicolsep=\skip50
 \multicolbaselineskip=\skip51
-\partial@page=\box48
-\last@line=\box49
-\maxbalancingoverflow=\dimen257
-\mult@rightbox=\box50
-\mult@grightbox=\box51
-\mult@gfirstbox=\box52
-\mult@firstbox=\box53
+\partial@page=\box46
+\last@line=\box47
+\maxbalancingoverflow=\dimen256
+\mult@rightbox=\box48
+\mult@grightbox=\box49
+\mult@gfirstbox=\box50
+\mult@firstbox=\box51
+\@tempa=\box52
+\@tempa=\box53
 \@tempa=\box54
 \@tempa=\box55
 \@tempa=\box56
@@ -666,15 +677,13 @@ Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
 \@tempa=\box66
 \@tempa=\box67
 \@tempa=\box68
-\@tempa=\box69
-\@tempa=\box70
 \c@columnbadness=\count149
 \c@finalcolumnbadness=\count150
-\last@try=\dimen258
-\multicolovershoot=\dimen259
-\multicolundershoot=\dimen260
-\mult@nat@firstbox=\box71
-\colbreak@box=\box72
+\last@try=\dimen257
+\multicolovershoot=\dimen258
+\multicolundershoot=\dimen259
+\mult@nat@firstbox=\box69
+\colbreak@box=\box70
 \mc@col@check@num=\count151
 )
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
@@ -683,13 +692,13 @@ Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen261
-\captionmargin@=\dimen262
-\captionwidth=\dimen263
-\caption@tempdima=\dimen264
-\caption@indent=\dimen265
-\caption@parindent=\dimen266
-\caption@hangindent=\dimen267
+\captionmargin=\dimen260
+\captionmargin@=\dimen261
+\captionwidth=\dimen262
+\caption@tempdima=\dimen263
+\caption@indent=\dimen264
+\caption@parindent=\dimen265
+\caption@hangindent=\dimen266
 )
 \c@ContinuedFloat=\count152
 )
@@ -737,7 +746,7 @@ Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 )
-\@linkdim=\dimen268
+\@linkdim=\dimen267
 \Hy@linkcounter=\count155
 \Hy@pagecounter=\count156
 
@@ -763,10 +772,10 @@ Package hyperref Info: Bookmarks ON on input line 4762.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5115.
-\XeTeXLinkMargin=\dimen269
+\XeTeXLinkMargin=\dimen268
 \Fld@menulength=\count159
-\Field@Width=\dimen270
-\Fld@charsize=\dimen271
+\Field@Width=\dimen269
+\Fld@charsize=\dimen270
 Package hyperref Info: Hyper figures OFF on input line 6369.
 Package hyperref Info: Link nesting OFF on input line 6374.
 Package hyperref Info: Hyper index ON on input line 6377.
@@ -840,34 +849,34 @@ File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks42
-\pgfutil@tempdima=\dimen272
-\pgfutil@tempdimb=\dimen273
+\pgfutil@tempdima=\dimen271
+\pgfutil@tempdimb=\dimen272
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
 ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen274
-\pgffor@skip=\dimen275
+\pgffor@iter=\dimen273
+\pgffor@skip=\dimen274
 \pgffor@stack=\toks43
 \pgffor@toks=\toks44
 )
 \psLoopIndex=\count177
 
 `PSTricks' v2.82  <2018/01/06> (tvz,hv)
-\pst@dima=\dimen276
-\pst@dimb=\dimen277
-\pst@dimc=\dimen278
-\pst@dimd=\dimen279
-\pst@dimg=\dimen280
-\pst@dimh=\dimen281
-\pst@dimm=\dimen282
-\pst@dimn=\dimen283
-\pst@dimo=\dimen284
-\pst@dimp=\dimen285
-\pst@hbox=\box73
-\pst@ibox=\box74
-\pst@boxg=\box75
+\pst@dima=\dimen275
+\pst@dimb=\dimen276
+\pst@dimc=\dimen277
+\pst@dimd=\dimen278
+\pst@dimg=\dimen279
+\pst@dimh=\dimen280
+\pst@dimm=\dimen281
+\pst@dimn=\dimen282
+\pst@dimo=\dimen283
+\pst@dimp=\dimen284
+\pst@hbox=\box71
+\pst@ibox=\box72
+\pst@boxg=\box73
 \pst@cnta=\count178
 \pst@cntb=\count179
 \pst@cntc=\count180
@@ -881,24 +890,24 @@ ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)
 \@zero=\count188
 \pst@toks=\toks45
 (/usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks.con)
-\psunit=\dimen286
-\psxunit=\dimen287
-\psyunit=\dimen288
+\psunit=\dimen285
+\psxunit=\dimen286
+\psyunit=\dimen287
 \pst@C@@rType=\count189
-\pslinewidth=\dimen289
-\psk@startLW=\dimen290
-\psk@endLW=\dimen291
+\pslinewidth=\dimen288
+\psk@startLW=\dimen289
+\psk@endLW=\dimen290
 \pst@customdefs=\toks46
-\pslinearc=\dimen292
-\pst@symbolStep=\dimen293
-\pst@symbolWidth=\dimen294
-\pst@symbolLinewidth=\dimen295
+\pslinearc=\dimen291
+\pst@symbolStep=\dimen292
+\pst@symbolWidth=\dimen293
+\pst@symbolLinewidth=\dimen294
 \everypsbox=\toks47
-\psframesep=\dimen296
-\pslabelsep=\dimen297
-\sh@wgridXunit=\dimen298
-\sh@wgridYunit=\dimen299
-\pst@shift=\dimen300
+\psframesep=\dimen295
+\pslabelsep=\dimen296
+\sh@wgridXunit=\dimen297
+\sh@wgridYunit=\dimen298
+\pst@shift=\dimen299
 )
 File: pstricks.tex 2018/01/06 v2.82 `PSTricks' (tvz,hv)
 
@@ -984,31 +993,31 @@ LaTeX Info: Redefining \today on input line 736.
 (./gSGNpaper.aux)
 \openout1 = `gSGNpaper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count283
-\scratchdimen=\dimen301
-\scratchbox=\box76
+\scratchdimen=\dimen300
+\scratchbox=\box74
 \nofMPsegments=\count284
 \nofMParguments=\count285
 \everyMPshowfont=\toks50
 \MPscratchCnt=\count286
-\MPscratchDim=\dimen302
+\MPscratchDim=\dimen301
 \MPnumerator=\count287
 \makeMPintoPDFobject=\count288
 \everyMPtoPDFconversion=\toks51
@@ -1070,8 +1079,8 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.15}).
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\AtBeginShipoutBox=\box77
-Package hyperref Info: Link coloring OFF on input line 78.
+\AtBeginShipoutBox=\box75
+Package hyperref Info: Link coloring OFF on input line 79.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -1080,9 +1089,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count289
 )
-LaTeX Info: Redefining \ref on input line 78.
-LaTeX Info: Redefining \pageref on input line 78.
-LaTeX Info: Redefining \nameref on input line 78.
+LaTeX Info: Redefining \ref on input line 79.
+LaTeX Info: Redefining \pageref on input line 79.
+LaTeX Info: Redefining \nameref on input line 79.
 
 (./gSGNpaper.out) (./gSGNpaper.out)
 \@outlinefile=\write6
@@ -1091,189 +1100,207 @@ LaTeX Info: Redefining \nameref on input line 78.
 
 (/usr/share/texlive/texmf-dist/tex/latex/fmtcount/fc-english.def
 File: fc-english.def 2016/01/12
-)
-<Figure-1abcde.pdf, id=95, 359.57536pt x 328.25536pt>
-File: Figure-1abcde.pdf Graphic file (type pdf)
-<use Figure-1abcde.pdf>
-Package pdftex.def Info: Figure-1abcde.pdf  used on input line 97.
-(pdftex.def)             Requested size: 359.57448pt x 328.25455pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 102.
+) [1
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+
+
+Non-PDF special ignored!
+Non-PDF special ignored!
+Non-PDF special ignored!
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 148.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 102.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\cnotenum' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\<def>-command' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\@corref' on input line 112.
-
-[1
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!
-
-
-Non-PDF special ignored!
-Non-PDF special ignored!
-Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./
-Figure-1abcde.pdf>] [2
-
-]
-Overfull \hbox (2.22221pt too wide) has occurred while \output is active
-[] 
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.128 
-       [1
-
-
-]
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 168.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 168.
-pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.168 \begin{equation}
-                       [2] [3]
-File: Figure-1abcde.pdf Graphic file (type pdf)
-<use Figure-1abcde.pdf>
-Package pdftex.def Info: Figure-1abcde.pdf  used on input line 232.
-(pdftex.def)             Requested size: 484.2088pt x 442.0437pt.
- [4] [5] [6] [7] [8] [9] [10]
-<Figure-2a.pdf, id=469, 393.48305pt x 315.86507pt>
-File: Figure-2a.pdf Graphic file (type pdf)
-<use Figure-2a.pdf>
-Package pdftex.def Info: Figure-2a.pdf  used on input line 506.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
+ [2] [3]
+<./Figures/Simulations/Comparison/3x3Grid.pdf, id=234, 359.57536pt x 326.75475p
+t>
+File: ./Figures/Simulations/Comparison/3x3Grid.pdf Graphic file (type pdf)
+<use ./Figures/Simulations/Comparison/3x3Grid.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Comparison/3x3Grid.pdf  used on 
+input line 236.
+(pdftex.def)             Requested size: 484.2088pt x 440.02293pt.
+ [4] [5]
+[6 <./Figures/Simulations/Comparison/3x3Grid.pdf>] [7] [8] [9] [10] [11]
+<./Figures/Simulations/Validation/Serre/hEx.pdf, id=492, 393.48305pt x 315.8650
+7pt>
+File: ./Figures/Simulations/Validation/Serre/hEx.pdf Graphic file (type pdf)
+<use ./Figures/Simulations/Validation/Serre/hEx.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Serre/hEx.pdf  used o
+n input line 505.
 (pdftex.def)             Requested size: 154.95035pt x 124.38698pt.
-<Figure-2b.pdf, id=470, 407.99727pt x 315.86507pt>
-File: Figure-2b.pdf Graphic file (type pdf)
-<use Figure-2b.pdf>
-Package pdftex.def Info: Figure-2b.pdf  used on input line 511.
+<./Figures/Simulations/Validation/Serre/GEx.pdf, id=493, 407.99727pt x 315.8650
+7pt>
+File: ./Figures/Simulations/Validation/Serre/GEx.pdf Graphic file (type pdf)
+<use ./Figures/Simulations/Validation/Serre/GEx.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Serre/GEx.pdf  used o
+n input line 510.
 (pdftex.def)             Requested size: 154.95035pt x 119.9625pt.
-<Figure-2c.pdf, id=471, 406.95338pt x 315.86507pt>
-File: Figure-2c.pdf Graphic file (type pdf)
-<use Figure-2c.pdf>
-Package pdftex.def Info: Figure-2c.pdf  used on input line 516.
+<./Figures/Simulations/Validation/Serre/uEx.pdf, id=494, 406.95338pt x 315.8650
+7pt>
+File: ./Figures/Simulations/Validation/Serre/uEx.pdf Graphic file (type pdf)
+<use ./Figures/Simulations/Validation/Serre/uEx.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Serre/uEx.pdf  used o
+n input line 515.
 (pdftex.def)             Requested size: 154.95035pt x 120.27095pt.
-<Figure-3a.pdf.pdf, id=476, 392.97514pt x 302.12672pt>
-File: Figure-3a.pdf.pdf Graphic file (type pdf)
-<use Figure-3a.pdf.pdf>
-Package pdftex.def Info: Figure-3a.pdf.pdf  used on input line 530.
+<./Figures/Simulations/Validation/Serre/NormResults.pdf, id=499, 392.97514pt x 
+302.12672pt>
+File: ./Figures/Simulations/Validation/Serre/NormResults.pdf Graphic file (type
+ pdf)
+<use ./Figures/Simulations/Validation/Serre/NormResults.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Serre/NormResults.pdf
+  used on input line 529.
 (pdftex.def)             Requested size: 237.26497pt x 182.4161pt.
-<Figure-3b.pdf, id=477, 393.13574pt x 302.12672pt>
-File: Figure-3b.pdf Graphic file (type pdf)
-<use Figure-3b.pdf>
-Package pdftex.def Info: Figure-3b.pdf  used on input line 536.
+<./Figures/Simulations/Validation/Serre/PeakError.pdf, id=500, 393.13574pt x 30
+2.12672pt>
+File: ./Figures/Simulations/Validation/Serre/PeakError.pdf Graphic file (type p
+df)
+<use ./Figures/Simulations/Validation/Serre/PeakError.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Serre/PeakError.pdf  
+used on input line 535.
 (pdftex.def)             Requested size: 237.26497pt x 182.34235pt.
-<Figure-4.pdf, id=482, 397.97484pt x 302.12173pt>
-File: Figure-4.pdf Graphic file (type pdf)
-<use Figure-4.pdf>
-Package pdftex.def Info: Figure-4.pdf  used on input line 548.
+<./Figures/Simulations/Validation/Serre/EnergyResults.pdf, id=505, 397.97484pt 
+x 302.12173pt>
+File: ./Figures/Simulations/Validation/Serre/EnergyResults.pdf Graphic file (ty
+pe pdf)
+<use ./Figures/Simulations/Validation/Serre/EnergyResults.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Serre/EnergyResults.p
+df  used on input line 547.
 (pdftex.def)             Requested size: 237.26497pt x 180.11732pt.
-<Figure-5.pdf, id=485, 393.06749pt x 306.61751pt>
-File: Figure-5.pdf Graphic file (type pdf)
-<use Figure-5.pdf>
-Package pdftex.def Info: Figure-5.pdf  used on input line 557.
+
+[12 <./Figures/Simulations/Validation/Serre/hEx.pdf> <./Figures/Simulations/Val
+idation/Serre/GEx.pdf> <./Figures/Simulations/Validation/Serre/uEx.pdf> <./Figu
+res/Simulations/Validation/Serre/NormResults.pdf> <./Figures/Simulations/Valida
+tion/Serre/PeakError.pdf>]
+<./Figures/Simulations/Validation/Serre/PeakSpeedEstimates.pdf, id=587, 393.067
+49pt x 306.61751pt>
+File: ./Figures/Simulations/Validation/Serre/PeakSpeedEstimates.pdf Graphic fil
+e (type pdf)
+<use ./Figures/Simulations/Validation/Serre/PeakSpeedEstimates.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Serre/PeakSpeedEstima
+tes.pdf  used on input line 556.
 (pdftex.def)             Requested size: 237.26497pt x 185.08073pt.
- [11] [12 <./Figure-2a.pdf> <./Figure-2b.pdf> <./Figure-2c.pdf> <./Figure-3a.pd
-f.pdf> <./Figure-3b.pdf> <./Figure-4.pdf>] [13 <./Figure-5.pdf>]
-<Figure-6a.pdf, id=623, 393.48305pt x 315.86708pt>
-File: Figure-6a.pdf Graphic file (type pdf)
-<use Figure-6a.pdf>
-Package pdftex.def Info: Figure-6a.pdf  used on input line 616.
+ [13 <./Figures/Simulations/Validation/Serre/EnergyResults.pdf> <./Figures/Simu
+lations/Validation/Serre/PeakSpeedEstimates.pdf>]
+<./Figures/Simulations/Validation/DBSWWE/hEx.pdf, id=632, 393.48305pt x 315.867
+08pt>
+File: ./Figures/Simulations/Validation/DBSWWE/hEx.pdf Graphic file (type pdf)
+<use ./Figures/Simulations/Validation/DBSWWE/hEx.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/DBSWWE/hEx.pdf  used 
+on input line 615.
 (pdftex.def)             Requested size: 154.95035pt x 124.38777pt.
-<Figure-6b.pdf, id=624, 394.55707pt x 315.86507pt>
-File: Figure-6b.pdf Graphic file (type pdf)
-<use Figure-6b.pdf>
-Package pdftex.def Info: Figure-6b.pdf  used on input line 621.
+<./Figures/Simulations/Validation/DBSWWE/GEx.pdf, id=633, 394.55707pt x 315.865
+07pt>
+File: ./Figures/Simulations/Validation/DBSWWE/GEx.pdf Graphic file (type pdf)
+<use ./Figures/Simulations/Validation/DBSWWE/GEx.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/DBSWWE/GEx.pdf  used 
+on input line 620.
 (pdftex.def)             Requested size: 154.95035pt x 124.04478pt.
-<Figure-6c.pdf, id=625, 393.51315pt x 315.86607pt>
-File: Figure-6c.pdf Graphic file (type pdf)
-<use Figure-6c.pdf>
-Package pdftex.def Info: Figure-6c.pdf  used on input line 626.
+<./Figures/Simulations/Validation/DBSWWE/uEx.pdf, id=634, 393.51315pt x 315.866
+07pt>
+File: ./Figures/Simulations/Validation/DBSWWE/uEx.pdf Graphic file (type pdf)
+<use ./Figures/Simulations/Validation/DBSWWE/uEx.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/DBSWWE/uEx.pdf  used 
+on input line 625.
 (pdftex.def)             Requested size: 154.95035pt x 124.37773pt.
-<Figure-7a.pdf, id=630, 397.9718pt x 304.96935pt>
-File: Figure-7a.pdf Graphic file (type pdf)
-<use Figure-7a.pdf>
-Package pdftex.def Info: Figure-7a.pdf  used on input line 641.
+<./Figures/Simulations/Validation/DBSWWE/ConvergenceInConstantState.pdf, id=639
+, 397.9718pt x 304.96935pt>
+File: ./Figures/Simulations/Validation/DBSWWE/ConvergenceInConstantState.pdf Gr
+aphic file (type pdf)
+<use ./Figures/Simulations/Validation/DBSWWE/ConvergenceInConstantState.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/DBSWWE/ConvergenceInC
+onstantState.pdf  used on input line 640.
 (pdftex.def)             Requested size: 237.26497pt x 181.815pt.
-<Figure-7b.pdf, id=631, 397.9718pt x 302.12173pt>
-File: Figure-7b.pdf Graphic file (type pdf)
-<use Figure-7b.pdf>
-Package pdftex.def Info: Figure-7b.pdf  used on input line 647.
+<./Figures/Simulations/Validation/DBSWWE/EnergyResults.pdf, id=640, 397.9718pt 
+x 302.12173pt>
+File: ./Figures/Simulations/Validation/DBSWWE/EnergyResults.pdf Graphic file (t
+ype pdf)
+<use ./Figures/Simulations/Validation/DBSWWE/EnergyResults.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/DBSWWE/EnergyResults.
+pdf  used on input line 646.
 (pdftex.def)             Requested size: 237.26497pt x 180.11732pt.
- [14 <./Figure-6a.pdf> <./Figure-6b.pdf> <./Figure-6c.pdf>]
-<Figure-8.pdf, id=678, 393.06749pt x 306.61852pt>
-File: Figure-8.pdf Graphic file (type pdf)
-<use Figure-8.pdf>
-Package pdftex.def Info: Figure-8.pdf  used on input line 659.
+
+[14]
+<./Figures/Simulations/Validation/DBSWWE/ShockSpeedEstimates.pdf, id=661, 393.0
+6749pt x 306.61852pt>
+File: ./Figures/Simulations/Validation/DBSWWE/ShockSpeedEstimates.pdf Graphic f
+ile (type pdf)
+<use ./Figures/Simulations/Validation/DBSWWE/ShockSpeedEstimates.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/DBSWWE/ShockSpeedEsti
+mates.pdf  used on input line 658.
 (pdftex.def)             Requested size: 242.1044pt x 188.857pt.
- [15 <./Figure-7a.pdf> <./Figure-7b.pdf> <./Figure-8.pdf>]
-<Figure-9a.pdf, id=732, 389.52628pt x 315.85805pt>
-File: Figure-9a.pdf Graphic file (type pdf)
-<use Figure-9a.pdf>
-Package pdftex.def Info: Figure-9a.pdf  used on input line 704.
+ [15 <./Figures/Simulations/Validation/DBSWWE/hEx.pdf> <./Figures/Simulations/V
+alidation/DBSWWE/GEx.pdf> <./Figures/Simulations/Validation/DBSWWE/uEx.pdf> <./
+Figures/Simulations/Validation/DBSWWE/ConvergenceInConstantState.pdf> <./Figure
+s/Simulations/Validation/DBSWWE/EnergyResults.pdf>] [16 <./Figures/Simulations/
+Validation/DBSWWE/ShockSpeedEstimates.pdf>]
+<./Figures/Simulations/Validation/Forced/iSGN/h.pdf, id=759, 389.52628pt x 315.
+85805pt>
+File: ./Figures/Simulations/Validation/Forced/iSGN/h.pdf Graphic file (type pdf
+)
+<use ./Figures/Simulations/Validation/Forced/iSGN/h.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Forced/iSGN/h.pdf  us
+ed on input line 703.
 (pdftex.def)             Requested size: 154.95035pt x 125.64696pt.
-<Figure-9b.pdf, id=733, 404.0405pt x 315.86507pt>
-File: Figure-9b.pdf Graphic file (type pdf)
-<use Figure-9b.pdf>
-Package pdftex.def Info: Figure-9b.pdf  used on input line 709.
+<./Figures/Simulations/Validation/Forced/iSGN//G.pdf, id=760, 404.0405pt x 315.
+86507pt>
+File: ./Figures/Simulations/Validation/Forced/iSGN//G.pdf Graphic file (type pd
+f)
+<use ./Figures/Simulations/Validation/Forced/iSGN//G.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Forced/iSGN//G.pdf  u
+sed on input line 708.
 (pdftex.def)             Requested size: 154.95035pt x 121.13368pt.
-<Figure-9c.pdf, id=734, 402.99557pt x 315.86708pt>
-File: Figure-9c.pdf Graphic file (type pdf)
-<use Figure-9c.pdf>
-Package pdftex.def Info: Figure-9c.pdf  used on input line 714.
+<./Figures/Simulations/Validation/Forced/iSGN/u.pdf, id=761, 402.99557pt x 315.
+86708pt>
+File: ./Figures/Simulations/Validation/Forced/iSGN/u.pdf Graphic file (type pdf
+)
+<use ./Figures/Simulations/Validation/Forced/iSGN/u.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Forced/iSGN/u.pdf  us
+ed on input line 713.
 (pdftex.def)             Requested size: 154.95035pt x 121.45255pt.
-<Figure-10.pdf, id=737, 397.97484pt x 302.12672pt>
-File: Figure-10.pdf Graphic file (type pdf)
-<use Figure-10.pdf>
-Package pdftex.def Info: Figure-10.pdf  used on input line 725.
+<./Figures/Simulations/Validation/Forced/iSGN/NormResults.pdf, id=764, 397.9748
+4pt x 302.12672pt>
+File: ./Figures/Simulations/Validation/Forced/iSGN/NormResults.pdf Graphic file
+ (type pdf)
+<use ./Figures/Simulations/Validation/Forced/iSGN/NormResults.pdf>
+Package pdftex.def Info: ./Figures/Simulations/Validation/Forced/iSGN/NormResul
+ts.pdf  used on input line 724.
 (pdftex.def)             Requested size: 237.26497pt x 180.1203pt.
- [16] [17 <./Figure-9a.pdf> <./Figure-9b.pdf> <./Figure-9c.pdf> <./Figure-10.pd
-f>] (./gSGNpaper.bbl
+ [17 <./Figures/Simulations/Validation/Forced/iSGN/h.pdf> <./Figures/Simulation
+s/Validation/Forced/iSGN//G.pdf> <./Figures/Simulations/Validation/Forced/iSGN/
+u.pdf> <./Figures/Simulations/Validation/Forced/iSGN/NormResults.pdf>] (./gSGNp
+aper.bbl
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no “ in font cmr10!
  [18]) [19]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 739.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 739.
- (./gSGNpaper.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 739.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 739.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 740.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 740.
+
+(./gSGNpaper.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 740.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 740.
 Package rerunfilecheck Info: File `gSGNpaper.out' has not changed.
-(rerunfilecheck)             Checksum: D33C9B9D040C539079FDD5CC02BAA286;1712.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 739.
+(rerunfilecheck)             Checksum: A31C51508E72F530F1B04AB4AD08C250;1821.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 740.
  ) 
 Here is how much of TeX's memory you used:
- 31950 strings out of 492982
- 736199 string characters out of 6134896
- 1072612 words of memory out of 5000000
- 34835 multiletter control sequences out of 15000+600000
- 11606 words of font info for 41 fonts, out of 8000000 for 9000
+ 31949 strings out of 492982
+ 739356 string characters out of 6134896
+ 1033788 words of memory out of 5000000
+ 34814 multiletter control sequences out of 15000+600000
+ 12115 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  74i,18n,128p,1432b,972s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
@@ -1298,12 +1325,12 @@ c/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
 cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
-sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on gSGNpaper.pdf (21 pages, 934834 bytes).
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on gSGNpaper.pdf (19 pages, 939465 bytes).
 PDF statistics:
- 922 PDF objects out of 1000 (max. 8388607)
- 831 compressed objects within 9 object streams
- 139 named destinations out of 1000 (max. 500000)
- 267 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 935 PDF objects out of 1000 (max. 8388607)
+ 848 compressed objects within 9 object streams
+ 146 named destinations out of 1000 (max. 500000)
+ 283 words of extra memory for PDF output out of 10000 (max. 10000000)
 

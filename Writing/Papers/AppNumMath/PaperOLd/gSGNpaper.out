@@ -1,0 +1,22 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Generalised Serre-Green-Naghdi Equations}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Dispersion Relation of the Linearised gSGNE}{section.2}% 3
+\BOOKMARK [3][-]{subsubsection.2.1.1}{Phase Speed Bounds}{subsection.2.1}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Alternative Conservative Form of the gSGNE}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Numerical Scheme}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Finite Volume Method and Discretisation}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Overview}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.3}{Example Implementation}{section.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Step 1 - Solution of the Elliptic Equation}{subsection.3.3}% 10
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Step 2 - Finite Volume Method - Reconstruction}{subsection.3.3}% 11
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Step 2 - Finite Volume Method - Flux Approximation}{subsection.3.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.3.4}{Step 3 - Runge-Kutta Time Stepping}{subsection.3.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Boundary Conditions}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.5}{Courant-Frederichs-Lewy Condition}{section.3}% 15
+\BOOKMARK [1][-]{section.4}{Validation}{}% 16
+\BOOKMARK [2][-]{subsection.4.1}{Convergence and Conservation Measures}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.2}{Analytic Solutions}{section.4}% 18
+\BOOKMARK [3][-]{subsubsection.4.2.1}{SGNE - Solitary Travelling Wave Solution}{subsection.4.2}% 19
+\BOOKMARK [3][-]{subsubsection.4.2.2}{SWWE - Dam-break Solution }{subsection.4.2}% 20
+\BOOKMARK [2][-]{subsection.4.3}{Forced Solutions}{section.4}% 21
+\BOOKMARK [1][-]{section.5}{Conclusion}{}% 22

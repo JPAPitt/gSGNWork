@@ -1,0 +1,79 @@
+\documentclass[]{standalone}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[pdf]{pstricks}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{fillbetween}
+%% the following commands are needed for some matlab2tikz features
+\usetikzlibrary{plotmarks}
+\usetikzlibrary{arrows.meta}
+\usepgfplotslibrary{patchplots}
+\usetikzlibrary{decorations.text}
+\usetikzlibrary{shapes.multipart}
+
+
+\begin{document}
+\begin{tikzpicture}
+\tikzstyle{every node}=[font=\Large]
+\begin{axis}[%
+width=4.521in,
+height=3.566in,
+at={(0.758in,0.481in)},
+scale only axis,
+every axis plot/.append style={ultra thick},
+xmode=log,
+xmin=0.001,
+xmax=10,
+xtick={0.001,  0.01,   0.1,     1,    10},
+xminorticks=false,
+xlabel style={font=\color{white!15!black}},
+xlabel={\Large $\Delta x$},
+xticklabel style = {yshift=-0.2cm},
+ymin=0.96,
+ymax=1.08,
+ytick={0.96, 0.98,    1, 1.02, 1.04, 1.06, 1.08},
+ylabel style={font=\color{white!15!black}},
+ylabel={\Large ${S^*}/{S}$},
+axis background/.style={fill=white}
+]
+\addplot [color=blue, draw=none, mark=x, mark size=4pt, mark options={solid, blue}, forget plot]
+  table[row sep=crcr]{%
+5.05050505050505	1.07503088762846\\
+2.51256281407035	1.03237093177019\\
+1.2531328320802	1.01957294501271\\
+0.625782227784731	1.01057007788676\\
+0.312695434646654	1.00440144960006\\
+0.156298843388559	1.00173300791671\\
+0.0781372089388967	1.0009324754117\\
+0.0390655519962497	1.00042928433564\\
+0.0195320129692566	1.00031112911619\\
+0.00976581573858864	1.0001443772438\\
+0.00488286018418149	1.00006100130932\\
+0.00244141817098716	1.00003598852704\\
+0.00122070610523951	1.00001514454169\\
+};
+\addplot [color=red, draw=none, mark=x, mark size=4pt, mark options={solid, red}, forget plot]
+  table[row sep=crcr]{%
+5.05050505050505	0.972646993568604\\
+2.51256281407035	0.981178984740259\\
+1.2531328320802	0.985444980326089\\
+0.625782227784731	0.993477983546184\\
+0.312695434646654	0.997997189560103\\
+0.156298843388559	0.998530877896729\\
+0.0781372089388967	0.999331410401713\\
+0.0390655519962497	0.99962883418148\\
+0.0195320129692566	0.999777523126126\\
+0.00976581573858864	0.999944274997532\\
+0.00488286018418149	0.999960950186188\\
+0.00244141817098716	0.999985962965475\\
+0.00122070610523951	0.999990131760908\\
+};
+\addplot [color=black, dashed, forget plot]
+  table[row sep=crcr]{%
+0.0001	1\\
+10	1\\
+};
+\end{axis}
+\end{tikzpicture}%
+\end{document}
