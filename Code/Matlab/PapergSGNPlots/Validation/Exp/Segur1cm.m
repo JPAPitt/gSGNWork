@@ -9,7 +9,7 @@ wdirbase = "H:\Work\UoA\Github\gSGNWork\Results";
 ExpRes = "\Data\Segur-1cm\";
 Sim1Res = "\Experimental\SegurSGN\1cm\01\";
 Sim2Res = "\Experimental\SeguriSGN\1cm\01\";
-% Sim3Res = "\Experimental\SegurRSWWE\3cm\01\";
+Sim3Res = "\Experimental\SegurSWWE\1cm\01\";
 
 path(pathdef)
 path(path,'..')
@@ -24,7 +24,7 @@ for i = 1:5
     ExpFig = importdata(strcat(wdirbase,ExpRes,'fig2',letters(i),'.txt' ));
     Sim1Loc = importdata(strcat(wdirbase,Sim1Res,"TS_ ",num2str(i),'.dat' ));
     Sim2Loc = importdata(strcat(wdirbase,Sim2Res,"TS_ ",num2str(i),'.dat' ));
-    % Sim3Loc = importdata(strcat(wdirbase,Sim3Res,"TS_ ",num2str(i),'.dat' ));
+    Sim3Loc = importdata(strcat(wdirbase,Sim3Res,"TS_ ",num2str(i),'.dat' ));
 
 
 
@@ -45,17 +45,18 @@ for i = 1:5
     Modh2 =  (h - h0) / h0;
 
 
-    % Time1 = Sim3Loc(:,1);
-    % h = Sim3Loc(:,3);
-    % 
-    % ModTime3 = Time1*sqrt(g/h0) - x0/h0;
-    % Modh3 = 1.5* (h - h0) / h0;
+    Time1 = Sim3Loc(:,1);
+    h = Sim3Loc(:,3);
+    
+    ModTime3 = Time1*sqrt(g/h0) - x0/h0;
+    Modh3 = (h - h0) / h0;
 
     figure();
     hold on;
-    plot(ExpFig(:,1),ExpFig(:,2) / (1.5),'.r');
     plot(ModTime1,Modh1,'-b');
-    plot(ModTime2,Modh2,'-g');
+    plot(ModTime2,Modh2,'-k');
+    plot(ModTime3,Modh3,'--g');
+    plot(ExpFig(:,1),ExpFig(:,2) / (1.5),'-r');
     xlabel('t')
     ylabel('h')
     xlim([0,200])

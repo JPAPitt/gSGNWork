@@ -1,0 +1,235 @@
+\begin{thebibliography}{27}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Clamond and Dutykh(2018)}]{Clamond-Dutykh-2018-237}
+\bibinfo{author}{D.~Clamond}, \bibinfo{author}{D.~Dutykh},
+\newblock \bibinfo{title}{Non-dispersive conservative regularisation of
+  nonlinear shallow water (and isentropic euler equations)},
+\newblock \bibinfo{journal}{Communications in Nonlinear Science and Numerical
+  Simulation} \bibinfo{volume}{55} (\bibinfo{year}{2018})
+  \bibinfo{pages}{237--247}.
+%Type = Article
+\bibitem[{Serre(1953)}]{Serre-F-1953-857}
+\bibinfo{author}{F.~Serre},
+\newblock \bibinfo{title}{Contribtion \`{a} l'\'{e}tude des \'{e}coulements
+  permanents et variables dans les canaux},
+\newblock \bibinfo{journal}{La Houille Blanche} \bibinfo{volume}{6}
+  (\bibinfo{year}{1953}) \bibinfo{pages}{830--872}.
+%Type = Article
+\bibitem[{Whitham(1967)}]{Whitham-1967-399}
+\bibinfo{author}{G.~B. Whitham},
+\newblock \bibinfo{title}{Non-linear dispersion of water waves},
+\newblock \bibinfo{journal}{Journal of Fluid Mechanics} \bibinfo{volume}{27}
+  (\bibinfo{year}{1967}) \bibinfo{pages}{399–412}.
+%Type = Article
+\bibitem[{Clamond et~al.(2017)Clamond, Dutykh, and
+  Mitsotakis}]{Clamond-et.al-2017-245}
+\bibinfo{author}{D.~Clamond}, \bibinfo{author}{D.~Dutykh},
+  \bibinfo{author}{D.~Mitsotakis},
+\newblock \bibinfo{title}{Conservative modified {S}erre-{G}reen-{N}aghdi
+  equations with improved dispersion characteristics},
+\newblock \bibinfo{journal}{Communications in Nonlinear Science and Numerical
+  Simulation} \bibinfo{volume}{45} (\bibinfo{year}{2017})
+  \bibinfo{pages}{245--257}.
+%Type = Article
+\bibitem[{Dong and Li(2016)}]{DONG-2016-110}
+\bibinfo{author}{H.~Dong}, \bibinfo{author}{M.~Li},
+\newblock \bibinfo{title}{A reconstructed central discontinuous
+  {G}alerkin-finite element method for the fully nonlinear weakly dispersive
+  {G}reen-{N}aghdi model},
+\newblock \bibinfo{journal}{Applied Numerical Mathematics}
+  \bibinfo{volume}{110} (\bibinfo{year}{2016}) \bibinfo{pages}{110--127}.
+%Type = Article
+\bibitem[{Panda et~al.(2014)Panda, Dawson, Zhang, Kennedy, Westerink, and
+  Donahue}]{PANDA-2014-572}
+\bibinfo{author}{N.~Panda}, \bibinfo{author}{C.~Dawson},
+  \bibinfo{author}{Y.~Zhang}, \bibinfo{author}{A.~B. Kennedy},
+  \bibinfo{author}{J.~J. Westerink}, \bibinfo{author}{A.~S. Donahue},
+\newblock \bibinfo{title}{{D}iscontinuous {G}alerkin methods for solving
+  {B}oussinesq-{G}reen-{N}aghdi equations in resolving non-linear and
+  dispersive surface water waves},
+\newblock \bibinfo{journal}{Journal of Computational Physics}
+  \bibinfo{volume}{273} (\bibinfo{year}{2014}) \bibinfo{pages}{572--588}.
+%Type = Article
+\bibitem[{Li et~al.(2019)Li, Xu, and Cheng}]{LI-2019-108953}
+\bibinfo{author}{M.~Li}, \bibinfo{author}{L.~Xu}, \bibinfo{author}{Y.~Cheng},
+\newblock \bibinfo{title}{A {C}{D}{G}-{F}{E} method for the two-dimensional
+  {G}reen-{N}aghdi model with the enhanced dispersive property},
+\newblock \bibinfo{journal}{Journal of Computational Physics}
+  \bibinfo{volume}{399} (\bibinfo{year}{2019}) \bibinfo{pages}{108953}.
+%Type = Article
+\bibitem[{Le~M\'{e}tayer et~al.(2010)Le~M\'{e}tayer, Gavrilyuk, and
+  Hank}]{Hank-etal-2010-2034}
+\bibinfo{author}{O.~Le~M\'{e}tayer}, \bibinfo{author}{S.~Gavrilyuk},
+  \bibinfo{author}{S.~Hank},
+\newblock \bibinfo{title}{A numerical scheme for the {G}reen-{N}aghdi model},
+\newblock \bibinfo{journal}{Journal of Computational Physics}
+  \bibinfo{volume}{229} (\bibinfo{year}{2010}) \bibinfo{pages}{2034--2045}.
+%Type = Article
+\bibitem[{Zoppou et~al.(2016)Zoppou, Roberts, and Pitt}]{Zoppou-etal-2016}
+\bibinfo{author}{C.~Zoppou}, \bibinfo{author}{S.~Roberts},
+  \bibinfo{author}{J.~Pitt},
+\newblock \bibinfo{title}{A solution of the conservation law form of the
+  {S}erre equations},
+\newblock \bibinfo{journal}{The Australia and New Zealand Industrial and
+  Applied Mathematics Journal} \bibinfo{volume}{57} (\bibinfo{year}{2016})
+  \bibinfo{pages}{385--394}.
+%Type = Article
+\bibitem[{Lannes and Marche(2015)}]{LANNES-2015-238}
+\bibinfo{author}{D.~Lannes}, \bibinfo{author}{F.~Marche},
+\newblock \bibinfo{title}{A new class of fully nonlinear and weakly dispersive
+  {G}reen-{N}aghdi models for efficient 2{D} simulations},
+\newblock \bibinfo{journal}{Journal of Computational Physics}
+  \bibinfo{volume}{282} (\bibinfo{year}{2015}) \bibinfo{pages}{238--268}.
+%Type = Article
+\bibitem[{Filippini et~al.(2016)Filippini, Kazolea, and
+  Ricchiuto}]{Filippini-etal-2016-381}
+\bibinfo{author}{A.~G. Filippini}, \bibinfo{author}{M.~Kazolea},
+  \bibinfo{author}{M.~Ricchiuto},
+\newblock \bibinfo{title}{A flexible genuinely nonlinear approach for nonlinear
+  wave propagation, breaking and run-up},
+\newblock \bibinfo{journal}{Journal of Computational Physics}
+  \bibinfo{volume}{310} (\bibinfo{year}{2016}) \bibinfo{pages}{381--417}.
+%Type = Article
+\bibitem[{do~Carmo et~al.(2018)do~Carmo, Ferreira, Pinto, and
+  Romanazzi}]{doCarmo-etal-2018-404}
+\bibinfo{author}{J.~do~Carmo}, \bibinfo{author}{J.~Ferreira},
+  \bibinfo{author}{L.~Pinto}, \bibinfo{author}{G.~Romanazzi},
+\newblock \bibinfo{title}{An improved {S}erre model: Efficient simulation and
+  comparative evaluation},
+\newblock \bibinfo{journal}{Applied Mathematical Modelling}
+  \bibinfo{volume}{56} (\bibinfo{year}{2018}) \bibinfo{pages}{404--423}.
+%Type = Phdthesis
+\bibitem[{Zoppou(2014)}]{Zoppou-2014}
+\bibinfo{author}{C.~Zoppou}, \bibinfo{title}{Numerical Solution of the
+  {O}ne-dimensional and {C}ylindrical {S}erre {E}quations for {R}apidly
+  {V}arying {F}ree {S}urface {F}lows}, Ph.D. thesis, Australian National
+  University, \bibinfo{address}{Mathematical Sciences Institute, College of
+  Physical and Mathematical Sciences, Australian National University, Canberra,
+  ACT 2600, Australia}, \bibinfo{year}{2014}.
+%Type = Article
+\bibitem[{Zoppou et~al.(2017)Zoppou, Pitt, and Roberts}]{Zoppou-etal-2017}
+\bibinfo{author}{C.~Zoppou}, \bibinfo{author}{J.~Pitt},
+  \bibinfo{author}{S.~Roberts},
+\newblock \bibinfo{title}{Numerical solution of the fully non-linear weakly
+  dispersive {S}erre equations for steep gradient flows},
+\newblock \bibinfo{journal}{Applied Mathematical Modelling}
+  \bibinfo{volume}{48} (\bibinfo{year}{2017}) \bibinfo{pages}{70--95}.
+%Type = Phdthesis
+\bibitem[{Pitt(2019)}]{Pitt-2019}
+\bibinfo{author}{J.~Pitt}, \bibinfo{title}{Simulation of Rapidly Varying and
+  Dry Bed Flow using the Serre equations solved by a Finite Element Volume
+  Method}, Ph.D. thesis, Australian National University,
+  \bibinfo{address}{Mathematical Sciences Institute, College of Physical and
+  Mathematical Sciences, Australian National University, Canberra, ACT 2600,
+  Australia}, \bibinfo{year}{2019}.
+%Type = Article
+\bibitem[{Pitt et~al.(2018)Pitt, Zoppou, and Roberts}]{Pitt-2018-61}
+\bibinfo{author}{J.~Pitt}, \bibinfo{author}{C.~Zoppou},
+  \bibinfo{author}{S.~Roberts},
+\newblock \bibinfo{title}{Behaviour of the {S}erre equations in the presence of
+  steep gradients revisited},
+\newblock \bibinfo{journal}{Wave Motion} \bibinfo{volume}{76}
+  (\bibinfo{year}{2018}) \bibinfo{pages}{61--77}.
+%Type = Article
+\bibitem[{Pu et~al.(2018)Pu, Pego, Dutykh, and Clamond}]{Pu-2018-1361}
+\bibinfo{author}{Y.~Pu}, \bibinfo{author}{R.~Pego},
+  \bibinfo{author}{D.~Dutykh}, \bibinfo{author}{D.~Clamond},
+\newblock \bibinfo{title}{Weakly singular shock profiles for a non-dispersive
+  regularization of shallow-water equations},
+\newblock \bibinfo{journal}{Communications in Mathematical Sciences}
+  \bibinfo{volume}{16} (\bibinfo{year}{2018}) \bibinfo{pages}{1361--1378}.
+%Type = Article
+\bibitem[{do~Carmo et~al.(2019)do~Carmo, Ferreira, and
+  Pinto}]{DoCarmo-2019-125}
+\bibinfo{author}{J.~do~Carmo}, \bibinfo{author}{J.~Ferreira},
+  \bibinfo{author}{L.~Pinto},
+\newblock \bibinfo{title}{On the accurate simulation of nearshore and dam break
+  problems involving dispersive breaking waves},
+\newblock \bibinfo{journal}{Wave Motion} \bibinfo{volume}{85}
+  (\bibinfo{year}{2019}) \bibinfo{pages}{125 -- 143}.
+%Type = Article
+\bibitem[{Li et~al.(2014)Li, Guyenne, Li, and Xu}]{Li-2014-169}
+\bibinfo{author}{M.~Li}, \bibinfo{author}{P.~Guyenne}, \bibinfo{author}{F.~Li},
+  \bibinfo{author}{L.~Xu},
+\newblock \bibinfo{title}{High order well-balanced {C}{D}{G}-{F}{E} methods for
+  shallow water waves by a {G}reen-{N}aghdi model},
+\newblock \bibinfo{journal}{Journal of Computational Physics}
+  \bibinfo{volume}{257} (\bibinfo{year}{2014}) \bibinfo{pages}{169--192}.
+%Type = Article
+\bibitem[{Kurganov et~al.(2002)Kurganov, Noelle, and
+  Petrova}]{Kurganov-etal-2001-707}
+\bibinfo{author}{A.~Kurganov}, \bibinfo{author}{S.~Noelle},
+  \bibinfo{author}{G.~Petrova},
+\newblock \bibinfo{title}{Semidiscrete central-upwind schemes for hyperbolic
+  conservation laws and {H}amilton-{J}acobi equations},
+\newblock \bibinfo{journal}{Journal of Scientific Computing, Society for
+  Industrial and Applied Mathematics} \bibinfo{volume}{23}
+  (\bibinfo{year}{2002}) \bibinfo{pages}{707--740}.
+%Type = Article
+\bibitem[{Gottlieb et~al.(2001)Gottlieb, Shu, and
+  Tadmor}]{Gottlieb-etal-2003-89}
+\bibinfo{author}{S.~Gottlieb}, \bibinfo{author}{C.~Shu},
+  \bibinfo{author}{E.~Tadmor},
+\newblock \bibinfo{title}{Strong stability-preserving high-order time
+  discretization methods},
+\newblock \bibinfo{journal}{Review, Society for Industrial and Applied
+  Mathematics} \bibinfo{volume}{43} (\bibinfo{year}{2001})
+  \bibinfo{pages}{89--112}.
+%Type = Article
+\bibitem[{Roberts and Zoppou(2003)}]{Roberts-2003-129}
+\bibinfo{author}{S.~Roberts}, \bibinfo{author}{C.~Zoppou},
+\newblock \bibinfo{title}{Explicit schemes for dam-break simulations},
+\newblock \bibinfo{journal}{Journal of Hydraulic Engineering}
+  \bibinfo{volume}{129} (\bibinfo{year}{2003}) \bibinfo{pages}{11--34}.
+%Type = Book
+\bibitem[{Conte and De~Boor(1980)}]{Conte-DeBoor-1980}
+\bibinfo{author}{S.~Conte}, \bibinfo{author}{C.~De~Boor},
+  \bibinfo{title}{Elementary numerical analysis: {A}n algorithmic approach},
+  International Series in Pure and Applied Mathematics, \bibinfo{edition}{3rd}
+  ed., \bibinfo{publisher}{McGraw-Hill Inc.}, \bibinfo{address}{New York},
+  \bibinfo{year}{1980}.
+%Type = Article
+\bibitem[{Courant et~al.(1967)Courant, Friedrichs, and
+  Lewy}]{Courant-etal-1967-215}
+\bibinfo{author}{R.~Courant}, \bibinfo{author}{K.~Friedrichs},
+  \bibinfo{author}{H.~Lewy},
+\newblock \bibinfo{title}{On the partial difference equations of mathematical
+  physics},
+\newblock \bibinfo{journal}{IBM Journal of Research and Development}
+  \bibinfo{volume}{11} (\bibinfo{year}{1967}) \bibinfo{pages}{215--234}.
+%Type = Article
+\bibitem[{El et~al.(2006)El, Grimshaw, and Smyth}]{El-etal-2006}
+\bibinfo{author}{G.~El}, \bibinfo{author}{R.~Grimshaw},
+  \bibinfo{author}{N.~Smyth},
+\newblock \bibinfo{title}{Unsteady undular bores in fully nonlinear
+  shallow-water theory},
+\newblock \bibinfo{journal}{Physics of Fluids} \bibinfo{volume}{18}
+  (\bibinfo{year}{2006}) \bibinfo{pages}{027104}.
+%Type = Article
+\bibitem[{Shu(2012)}]{Shu-2012-59-5}
+\bibinfo{author}{C.~Shu},
+\newblock \bibinfo{title}{Efficient algorithms for solving partial differential
+  equations with discontinuous solutions},
+\newblock \bibinfo{journal}{Notices of the AMS} \bibinfo{volume}{59}
+  (\bibinfo{year}{2012}) \bibinfo{pages}{615--621}.
+%Type = Article
+\bibitem[{Hammack and Segur(1978)}]{Hammack-Segur-1978-337}
+\bibinfo{author}{J.~Hammack}, \bibinfo{author}{H.~Segur},
+\newblock \bibinfo{title}{The {K}orteweg-de {V}ries equation and water waves.
+  {P}art 3. {O}scillatory waves},
+\newblock \bibinfo{journal}{Journal of Fluid Mechanics} \bibinfo{volume}{84}
+  (\bibinfo{year}{1978}) \bibinfo{pages}{337--358}.
+
+\end{thebibliography}
