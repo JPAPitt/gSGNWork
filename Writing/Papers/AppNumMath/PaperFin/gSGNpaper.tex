@@ -92,7 +92,9 @@
 \cortext[cor1]{jpapitt@gmail.com}
 
 \begin{abstract}
-The recently derived generalised Serre-Green-Naghdi equations are investigated and the parameter values classified according to the dispersive properties of the linearised equations with example numerical solutions shown. A numerical scheme for solving the generalised Serre-Green-Naghdi equations is then described. This numerical scheme is an extension to the numerical scheme for the classical Serre-Green-Naghdi equations written in conservation law form. A typical second-order implementation of this numerical scheme is then described and validated using known analytic solutions; the travelling solitary wave and the dam-break problem. The numerical method is further validated for general members of this family of equations using forced solutions. The described numerical method is shown to be conservative, robust and second-order accurate supporting the parameter classification based on the linear theory.
+The recently derived generalised Serre-Green-Naghdi equations are investigated and the parameter values classified according to the dispersive properties of the linearised equations with example numerical solutions shown. A numerical scheme for solving the generalised Serre-Green-Naghdi equations is then described. This numerical scheme is an extension to the numerical scheme for the classical Serre-Green-Naghdi equations written in conservation law form. A typical second-order implementation of this numerical scheme is then described and validated using known analytic solutions; the travelling solitary wave and the dam-break problem. The numerical method is further validated for general members of this family of equations using forced solutions. Select members of this family are then used to simulate the evolution of a depressive rectangular wave for which there is experimental results. The described numerical method is shown to be conservative, robust and second-order accurate supporting the parameter classification based on the linear theory.
+
+%[]
 \end{abstract}
 
 %%%Graphical abstract
@@ -120,7 +122,8 @@ In previous work we have developed and validated numerical methods for a conserv
 
 This paper begins by introducing the gSGNE and highlighting their important properties. Of particular note, is that the free parameters $\beta_1$ and $\beta_2$ provide control of the width and relative location of the dispersive wave train. This allows for the family of equations to be classified by their respective dispersive wave train limits, and provides the basis for previously unobserved behaviours in dispersive wave trains. The second-order extension of the numerical scheme of \citet{Zoppou-etal-2017} is then described. 
 
-The numerical method is then validated against analytic solutions of the SGNE and the Shallow Water Wave Equations (SWWE) which are solutions of the gSGNE for the appropriate $\beta$ values, demonstrating its convergence rate and conservation properties. Forced solutions are also used to validate that all terms in the gSGNE are being approximated to the correct order of accuracy with arbitrary $\beta_1$ and $\beta_2$ values. Forced solutions are necessary to validate the numerical method for other members of this family of equations, because no analytic solutions are currently known. Together these validations demonstrate the capability of the numerical scheme to produce robust and accurate numerical solutions. 
+The numerical method is then validated against analytic solutions of the SGNE and the Shallow Water Wave Equations (SWWE) which are solutions of the gSGNE for the appropriate $\beta$ values, demonstrating its convergence rate and conservation properties. Forced solutions are also used to validate that all terms in the gSGNE are being approximated to the correct order of accuracy with arbitrary $\beta_1$ and $\beta_2$ values. Forced solutions are necessary to validate the numerical method for other members of this family of equations, because no analytic solutions are currently known. Finally, various members of the gSGNE family are compared to experimental results for the evolution of rectangular depression waves to demonstrate the necessity of including dispersion and the effect of improving the accuracy of the dispersion relationship in realistic fluid problems. Together these validations demonstrate the capability of the numerical scheme to produce robust and accurate numerical solutions and the ability of these numerical methods to reproduce experiments. 
+%[]
 
 %-------------------------------------------------
 \section{Generalised Serre-Green-Naghdi Equations}
@@ -740,62 +743,56 @@ Figure \ref{Fig:FS_Conv} demonstrates the convergence of the numerical scheme as
 \end{figure}
 
 \section{Experimental Comparison for Dispersive Shock Waves}
-%mention poor conservation of energy [] []
-The evolution of an initial rectangular depression wave in the free surface was studied experimentally by \citet{Hammack-Segur-1978-337}. The experiments were conducted in a wave tank $0.394m$ wide, $31.6m$ long and $0.61m$ high filled by water $h_0 = 0.1m$ deep. The initial wave was generated by a $0.61m$ long piston with its left edge flush with the left edge of the wave tank. The piston is originally in the up position with the water stationary, the piston is then dropped creating the rectangular depression in the surface, which generates a dispersive shock wave. This dispersive shock wave has its rarefaction fan component propagate up the wave tank, while the front of the dispersive shock wave reflects from the left edge of the wave tank and propagates back up the wave tank. The evolution of these waves is recorded at timeseries of the wave tank is recorded by Wave Gauges (WG) located $0m$, $5m$, $10m$, $15m$ and $20m$ away from the right edge of the piston. Two heights of the rectangular wave were investigated $h_0 - h_1 = 0.01m$ and $h_0 - h_1 = 0.03m$ where $h_1$ is the height of the water above the piston after it drops. 
 
+The numerical solutions of particular members of the gSGNE family will now be compared to the experimental results of \citet{Hammack-Segur-1978-337} which observed the evolution of an initial rectangular depression wave in the free surface. The experiments were conducted in a wave tank $0.394m$ wide, $31.6m$ long and $0.61m$ high filled by water $h_0 = 0.1m$ deep. The initial wave was generated by a $0.61m$ long piston with its left edge flush with the left edge of the wave tank. The piston is originally in the up position with the water stationary, the piston is then dropped creating the rectangular depression in the surface, which generates a dispersive shock wave. The generated dispersive shock wave has its rarefaction fan component propagate up the wave tank, while the front of the dispersive shock wave reflects from the left edge of the wave tank and then propagates back up the wave tank. The evolution of the free surface is recorded over time by Wave Gauges (WG) located $0m$ (WG1), $5m$ (WG2), $10m$ (WG3), $15m$ (WG4) and $20m$ (WG5) away from the right edge of the piston. Two heights of the rectangular wave were investigated $h_0 - h_1 = 0.01m$ and $h_0 - h_1 = 0.03m$ where $h_1$ is the height of the water above the piston after it drops.
 
-These experiments provide a good benchmark for the capability of the numerical method to accurately model problems with steep gradients in the free surface. However, these experiments are affected by bed friction, viscosity and the inability of the piston and water to move vertically instantaneously and slip free. The Serre equations do not contain viscosity and bed friction was neglected in this thesis. Additionally, discontinuous initial conditions are used to model the negative rectangular wave. Therefore, it is expected that the numerical solutions of the Serre equations will produce more oscillations in the dispersive wave train than are observed experimentally \cite{Pitt-2018-61}.
+The rectangular wave experiments were modelled numerically by reflecting the problem around the left wall of the wave tank to reproduce the reflection off it. The initial conditions for this reflected problem are
+\begin{equation*}
+h(x,0) = \begin{cases}
+	h_1 &  |x| < 0.61 \\
+	h_0 & \text{otherwise}
+\end{cases}
+\quad
+\text{,}
+\quad
+G(x,0) = 0
+\quad
+\text{and}
+\quad
+u(x,0) = 0
+\end{equation*}
+which produces the depression above the piston reflected around the left edge of the wave tank. The numerical solutions were computed on a spatial domain of $[-60m,60m]$ from $t = 0 s$ to $50s$ with acceleration due to gravity, $g = 9.81m/s^2$. The spatial resolution of $\Delta x = 0.01m$ was used with a temporal resolution of $\Delta t = 0.5 \Delta x / \sqrt{g \; h_0}$ chosen to satisfy the CFL condition \eqref{eqn:CFLcond}. The reconstruction limiting parameter $\theta = 1.2$ was used in all numerical solutions. Three pairs of $\beta$ values were used to demonstrate the effect of changing the dispersion relationship; the SWWE with $\beta_1=\beta_2=0$, the classical SGN equations with $\beta_1=2/3$ and $\beta_2=0$
+as well as the improved dispersion SGN equations with  $\beta_1=4/5$ and $\beta_2=2/15$.
 
-\citet{Hammack-Segur-1978-337} report the results for two different initial negative wave amplitudes $0.01m$ and $0.03m$, resulting in the non-linearity parameters $\epsilon = 0.1$ and $\epsilon=0.3$ respectively. Since these non-linearity parameters are relatively small there was no breaking of waves throughout the experiment.
+The comparison of the numerical simulations and the experimental results for all wave gauges and both experiments is plotted in Figure \ref{Fig:Neg_Wave}. The plots demonstrate that the numerical solutions arrive at the wave gauges earlier than the experiment due to physical effects not captured by the equations. The most significant is that the piston could not move vertically instantaneously and thus a perfectly rectangular wave profile is not produced, as demonstrated by WG1 for small times.  Additionally, effects such as bed and side wall friction as well as fluid viscosity will act to slow the experiment down compared to the numerical solutions, as observed. Despite these factors working against the numerical solutions, the results do replicate the behaviour well when these physical effects are taken into account.
 
-These experiments were modelled numerically using the reflected problem, with the left wall of the wave tank as the axis of symmetry. In the numerical experiments the domain is $[-60m,60m]$ and the experiment is run for $ 50s$ with $g = 9.81m/s^2$. The spatial resolution used was $\Delta x = 0.01m$ while the CFL condition \eqref{eqn:CFLcond} was satisfied by using $\Delta t = 0.5 \Delta x / \sqrt{g \; 0.1}$. The limiting parameter $\theta = 1.2$ was used in the reconstruction \eqref{eqn:slopehGrecon} in $\text{FEVM}_2$ and $\text{FDVM}_2$.
+The experimental results demonstrate the necessity of dispersion for resolving the evolution of steep gradients in fluids, as the non-dispersive SWWE solutions are inadequate at replicating the experiment. The shock speed of the SWWE does well approximate the speed of the dispersive wave front for this experiment. However, as the height of the rectangular wave increases the agreement gets worse, and the SWWE begin to underestimate the dispersive shockwave fronts \cite{Pitt-2018-61} as predicted by the modulation theory \cite{El-etal-2006}. 
 
-The numerical results of $\text{FDVM}_2$ for these experiments were published by \citet{Zoppou-etal-2017}. These results have been extended in this thesis with the inclusion of the conservation error of $h$, $G$ and $uh$ in the numerical simulation of both experiments.
+The numerical solutions to the classical SGN equations with $\beta_1 = 2/3$ and $\beta_2 = 0$ compare well to other numerical solutions to this experimental set up reported by \citet{Zoppou-etal-2017} and \citet{Pitt-2019}. The numerical solutions to the SGN capture the front of the dispersive wave train well, particularly for the $h_1 - h_0 = 0.01m$ experiment, however this agreement worsens as time and the location of the wave gauge increases. Additionally, the SGN equations predict significantly more and higher oscillations in the tail of the dispersive wave train, due to their lack of diffusive physical effects, such as viscosity and wall friction which would act to damp the dispersive wave train in the experiment \cite{Pitt-2018-61}. 
 
-\subsection{Results for the $0.01m$ Negative Rectangular Wave}
-Comparisons of the numerical and experimental WG data for the $0.01m$ negative rectangular wave are displayed in Figures \ref{fig:Segur1cmFEVM} and \ref{fig:Segur1cmFDVM} for $\text{FEVM}_2$ and $\text{FDVM}_2$ respectively. The data is presented in the same dimensionless scales as reported in the original paper \cite{Hammack-Segur-1978-337}. Furthermore, Tables \ref{tab:ConservationSegurFEVM1cm} and \ref{tab:ConservationSegurFDVM1cm} display the completely numerically calculated error in conservation $C^*$. 
- 
+The numerical solutions of the improved dispersion SGN with $\beta_1 = 4/5$ and $\beta_2 = 2/15$ replicate the experimental results the best of the presented solutions. The improved SGN, maintain the good agreement of the classical SGN at the front of the dispersive wave train, and improve it everywhere else. In particular, the oscillations observed at WG1 on the dip before the dispersive wave train arrives better agree with the experimental results which only shows one prominent oscillation. The improved SGN equations due to their limited dispersive wave regions better replicate the flat regions observed in the experimental results and thus better reproduce the associated wave envelopes. The improved SGN equations produce the most accurate oscillation heights and numbers, although the equations still overestimate them due to diffusive physical effects not captured by the equations. The speed of these oscillations is also best matched by the solutions of the improved SGN. These results for the improved dispersion SGN agree with the findings of \citet{DoCarmo-2018} for the evolution of an undular bore, which demonstrated the ability of improved dispersion equations to better resolve the speeds and heights of the generated dispersive wave. While the improved SGN equations produce the best agreement, the experimental effects not included in the model are the dominant source of disagreement with the numerical solutions. 
 
-The numerical solutions have reproduced the experimental results well; particularly for the front of the dispersive wave train. While the total amounts of $h$, $G$, $uh$ and $\mathcal{H}$ have been conserved by the numerical methods with little error.
-
-The numerical solutions produce larger and consequently faster waves and generate more oscillations in the dispersive wave train than are observed experimentally. These discrepancies can be attributed to the lack of viscosity and the omission of bed friction for the Serre equations in this thesis \eqref{eqn:FullSerreCon}. Furthermore, it is highly likely that the experiment produced some smooth approximation to a discontinuous jump in the water depth with the down-stroke of the piston. Such a smoothing of the initial conditions will significantly attenuate the high frequency waves in the generated dispersive wave train \cite{Pitt-2018-61}. Given these differences the numerical methods replicated the experimental behaviour well.
-
-These numerical solutions compare well to those of \citet{Zoppou-etal-2017} for $\text{FDVM}_2$ with $\Delta x = 0.005m$, $\Delta t = 0.2 \Delta t / \sqrt{g 0.1} s$ and $\theta = 1$. The differences in the resolution and the value of $\theta$ had little impact on the WG results. However, the more diffusive value of the limiting parameter $\theta$ smoothed the initial discontinuity which negatively impacted the conservation of $\mathcal{H}$ reported by \citet{Zoppou-etal-2017}.
-
-Both $\text{FEVM}_2$ and $\text{FDVM}_2$ have produced indistinguishable results at this scale and have demonstrated very good conservation of all the quantities as demonstrated in Tables \ref{tab:ConservationSegurFEVM1cm} and \ref{tab:ConservationSegurFDVM1cm}. Given the extensive examination of several numerical schemes for steep gradient problems \cite{Pitt-2018-61}, this indicates that these solutions are representative of true solutions of the Serre equations. However, these results do not demonstrate the superiority of one of these methods over the other. 
-
-
-\subsection{Results for the $0.03m$ Negative Rectangular Wave}
-The WG data for the numerical and experimental results for the evolution of the $0.03m$ negative rectangular wave are displayed in Figures \ref{fig:Segur3cmFEVM} and \ref{fig:Segur3cmFDVM} for $\text{FEVM}_2$ and $\text{FDVM}_2$ respectively. These results are reported using the same dimensionless scales the original paper \cite{Hammack-Segur-1978-337}. The completely numerically calculated conservation error $C^*$ for all of the conserved quantities are given in Tables \ref{tab:ConservationSegurFEVM3cm} and \ref{tab:ConservationSegurFDVM3cm} for $\text{FEVM}_2$ and $\text{FDVM}_2$ respectively.
-
-
-Both methods reproduce the overall behaviour of this experiment very well. Since this rectangular wave is deeper than the $0.01m$ negative rectangular wave experiment, this experiment provides a more rigorous test of the numerical methods. However, the increased depth also strengthens the effects that produced the discrepancy between the experimental results and the numerical solutions of the Serre equations in the $0.01m$ negative rectangular wave experiment. Hence, the greater differences observed between the numerical and experimental results for the amplitude and speed of the generated waves.
-
-Since the negative rectangular wave is larger than in the $0.01m$ negative rectangular wave experiment, the numerical methods have a larger error in conservation for all the quantities, except $h$ which is conserved exactly. For $G$ and $uh$ the conservation errors are around machine precision and can be disregarded, thus only the error in conservation of $\mathcal{H}$ was significantly increased by a larger negative wave. However, the error in conservation of $\mathcal{H}$ was small and therefore all quantities were well conserved by the numerical methods. 
-
-These results compare well with those produced by \citet{Zoppou-etal-2017} using $\text{FDVM}_2$ with $\Delta x = 0.005m$, $\Delta t = 0.2 \Delta t / \sqrt{g 0.1} s$ and $\theta = 1$. The WG data of those numerical solutions and the solutions displayed here are indistinguishable. The error in conservation in $\mathcal{H}$ is very similar as well, although for the numerical solutions displayed here the numerical grid is coarser. The poorer than expected conservation of $\mathcal{H}$ given the finer grid of the numerical solution is caused by the limiting parameter $\theta = 1$ diffusing the initial discontinuous jump \cite{Pitt-2018-61}.
-
-Conserving $\mathcal{H}$ is difficult for numerical methods solving steep gradient problems \cite{Pitt-2018-61}, especially when two steep gradients interact with one another over short time spans. Increasing the resolution of the numerical method improves the conservation of $\mathcal{H}$ as demonstrated for the analytic solutions. However, the results for the WG data for higher resolution solutions will be indistinguishable from the results presented here and so the provided solutions are sufficient. 
-
-These experiments have been replicated equally well by the numerical methods. Given the resolution, the error in conservation and the extensive study summarised in Chapter \ref{chp:Serreeqns}; these results demonstrate the accuracy of the numerical methods in the presence of steep gradients in the free surface.
-
-
+%
 \begin{figure}
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{Figure-11.pdf}
-		\caption{$h_1 - h_0 = 0.01m$}
+		\caption{$h_0 - h_1 = 0.01m$}
+		\label{Fig:Neg_Wave_1}
 	\end{subfigure}
 	\begin{subfigure}{0.49\textwidth}
 		\centering
 		\includegraphics[width=\textwidth]{Figure-12.pdf}
-		\caption{$h_1 - h_0 = 0.03m$}
+		\caption{$h_0 - h_1 = 0.03m$}
+		\label{Fig:Neg_Wave_2}
 	\end{subfigure}
-\caption{Rectangular negative wave experiments time series at the five Wave Gauges (WG) for simulation with the improved SGN with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (\solidrule), the classical SGN with $\beta_1 = 2/3$ and $\beta_2 = 0$ ({\color{blue}\solidrule}), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ ({\color{green!80!black}\dashedrule}) compared to the experimental results ({\color{red}\solidrule}).}
+	\caption{Rectangular negative wave experiments time series at the five Wave Gauges (WG) for simulation with the improved SGN with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (\solidrule), the classical SGN with $\beta_1 = 2/3$ and $\beta_2 = 0$ ({\color{blue}\solidrule}), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ ({\color{green!80!black}\dashedrule}) compared to the experimental results ({\color{red}\solidrule}).}
+	\label{Fig:Neg_Wave}
 \end{figure}
+%
 
-
+The errors in conservation for all numerical simulations used to produce Figure \ref{Fig:Neg_Wave} are displayed in Table \ref{tab:Neg_Wave_Cons}. All numerical solutions conserve the $h$ and $G$ to machine precision due to their use of a finite volume method. The energy $\mathcal{E}$ is also well conserved by each numerical solution for both experiments, demonstrating that the numerical solutions are well resolved with the used spatial and temporal resolutions. Although larger rectangular waves do lead to worse conservation of energy. 
 
 \begin{table}
 	\centering
@@ -804,11 +801,11 @@ These experiments have been replicated equally well by the numerical methods. Gi
 		\hline 
 		$1cm$ &$0$ & $0$ & $6.238\times 10^{-14}$&    $9.648\times 10^{-20}$ & $4.939\times 10^{-5}$ \T\\
 		&$2/3$ & $0$ &   $8.816\times 10^{-14}$  &  $2.156\times 10^{-17}$  &  $5.898\times 10^{-6}$
-		 \T\\	
+		\T\\	
 		&$4/5$ & $2/15$ &   $8.949\times 10^{-14}$   &  $1.056\times 10^{-17}$  &  $1.579\times 10^{-5}$ \T \B\\
 		\hline 
 		$3cm$ &$0$ & $0$ & $5.286\times 10^{-14}$  &  $3.221\times 10^{-19}$  &  $6.577\times 10^{-4}$ \T\\
-		 &$2/3$ & $0$ & $8.715\times 10^{-14}$   &  $2.106\times 10^{-17}$  &  $1.295\times 10^{-4}$ \T\\
+		&$2/3$ & $0$ & $8.715\times 10^{-14}$   &  $2.106\times 10^{-17}$  &  $1.295\times 10^{-4}$ \T\\
 		&$4/5$ & $2/15$ & $8.403\times 10^{-14}$ &  $1.528\times 10^{-18}$  &  $2.364\times 10^{-4}$  \T\\
 	\end{tabular}
 	\caption{Conservation of conserved quantitites for numerical solutions to all negative rectangular wave experiments.}
@@ -817,9 +814,10 @@ These experiments have been replicated equally well by the numerical methods. Gi
 
 
 \section{Conclusion}
+%include experimental results
 The members of the gSGN family of equations were classified according to the width and relative location of their dispersive wave trains using the dispersion relationship of the linearised equations. Example numerical solutions for select members of this family of equations were used to demonstrate that the full nonlinear gSGN equations exhibit the same behaviour. 
 
-The numerical method used to generate these solutions was then described as a modified version of the numerical scheme for the SGNE outlined by \citet{Zoppou-etal-2017}. This numerical scheme for the gSGNE was validated by describing a fully second-order implementation of the numerical method. This numerical method was validated against analytic solutions of the SGNE and SWWE and forced solutions. The analytic solutions demonstrate that the gSGNE solver accurately reproduces important members of the family of equations described by the gSGNE whilst conserving the quantities of interest. The forced solutions demonstrate that the method remains second-order for all values of the free parameters, $\beta_1$ and $\beta_2$. The gSGNE method described above is the first validated numerical method for the gSGNE and its validation supports the provided classification of members of the gSGN using their linear dispersive properties.
+The numerical method used to generate these solutions was then described as a modified version of the numerical scheme for the SGNE outlined by \citet{Zoppou-etal-2017}. This numerical scheme for the gSGNE was validated by describing a fully second-order implementation of the numerical method. This numerical method was validated against analytic solutions of the SGNE and SWWE and forced solutions. The analytic solutions demonstrate that the gSGNE solver accurately reproduces important members of the family of equations described by the gSGNE whilst conserving the quantities of interest. The forced solutions demonstrate that the method remains second-order for all values of the free parameters, $\beta_1$ and $\beta_2$. The numerical solutions compared well to the experimental results for the evolution of a rectangular depressive wave, with improved dispersion properties improving the reproduction of the experimental observations. The gSGNE method described above is the first validated numerical method for the gSGNE and its validation supports the provided classification of members of the gSGN using their linear dispersive properties.
 
 
 \bibliographystyle{elsarticle-num-names} 

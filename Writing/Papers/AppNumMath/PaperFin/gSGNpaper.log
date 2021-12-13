@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  7 DEC 2021 05:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  13 DEC 2021 19:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1105,19 +1105,19 @@ Overfull \hbox (2.22221pt too wide) has occurred while \output is active
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<def>-command' on input line 122.
+(hyperref)                removing `\<def>-command' on input line 123.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\cnotenum' on input line 122.
+(hyperref)                removing `\cnotenum' on input line 123.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<def>-command' on input line 122.
+(hyperref)                removing `\<def>-command' on input line 123.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@corref' on input line 122.
+(hyperref)                removing `\@corref' on input line 123.
 
 [1
 Non-PDF special ignored!
@@ -1139,201 +1139,130 @@ Non-PDF special ignored!
 <special> ps:tx@Dict begin  gsave STV CP T /ps@refangle 0.  def grestore  e...
 
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-<Figure-1abcde.pdf, id=245, 359.57536pt x 328.25536pt>
+<Figure-1abcde.pdf, id=237, 359.57536pt x 328.25536pt>
 File: Figure-1abcde.pdf Graphic file (type pdf)
 <use Figure-1abcde.pdf>
-Package pdftex.def Info: Figure-1abcde.pdf  used on input line 246.
+Package pdftex.def Info: Figure-1abcde.pdf  used on input line 249.
 (pdftex.def)             Requested size: 484.2088pt x 442.0437pt.
 
 [4] [5] [6 <./Figure-1abcde.pdf>] [7] [8] [9] [10] [11]
-<Figure-2a.pdf, id=503, 393.48305pt x 315.86507pt>
+<Figure-2a.pdf, id=495, 393.48305pt x 315.86507pt>
 File: Figure-2a.pdf Graphic file (type pdf)
 <use Figure-2a.pdf>
-Package pdftex.def Info: Figure-2a.pdf  used on input line 519.
+Package pdftex.def Info: Figure-2a.pdf  used on input line 522.
 (pdftex.def)             Requested size: 154.95035pt x 124.38698pt.
-<Figure-2b.pdf, id=504, 407.99727pt x 315.86507pt>
+<Figure-2b.pdf, id=496, 407.99727pt x 315.86507pt>
 File: Figure-2b.pdf Graphic file (type pdf)
 <use Figure-2b.pdf>
-Package pdftex.def Info: Figure-2b.pdf  used on input line 524.
+Package pdftex.def Info: Figure-2b.pdf  used on input line 527.
 (pdftex.def)             Requested size: 154.95035pt x 119.9625pt.
-<Figure-2c.pdf, id=505, 406.95338pt x 315.86507pt>
+<Figure-2c.pdf, id=497, 406.95338pt x 315.86507pt>
 File: Figure-2c.pdf Graphic file (type pdf)
 <use Figure-2c.pdf>
-Package pdftex.def Info: Figure-2c.pdf  used on input line 529.
+Package pdftex.def Info: Figure-2c.pdf  used on input line 532.
 (pdftex.def)             Requested size: 154.95035pt x 120.27095pt.
-<Figure-3a.pdf, id=510, 392.97514pt x 302.12672pt>
+<Figure-3a.pdf, id=502, 392.97514pt x 302.12672pt>
 File: Figure-3a.pdf Graphic file (type pdf)
 <use Figure-3a.pdf>
-Package pdftex.def Info: Figure-3a.pdf  used on input line 543.
+Package pdftex.def Info: Figure-3a.pdf  used on input line 546.
 (pdftex.def)             Requested size: 237.26497pt x 182.4161pt.
-<Figure-3b.pdf, id=511, 393.13574pt x 302.12672pt>
+<Figure-3b.pdf, id=503, 393.13574pt x 302.12672pt>
 File: Figure-3b.pdf Graphic file (type pdf)
 <use Figure-3b.pdf>
-Package pdftex.def Info: Figure-3b.pdf  used on input line 549.
+Package pdftex.def Info: Figure-3b.pdf  used on input line 552.
 (pdftex.def)             Requested size: 237.26497pt x 182.34235pt.
-<Figure-4.pdf, id=516, 397.97484pt x 302.12173pt>
+<Figure-4.pdf, id=508, 397.97484pt x 302.12173pt>
 File: Figure-4.pdf Graphic file (type pdf)
 <use Figure-4.pdf>
-Package pdftex.def Info: Figure-4.pdf  used on input line 561.
+Package pdftex.def Info: Figure-4.pdf  used on input line 564.
 (pdftex.def)             Requested size: 237.26497pt x 180.11732pt.
  [12 <./Figure-2a.pdf> <./Figure-2b.pdf> <./Figure-2c.pdf> <./Figure-3a.pdf> <.
 /Figure-3b.pdf>]
-<Figure-5.pdf, id=595, 393.06749pt x 306.61751pt>
+<Figure-5.pdf, id=587, 393.06749pt x 306.61751pt>
 File: Figure-5.pdf Graphic file (type pdf)
 <use Figure-5.pdf>
-Package pdftex.def Info: Figure-5.pdf  used on input line 570.
+Package pdftex.def Info: Figure-5.pdf  used on input line 573.
 (pdftex.def)             Requested size: 237.26497pt x 185.08073pt.
 
 [13 <./Figure-4.pdf> <./Figure-5.pdf>]
-<Figure-6a.pdf, id=639, 393.48305pt x 315.86708pt>
+<Figure-6a.pdf, id=631, 393.48305pt x 315.86708pt>
 File: Figure-6a.pdf Graphic file (type pdf)
 <use Figure-6a.pdf>
-Package pdftex.def Info: Figure-6a.pdf  used on input line 629.
+Package pdftex.def Info: Figure-6a.pdf  used on input line 632.
 (pdftex.def)             Requested size: 154.95035pt x 124.38777pt.
-<Figure-6b.pdf, id=640, 394.55707pt x 315.86507pt>
+<Figure-6b.pdf, id=632, 394.55707pt x 315.86507pt>
 File: Figure-6b.pdf Graphic file (type pdf)
 <use Figure-6b.pdf>
-Package pdftex.def Info: Figure-6b.pdf  used on input line 634.
+Package pdftex.def Info: Figure-6b.pdf  used on input line 637.
 (pdftex.def)             Requested size: 154.95035pt x 124.04478pt.
-<Figure-6c.pdf, id=641, 393.51315pt x 315.86607pt>
+<Figure-6c.pdf, id=633, 393.51315pt x 315.86607pt>
 File: Figure-6c.pdf Graphic file (type pdf)
 <use Figure-6c.pdf>
-Package pdftex.def Info: Figure-6c.pdf  used on input line 639.
+Package pdftex.def Info: Figure-6c.pdf  used on input line 642.
 (pdftex.def)             Requested size: 154.95035pt x 124.37773pt.
-<Figure-7a.pdf, id=646, 397.9718pt x 304.96935pt>
+<Figure-7a.pdf, id=638, 397.9718pt x 304.96935pt>
 File: Figure-7a.pdf Graphic file (type pdf)
 <use Figure-7a.pdf>
-Package pdftex.def Info: Figure-7a.pdf  used on input line 654.
+Package pdftex.def Info: Figure-7a.pdf  used on input line 657.
 (pdftex.def)             Requested size: 237.26497pt x 181.815pt.
-<Figure-7b.pdf, id=647, 397.9718pt x 302.12173pt>
+<Figure-7b.pdf, id=639, 397.9718pt x 302.12173pt>
 File: Figure-7b.pdf Graphic file (type pdf)
 <use Figure-7b.pdf>
-Package pdftex.def Info: Figure-7b.pdf  used on input line 660.
+Package pdftex.def Info: Figure-7b.pdf  used on input line 663.
 (pdftex.def)             Requested size: 237.26497pt x 180.11732pt.
  [14]
-<Figure-8.pdf, id=668, 393.06749pt x 306.61852pt>
+<Figure-8.pdf, id=660, 393.06749pt x 306.61852pt>
 File: Figure-8.pdf Graphic file (type pdf)
 <use Figure-8.pdf>
-Package pdftex.def Info: Figure-8.pdf  used on input line 671.
+Package pdftex.def Info: Figure-8.pdf  used on input line 674.
 (pdftex.def)             Requested size: 242.1044pt x 188.857pt.
  [15 <./Figure-6a.pdf> <./Figure-6b.pdf> <./Figure-6c.pdf> <./Figure-7a.pdf> <.
 /Figure-7b.pdf>] [16 <./Figure-8.pdf>]
-<Figure-9a.pdf, id=766, 389.52628pt x 315.85805pt>
+<Figure-9a.pdf, id=758, 389.52628pt x 315.85805pt>
 File: Figure-9a.pdf Graphic file (type pdf)
 <use Figure-9a.pdf>
-Package pdftex.def Info: Figure-9a.pdf  used on input line 716.
+Package pdftex.def Info: Figure-9a.pdf  used on input line 719.
 (pdftex.def)             Requested size: 154.95035pt x 125.64696pt.
-<Figure-9b.pdf, id=767, 404.0405pt x 315.86507pt>
+<Figure-9b.pdf, id=759, 404.0405pt x 315.86507pt>
 File: Figure-9b.pdf Graphic file (type pdf)
 <use Figure-9b.pdf>
-Package pdftex.def Info: Figure-9b.pdf  used on input line 721.
+Package pdftex.def Info: Figure-9b.pdf  used on input line 724.
 (pdftex.def)             Requested size: 154.95035pt x 121.13368pt.
-<Figure-9c.pdf, id=768, 402.99557pt x 315.86708pt>
+<Figure-9c.pdf, id=760, 402.99557pt x 315.86708pt>
 File: Figure-9c.pdf Graphic file (type pdf)
 <use Figure-9c.pdf>
-Package pdftex.def Info: Figure-9c.pdf  used on input line 726.
+Package pdftex.def Info: Figure-9c.pdf  used on input line 729.
 (pdftex.def)             Requested size: 154.95035pt x 121.45255pt.
-<Figure-10.pdf, id=771, 397.97484pt x 302.12672pt>
+<Figure-10.pdf, id=763, 397.97484pt x 302.12672pt>
 File: Figure-10.pdf Graphic file (type pdf)
 <use Figure-10.pdf>
-Package pdftex.def Info: Figure-10.pdf  used on input line 737.
+Package pdftex.def Info: Figure-10.pdf  used on input line 740.
 (pdftex.def)             Requested size: 237.26497pt x 180.1203pt.
- [17 <./Figure-9a.pdf> <./Figure-9b.pdf> <./Figure-9c.pdf> <./Figure-10.pdf>]
-
-LaTeX Warning: Reference `eqn:slopehGrecon' on page 18 undefined on input line 
-751.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 755.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 755.
-
-
-LaTeX Warning: Reference `fig:Segur1cmFEVM' on page 18 undefined on input line 
-756.
-
-
-LaTeX Warning: Reference `fig:Segur1cmFDVM' on page 18 undefined on input line 
-756.
-
-
-LaTeX Warning: Reference `tab:ConservationSegurFEVM1cm' on page 18 undefined on
- input line 756.
-
-
-LaTeX Warning: Reference `tab:ConservationSegurFDVM1cm' on page 18 undefined on
- input line 756.
-
-
-LaTeX Warning: Reference `eqn:FullSerreCon' on page 18 undefined on input line 
-761.
-
-
-LaTeX Warning: Reference `tab:ConservationSegurFEVM1cm' on page 18 undefined on
- input line 765.
-
-
-LaTeX Warning: Reference `tab:ConservationSegurFDVM1cm' on page 18 undefined on
- input line 765.
-
-[18]
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 768.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 768.
-
-
-LaTeX Warning: Reference `fig:Segur3cmFEVM' on page 19 undefined on input line 
-769.
-
-
-LaTeX Warning: Reference `fig:Segur3cmFDVM' on page 19 undefined on input line 
-769.
-
-
-LaTeX Warning: Reference `tab:ConservationSegurFEVM3cm' on page 19 undefined on
- input line 769.
-
-
-LaTeX Warning: Reference `tab:ConservationSegurFDVM3cm' on page 19 undefined on
- input line 769.
-
-
-LaTeX Warning: Reference `chp:Serreeqns' on page 19 undefined on input line 780
-.
-
-<Figure-11.pdf, id=843, 782.07883pt x 1035.08301pt>
+ [17 <./Figure-9a.pdf> <./Figure-9b.pdf> <./Figure-9c.pdf> <./Figure-10.pdf>] [
+18]
+<Figure-11.pdf, id=831, 782.07883pt x 1035.08301pt>
 File: Figure-11.pdf Graphic file (type pdf)
 <use Figure-11.pdf>
-Package pdftex.def Info: Figure-11.pdf  used on input line 787.
+Package pdftex.def Info: Figure-11.pdf  used on input line 780.
 (pdftex.def)             Requested size: 237.26497pt x 314.01779pt.
-<Figure-12.pdf, id=844, 773.95349pt x 1035.11314pt>
+<Figure-12.pdf, id=832, 773.95349pt x 1035.11314pt>
 File: Figure-12.pdf Graphic file (type pdf)
 <use Figure-12.pdf>
-Package pdftex.def Info: Figure-12.pdf  used on input line 792.
+Package pdftex.def Info: Figure-12.pdf  used on input line 786.
 (pdftex.def)             Requested size: 237.26497pt x 317.32799pt.
-[19] [20 <./Figure-11.pdf> <./Figure-12.pdf>] (./gSGNpaper.bbl [21]) [22]
+ [19 <./Figure-11.pdf> <./Figure-12.pdf>] (./gSGNpaper.bbl [20]) [21]
 (./gSGNpaper.aux)
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `gSGNpaper.out' has not changed.
-(rerunfilecheck)             Checksum: DF195F0F574AEB0BC7C537D01D25769B;5579.
+(rerunfilecheck)             Checksum: F418C50FC9E52AA221808E123EC8BCDD;4957.
  ) 
 Here is how much of TeX's memory you used:
- 35834 strings out of 478994
- 803271 string characters out of 5862208
- 1393870 words of memory out of 5000000
- 52559 multiletter control sequences out of 15000+600000
+ 35827 strings out of 478994
+ 803124 string characters out of 5862208
+ 1394759 words of memory out of 5000000
+ 52554 multiletter control sequences out of 15000+600000
  410635 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,18n,103p,1432b,1016s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 102i,18n,103p,1472b,1016s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
 live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texlive/202
 1/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-d
@@ -1359,10 +1288,10 @@ sy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
 c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb><c:/texlive
 /2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2021/texm
 f-dist/fonts/type1/public/cm-super/sfti0800.pfb>
-Output written on gSGNpaper.pdf (22 pages, 1114921 bytes).
+Output written on gSGNpaper.pdf (21 pages, 1112366 bytes).
 PDF statistics:
- 1015 PDF objects out of 1200 (max. 8388607)
- 924 compressed objects within 10 object streams
- 157 named destinations out of 1000 (max. 500000)
- 321 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1000 PDF objects out of 1000 (max. 8388607)
+ 910 compressed objects within 10 object streams
+ 155 named destinations out of 1000 (max. 500000)
+ 305 words of extra memory for PDF output out of 10000 (max. 10000000)
 

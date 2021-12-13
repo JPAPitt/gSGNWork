@@ -31,21 +31,25 @@ for i = 1:5
     x0 = x0s(i);
     g = 9.81;
     h0 = 0.1;
+    
+    h1mh0 = 0.03;
+    TimeFreeFall = sqrt(2* h1mh0 / g);
+    TimeFreeFall = 0.2;
 
-    Time1 = Sim1Loc(:,1);
+    Time1 = Sim1Loc(:,1) + TimeFreeFall;
     h = Sim1Loc(:,3);
 
     ModTime1 = Time1*sqrt(g/h0) - x0/h0;
     Modh1 =  (h - h0) / h0;
 
-    Time1 = Sim2Loc(:,1);
+    Time1 = Sim2Loc(:,1) + TimeFreeFall;
     h = Sim2Loc(:,3);
 
     ModTime2 = Time1*sqrt(g/h0) - x0/h0;
     Modh2 =  (h - h0) / h0;
 
 
-    Time1 = Sim3Loc(:,1);
+    Time1 = Sim3Loc(:,1) + TimeFreeFall;
     h = Sim3Loc(:,3);
     
     ModTime3 = Time1*sqrt(g/h0) - x0/h0;
@@ -64,6 +68,6 @@ for i = 1:5
 
     str1 = ['Seg3cm',char(letters(i)),'.tex'];
     cleanfigure;
-    matlab2tikz(str1); 
+%     matlab2tikz(str1); 
 end
 
