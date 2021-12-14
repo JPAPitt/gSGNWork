@@ -42,17 +42,24 @@ My suggestion is as follows:
 I think if the above suggestions are considered by authors, this manuscript will attract much more readers of Wave Motion journal.
 
 \subsection{Response}
-The suggestion here is a good one, and we have added an experimental comparison to the paper. The experiment chosen is the evolution of a rectangular wave of depression studied by \citet{Hammack-Segur-1978-337}.
+The suggestion here is a good one, and we have added an experimental comparison to the paper to address suggestions 1 and 2. The experiment chosen is the evolution of a rectangular wave of depression studied by \citet{Hammack-Segur-1978-337}.
 
-We note that this is different to the ones suggested, and which are standard in the community - in particular evolution of generated periodic wave train over a submerged bar. There are a number of reasons why:
+We note that this is different to the ones suggested, and which are standard in the community - in particular evolution of a generated periodic wave train over a submerged bar. There are a number of reasons why this is the preferred experiment
 
 \begin{itemize}
-	\item The gSGNE have currently only been derived for a horizontal bed, and have so far not been extended to varying bathymetry. It is also not obvious how the gSGNE can be appropriately extended to varying bathymetry. 
-	\item The introduction of the bed while very useful for an experimental result would require a significant addition to the paper for extending the method as well as further validation to demonstrate the accuracy of the variable bathymetry in the method, making the article overly long. 
+	\item The gSGNE have currently only been derived for a horizontal bed, and have so far not been extended to varying bathymetry. It is also not obvious how the gSGNE can be appropriately extended to varying bathymetry, as there are many possible choices. 
 	\item While there are issues with this experiment due to  the model missing effects such as friction and viscosity as well as modelling the piston movement as instantenous, the presence of a steep gradient evolving into a dispersive wave train provides a challenging benchmark for models and methods owing to the significant nonlinearity and dispersion. 
 	\item This experiment still demonstrates the utility of improved dispersion and since improved dispersion models have not been used on this experiment, this makes it more novel. 
-	 
 \end{itemize}
+
+As for suggestion 3, if what is meant is that the numerical solutions to experiment in 1,2 are better for the improved SGN, then this is achieved. If however, what is meant is that the numerical method should be compared to other methods, this has not been done because:
+\begin{itemize}
+	\item this is the first numerical method for the entire family of equations
+	\item other numerical methods relying on smoothess of solutions such as the spectral method of \cite{Dutykh-etal-2018-371} for the regularised SWWE subfamily required filtering of the solutions to remove oscillations introduced by the method
+	\item The advantages of this approach for nonlinear dispersive equations are not new and have been studied by \citet{Pitt-2019} and \citet{Pitt-2018-61}
+	\item Figure 1 and the Dam break results demonstrate the utility of the approach, showing good agreement with the linear theory and the ability to balance the resolution of the shock and rarefaction fan of the dispersionless members of the gSGNE family as well as the resolution of the dispersive wave trains for the disperive members
+\end{itemize}
+
 
 \bibliographystyle{elsarticle-num-names} 
 \bibliography{Bibliography}
