@@ -9,6 +9,8 @@
 \usepackage{grffile}
 \usepackage{amsmath}
 \usepackage{lineno}
+\usepackage{adjustbox}
+\usepackage{adjustbox}
 
 %\usepackage{fullpage}
 \usepackage[top=1in, bottom=1in, left=0.8in, right=1in]{geometry}
@@ -21,9 +23,9 @@
 \usepackage[pdf]{pstricks}
 
 \definecolor{lightblue}{rgb}{.80,.9,1}
-\newcommand{\hl}[1]
-    {\par\colorbox{lightblue}{\parbox{\linewidth}{#1}}}
-
+\newcommand{\hlL}[1]
+    {\par\colorbox{\color[rgb]{1,0,0}}{\parbox{\linewidth}{#1}}}
+\newcommand{\hl}[1]{{\color[rgb]{1,0,0}#1}}
 \newcommand{\defn}{\stackrel{\textrm{\scriptsize def}}{=}}
 
 \setlength{\columnsep}{0.1pc}
@@ -92,7 +94,7 @@
 \cortext[cor1]{jpapitt@gmail.com}
 
 \begin{abstract}
-The recently derived generalised Serre-Green-Naghdi equations are investigated and the parameter values classified according to the dispersive properties of the linearised equations with example numerical solutions shown. A numerical scheme for solving the generalised Serre-Green-Naghdi equations is then described. This numerical scheme is an extension to the numerical scheme for the classical Serre-Green-Naghdi equations written in conservation law form. A typical second-order implementation of this numerical scheme is then described and validated using known analytic solutions; the travelling solitary wave and the dam-break problem. The numerical method is further validated for general members of this family of equations using forced solutions. Select members of this family are then used to simulate the evolution of a rectangular wave of depression for which there is experimental results. The described numerical method is shown to be conservative, robust and second-order accurate supporting the parameter classification based on the linear theory.
+The recently derived generalised Serre-Green-Naghdi equations are investigated and the parameter values classified according to the dispersive properties of the linearised equations with example numerical solutions shown. A numerical scheme for solving the generalised Serre-Green-Naghdi equations is then described. This numerical scheme is an extension to the numerical scheme for the classical Serre-Green-Naghdi equations written in conservation law form. A typical second-order implementation of this numerical scheme is then described and validated using known analytic solutions; the travelling solitary wave and the dam-break problem. The numerical method is further validated for general members of this family of equations using forced solutions. \hl{Select members of this family are then used to simulate the evolution of a rectangular wave of depression for which there is experimental results.} The described numerical method is shown to be conservative, robust and second-order accurate supporting the parameter classification based on the linear theory.
 
 %[]
 \end{abstract}
@@ -122,7 +124,7 @@ In previous work we have developed and validated numerical methods for a conserv
 
 This paper begins by introducing the gSGNE and highlighting their important properties. Of particular note, is that the free parameters $\beta_1$ and $\beta_2$ provide control of the width and relative location of the dispersive wave train. This allows for the family of equations to be classified by their respective dispersive wave train limits, and provides the basis for previously unobserved behaviours in dispersive wave trains. The second-order extension of the numerical scheme of \citet{Zoppou-etal-2017} is then described. 
 
-The numerical method is then validated against analytic solutions of the SGNE and the Shallow Water Wave Equations (SWWE) which are solutions of the gSGNE for the appropriate $\beta$ values, demonstrating its convergence rate and conservation properties. Forced solutions are also used to validate that all terms in the gSGNE are being approximated to the correct order of accuracy with arbitrary $\beta_1$ and $\beta_2$ values. Forced solutions are necessary to validate the numerical method for other members of this family of equations, because no analytic solutions are currently known. Finally, various members of the gSGNE family are compared to experimental results for the evolution of rectangular depression waves to demonstrate the necessity of including dispersion and the effect of improving the accuracy of the dispersion relationship in realistic fluid problems. Together these validations demonstrate the capability of the numerical scheme to produce robust and accurate numerical solutions and the ability of these numerical methods to reproduce experiments. 
+The numerical method is then validated against analytic solutions of the SGNE and the Shallow Water Wave Equations (SWWE) which are solutions of the gSGNE for the appropriate $\beta$ values, demonstrating its convergence rate and conservation properties. Forced solutions are also used to validate that all terms in the gSGNE are being approximated to the correct order of accuracy with arbitrary $\beta_1$ and $\beta_2$ values. Forced solutions are necessary to validate the numerical method for other members of this family of equations, because no analytic solutions are currently known. \hl{Finally, various members of the gSGNE family are compared to experimental results for the evolution of rectangular depression waves to demonstrate the necessity of including dispersion and the effect of improving the accuracy of the dispersion relationship in realistic fluid problems.} Together these validations demonstrate the capability of the numerical scheme to produce robust and accurate numerical solutions and the ability of these numerical methods to reproduce experiments. 
 %[]
 
 %-------------------------------------------------
@@ -741,7 +743,7 @@ Figure \ref{Fig:FS_Conv} demonstrates the convergence of the numerical scheme as
 	\caption{Convergence plot of $h$ (\squaret{blue}) , $G$ (\circlet{red}), $u$ (\trianglet{black}) for the solutions of the forced gSGNE with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ for various $\Delta x$ values.}
 	\label{Fig:FS_Conv}
 \end{figure}
-
+\hl{
 \section{Experimental Comparison for Dispersive Shock Waves}
 
 The numerical solutions of particular members of the gSGNE family will now be compared to the experimental results of \citet{Hammack-Segur-1978-337} which observed the evolution of an initial rectangular depression in the free surface. The experiments were conducted in a wave tank $0.394m$ wide, $31.6m$ long and $0.61m$ high filled by water $h_0 = 0.1m$ deep. The initial wave was generated by a $0.61m$ long piston with its left edge flush with the left edge of the wave tank. The piston is originally in the up position with the water stationary, the piston is then dropped creating the rectangular depression in the surface, which generates a dispersive shock wave. The generated depression has its rarefaction fan component propagate up the wave tank, while the dispersive shock wave reflects from the left edge of the wave tank and then propagates up the wave tank. The evolution of the free surface is recorded over time by Wave Gauges (WG) located $0m$ (WG1), $5m$ (WG2), $10m$ (WG3), $15m$ (WG4) and $20m$ (WG5) away from the right edge of the piston. Two heights of the rectangular wave were investigated $h_0 - h_1 = 0.01m$ and $h_0 - h_1 = 0.03m$ where $h_1$ is the height of the water above the piston after it drops.
@@ -773,7 +775,9 @@ The numerical solutions to the classical SGN equations with $\beta_1 = 2/3$ and 
 The numerical solutions of the improved dispersion SGN with $\beta_1 = 4/5$ and $\beta_2 = 2/15$ best replicate the experimental results. The improved SGN, maintain the good agreement of the classical SGN at the front of the dispersive wave train, and improve it everywhere else. In particular, the oscillations observed at WG1 on the dip before the dispersive wave train arrives better agree with the experimental results which only shows one prominent oscillation. The improved SGN equations due to their limited dispersive wave regions better replicate the flat regions observed in the experimental results and thus better reproduce the associated wave envelopes. The improved SGN equations produce the most accurate number and heights of oscillations, although the equations still overestimate them due to diffusive physical effects not captured by the equations. The speed of these oscillations is also best matched by the solutions of the improved SGN. These results for the improved dispersion SGN agree with the findings of \citet{DoCarmo-2018} for the evolution of an undular bore, which demonstrated the ability of improved dispersion equations to better resolve the speeds and heights of the generated dispersive wave train. While the improved SGN equations produce the best agreement, the experimental effects not included in the model are the dominant source of disagreement with the numerical solutions. 
 
 %
+
 \begin{figure}
+	\begin{adjustbox}{minipage=\linewidth-2\fboxrule,bgcolor=pink,frame}
 	\centering
 	\begin{subfigure}{0.49\textwidth}
 		\centering
@@ -789,6 +793,7 @@ The numerical solutions of the improved dispersion SGN with $\beta_1 = 4/5$ and 
 	\end{subfigure}
 	\caption{Rectangular negative wave experiments time series at the five Wave Gauges (WG) for simulation with the improved SGN with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (\solidrule), the classical SGN with $\beta_1 = 2/3$ and $\beta_2 = 0$ ({\color{blue}\solidrule}), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ ({\color{green!80!black}\dashedrule}) compared to the experimental results ({\color{red}\solidrule}).}
 	\label{Fig:Neg_Wave}
+	\end{adjustbox}
 \end{figure}
 %
 
@@ -796,6 +801,7 @@ The errors in conservation for all numerical simulations used to produce Figure 
 
 \begin{table}
 	\centering
+	\hl{
 	\begin{tabular}{l c c c c c}
 		$h_0 - h_1$& $\beta_1$ & $\beta_2$ &$C_1$ for $h$ & $C_1$ for $G$ & $C_1$ for $\mathcal{E}$ \B \\
 		\hline 
@@ -808,16 +814,17 @@ The errors in conservation for all numerical simulations used to produce Figure 
 		&$2/3$ & $0$ & $8.715\times 10^{-14}$   &  $2.106\times 10^{-17}$  &  $1.295\times 10^{-4}$ \T\\
 		&$4/5$ & $2/15$ & $8.403\times 10^{-14}$ &  $1.528\times 10^{-18}$  &  $2.364\times 10^{-4}$  \T\\
 	\end{tabular}
-	\caption{Conservation of conserved quantitites for numerical solutions to all negative rectangular wave experiments.}
+}
+	\caption{\hl{Conservation of conserved quantitites for numerical solutions to all negative rectangular wave experiments.}}
 	\label{tab:Neg_Wave_Cons}
 \end{table} 
-
+}
 
 \section{Conclusion}
 %include experimental results
 The members of the gSGN family of equations were classified according to the width and relative location of their dispersive wave trains using the dispersion relationship of the linearised equations. Example numerical solutions for select members of this family of equations were used to demonstrate that the full nonlinear gSGN equations exhibit the same behaviour. 
 
-The numerical method used to generate these solutions was then described as a modified version of the numerical scheme for the SGNE outlined by \citet{Zoppou-etal-2017}. This numerical scheme for the gSGNE was validated by describing a fully second-order implementation of the numerical method. This numerical method was validated against analytic solutions of the SGNE and SWWE and forced solutions. The analytic solutions demonstrate that the gSGNE solver accurately reproduces important members of the family of equations described by the gSGNE whilst conserving the quantities of interest. The forced solutions demonstrate that the method remains second-order for all values of the free parameters, $\beta_1$ and $\beta_2$. The numerical solutions compared well to the experimental results for the evolution of a rectangular depression, with improved dispersion properties improving the reproduction of the experimental observations. The gSGNE method described above is the first validated numerical method for the gSGNE and its validation supports the provided classification of members of the gSGN using their linear dispersive properties.
+The numerical method used to generate these solutions was then described as a modified version of the numerical scheme for the SGNE outlined by \citet{Zoppou-etal-2017}. This numerical scheme for the gSGNE was validated by describing a fully second-order implementation of the numerical method. This numerical method was validated against analytic solutions of the SGNE and SWWE and forced solutions. The analytic solutions demonstrate that the gSGNE solver accurately reproduces important members of the family of equations described by the gSGNE whilst conserving the quantities of interest. The forced solutions demonstrate that the method remains second-order for all values of the free parameters, $\beta_1$ and $\beta_2$. \hl{The numerical solutions compared well to the experimental results for the evolution of a rectangular depression, with improved dispersion properties improving the reproduction of the experimental observations.} The gSGNE method described above is the first validated numerical method for the gSGNE and its validation supports the provided classification of members of the gSGN using their linear dispersive properties.
 
 
 \bibliographystyle{elsarticle-num-names} 

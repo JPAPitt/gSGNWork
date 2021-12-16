@@ -1,0 +1,47 @@
+This is BibTeX, Version 0.99d (TeX Live 2021/W32TeX)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: gSGNpaper-marked.aux
+The style file: elsarticle-num-names.bst
+Database file #1: Bibliography.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+You've used 28 entries,
+            2918 wiz_defined-function locations,
+            821 strings with 10569 characters,
+and the built_in function-call counts, 17772 in all, are:
+= -- 1270
+> -- 679
+< -- 11
++ -- 271
+- -- 225
+* -- 2103
+:= -- 2526
+add.period$ -- 28
+call.type$ -- 28
+change.case$ -- 213
+chr.to.int$ -- 28
+cite$ -- 28
+duplicate$ -- 1335
+empty$ -- 1340
+format.name$ -- 311
+if$ -- 3281
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 268
+newline$ -- 149
+num.names$ -- 112
+pop$ -- 463
+preamble$ -- 1
+purify$ -- 215
+quote$ -- 0
+skip$ -- 293
+stack$ -- 0
+substring$ -- 876
+swap$ -- 980
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 249
+warning$ -- 0
+while$ -- 109
+width$ -- 0
+write$ -- 378

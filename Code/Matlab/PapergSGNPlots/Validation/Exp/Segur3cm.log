@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  4 DEC 2021 12:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  16 DEC 2021 05:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -579,25 +579,9 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
 )
-(c:/texlive/2021/texmf-dist/tex/latex/sansmath/sansmath.sty
-Package: sansmath 2007/02/28  ver 1.1 Donald Arseneau
-\c@mv@sans=\count318
-LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `sans'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 103.
-LaTeX Font Info:    Overwriting math alphabet `\mathsfsl' in version `sans'
-(Font)                  OT1/cmss/m/sl --> OT1/cmss/m/sl on input line 104.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `sans'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 105.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `sans'
-(Font)                  OML/cmm/m/it --> OML/cmm/m/it on input line 109.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `sans'
-(Font)                  OMS/cmsy/m/n --> OMS/cmsy/m/n on input line 110.
-LaTeX Font Info:    Overwriting math alphabet `\mathsfbf' in version `sans'
-(Font)                  OT1/cmss/bx/sl --> OT1/cmss/bx/n on input line 112.
-)
 (c:/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count319
+\l__color_backend_stack_int=\count318
 \l__pdf_internal_box=\box62
 )
 (./Segur3cm.aux)
@@ -620,21 +604,51 @@ LaTeX Font Info:    ... okay on input line 23.
 
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count320
+\scratchcounter=\count319
 \scratchdimen=\dimen271
 \scratchbox=\box63
-\nofMPsegments=\count321
-\nofMParguments=\count322
+\nofMPsegments=\count320
+\nofMParguments=\count321
 \everyMPshowfont=\toks38
-\MPscratchCnt=\count323
+\MPscratchCnt=\count322
 \MPscratchDim=\dimen272
-\MPnumerator=\count324
-\makeMPintoPDFobject=\count325
+\MPnumerator=\count323
+\makeMPintoPDFobject=\count324
 \everyMPtoPDFconversion=\toks39
 ) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+
+(c:/texlive/2021/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(c:/texlive/2021/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+
+(c:/texlive/2021/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+))
+(c:/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(c:/texlive/2021/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+(c:/texlive/2021/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+(c:/texlive/2021/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
 
 (c:/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
@@ -648,22 +662,21 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
 {c:/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 (./Segur3cm.aux) ) 
 Here is how much of TeX's memory you used:
- 24521 strings out of 478994
- 645744 string characters out of 5862208
- 2149754 words of memory out of 5000000
- 41605 multiletter control sequences out of 15000+600000
- 412492 words of font info for 56 fonts, out of 8000000 for 9000
+ 24901 strings out of 478994
+ 652552 string characters out of 5862208
+ 2158497 words of memory out of 5000000
+ 41965 multiletter control sequences out of 15000+600000
+ 407981 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,10n,103p,736b,2138s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-ex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><
-c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><c:/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi17.pfb><c:/texlive/2021/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on Segur3cm.pdf (1 page, 143704 bytes).
+ex10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
+<c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on Segur3cm.pdf (1 page, 137658 bytes).
 PDF statistics:
- 31 PDF objects out of 1000 (max. 8388607)
- 22 compressed objects within 1 object stream
+ 27 PDF objects out of 1000 (max. 8388607)
+ 19 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
