@@ -1,0 +1,67 @@
+\documentclass[10pt]{article}
+\usepackage{natbib}
+\begin{document}
+	\title{Numerical Scheme for the Generalised Serre-Green-Naghdi Model - Reviewer Response}
+	
+	\maketitle
+
+\section{Introduction}
+
+We kindly thank the reviewers for their constructive advice on the paper and will address their concerns below.
+	
+\section{Reviewer 1}
+\subsection{Comments}
+The manuscript with title "Numerical scheme for the generalised Serre-Green-Naghdi model" generalizes a hybrid finite volume/finite element method developed by the same authors for the classical Serre equations to a more general case. The new system includes solutions that are not oscillatory and this makes finite volume methods ideal for stable and accurate approximation of the shock-like wave fronts. The particular manuscript not only is very well-written but scientifically speaking is complete. It has a detailed and self-contained description of the numerical method. It has numerical justification of the method presenting its convergence and accuracy, and demonstrates well how to approximate the singular solution of the gSerre equations.
+I strongly recommend the publication of this manuscript without hesitations.
+
+\subsection{Response}
+Thanks!
+
+This review requires no alterations to the paper.
+
+
+\section{Reviewer 2}
+\subsection{Comments}
+This manuscript study Numerical Scheme for the Generalised Serre-Green-Naghdi Model. I think at this present form, it only attract very few readers of Wave Motion journal.
+\\
+I suggest major revision.
+\\
+My suggestion is as follows:
+\begin{enumerate}
+	\item In the test cases, please use some real test case, for example, wave transformation problems on uneven seabed, there are a lot experimental data,
+	Please try to compare with these data, for some strongly nonlinear cases, show the advantages of gSGNE.
+	
+	\item
+	To show the advantages of gSGNE, for the selected cases (real cases, which has experimental data), results should show that
+	gSGNE with specific two free parameters $\beta_1$ and $\beta_2$ is better than SGNE, SWWE, and others.
+	
+	\item  Similarly, Numerical Scheme should show its accuracy and efficiency was improved compared with classic scheme.
+	
+	
+\end{enumerate}
+I think if the above suggestions are considered by authors, this manuscript will attract much more readers of Wave Motion journal.
+
+\subsection{Response}
+The suggestion here is a good one, and we have added an experimental comparison to the paper to address suggestions 1 and 2. The experiment chosen is the evolution of a rectangular wave of depression studied by \citet{Hammack-Segur-1978-337}.
+
+We note that this is different to the ones suggested, and which are standard in the community - in particular evolution of a generated periodic wave train over a submerged bar. There are a number of reasons why this is the preferred experiment
+
+\begin{itemize}
+	\item The gSGNE have currently only been derived for a horizontal bed, and have so far not been extended to varying bathymetry. It is also not obvious how the gSGNE can be appropriately extended to varying bathymetry, as there are many possible choices. 
+	\item While there are issues with this experiment due to  the model missing effects such as friction and viscosity as well as modelling the piston movement as instantenous, the presence of a steep gradient evolving into a dispersive wave train provides a challenging benchmark for models and methods owing to the significant nonlinearity and dispersion. 
+	\item This experiment still demonstrates the utility of improved dispersion and since improved dispersion models have not been used on this experiment, this makes it more novel. 
+\end{itemize}
+
+As for suggestion 3, if what is meant is that the numerical solutions to experiment in 1,2 are better for the improved SGN, then this is achieved. If however, what is meant is that the numerical method should be compared to other methods, this has not been done because:
+\begin{itemize}
+	\item this is the first numerical method for the entire family of equations
+	\item other numerical methods relying on smoothess of solutions such as the spectral method of \cite{Dutykh-etal-2018-371} for the regularised SWWE subfamily required filtering of the solutions to remove oscillations introduced by the method
+	\item The advantages of this approach for nonlinear dispersive equations are not new and have been studied by \citet{Pitt-2019} and \citet{Pitt-2018-61}
+	\item Figure 1 and the Dam break results demonstrate the utility of the approach, showing good agreement with the linear theory and the ability to balance the resolution of the shock and rarefaction fan of the dispersionless members of the gSGNE family as well as the resolution of the dispersive wave trains for the disperive members
+\end{itemize}
+
+
+\bibliographystyle{elsarticle-num-names} 
+\bibliography{Bibliography}
+
+\end{document}

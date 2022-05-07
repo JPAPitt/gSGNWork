@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  16 DEC 2021 16:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  16 DEC 2021 16:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**gSGNpaper.tex
-(./gSGNpaper.tex
+**gSGNpaper-marked.tex
+(./gSGNpaper-marked.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (c:/texlive/2021/texmf-dist/tex/latex/elsarticle/elsarticle.cls
@@ -86,7 +86,8 @@ File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 \@sep=\skip49
 \@@sep=\skip50
 
-(./gSGNpaper.spl) (c:/texlive/2021/texmf-dist/tex/latex/natbib/natbib.sty
+(./gSGNpaper-marked.spl)
+(c:/texlive/2021/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip51
 \bibsep=\skip52
@@ -94,7 +95,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count195
 )
 \splwrite=\write3
-\openout3 = `gSGNpaper.spl'.
+\openout3 = `gSGNpaper-marked.spl'.
 
 \appnamewidth=\dimen145
 )
@@ -567,6 +568,60 @@ Package: lineno 2005/11/02 line numbers on paragraphs v4.41
 \bframebox=\box68
 LaTeX Info: Redefining \\ on input line 3056.
 )
+(c:/texlive/2021/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2020/08/19 v1.3 Adjusting TeX boxes (trim, clip, ...)
+
+(c:/texlive/2021/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks40
+\XKV@tempa@toks=\toks41
+)
+\XKV@depth=\count309
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+(c:/texlive/2021/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(c:/texlive/2021/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2020/08/19 v1.2 Trim and clip general TeX material
+
+(c:/texlive/2021/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box69
+)
+\tc@llx=\dimen284
+\tc@lly=\dimen285
+\tc@urx=\dimen286
+\tc@ury=\dimen287
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+
+(c:/texlive/2021/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen288
+\adjbox@Height=\dimen289
+\adjbox@Depth=\dimen290
+\adjbox@Totalheight=\dimen291
+\adjbox@pwidth=\dimen292
+\adjbox@pheight=\dimen293
+\adjbox@pdepth=\dimen294
+\adjbox@ptotalheight=\dimen295
+
+(c:/texlive/2021/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count310
+)
+(c:/texlive/2021/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box70
+\sift@deathcycles=\count311
+\@vwid@loff=\dimen296
+\@vwid@roff=\dimen297
+))
 (c:/texlive/2021/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
 
@@ -576,44 +631,42 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (c:/texlive/2021/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
-\Gm@cnth=\count309
-\Gm@cntv=\count310
-\c@Gm@tempcnt=\count311
-\Gm@bindingoffset=\dimen284
-\Gm@wd@mp=\dimen285
-\Gm@odd@mp=\dimen286
-\Gm@even@mp=\dimen287
-\Gm@layoutwidth=\dimen288
-\Gm@layoutheight=\dimen289
-\Gm@layouthoffset=\dimen290
-\Gm@layoutvoffset=\dimen291
-\Gm@dimlist=\toks40
+\Gm@cnth=\count312
+\Gm@cntv=\count313
+\c@Gm@tempcnt=\count314
+\Gm@bindingoffset=\dimen298
+\Gm@wd@mp=\dimen299
+\Gm@odd@mp=\dimen300
+\Gm@even@mp=\dimen301
+\Gm@layoutwidth=\dimen302
+\Gm@layoutheight=\dimen303
+\Gm@layouthoffset=\dimen304
+\Gm@layoutvoffset=\dimen305
+\Gm@dimlist=\toks42
 )
 (c:/texlive/2021/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
-\c@tracingmulticols=\count312
-\mult@box=\box69
-\multicol@leftmargin=\dimen292
-\c@unbalance=\count313
-\c@collectmore=\count314
-\doublecol@number=\count315
-\multicoltolerance=\count316
-\multicolpretolerance=\count317
-\full@width=\dimen293
-\page@free=\dimen294
-\premulticols=\dimen295
-\postmulticols=\dimen296
+\c@tracingmulticols=\count315
+\mult@box=\box71
+\multicol@leftmargin=\dimen306
+\c@unbalance=\count316
+\c@collectmore=\count317
+\doublecol@number=\count318
+\multicoltolerance=\count319
+\multicolpretolerance=\count320
+\full@width=\dimen307
+\page@free=\dimen308
+\premulticols=\dimen309
+\postmulticols=\dimen310
 \multicolsep=\skip56
 \multicolbaselineskip=\skip57
-\partial@page=\box70
-\last@line=\box71
-\maxbalancingoverflow=\dimen297
-\mult@rightbox=\box72
-\mult@grightbox=\box73
-\mult@gfirstbox=\box74
-\mult@firstbox=\box75
-\@tempa=\box76
-\@tempa=\box77
+\partial@page=\box72
+\last@line=\box73
+\maxbalancingoverflow=\dimen311
+\mult@rightbox=\box74
+\mult@grightbox=\box75
+\mult@gfirstbox=\box76
+\mult@firstbox=\box77
 \@tempa=\box78
 \@tempa=\box79
 \@tempa=\box80
@@ -649,41 +702,43 @@ Package: multicol 2019/12/09 v1.8y multicolumn formatting (FMi)
 \@tempa=\box110
 \@tempa=\box111
 \@tempa=\box112
-\c@minrows=\count318
-\c@columnbadness=\count319
-\c@finalcolumnbadness=\count320
-\last@try=\dimen298
-\multicolovershoot=\dimen299
-\multicolundershoot=\dimen300
-\mult@nat@firstbox=\box113
-\colbreak@box=\box114
-\mc@col@check@num=\count321
+\@tempa=\box113
+\@tempa=\box114
+\c@minrows=\count321
+\c@columnbadness=\count322
+\c@finalcolumnbadness=\count323
+\last@try=\dimen312
+\multicolovershoot=\dimen313
+\multicolundershoot=\dimen314
+\mult@nat@firstbox=\box115
+\colbreak@box=\box116
+\mc@col@check@num=\count324
 )
 (c:/texlive/2021/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2020/10/26 v3.5g Customizing captions (AR)
 
 (c:/texlive/2021/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
-\captionmargin=\dimen301
-\captionmargin@=\dimen302
-\captionwidth=\dimen303
-\caption@tempdima=\dimen304
-\caption@indent=\dimen305
-\caption@parindent=\dimen306
-\caption@hangindent=\dimen307
+\captionmargin=\dimen315
+\captionmargin@=\dimen316
+\captionwidth=\dimen317
+\caption@tempdima=\dimen318
+\caption@indent=\dimen319
+\caption@parindent=\dimen320
+\caption@hangindent=\dimen321
 Package caption Info: elsarticle document class detected.
 
 (c:/texlive/2021/texmf-dist/tex/latex/caption/caption-elsarticle.sto
 File: caption-elsarticle.sto 2020/08/22 v2.0 Adaption of the caption package to
  the elsarticle document class (AR)
 ))
-\c@caption@flags=\count322
-\c@continuedfloat=\count323
+\c@caption@flags=\count325
+\c@continuedfloat=\count326
 )
 (c:/texlive/2021/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2020/10/07 v1.3j Sub-captions (AR)
-\c@subfigure=\count324
-\c@subtable=\count325
+\c@subfigure=\count327
+\c@subtable=\count328
 )
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
@@ -723,9 +778,9 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 (c:/texlive/2021/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
-\@linkdim=\dimen308
-\Hy@linkcounter=\count326
-\Hy@pagecounter=\count327
+\@linkdim=\dimen322
+\Hy@linkcounter=\count329
+\Hy@pagecounter=\count330
 
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
@@ -742,7 +797,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 (c:/texlive/2021/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count328
+\Hy@SavedSpaceFactor=\count331
 
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
@@ -756,14 +811,14 @@ Package hyperref Info: Plain pages OFF on input line 4207.
 Package hyperref Info: Backreferencing OFF on input line 4212.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count329
+\c@Hy@tempcnt=\count332
 
 (c:/texlive/2021/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4804.
-\XeTeXLinkMargin=\dimen309
+\XeTeXLinkMargin=\dimen323
 
 (c:/texlive/2021/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -772,9 +827,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count330
-\Field@Width=\dimen310
-\Fld@charsize=\dimen311
+\Fld@menulength=\count333
+\Field@Width=\dimen324
+\Fld@charsize=\dimen325
 Package hyperref Info: Hyper figures OFF on input line 6075.
 Package hyperref Info: Link nesting OFF on input line 6080.
 Package hyperref Info: Hyper index ON on input line 6083.
@@ -790,9 +845,9 @@ Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
 ge
 with kernel methods
 )
-\Hy@abspage=\count331
-\c@Item=\count332
-\c@Hfootnote=\count333
+\Hy@abspage=\count334
+\c@Item=\count335
+\c@Hfootnote=\count336
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -804,8 +859,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
 e
 with kernel methods
 )
-\Fld@listcount=\count334
-\c@bookmark@seq@number=\count335
+\Fld@listcount=\count337
+\c@bookmark@seq@number=\count338
 
 (c:/texlive/2021/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
@@ -820,8 +875,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 (c:/texlive/2021/texmf-dist/tex/latex/psfrag/psfrag.sty
 Package: psfrag 1998/04/11 v3.04 PSfrag (MCG)
-\pfg@pcount=\count336
-\pfg@scount=\count337
+\pfg@pcount=\count339
+\pfg@scount=\count340
 \pfg@temp=\write5
 )
 (c:/texlive/2021/texmf-dist/tex/latex/pstricks/pstricks.sty
@@ -829,78 +884,67 @@ Package: pstricks 2020/06/11 v0.70 LaTeX wrapper for `PSTricks' (RN,HV)
 
 (c:/texlive/2021/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
 File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
-
-(c:/texlive/2021/texmf-dist/tex/latex/xkeyval/xkeyval.sty
-Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
-
-(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-(c:/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex
-\XKV@toks=\toks41
-\XKV@tempa@toks=\toks42
 )
-\XKV@depth=\count338
-File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)))
 (c:/texlive/2021/texmf-dist/tex/generic/pstricks/pstricks.tex
 (c:/texlive/2021/texmf-dist/tex/generic/pstricks/pst-fp.tex
 `pst-fp' v0.06, 2020/11/20 (hv)
-\pstFP@xs=\count339
-\pstFP@xia=\count340
-\pstFP@xib=\count341
-\pstFP@xfa=\count342
-\pstFP@xfb=\count343
-\pstFP@rega=\count344
-\pstFP@regb=\count345
-\pstFP@regs=\count346
-\pstFP@times=\count347
+\pstFP@xs=\count341
+\pstFP@xia=\count342
+\pstFP@xib=\count343
+\pstFP@xfa=\count344
+\pstFP@xfb=\count345
+\pstFP@rega=\count346
+\pstFP@regb=\count347
+\pstFP@regs=\count348
+\pstFP@times=\count349
 )
-\psLoopIndex=\count348
+\psLoopIndex=\count350
 
 `PSTricks' v3.01a  <2021/03/30> (tvz,hv)
-\pst@dima=\dimen312
-\pst@dimb=\dimen313
-\pst@dimc=\dimen314
-\pst@dimd=\dimen315
-\pst@dimg=\dimen316
-\pst@dimh=\dimen317
-\pst@dimm=\dimen318
-\pst@dimn=\dimen319
-\pst@dimo=\dimen320
-\pst@dimp=\dimen321
-\pst@hbox=\box115
-\pst@ibox=\box116
-\pst@boxg=\box117
-\pst@cnta=\count349
-\pst@cntb=\count350
-\pst@cntc=\count351
-\pst@cntd=\count352
-\pst@cntg=\count353
-\pst@cnth=\count354
-\pst@cntm=\count355
-\pst@cntn=\count356
-\pst@cnto=\count357
-\pst@cntp=\count358
-\@zero=\count359
+\pst@dima=\dimen326
+\pst@dimb=\dimen327
+\pst@dimc=\dimen328
+\pst@dimd=\dimen329
+\pst@dimg=\dimen330
+\pst@dimh=\dimen331
+\pst@dimm=\dimen332
+\pst@dimn=\dimen333
+\pst@dimo=\dimen334
+\pst@dimp=\dimen335
+\pst@hbox=\box117
+\pst@ibox=\box118
+\pst@boxg=\box119
+\pst@cnta=\count351
+\pst@cntb=\count352
+\pst@cntc=\count353
+\pst@cntd=\count354
+\pst@cntg=\count355
+\pst@cnth=\count356
+\pst@cntm=\count357
+\pst@cntn=\count358
+\pst@cnto=\count359
+\pst@cntp=\count360
+\@zero=\count361
 \pst@toks=\toks43
 (c:/texlive/2021/texmf-dist/tex/generic/pstricks/pstricks.con)
-\psunit=\dimen322
-\psxunit=\dimen323
-\psyunit=\dimen324
-\pst@C@@rType=\count360
-\pslinewidth=\dimen325
-\psk@startLW=\dimen326
-\psk@endLW=\dimen327
+\psunit=\dimen336
+\psxunit=\dimen337
+\psyunit=\dimen338
+\pst@C@@rType=\count362
+\pslinewidth=\dimen339
+\psk@startLW=\dimen340
+\psk@endLW=\dimen341
 \pst@customdefs=\toks44
-\pslinearc=\dimen328
-\pst@symbolStep=\dimen329
-\pst@symbolWidth=\dimen330
-\pst@symbolLinewidth=\dimen331
+\pslinearc=\dimen342
+\pst@symbolStep=\dimen343
+\pst@symbolWidth=\dimen344
+\pst@symbolLinewidth=\dimen345
 \everypsbox=\toks45
-\psframesep=\dimen332
-\pslabelsep=\dimen333
-\sh@wgridXunit=\dimen334
-\sh@wgridYunit=\dimen335
-\pst@shift=\dimen336
+\psframesep=\dimen346
+\pslabelsep=\dimen347
+\sh@wgridXunit=\dimen348
+\sh@wgridYunit=\dimen349
+\pst@shift=\dimen350
 )
 File: pstricks.tex 2021/03/30 v3.01a `PSTricks' (tvz,hv)
 
@@ -931,7 +975,7 @@ Package: filehook 2020/09/29 v0.8a Hooks for input files
 (c:/texlive/2021/texmf-dist/tex/latex/filehook/filehook-2020.sty
 Package: filehook-2020 2020/09/29 v0.8a Hooks for input files
 ))
-\c@currfiledepth=\count361
+\c@currfiledepth=\count363
 )
 (c:/texlive/2021/texmf-dist/tex/latex/datetime/datetime.sty
 Package: datetime 2015/03/20 v2.60 Date Time Package
@@ -947,76 +991,76 @@ Package: fcprefix 2012/09/28
 
 (c:/texlive/2021/texmf-dist/tex/latex/fmtcount/fcnumparser.sty
 Package: fcnumparser 2017/06/15
-\fc@digit@counter=\count362
+\fc@digit@counter=\count364
 ))
-\c@padzeroesN=\count363
-\fc@tmpcatcode=\count364
-\@DT@modctr=\count365
-\@ordinalctr=\count366
-\@orgargctr=\count367
-\@strctr=\count368
-\@tmpstrctr=\count369
-\@DT@loopN=\count370
-\@DT@X=\count371
+\c@padzeroesN=\count365
+\fc@tmpcatcode=\count366
+\@DT@modctr=\count367
+\@ordinalctr=\count368
+\@orgargctr=\count369
+\@strctr=\count370
+\@tmpstrctr=\count371
+\@DT@loopN=\count372
+\@DT@X=\count373
 )
 (c:/texlive/2021/texmf-dist/tex/latex/datetime/datetime-defaults.sty
 Package: datetime-defaults 2013/09/10
 )
-\@day=\count372
-\@month=\count373
-\@year=\count374
-\c@HOUR=\count375
-\c@HOURXII=\count376
-\c@MINUTE=\count377
-\c@TOHOUR=\count378
-\c@TOMINUTE=\count379
-\c@SECOND=\count380
-\currenthour=\count381
-\currentminute=\count382
-\currentsecond=\count383
+\@day=\count374
+\@month=\count375
+\@year=\count376
+\c@HOUR=\count377
+\c@HOURXII=\count378
+\c@MINUTE=\count379
+\c@TOHOUR=\count380
+\c@TOMINUTE=\count381
+\c@SECOND=\count382
+\currenthour=\count383
+\currentminute=\count384
+\currentsecond=\count385
 Package datetime Info: No datetime.cfg file found, using default settings on in
 put line 308.
-\@dtctr=\count384
-\dayofyear=\count385
-\dayofweek=\count386
+\@dtctr=\count386
+\dayofyear=\count387
+\dayofweek=\count388
 LaTeX Info: Redefining \today on input line 736.
 \dt@a=\toks46
 \dt@b=\toks47
 )
-(./gSGNpaper.aux)
-\openout1 = `gSGNpaper.aux'.
+(./gSGNpaper-marked.aux)
+\openout1 = `gSGNpaper-marked.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 81.
-LaTeX Font Info:    ... okay on input line 81.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
 
 (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count387
-\scratchdimen=\dimen337
-\scratchbox=\box118
-\nofMPsegments=\count388
-\nofMParguments=\count389
+\scratchcounter=\count389
+\scratchdimen=\dimen351
+\scratchbox=\box120
+\nofMPsegments=\count390
+\nofMParguments=\count391
 \everyMPshowfont=\toks48
-\MPscratchCnt=\count390
-\MPscratchDim=\dimen338
-\MPnumerator=\count391
-\makeMPintoPDFobject=\count392
+\MPscratchCnt=\count392
+\MPscratchDim=\dimen352
+\MPnumerator=\count393
+\makeMPintoPDFobject=\count394
 \everyMPtoPDFconversion=\toks49
 ) (c:/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
@@ -1075,7 +1119,7 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.17}).
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 81.
+Package hyperref Info: Link coloring OFF on input line 83.
 (c:/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -1085,15 +1129,15 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 (c:/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count393
+\c@section@level=\count395
 )
-LaTeX Info: Redefining \ref on input line 81.
-LaTeX Info: Redefining \pageref on input line 81.
-LaTeX Info: Redefining \nameref on input line 81.
+LaTeX Info: Redefining \ref on input line 83.
+LaTeX Info: Redefining \pageref on input line 83.
+LaTeX Info: Redefining \nameref on input line 83.
 
-(./gSGNpaper.out) (./gSGNpaper.out)
+(./gSGNpaper-marked.out) (./gSGNpaper-marked.out)
 \@outlinefile=\write6
-\openout6 = `gSGNpaper.out'.
+\openout6 = `gSGNpaper-marked.out'.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/fmtcount/fc-english.def
@@ -1105,19 +1149,19 @@ Overfull \hbox (2.22221pt too wide) has occurred while \output is active
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<def>-command' on input line 123.
+(hyperref)                removing `\<def>-command' on input line 125.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\cnotenum' on input line 123.
+(hyperref)                removing `\cnotenum' on input line 125.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<def>-command' on input line 123.
+(hyperref)                removing `\<def>-command' on input line 125.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@corref' on input line 123.
+(hyperref)                removing `\@corref' on input line 125.
 
 [1
 Non-PDF special ignored!
@@ -1142,127 +1186,127 @@ Non-PDF special ignored!
 <Figure-1abcde.pdf, id=237, 359.57536pt x 328.25536pt>
 File: Figure-1abcde.pdf Graphic file (type pdf)
 <use Figure-1abcde.pdf>
-Package pdftex.def Info: Figure-1abcde.pdf  used on input line 249.
+Package pdftex.def Info: Figure-1abcde.pdf  used on input line 251.
 (pdftex.def)             Requested size: 484.2088pt x 442.0437pt.
 
 [4] [5] [6 <./Figure-1abcde.pdf>] [7] [8] [9] [10] [11]
 <Figure-2a.pdf, id=495, 393.48305pt x 315.86507pt>
 File: Figure-2a.pdf Graphic file (type pdf)
 <use Figure-2a.pdf>
-Package pdftex.def Info: Figure-2a.pdf  used on input line 522.
+Package pdftex.def Info: Figure-2a.pdf  used on input line 524.
 (pdftex.def)             Requested size: 154.95035pt x 124.38698pt.
 <Figure-2b.pdf, id=496, 407.99727pt x 315.86507pt>
 File: Figure-2b.pdf Graphic file (type pdf)
 <use Figure-2b.pdf>
-Package pdftex.def Info: Figure-2b.pdf  used on input line 527.
+Package pdftex.def Info: Figure-2b.pdf  used on input line 529.
 (pdftex.def)             Requested size: 154.95035pt x 119.9625pt.
 <Figure-2c.pdf, id=497, 406.95338pt x 315.86507pt>
 File: Figure-2c.pdf Graphic file (type pdf)
 <use Figure-2c.pdf>
-Package pdftex.def Info: Figure-2c.pdf  used on input line 532.
+Package pdftex.def Info: Figure-2c.pdf  used on input line 534.
 (pdftex.def)             Requested size: 154.95035pt x 120.27095pt.
 <Figure-3a.pdf, id=502, 392.97514pt x 302.12672pt>
 File: Figure-3a.pdf Graphic file (type pdf)
 <use Figure-3a.pdf>
-Package pdftex.def Info: Figure-3a.pdf  used on input line 546.
+Package pdftex.def Info: Figure-3a.pdf  used on input line 548.
 (pdftex.def)             Requested size: 237.26497pt x 182.4161pt.
 <Figure-3b.pdf, id=503, 393.13574pt x 302.12672pt>
 File: Figure-3b.pdf Graphic file (type pdf)
 <use Figure-3b.pdf>
-Package pdftex.def Info: Figure-3b.pdf  used on input line 552.
+Package pdftex.def Info: Figure-3b.pdf  used on input line 554.
 (pdftex.def)             Requested size: 237.26497pt x 182.34235pt.
 <Figure-4.pdf, id=508, 397.97484pt x 302.12173pt>
 File: Figure-4.pdf Graphic file (type pdf)
 <use Figure-4.pdf>
-Package pdftex.def Info: Figure-4.pdf  used on input line 564.
+Package pdftex.def Info: Figure-4.pdf  used on input line 566.
 (pdftex.def)             Requested size: 237.26497pt x 180.11732pt.
  [12 <./Figure-2a.pdf> <./Figure-2b.pdf> <./Figure-2c.pdf> <./Figure-3a.pdf> <.
 /Figure-3b.pdf>]
 <Figure-5.pdf, id=587, 393.06749pt x 306.61751pt>
 File: Figure-5.pdf Graphic file (type pdf)
 <use Figure-5.pdf>
-Package pdftex.def Info: Figure-5.pdf  used on input line 573.
+Package pdftex.def Info: Figure-5.pdf  used on input line 575.
 (pdftex.def)             Requested size: 237.26497pt x 185.08073pt.
 
 [13 <./Figure-4.pdf> <./Figure-5.pdf>]
 <Figure-6a.pdf, id=631, 393.48305pt x 315.86708pt>
 File: Figure-6a.pdf Graphic file (type pdf)
 <use Figure-6a.pdf>
-Package pdftex.def Info: Figure-6a.pdf  used on input line 632.
+Package pdftex.def Info: Figure-6a.pdf  used on input line 634.
 (pdftex.def)             Requested size: 154.95035pt x 124.38777pt.
 <Figure-6b.pdf, id=632, 394.55707pt x 315.86507pt>
 File: Figure-6b.pdf Graphic file (type pdf)
 <use Figure-6b.pdf>
-Package pdftex.def Info: Figure-6b.pdf  used on input line 637.
+Package pdftex.def Info: Figure-6b.pdf  used on input line 639.
 (pdftex.def)             Requested size: 154.95035pt x 124.04478pt.
 <Figure-6c.pdf, id=633, 393.51315pt x 315.86607pt>
 File: Figure-6c.pdf Graphic file (type pdf)
 <use Figure-6c.pdf>
-Package pdftex.def Info: Figure-6c.pdf  used on input line 642.
+Package pdftex.def Info: Figure-6c.pdf  used on input line 644.
 (pdftex.def)             Requested size: 154.95035pt x 124.37773pt.
 <Figure-7a.pdf, id=638, 397.9718pt x 304.96935pt>
 File: Figure-7a.pdf Graphic file (type pdf)
 <use Figure-7a.pdf>
-Package pdftex.def Info: Figure-7a.pdf  used on input line 657.
+Package pdftex.def Info: Figure-7a.pdf  used on input line 659.
 (pdftex.def)             Requested size: 237.26497pt x 181.815pt.
 <Figure-7b.pdf, id=639, 397.9718pt x 302.12173pt>
 File: Figure-7b.pdf Graphic file (type pdf)
 <use Figure-7b.pdf>
-Package pdftex.def Info: Figure-7b.pdf  used on input line 663.
+Package pdftex.def Info: Figure-7b.pdf  used on input line 665.
 (pdftex.def)             Requested size: 237.26497pt x 180.11732pt.
  [14]
 <Figure-8.pdf, id=660, 393.06749pt x 306.61852pt>
 File: Figure-8.pdf Graphic file (type pdf)
 <use Figure-8.pdf>
-Package pdftex.def Info: Figure-8.pdf  used on input line 674.
+Package pdftex.def Info: Figure-8.pdf  used on input line 676.
 (pdftex.def)             Requested size: 242.1044pt x 188.857pt.
  [15 <./Figure-6a.pdf> <./Figure-6b.pdf> <./Figure-6c.pdf> <./Figure-7a.pdf> <.
 /Figure-7b.pdf>] [16 <./Figure-8.pdf>]
 <Figure-9a.pdf, id=758, 389.52628pt x 315.85805pt>
 File: Figure-9a.pdf Graphic file (type pdf)
 <use Figure-9a.pdf>
-Package pdftex.def Info: Figure-9a.pdf  used on input line 719.
+Package pdftex.def Info: Figure-9a.pdf  used on input line 721.
 (pdftex.def)             Requested size: 154.95035pt x 125.64696pt.
 <Figure-9b.pdf, id=759, 404.0405pt x 315.86507pt>
 File: Figure-9b.pdf Graphic file (type pdf)
 <use Figure-9b.pdf>
-Package pdftex.def Info: Figure-9b.pdf  used on input line 724.
+Package pdftex.def Info: Figure-9b.pdf  used on input line 726.
 (pdftex.def)             Requested size: 154.95035pt x 121.13368pt.
 <Figure-9c.pdf, id=760, 402.99557pt x 315.86708pt>
 File: Figure-9c.pdf Graphic file (type pdf)
 <use Figure-9c.pdf>
-Package pdftex.def Info: Figure-9c.pdf  used on input line 729.
+Package pdftex.def Info: Figure-9c.pdf  used on input line 731.
 (pdftex.def)             Requested size: 154.95035pt x 121.45255pt.
 <Figure-10.pdf, id=763, 397.97484pt x 302.12672pt>
 File: Figure-10.pdf Graphic file (type pdf)
 <use Figure-10.pdf>
-Package pdftex.def Info: Figure-10.pdf  used on input line 740.
+Package pdftex.def Info: Figure-10.pdf  used on input line 742.
 (pdftex.def)             Requested size: 237.26497pt x 180.1203pt.
  [17 <./Figure-9a.pdf> <./Figure-9b.pdf> <./Figure-9c.pdf> <./Figure-10.pdf>] [
 18]
 <Figure-11a.pdf, id=831, 781.43144pt x 1034.6936pt>
 File: Figure-11a.pdf Graphic file (type pdf)
 <use Figure-11a.pdf>
-Package pdftex.def Info: Figure-11a.pdf  used on input line 780.
-(pdftex.def)             Requested size: 237.26497pt x 314.15227pt.
+Package pdftex.def Info: Figure-11a.pdf  used on input line 821.
+(pdftex.def)             Requested size: 236.87297pt x 313.63126pt.
 <Figure-11b.pdf, id=832, 773.50584pt x 1034.72473pt>
 File: Figure-11b.pdf Graphic file (type pdf)
 <use Figure-11b.pdf>
-Package pdftex.def Info: Figure-11b.pdf  used on input line 786.
-(pdftex.def)             Requested size: 237.26497pt x 317.38258pt.
- [19 <./Figure-11a.pdf> <./Figure-11b.pdf>] (./gSGNpaper.bbl [20])
-[21] (./gSGNpaper.aux)
-Package rerunfilecheck Info: File `gSGNpaper.out' has not changed.
+Package pdftex.def Info: Figure-11b.pdf  used on input line 821.
+(pdftex.def)             Requested size: 236.87297pt x 316.86157pt.
+ [19 <./Figure-11a.pdf> <./Figure-11b.pdf>] (./gSGNpaper-marked.bbl
+[20]) [21] (./gSGNpaper-marked.aux)
+Package rerunfilecheck Info: File `gSGNpaper-marked.out' has not changed.
 (rerunfilecheck)             Checksum: F418C50FC9E52AA221808E123EC8BCDD;4957.
  ) 
 Here is how much of TeX's memory you used:
- 35827 strings out of 478994
- 803136 string characters out of 5862208
- 1394759 words of memory out of 5000000
- 52554 multiletter control sequences out of 15000+600000
+ 36679 strings out of 478994
+ 818168 string characters out of 5862208
+ 1408043 words of memory out of 5000000
+ 53382 multiletter control sequences out of 15000+600000
  410635 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,18n,103p,1450b,1016s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 102i,18n,117p,1441b,1008s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
 live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texlive/202
 1/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-d
@@ -1286,7 +1330,7 @@ ic/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/
 texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb>
-Output written on gSGNpaper.pdf (21 pages, 1096904 bytes).
+Output written on gSGNpaper-marked.pdf (21 pages, 1097315 bytes).
 PDF statistics:
  987 PDF objects out of 1000 (max. 8388607)
  900 compressed objects within 9 object streams

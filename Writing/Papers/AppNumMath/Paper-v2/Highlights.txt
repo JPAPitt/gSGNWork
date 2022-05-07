@@ -1,0 +1,7 @@
+First robust numerical method for Generalised Serre-Green-Naghdi Model.
+
+Validated for smooth and non-smooth analytic solutions.
+
+Validated for general forced solutions. 
+
+Demonstration of advancing dispersive wave region.
