@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{32}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -11,6 +11,35 @@
 \providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Book
+\bibitem[{Le~Mehaute(1976)}]{Mehaute-1976}
+\bibinfo{author}{B.~Le~Mehaute}, \bibinfo{title}{An Introduction to
+  Hydrodynamics and Water Waves}, Springer Study Edition, \bibinfo{edition}{1st
+  ed. 1976.} ed., \bibinfo{publisher}{Springer Berlin Heidelberg},
+  \bibinfo{address}{Berlin, Heidelberg}, \bibinfo{year}{1976}.
+%Type = Book
+\bibitem[{Sorensen(2006)}]{Sorenson-2006}
+\bibinfo{author}{R.~Sorensen}, \bibinfo{title}{Basic coastal engineering},
+  \bibinfo{edition}{3rd} ed., \bibinfo{publisher}{New York, NY Springer},
+  \bibinfo{year}{2006}.
+%Type = Article
+\bibitem[{Kirby et~al.(2013)Kirby, Shi, Tehranirad, Harris, and
+  Grilli}]{Kirby-etal-2013-39}
+\bibinfo{author}{J.~Kirby}, \bibinfo{author}{F.~Shi},
+  \bibinfo{author}{B.~Tehranirad}, \bibinfo{author}{J.~Harris},
+  \bibinfo{author}{S.~Grilli},
+\newblock \bibinfo{title}{Dispersive tsunami waves in the ocean: Model
+  equations and sensitivity to dispersion and coriolis effects},
+\newblock \bibinfo{journal}{Ocean Modelling} \bibinfo{volume}{62}
+  (\bibinfo{year}{2013}) \bibinfo{pages}{39--55}.
+%Type = Article
+\bibitem[{El et~al.(2006)El, Grimshaw, and Smyth}]{El-etal-2006}
+\bibinfo{author}{G.~El}, \bibinfo{author}{R.~Grimshaw},
+  \bibinfo{author}{N.~Smyth},
+\newblock \bibinfo{title}{Unsteady undular bores in fully nonlinear
+  shallow-water theory},
+\newblock \bibinfo{journal}{Physics of Fluids} \bibinfo{volume}{18}
+  (\bibinfo{year}{2006}) \bibinfo{pages}{027104}.
 %Type = Article
 \bibitem[{Clamond and Dutykh(2018)}]{Clamond-Dutykh-2018-237}
 \bibinfo{author}{D.~Clamond}, \bibinfo{author}{D.~Dutykh},
@@ -42,6 +71,14 @@
 \newblock \bibinfo{journal}{Communications in Nonlinear Science and Numerical
   Simulation} \bibinfo{volume}{45} (\bibinfo{year}{2017})
   \bibinfo{pages}{245--257}.
+%Type = Article
+\bibitem[{Pitt et~al.(2018)Pitt, Zoppou, and Roberts}]{Pitt-2018-61}
+\bibinfo{author}{J.~Pitt}, \bibinfo{author}{C.~Zoppou},
+  \bibinfo{author}{S.~Roberts},
+\newblock \bibinfo{title}{Behaviour of the {S}erre equations in the presence of
+  steep gradients revisited},
+\newblock \bibinfo{journal}{Wave Motion} \bibinfo{volume}{76}
+  (\bibinfo{year}{2018}) \bibinfo{pages}{61--77}.
 %Type = Article
 \bibitem[{Dong and Li(2016)}]{DONG-2016-110}
 \bibinfo{author}{H.~Dong}, \bibinfo{author}{M.~Li},
@@ -110,6 +147,15 @@
   comparative evaluation},
 \newblock \bibinfo{journal}{Applied Mathematical Modelling}
   \bibinfo{volume}{56} (\bibinfo{year}{2018}) \bibinfo{pages}{404--423}.
+%Type = Article
+\bibitem[{Dutykh et~al.(2013)Dutykh, Clamond, Milewski, and
+  Mitsotakis}]{Dutykh-etal-2013-761}
+\bibinfo{author}{D.~Dutykh}, \bibinfo{author}{D.~Clamond},
+  \bibinfo{author}{P.~Milewski}, \bibinfo{author}{D.~Mitsotakis},
+\newblock \bibinfo{title}{Finite volume and pseudo-spectral schemes for the
+  fully nonlinear 1{D} {S}erre equations},
+\newblock \bibinfo{journal}{European Journal of Applied Mathematics}
+  \bibinfo{volume}{24} (\bibinfo{year}{2013}) \bibinfo{pages}{761--787}.
 %Type = Phdthesis
 \bibitem[{Zoppou(2014)}]{Zoppou-2014}
 \bibinfo{author}{C.~Zoppou}, \bibinfo{title}{Numerical Solution of the
@@ -134,14 +180,6 @@
   \bibinfo{address}{Mathematical Sciences Institute, College of Physical and
   Mathematical Sciences, Australian National University, Canberra, ACT 2600,
   Australia}, \bibinfo{year}{2019}.
-%Type = Article
-\bibitem[{Pitt et~al.(2018)Pitt, Zoppou, and Roberts}]{Pitt-2018-61}
-\bibinfo{author}{J.~Pitt}, \bibinfo{author}{C.~Zoppou},
-  \bibinfo{author}{S.~Roberts},
-\newblock \bibinfo{title}{Behaviour of the {S}erre equations in the presence of
-  steep gradients revisited},
-\newblock \bibinfo{journal}{Wave Motion} \bibinfo{volume}{76}
-  (\bibinfo{year}{2018}) \bibinfo{pages}{61--77}.
 %Type = Article
 \bibitem[{Pu et~al.(2018)Pu, Pego, Dutykh, and Clamond}]{Pu-2018-1361}
 \bibinfo{author}{Y.~Pu}, \bibinfo{author}{R.~Pego},
@@ -209,14 +247,6 @@
   physics},
 \newblock \bibinfo{journal}{IBM Journal of Research and Development}
   \bibinfo{volume}{11} (\bibinfo{year}{1967}) \bibinfo{pages}{215--234}.
-%Type = Article
-\bibitem[{El et~al.(2006)El, Grimshaw, and Smyth}]{El-etal-2006}
-\bibinfo{author}{G.~El}, \bibinfo{author}{R.~Grimshaw},
-  \bibinfo{author}{N.~Smyth},
-\newblock \bibinfo{title}{Unsteady undular bores in fully nonlinear
-  shallow-water theory},
-\newblock \bibinfo{journal}{Physics of Fluids} \bibinfo{volume}{18}
-  (\bibinfo{year}{2006}) \bibinfo{pages}{027104}.
 %Type = Article
 \bibitem[{Shu(2012)}]{Shu-2012-59-5}
 \bibinfo{author}{C.~Shu},

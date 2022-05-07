@@ -4,44 +4,44 @@ The top-level auxiliary file: gSGNpaper.aux
 The style file: elsarticle-num-names.bst
 Database file #1: Bibliography.bib
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-You've used 28 entries,
+You've used 32 entries,
             2918 wiz_defined-function locations,
-            821 strings with 10555 characters,
-and the built_in function-call counts, 17772 in all, are:
-= -- 1270
-> -- 679
-< -- 11
-+ -- 271
-- -- 225
-* -- 2103
-:= -- 2526
-add.period$ -- 28
-call.type$ -- 28
-change.case$ -- 213
-chr.to.int$ -- 28
-cite$ -- 28
-duplicate$ -- 1335
-empty$ -- 1340
-format.name$ -- 311
-if$ -- 3281
+            850 strings with 11296 characters,
+and the built_in function-call counts, 20147 in all, are:
+= -- 1421
+> -- 777
+< -- 13
++ -- 310
+- -- 258
+* -- 2384
+:= -- 2866
+add.period$ -- 32
+call.type$ -- 32
+change.case$ -- 244
+chr.to.int$ -- 32
+cite$ -- 32
+duplicate$ -- 1521
+empty$ -- 1530
+format.name$ -- 352
+if$ -- 3719
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 268
-newline$ -- 149
-num.names$ -- 112
-pop$ -- 463
+missing$ -- 308
+newline$ -- 165
+num.names$ -- 128
+pop$ -- 532
 preamble$ -- 1
-purify$ -- 215
+purify$ -- 246
 quote$ -- 0
-skip$ -- 293
+skip$ -- 337
 stack$ -- 0
-substring$ -- 876
-swap$ -- 980
+substring$ -- 962
+swap$ -- 1112
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 249
+type$ -- 279
 warning$ -- 0
-while$ -- 109
+while$ -- 123
 width$ -- 0
-write$ -- 378
+write$ -- 429
