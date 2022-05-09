@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  7 MAY 2022 15:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  9 MAY 2022 19:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1105,19 +1105,19 @@ Overfull \hbox (2.22221pt too wide) has occurred while \output is active
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<def>-command' on input line 113.
+(hyperref)                removing `\<def>-command' on input line 114.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\cnotenum' on input line 113.
+(hyperref)                removing `\cnotenum' on input line 114.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\<def>-command' on input line 113.
+(hyperref)                removing `\<def>-command' on input line 114.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@corref' on input line 113.
+(hyperref)                removing `\@corref' on input line 114.
 
 [1
 Non-PDF special ignored!
@@ -1256,11 +1256,11 @@ Package rerunfilecheck Info: File `gSGNpaper.out' has not changed.
 Here is how much of TeX's memory you used:
  35845 strings out of 478994
  803518 string characters out of 5862208
- 1394362 words of memory out of 5000000
+ 1393362 words of memory out of 5000000
  52566 multiletter control sequences out of 15000+600000
  410635 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,18n,103p,1903b,1016s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 102i,18n,103p,1923b,1016s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
 live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texlive/202
 1/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-d
@@ -1284,7 +1284,7 @@ ic/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/
 texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb>
-Output written on gSGNpaper.pdf (23 pages, 1098683 bytes).
+Output written on gSGNpaper.pdf (23 pages, 1098808 bytes).
 PDF statistics:
  1011 PDF objects out of 1200 (max. 8388607)
  921 compressed objects within 10 object streams
