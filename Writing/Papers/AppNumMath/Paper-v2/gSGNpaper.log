@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  9 MAY 2022 19:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  23 MAY 2022 11:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -983,7 +983,11 @@ LaTeX Info: Redefining \today on input line 736.
 \dt@a=\toks46
 \dt@b=\toks47
 )
-(./gSGNpaper.aux)
+(./gSGNpaper.aux
+
+LaTeX Warning: Label `Fig:Neg_Wave_1cm' multiply defined.
+
+)
 \openout1 = `gSGNpaper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 81.
@@ -1004,8 +1008,7 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 81.
 LaTeX Font Info:    ... okay on input line 81.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 81.
 LaTeX Font Info:    ... okay on input line 81.
-
-(c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+ (c:/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count387
 \scratchdimen=\dimen337
@@ -1237,27 +1240,54 @@ Package pdftex.def Info: Figure-10.pdf  used on input line 729.
 (pdftex.def)             Requested size: 237.26497pt x 180.1203pt.
 
 [17] [18 <./Figure-9a.pdf> <./Figure-9b.pdf> <./Figure-9c.pdf> <./Figure-10.pdf
->] [19]
-<Figure-11a.pdf, id=850, 781.43144pt x 1034.6936pt>
+>]
+
+LaTeX Warning: Reference `Fig:Neg_Wave' on page 19 undefined on input line 756.
+
+
+[19]
+<Figure11-Test.pdf, id=848, 825.42577pt x 167.01497pt>
+File: Figure11-Test.pdf Graphic file (type pdf)
+<use Figure11-Test.pdf>
+Package pdftex.def Info: Figure11-Test.pdf  used on input line 766.
+(pdftex.def)             Requested size: 484.2088pt x 97.97476pt.
+<Figure-11a.pdf, id=849, 781.43144pt x 1034.6936pt>
 File: Figure-11a.pdf Graphic file (type pdf)
 <use Figure-11a.pdf>
-Package pdftex.def Info: Figure-11a.pdf  used on input line 769.
-(pdftex.def)             Requested size: 237.26497pt x 314.15227pt.
-<Figure-11b.pdf, id=851, 773.50584pt x 1034.72473pt>
+Package pdftex.def Info: Figure-11a.pdf  used on input line 774.
+(pdftex.def)             Requested size: 484.2088pt x 641.15607pt.
+
+
+LaTeX Warning: Float too large for page by 29.22604pt on input line 777.
+
+<Figure-11b.pdf, id=850, 773.50584pt x 1034.72473pt>
 File: Figure-11b.pdf Graphic file (type pdf)
 <use Figure-11b.pdf>
-Package pdftex.def Info: Figure-11b.pdf  used on input line 775.
-(pdftex.def)             Requested size: 237.26497pt x 317.38258pt.
- [20 <./Figure-11a.pdf> <./Figure-11b.pdf>] (./gSGNpaper.bbl [21]
-[22]) [23] (./gSGNpaper.aux)
+Package pdftex.def Info: Figure-11b.pdf  used on input line 782.
+(pdftex.def)             Requested size: 484.2088pt x 647.72763pt.
+
+LaTeX Warning: Float too large for page by 35.7976pt on input line 785.
+
+
+LaTeX Warning: Reference `Fig:Neg_Wave' on page 20 undefined on input line 787.
+
+
+[20 <./Figure11-Test.pdf>] [21 <./Figure-11a.pdf>] [22 <./Figure-11b.pdf>]
+(./gSGNpaper.bbl [23]) [24] (./gSGNpaper.aux)
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package rerunfilecheck Info: File `gSGNpaper.out' has not changed.
 (rerunfilecheck)             Checksum: F418C50FC9E52AA221808E123EC8BCDD;4957.
  ) 
 Here is how much of TeX's memory you used:
- 35845 strings out of 478994
- 803518 string characters out of 5862208
- 1393362 words of memory out of 5000000
- 52566 multiletter control sequences out of 15000+600000
+ 35852 strings out of 478994
+ 803668 string characters out of 5862208
+ 1393602 words of memory out of 5000000
+ 52569 multiletter control sequences out of 15000+600000
  410635 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,18n,103p,1923b,1016s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1284,10 +1314,10 @@ ic/amsfonts/cm/cmsy8.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmti10.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
 7.pfb><c:/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/
 texlive/2021/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb>
-Output written on gSGNpaper.pdf (23 pages, 1098808 bytes).
+Output written on gSGNpaper.pdf (24 pages, 1115752 bytes).
 PDF statistics:
- 1011 PDF objects out of 1200 (max. 8388607)
- 921 compressed objects within 10 object streams
- 161 named destinations out of 1000 (max. 500000)
- 305 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1033 PDF objects out of 1200 (max. 8388607)
+ 941 compressed objects within 10 object streams
+ 164 named destinations out of 1000 (max. 500000)
+ 310 words of extra memory for PDF output out of 10000 (max. 10000000)
 

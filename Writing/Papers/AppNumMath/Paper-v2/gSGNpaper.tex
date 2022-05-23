@@ -761,25 +761,28 @@ The numerical solutions to the classical SGN equations with $\beta_1 = 2/3$ and 
 
 The numerical solutions of the improved dispersion SGN with $\beta_1 = 4/5$ and $\beta_2 = 2/15$ best replicate the experimental results. The improved SGN, maintain the good agreement of the classical SGN at the front of the dispersive wave train, and improve it everywhere else. In particular, the oscillations observed at WG1 on the dip before the dispersive wave train arrives better agree with the experimental results which only shows one prominent oscillation. The improved SGN equations due to their limited dispersive wave regions better replicate the flat regions observed in the experimental results and thus better reproduce the associated wave envelopes. The improved SGN equations produce the most accurate number and heights of oscillations, although the equations still overestimate them due to diffusive physical effects not captured by the equations. The speed of these oscillations is also best matched by the solutions of the improved SGN. These results for the improved dispersion SGN agree with the findings of \citet{DoCarmo-2018} for the evolution of an undular bore, which demonstrated the ability of improved dispersion equations to better resolve the speeds and heights of the generated dispersive wave train. While the improved SGN equations produce the best agreement, the experimental effects not included in the model are the dominant source of disagreement with the numerical solutions. 
 
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{Figure11-Test.pdf}
+	\caption{Rectangular negative wave experiments ($h_0 - h_1 = 0.01m$) time series at the five Wave Gauges (WG) for simulation with the improved SGN with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (\solidrule), the classical SGN with $\beta_1 = 2/3$ and $\beta_2 = 0$ ({\color{blue}\solidrule}), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ ({\color{green!80!black}\dashedrule}) compared to the experimental results ({\color{red}\solidrule}).}
+	\label{Fig:Neg_Wave_1cm}
+\end{figure}
+
 %
 \begin{figure}
 	\centering
-	\begin{subfigure}{0.49\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Figure-11a.pdf}
-		\caption{$h_0 - h_1 = 0.01m$}
-		\label{Fig:Neg_Wave_1}
-	\end{subfigure}
-	\begin{subfigure}{0.49\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{Figure-11b.pdf}
-		\caption{$h_0 - h_1 = 0.03m$}
-		\label{Fig:Neg_Wave_2}
-	\end{subfigure}
-	\caption{Rectangular negative wave experiments time series at the five Wave Gauges (WG) for simulation with the improved SGN with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (\solidrule), the classical SGN with $\beta_1 = 2/3$ and $\beta_2 = 0$ ({\color{blue}\solidrule}), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ ({\color{green!80!black}\dashedrule}) compared to the experimental results ({\color{red}\solidrule}).}
-	\label{Fig:Neg_Wave}
+	\includegraphics[width=\textwidth]{Figure-11a.pdf}
+	\caption{Rectangular negative wave experiments ($h_0 - h_1 = 0.01m$) time series at the five Wave Gauges (WG) for simulation with the improved SGN with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (\solidrule), the classical SGN with $\beta_1 = 2/3$ and $\beta_2 = 0$ ({\color{blue}\solidrule}), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ ({\color{green!80!black}\dashedrule}) compared to the experimental results ({\color{red}\solidrule}).}
+	\label{Fig:Neg_Wave_1cm}
 \end{figure}
 %
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{Figure-11b.pdf}
+	\caption{Rectangular negative wave experiments ($h_0 - h_1 = 0.03m$) time series at the five Wave Gauges (WG) for simulation with the improved SGN with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (\solidrule), the classical SGN with $\beta_1 = 2/3$ and $\beta_2 = 0$ ({\color{blue}\solidrule}), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ ({\color{green!80!black}\dashedrule}) compared to the experimental results ({\color{red}\solidrule}).}
+	\label{Fig:Neg_Wave_3cm}
+\end{figure}
 
 The errors in conservation for all numerical simulations used to produce Figure \ref{Fig:Neg_Wave} are displayed in Table \ref{tab:Neg_Wave_Cons}. All numerical solutions conserve $h$ and $G$ to machine precision due to their use of a finite volume method. The energy $\mathcal{E}$ is also well conserved by each numerical solution for both experiments, demonstrating that the numerical solutions are well resolved with the used spatial and temporal resolutions. However, larger rectangular waves do lead to worse conservation of energy. 
 
