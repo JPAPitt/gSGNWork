@@ -1219,10 +1219,10 @@ table[row sep=crcr]{%
 
 \addplot [color=gray!80!white,dash pattern= on 8pt off 4pt, line width=2.0pt, forget plot]
 table[row sep=crcr]{%
-	15	0.1\\
-	45	0.1\\
-	45	-0.1\\
-	15	-0.1\\
+	0	0.1\\
+	30	0.1\\
+	30	-0.2\\
+	0	-0.2\\
 }--cycle;
 
 \nextgroupplot[width=8cm,
@@ -1232,15 +1232,18 @@ yticklabel style={scaled ticks=false,
 	/pgf/number format/fixed,
 	/pgf/number format/precision=3},
 scale only axis,
-xmin=15,
-xmax=45,
+xmin=0,
+xmax=30,
 ylabel={\LARGE WG1},
-xtick ={15,30,45},
-ymin=-0.1,
+xtick ={0,15,30},
+clip=false,
+restrict x to domain=0:30,
+ymin=-0.2,
 ymax=0.1,
 ylabel near ticks,
 yticklabel pos=right,
-ytick ={-0.1,-0.05,0,0.05,0.1},
+ylabel style={font=\color{white!15!black},rotate=-90},
+ytick ={-0.2,-0.1,0,0.1},
 axis background/.style={fill=white},
 xticklabel shift={5pt},
 ]
@@ -2265,7 +2268,12 @@ table[row sep=crcr]{%
 	16.5539162392814	-0.000447358200744929\\
 	18.2869977228163	-0.00044750765997037\\
 	22.8886278687537	-0.000438725422640118\\
+	30	0\\
+	31	0\\
 	32.9883096176291	-0.000437409510368525\\
+	40	0\\
+	50	0\\
+	59	0\\
 	200.021507772107	-0.000324750914700189\\
 };
 \addplot [color=red, line width=4pt, forget plot]
@@ -2411,7 +2419,6 @@ table[row sep=crcr]{%
 	48.4261	-0.00389772666666488\\
 	49.3416	-0.0011927133333316\\
 };
-%\node[] at (axis cs:215,0) {\LARGE WG1};
 
 \nextgroupplot[width=15cm,
 height=3cm,
@@ -4571,10 +4578,10 @@ table[row sep=crcr]{%
 
 \addplot [color=gray!80!white,dash pattern= on 8pt off 4pt, line width=2.0pt, forget plot]
 table[row sep=crcr]{%
-	60	0.1\\
-	90	0.1\\
-	90	-0.1\\
-	60	-0.1\\
+	30	0.12\\
+	60	0.12\\
+	60	-0.12\\
+	30	-0.12\\
 }--cycle;
 
 \nextgroupplot[width=8cm,
@@ -4584,16 +4591,18 @@ yticklabel style={scaled ticks=false,
 	/pgf/number format/fixed,
 	/pgf/number format/precision=3},
 scale only axis,
-xmin=60,
-xmax=90,
-xtick ={60,75,90},
+xmin=30,
+xmax=60,
+xtick ={30,45,60},
 xlabel style={font=\color{white!15!black}},
+clip=false,
+restrict x to domain=30:60,
+ymin=-0.1,
+ymax=0.1,
+ytick ={-0.1,0,0.1},
 ylabel near ticks,
 yticklabel pos=right,
-ymin=-0.05,
-ymax=0.05,
-ytick ={-0.05,-0.025,0,0.025,0.05},
-ylabel style={font=\color{white!15!black}},
+ylabel style={font=\color{white!15!black},rotate=-90},
 ylabel={\LARGE WG2},
 axis background/.style={fill=white},
 xticklabel shift={5pt},
@@ -6418,7 +6427,11 @@ table[row sep=crcr]{%
 	21.713716560065	-0.000324738222644783\\
 	21.8332394209985	-0.00053728569832856\\
 	26.9727224411366	-0.000451291172510082\\
+	30.001	0\\
+	40	0\\
 	43.287592958552	-0.000445424746118306\\
+	50	0\\
+	60	0\\
 	60.6184077939016	-0.000425546222146522\\
 	145.658923348037	-0.000336979935411819\\
 	199.503972198539	-0.000256419493865678\\
@@ -9322,10 +9335,10 @@ table[row sep=crcr]{%
 
 \addplot [color=gray!80!white,dash pattern= on 8pt off 4pt, line width=2.0pt, forget plot]
 table[row sep=crcr]{%
-	80	0.1\\
-	110	0.1\\
-	110	-0.1\\
-	80	-0.1\\
+	80	0.045\\
+	110	0.045\\
+	110	-0.045\\
+	80	-0.045\\
 }--cycle;
 
 \nextgroupplot[width=8cm,
@@ -9339,12 +9352,12 @@ xmin=80,
 xmax=110,
 xtick ={80,95,110},
 xlabel style={font=\color{white!15!black}},
-ylabel near ticks,
-yticklabel pos=right,
 ymin=-0.04,
 ymax=0.04,
 ytick ={-0.04,-0.02,0,0.02,0.04},
-ylabel style={font=\color{white!15!black}},
+ylabel near ticks,
+yticklabel pos=right,
+ylabel style={font=\color{white!15!black},rotate=-90},
 ylabel={\LARGE WG3},
 axis background/.style={fill=white},
 xticklabel shift={5pt},
@@ -14768,10 +14781,10 @@ table[row sep=crcr]{%
 
 \addplot [color=gray!80!white,dash pattern= on 8pt off 4pt, line width=2.0pt, forget plot]
 table[row sep=crcr]{%
-	105	0.1\\
-	135	0.1\\
-	135	-0.1\\
-	105	-0.1\\
+	105	0.05\\
+	135	0.05\\
+	135	-0.05\\
+	105	-0.05\\
 }--cycle;
 
 \nextgroupplot[width=8cm,
@@ -14784,16 +14797,15 @@ xmin=105,
 xmax=135,
 xtick ={105,120,135},
 xlabel style={font=\color{white!15!black}},
-%		xlabels at=top,
-%xlabel={\LARGE $t\sqrt{\dfrac{g}{h_0}} - \dfrac{x_0}{h_0}$},
-%clip=false,
+clip=false,
+restrict x to domain=105:135,
 ymin=-0.04,
 ymax=0.04,
 ytick ={-0.04,-0.02,0,0.02,0.04},
-ylabel style={font=\color{white!15!black}},
-ylabel={\LARGE WG4},
 ylabel near ticks,
 yticklabel pos=right,
+ylabel style={font=\color{white!15!black},rotate=-90},
+ylabel={\LARGE WG4},
 ]
 \addplot [color=blue, line width=4pt, forget plot]
 table[row sep=crcr]{%
@@ -17233,6 +17245,8 @@ table[row sep=crcr]{%
 	32.9895000890957	-0.000232934168622023\\
 	33.4675915328293	-0.00029490191789705\\
 	34.1249672679631	-0.000301215056509818\\
+	105.001	0\\
+	134.999	0\\
 	200.022698243537	-0.000209674556174377\\
 };
 \addplot [color=red, line width=4pt, forget plot]
@@ -20476,10 +20490,10 @@ table[row sep=crcr]{%
 
 \addplot [color=gray!80!white,dash pattern= on 8pt off 4pt, line width=2.0pt, forget plot]
 table[row sep=crcr]{%
-	150	0.1\\
-	180	0.1\\
-	180	-0.1\\
-	150	-0.1\\
+	150	0.05\\
+	180	0.05\\
+	180	-0.05\\
+	150	-0.05\\
 }--cycle;
 
 \node[] at (axis cs:180,-0.43) {\LARGE $t\sqrt{\dfrac{g}{h_0}} - \dfrac{x_0}{h_0}$};
@@ -20495,16 +20509,17 @@ xmin=150,
 xmax=180,
 xtick ={150,165,180},
 xlabel style={font=\color{white!15!black}},
-%xlabel={\LARGE $t\sqrt{\dfrac{g}{h_0}} - \dfrac{x_0}{h_0}$},
+clip=false,
+restrict x to domain=150:180,
 ymin=-0.04,
 ymax=0.04,
 ytick ={-0.04,-0.02,0,0.02,0.04},
-ylabel style={font=\color{white!15!black}},
+ylabel near ticks,
+yticklabel pos=right,
+ylabel style={font=\color{white!15!black},rotate=-90},
 ylabel={\LARGE WG5},
 axis background/.style={fill=white},
 xticklabel shift={5pt},
-ylabel near ticks,
-yticklabel pos=right,
 ]
 \addplot [color=blue, line width=4pt, forget plot]
 table[row sep=crcr]{%
@@ -22928,6 +22943,8 @@ table[row sep=crcr]{%
 	37.1333560919306	-0.000428080432527622\\
 	37.252878952864	-0.000222711700274658\\
 	82.5520432466265	-0.000264366403825989\\
+	150.001	0\\
+	179.999	0\\
 	200.043015544169	-0.000200541040726421\\
 };
 \addplot [color=red, line width=4pt, forget plot]
