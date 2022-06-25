@@ -52,15 +52,30 @@ Authors made some good improvement. They added some test cases with Experimental
 
 \subsection{Response}
 \subsubsection{Issue 1}
-We have split Figure 11 into Figures 11 and 12, adding panels that zoom in on specific areas. Both these changes allow the black and blue lines to be better distinguished and thus compared. The supporting discussion has also been updated appropriately to match the altered figures.
+We have split Figure 11 into Figures 11 and 12, adding panels that zoom in on specific areas. Both these changes allow the black and blue lines to be better distinguished and thus compared.
+These updated figures support an improved discussion making use of both the entire wave gauge behaviour but also the additional zoomed in sections to better compare and contrast the numerical solutions and experimental results.
 
 \subsubsection{Issue 2}
-We have have improved the motivation for the paper as communicated by the abstract, introduction and conclusions. While the suggested motivations were helpful and illustrated the reviewers issue with the previous motivation, the updated papers motivation is not wholly taken from their suggestions and is instead (summarised):
+We have improved the motivation for the paper as communicated by the abstract, introduction and conclusion. While the suggested motivations were helpful and illustrated the reviewers issue with the previous motivation, the updated motivation is not wholly taken from their suggestions. Instead the purpose of this paper is that we report the first validated method for the gSGNE for general members of the family (any values of $\beta_1$ and $\beta_2$) as well as provide a comparison of the linear dispersion properties with example numerical solutions to the full nonlinear equations.
+
+This motivation has been made clearer in the abstract, introduction and conclusion which have all been significantly rewritten and now includes sentences such as
+\begin{itemize}
+\item `The consistency of the described numerical scheme for all members of the family of equations is in contrast to other numerical schemes which require specialised modifications for individual members of the family of equations' in the abstract
+	
+\item`Thus the first numerical scheme capable of solving the gSGNE for arbitrary values of $\beta_1$ and $\beta_2$ is produced and validated.' in the introduction
+	
+\item`The gSGNE method described above is the first validated numerical method for arbitrary members of the gSGNE family and its validation supports the provided classification of members of the gSGNE using their linear dispersive properties.' in the conclusion
+\end{itemize}
+communicating the paper's motivation clearly. 
 
 
-The first validated method for the gSGNE for general members of the family (any values of $\beta_1$ and $\beta_2$) as well as the comparison of the linear dispersion properties with example numerical solutions to the full nonlinear equations.
+While comparison of numerical schemes is always a benefit, this is beyond the scope of this paper.
+Instead we are just demonstrating that it is possible to develop a singular scheme capable of solving all members of the family of equations without individual modifications. This has previously not been achieved. Therefore, it is not clear what numerical scheme one could compare to and it would require significant research to investigate how other
+numerical schemes which require modifications to solve certain groups of this family of equations can be altered to ensure that they solve them all without specialised modification. Alternatively comparison of the described numerical scheme to other select numerical methods for individual members of the family of equations would be significantly limited due to the constrained applicability of other numerical methods. Since this paper is about all members of the gSGNE  family, the focus of these comparisons would be too narrow.
 
-
-This point has been made clearer in the abstract, introduction and conclusion. Additional benefits of the numerical scheme have also been clearly made in the introduction. While the numerical method compares well to other methods for select values of $\beta_1$ and $\beta_2$, there are currently no methods for arbitrary values of $\beta_1$ and $\beta_2$, hence the novelty of the manuscript.
+ 
+ \subsubsection{Summary}
+ 
+ We have now addressed the reviewers comments and recommendations. In particular Figure 11 has been improved and the motivation of the paper has been made clear. The motivation being that the described method is not a new method improving previous methods for individual nonlinear dispersive or nondispesive equations but rather a method applicable to an entire family of nonlinear equations that requires no additional modifications when changing the relative strength of dispersion. 
 
 \end{document}

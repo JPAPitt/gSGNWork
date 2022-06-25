@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{33}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -180,6 +180,13 @@
   \bibinfo{address}{Mathematical Sciences Institute, College of Physical and
   Mathematical Sciences, Australian National University, Canberra, ACT 2600,
   Australia}, \bibinfo{year}{2019}.
+%Type = Article
+\bibitem[{Kurganov and Petrova(2007)}]{Kurganov-Petrova-2007-707}
+\bibinfo{author}{A.~Kurganov}, \bibinfo{author}{G.~Petrova},
+\newblock \bibinfo{title}{A second-order well-balanced positivity preserving
+  central-upwind scheme for the {S}aint-{V}enant system},
+\newblock \bibinfo{journal}{Communications in Mathematical Sciences}
+  \bibinfo{volume}{5} (\bibinfo{year}{2007}) \bibinfo{pages}{133--160}.
 %Type = Article
 \bibitem[{Pu et~al.(2018)Pu, Pego, Dutykh, and Clamond}]{Pu-2018-1361}
 \bibinfo{author}{Y.~Pu}, \bibinfo{author}{R.~Pego},
