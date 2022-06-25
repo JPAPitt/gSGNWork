@@ -1,4 +1,7 @@
 \documentclass[10pt]{elsarticle}
+%DIF LATEXDIFF DIFFERENCE FILE
+%DIF DEL gSGNpaper _v1.tex   Thu Dec 16 04:19:32 2021
+%DIF ADD gSGNpaper.tex       Sat Jun 25 10:15:45 2022
 
   \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
@@ -35,7 +38,11 @@
 \usepackage[us,12hr]{datetime} % `us' makes \today behave as usual in TeX/LaTeX
 \fancypagestyle{plain}{
 \fancyhf{}
-\rfoot{\emph{\footnotesize \textcopyright  gSGNE method by  J. Pitt, C. Zoppou and S. Roberts.}
+%DIF 38c38
+%DIF < \rfoot{\emph{\footnotesize \textcopyright  gSGN Method by  J. Pitt, C. Zoppou and S. Roberts.}
+%DIF -------
+\rfoot{\emph{\footnotesize \textcopyright  gSGNE method by  J. Pitt, C. Zoppou and S. Roberts.} %DIF > 
+%DIF -------
  \\ File Name: {\currfilename} \\ Date: {\ddmmyyyydate\today} at \currenttime}
 \lfoot{Page \thepage}
 \renewcommand{\headrulewidth}{0pt}}
@@ -76,10 +83,90 @@
 
 
 \DeclareRobustCommand{\squareF}[1]{\tikz{\filldraw[#1,fill opacity= 0.3] (0,0) rectangle (0.2cm,0.2cm);}}
-
+%DIF PREAMBLE EXTENSION ADDED BY LATEXDIFF
+%DIF CFONT PREAMBLE %DIF PREAMBLE
+\RequirePackage{color}\definecolor{RED}{rgb}{1,0,0}\definecolor{BLUE}{rgb}{0,0,1} %DIF PREAMBLE
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf} %DIF PREAMBLE
+\providecommand{\DIFaddtex}[1]{{\protect\color{blue} \sf #1}} %DIF PREAMBLE
+\providecommand{\DIFdeltex}[1]{{\protect\color{red} \scriptsize #1}} %DIF PREAMBLE
+%DIF SAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddbegin}{} %DIF PREAMBLE
+\providecommand{\DIFaddend}{} %DIF PREAMBLE
+\providecommand{\DIFdelbegin}{} %DIF PREAMBLE
+\providecommand{\DIFdelend}{} %DIF PREAMBLE
+\providecommand{\DIFmodbegin}{} %DIF PREAMBLE
+\providecommand{\DIFmodend}{} %DIF PREAMBLE
+%DIF FLOATSAFE PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFaddFL}[1]{\DIFadd{#1}} %DIF PREAMBLE
+\providecommand{\DIFdelFL}[1]{\DIFdel{#1}} %DIF PREAMBLE
+\providecommand{\DIFaddbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFaddendFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelbeginFL}{} %DIF PREAMBLE
+\providecommand{\DIFdelendFL}{} %DIF PREAMBLE
+%DIF HYPERREF PREAMBLE %DIF PREAMBLE
+\providecommand{\DIFadd}[1]{\texorpdfstring{\DIFaddtex{#1}}{#1}} %DIF PREAMBLE
+\providecommand{\DIFdel}[1]{\texorpdfstring{\DIFdeltex{#1}}{}} %DIF PREAMBLE
+\newcommand{\DIFscaledelfig}{0.5}
+%DIF HIGHLIGHTGRAPHICS PREAMBLE %DIF PREAMBLE
+\RequirePackage{settobox} %DIF PREAMBLE
+\RequirePackage{letltxmacro} %DIF PREAMBLE
+\newsavebox{\DIFdelgraphicsbox} %DIF PREAMBLE
+\newlength{\DIFdelgraphicswidth} %DIF PREAMBLE
+\newlength{\DIFdelgraphicsheight} %DIF PREAMBLE
+% store original definition of \includegraphics %DIF PREAMBLE
+\LetLtxMacro{\DIFOincludegraphics}{\includegraphics} %DIF PREAMBLE
+\newcommand{\DIFaddincludegraphics}[2][]{{\color{blue}\fbox{\DIFOincludegraphics[#1]{#2}}}} %DIF PREAMBLE
+\newcommand{\DIFdelincludegraphics}[2][]{% %DIF PREAMBLE
+\sbox{\DIFdelgraphicsbox}{\DIFOincludegraphics[#1]{#2}}% %DIF PREAMBLE
+\settoboxwidth{\DIFdelgraphicswidth}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\settoboxtotalheight{\DIFdelgraphicsheight}{\DIFdelgraphicsbox} %DIF PREAMBLE
+\scalebox{\DIFscaledelfig}{% %DIF PREAMBLE
+\parbox[b]{\DIFdelgraphicswidth}{\usebox{\DIFdelgraphicsbox}\\[-\baselineskip] \rule{\DIFdelgraphicswidth}{0em}}\llap{\resizebox{\DIFdelgraphicswidth}{\DIFdelgraphicsheight}{% %DIF PREAMBLE
+\setlength{\unitlength}{\DIFdelgraphicswidth}% %DIF PREAMBLE
+\begin{picture}(1,1)% %DIF PREAMBLE
+\thicklines\linethickness{2pt} %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\framebox(1,1){}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,0){\line( 1,1){1}}}% %DIF PREAMBLE
+{\color[rgb]{1,0,0}\put(0,1){\line(1,-1){1}}}% %DIF PREAMBLE
+\end{picture}% %DIF PREAMBLE
+}\hspace*{3pt}}} %DIF PREAMBLE
+} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbegin}{\DIFaddbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddend}{\DIFaddend} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbegin}{\DIFdelbegin} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelend}{\DIFdelend} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbegin}{\DIFOaddbegin \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbegin}{\DIFOdelbegin \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelend}{\DIFOaddend \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddbeginFL}{\DIFaddbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOaddendFL}{\DIFaddendFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelbeginFL}{\DIFdelbeginFL} %DIF PREAMBLE
+\LetLtxMacro{\DIFOdelendFL}{\DIFdelendFL} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddbeginFL}{\DIFOaddbeginFL \let\includegraphics\DIFaddincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFaddendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelbeginFL}{\DIFOdelbeginFL \let\includegraphics\DIFdelincludegraphics} %DIF PREAMBLE
+\DeclareRobustCommand{\DIFdelendFL}{\DIFOaddendFL \let\includegraphics\DIFOincludegraphics} %DIF PREAMBLE
+%DIF LISTINGS PREAMBLE %DIF PREAMBLE
+\RequirePackage{listings} %DIF PREAMBLE
+\RequirePackage{color} %DIF PREAMBLE
+\lstdefinelanguage{DIFcode}{ %DIF PREAMBLE
+%DIF DIFCODE_CFONT %DIF PREAMBLE
+  moredelim=[il][\color{red}\scriptsize]{\%DIF\ <\ }, %DIF PREAMBLE
+  moredelim=[il][\color{blue}\sffamily]{\%DIF\ >\ } %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstdefinestyle{DIFverbatimstyle}{ %DIF PREAMBLE
+	language=DIFcode, %DIF PREAMBLE
+	basicstyle=\ttfamily, %DIF PREAMBLE
+	columns=fullflexible, %DIF PREAMBLE
+	keepspaces=true %DIF PREAMBLE
+} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim}{\lstset{style=DIFverbatimstyle}}{} %DIF PREAMBLE
+\lstnewenvironment{DIFverbatim*}{\lstset{style=DIFverbatimstyle,showspaces=true}}{} %DIF PREAMBLE
+%DIF END PREAMBLE EXTENSION ADDED BY LATEXDIFF
 
 \begin{document}
-	
+
 \journal{Wave Motion}
 
 \begin{frontmatter}
@@ -92,24 +179,46 @@
 \cortext[cor1]{jpapitt@gmail.com}
 
 \begin{abstract}
-A numerical scheme for solving the recently derived generalised Serre-Green-Naghdi equations which produce a family of equations modelling waves in shallow water with varying dispersion relationships, is described. The numerical scheme extends schemes applied to the classical Serre-Green-Naghdi equations written in conservation law form and is the first validated scheme for all admitted dispersion relationships. The consistency of the described numerical scheme for all members of the family of equations is in contrast to other numerical schemes which require specialised modifications for individual members of the family of equations. A typical second-order implementation of this numerical scheme is then demonstrated and validated using known analytic solutions; the travelling solitary wave and the dam-break problem. The numerical method is further validated for general members of the family of equations using forced solutions. Select members of this family are then used to simulate the evolution of rectangular waves of depression for which there are experimental results. The numerical method is shown to be conservative, robust and second-order accurate for the entire family of equations. The validated numerical solutions support a classification of the family of equations based on their linear dispersive properties which includes advancing dispersive wave trains in contrast to classical trailing dispersive wave trains.
-\end{abstract}
+\DIFdelbegin \DIFdel{The recently derived generalised Serre-Green-Naghdi equations are investigated and the parameter values classified according to the dispersive properties of the linearised equations with example numerical solutions shown. }\DIFdelend A numerical scheme for solving the \DIFaddbegin \DIFadd{recently derived }\DIFaddend generalised Serre-Green-Naghdi equations \DIFdelbegin \DIFdel{is then described. This numerical scheme is an extension to the numerical scheme for the }\DIFdelend \DIFaddbegin \DIFadd{which produce a family of equations modelling waves in shallow water with varying dispersion relationships, is described. The numerical scheme extends schemes applied to the }\DIFaddend classical Serre-Green-Naghdi equations written in conservation law form \DIFdelbegin \DIFdel{. }\DIFdelend \DIFaddbegin \DIFadd{and is the first validated scheme for all admitted dispersion relationships. The consistency of the described numerical scheme for all members of the family of equations is in contrast to other numerical schemes which require specialised modifications for individual members of the family of equations. }\DIFaddend A typical second-order implementation of this numerical scheme is then \DIFdelbegin \DIFdel{described }\DIFdelend \DIFaddbegin \DIFadd{demonstrated }\DIFaddend and validated using known analytic solutions; the travelling solitary wave and the dam-break problem. The numerical method is further validated for general members of \DIFdelbegin \DIFdel{this }\DIFdelend \DIFaddbegin \DIFadd{the }\DIFaddend family of equations using forced solutions. Select members of this family are then used to simulate the evolution of \DIFdelbegin \DIFdel{a rectangular wave }\DIFdelend \DIFaddbegin \DIFadd{rectangular waves }\DIFaddend of depression for which there \DIFdelbegin \DIFdel{is }\DIFdelend \DIFaddbegin \DIFadd{are }\DIFaddend experimental results. The \DIFdelbegin \DIFdel{described }\DIFdelend numerical method is shown to be conservative, robust and second-order accurate \DIFdelbegin \DIFdel{supporting the parameter classification based on the linear theory.
+}%DIFDELCMD < 
+
+%DIFDELCMD < %%%
+%DIF < []
+\DIFdelend \DIFaddbegin \DIFadd{for the entire family of equations. The validated numerical solutions support a classification of the family of equations based on their linear dispersive properties which includes advancing dispersive wave trains in contrast to classical trailing dispersive wave trains.
+}\DIFaddend \end{abstract}
 
 
 
-\end{frontmatter}
+%DIF < %%Graphical abstract
+%DIF < \begin{graphicalabstract}
+%DIF < 	\includegraphics{Figure-1abcde.pdf}
+%DIF < \end{graphicalabstract}
+%DIF < 
+%DIF < 
+%DIF < \begin{keyword}
+%DIF < 	generalised Serre-Green-Naghdi \sep Finite Volume Method \sep Finite Difference Method \sep Serre equations \sep regularised Shallow Water Wave Equations \sep dispersive water wave equations.
+%DIF < \end{keyword}
+\DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \end{frontmatter}
 
 %-------------------------------------------------
 \section{Introduction}
 %-------------------------------------------------
-Water waves are well described by the elegant yet difficult to solve inviscid Euler equations. Owing to the difficulty of solving the Euler equations various approximate equations have been derived to model water waves in various regimes of the fundamental scales involved in the problem \cite{Mehaute-1976}. The shallow water regime, where the typical water depth $h_0$ is much smaller than the wavelength $\lambda$, so that the shallowness parameter $\sigma = h_0/\lambda \ll 1$ is one such regime which includes tsunamis, storm surges and bores \cite{Sorenson-2006}. The shallow water regime is characterised by nonlinearity where higher waves travel faster resulting in wave steepening. Recent advances in modelling waves in the shallow water regime have focused on the inclusion of dispersion \cite{Kirby-etal-2013-39}, where waves of different frequencies travel at different speeds resulting in the breakdown of steep waves into so called dispersive wave trains \cite{El-etal-2006}. The generalised Serre-Green-Naghdi Equations (gSGNE) recently derived by \citet{Clamond-Dutykh-2018-237} are one such family of dispersive nonlinear equations that model waves in the shallow water regime. The gSGNE are a family of equations that generalise the classical nonlinear dispersive Serre-Green-Naghdi Equations (SGNE) first derived by \citet{Serre-F-1953-857} with the addition of two free parameters $\beta_1$ and $\beta_2$. These free parameters allow the gSGNE to exhibit linear dispersion relationships that well approximate the dispersion relationship of the linear wave theory \cite{Whitham-1967-399} up to order $\mathcal{O}\left(\sigma^6\right)$ terms \cite{Clamond-Dutykh-2018-237,Clamond-et.al-2017-245}. The gSGNE are thus of great interest to the wave modelling community. 
+\DIFdelbegin \DIFdel{The generalised Serre-Green-Naghdi Equations (gSGNE) were recently derived by \citet{Clamond-Dutykh-2018-237}. They are a family of equations that generalise the classical Serre-Green-Naghdi Equations (SGNE) first derived by \citet{Serre-F-1953-857}. The equationsdescribe the behaviour of }\DIFdelend \DIFaddbegin \DIFadd{Water waves are well described by the elegant yet difficult to solve inviscid Euler equations. Owing to the difficulty of solving the Euler equations various approximate equations have been derived to model }\DIFaddend water waves in \DIFdelbegin \DIFdel{shallow water }\DIFdelend \DIFaddbegin \DIFadd{various regimes of the fundamental scales involved in the problem \cite{Mehaute-1976}. The shallow water regime, }\DIFaddend where the typical water depth $h_0$ is much smaller than the wavelength $\lambda$\DIFaddbegin \DIFadd{, }\DIFaddend so that the shallowness parameter $\sigma = h_0/\lambda \ll 1$ \DIFdelbegin \DIFdel{. The gSGNE are of particular interest to the wave modelling community as their dispersion relationship well approximates the dispersion relationship of the linear wave theory \cite{Whitham-1967-399}. The choice of }\DIFdelend \DIFaddbegin \DIFadd{is one such regime which includes tsunamis, storm surges and bores \cite{Sorenson-2006}. The shallow water regime is characterised by nonlinearity where higher waves travel faster resulting in wave steepening. Recent advances in modelling waves in the shallow water regime have focused on the inclusion of dispersion \cite{Kirby-etal-2013-39}, where waves of different frequencies travel at different speeds resulting in the breakdown of steep waves into so called dispersive wave trains \cite{El-etal-2006}. The generalised Serre-Green-Naghdi Equations (gSGNE) recently derived by \citet{Clamond-Dutykh-2018-237} are one such family of dispersive nonlinear equations that model waves in the shallow water regime. The gSGNE are a family of equations that generalise the classical nonlinear dispersive Serre-Green-Naghdi Equations (SGNE) first derived by \citet{Serre-F-1953-857} with the addition of }\DIFaddend two free parameters $\beta_1$ and $\beta_2$\DIFdelbegin \DIFdel{allows for the dispersion }\DIFdelend \DIFaddbegin \DIFadd{. These free parameters allow the gSGNE to exhibit linear dispersion relationships that well approximate the dispersion }\DIFaddend relationship of the \DIFdelbegin \DIFdel{gSGNE to be accurate up to $\mathcal{O}\left(\sigma^2\right)$ terms, $\mathcal{O}\left(\sigma^4\right)$ terms and even }\DIFdelend \DIFaddbegin \DIFadd{linear wave theory \cite{Whitham-1967-399} up to order }\DIFaddend $\mathcal{O}\left(\sigma^6\right)$ terms \cite{Clamond-Dutykh-2018-237,Clamond-et.al-2017-245}. \DIFdelbegin \DIFdel{Therefore, these equations provide a way to study the behaviour of water waves as higher powers of $\sigma$ are retained in the wave model}\DIFdelend \DIFaddbegin \DIFadd{The gSGNE are thus of great interest to the wave modelling community}\DIFaddend . 
 
-Dispersive nonlinear shallow water wave equations, such as the gSGNE, are difficult to solve numerically due to the interaction between the nonlinear and dispersive effects with even seemingly trivial changes in initial conditions producing different behaviours in numerical solutions \cite{Pitt-2018-61}. Typical numerical methods employed are finite element methods \cite{Clamond-et.al-2017-245}, discontinuous Galerkin methods \cite{DONG-2016-110,PANDA-2014-572,LI-2019-108953}, hybrid finite volume methods \cite{Hank-etal-2010-2034,Zoppou-etal-2016} and splitting methods \cite{LANNES-2015-238,Filippini-etal-2016-381,doCarmo-etal-2018-404}. The gSGNE exacerbate these difficulties by allowing the relative strength of dispersion to vary with the choice of $\beta_1$ and $\beta_2$, which even allows for non-dispersive equations termed the regularised shallow water wave equations \cite{Clamond-Dutykh-2018-237}. A pseudo-spectral method  \cite{Dutykh-etal-2013-761} was employed to solve the regularised shallow water wave equations \cite{Clamond-Dutykh-2018-237} and the improved SGNE which are accurate up to $\mathcal{O}\left(\sigma^6\right)$ terms in the dispersion relationship \cite{Clamond-et.al-2017-245}. However, the numerical method required anti-alias filtering to solve the non-dispersive regularised shallow water wave equations. This makes it unsuitable to seamlessly solve arbitrary members of this family of nonlinear dispersive wave equations, as a variation in the relative strength of dispersion required a modification to the numerical scheme.
+\DIFdelbegin \DIFdel{Since this family of equations contains dispersive and non-dispersive members, this family of equations also provides a way to study the inclusion of dispersion in non-linear shallow water equations. This has been the objective underpinning much of the current research in the area of dispersive wave modelling. To accomplish this goal multiple investigations have been performed with various numerical methods such as }\DIFdelend \DIFaddbegin \DIFadd{Dispersive nonlinear shallow water wave equations, such as the gSGNE, are difficult to solve numerically due to the interaction between the nonlinear and dispersive effects with even seemingly trivial changes in initial conditions producing different behaviours in numerical solutions \cite{Pitt-2018-61}. Typical numerical methods employed are }\DIFaddend finite element methods \cite{Clamond-et.al-2017-245}, discontinuous Galerkin methods \cite{DONG-2016-110,PANDA-2014-572,LI-2019-108953}, hybrid finite volume methods \cite{Hank-etal-2010-2034,Zoppou-etal-2016} and splitting methods \cite{LANNES-2015-238,Filippini-etal-2016-381,doCarmo-etal-2018-404}\DIFdelbegin \DIFdel{on a number of different dispersive wave equations. This has left the underlying question of the effect of dispersion on non-linear }\DIFdelend \DIFaddbegin \DIFadd{. The gSGNE exacerbate these difficulties by allowing the relative strength of dispersion to vary with the choice of $\beta_1$ and $\beta_2$, which even allows for non-dispersive equations termed the regularised }\DIFaddend shallow water wave equations \DIFdelbegin \DIFdel{answered in a piecemeal way with comparisons of numerical solutions with different numerical methods applied to different equations. To provide a more focused answer to this question we propose one numerical method for an entire family of equations to comprehensively investigate the effect of dispersion on non-linear shallow water equations}\DIFdelend \DIFaddbegin \DIFadd{\cite{Clamond-Dutykh-2018-237}. A pseudo-spectral method  \cite{Dutykh-etal-2013-761} was employed to solve the regularised shallow water wave equations \cite{Clamond-Dutykh-2018-237} and the improved SGNE which are accurate up to $\mathcal{O}\left(\sigma^6\right)$ terms in the dispersion relationship \cite{Clamond-et.al-2017-245}. However, the numerical method required anti-alias filtering to solve the non-dispersive regularised shallow water wave equations. This makes it unsuitable to seamlessly solve arbitrary members of this family of nonlinear dispersive wave equations, as a variation in the relative strength of dispersion required a modification to the numerical scheme}\DIFaddend .
 
-In previous work we have developed and validated explicit numerical methods for a conservative reformulation of the SGNE \cite{Zoppou-2014,Zoppou-etal-2016,Zoppou-etal-2017,Pitt-2019} given by $\beta_1 = 2/3$ and $\beta_2 =0$ in the gSGNE. These numerical methods have all been based on the following approach: first solve an auxiliary elliptic equation for the non-conservative quantity and secondly evolve the equations in conservation law form using the finite volume method which requires the non-conserved quantity. The benefits of the approach was its ability to maintain the fundamental conservation properties of the SGNE \cite{Pitt-2019}, the robustness of the method in the presence of steep gradients and its ability to resolve high frequency structures \cite{Pitt-2018-61}. The approach has been shown to produce the theoretical accuracy of the underlying methods \cite{Zoppou-etal-2017,Pitt-2019} with the desired conservation and linear dispersion properties \cite{Pitt-2019}. It was demonstrated by \citet{Clamond-Dutykh-2018-237} that the gSGNE can also be written in conservation law form and thus the technique described above for the SGNE can be extended to the gSGNE with arbitrary $\beta_1$ and $\beta_2$. 
-%Since the numerical scheme's foundation is a finite volume method for an equation in conservation law shown to work well for nonlinear non-dispersive equations \cite{Kurganov-Petrova-2007-707} this scheme should be valid for all values of $\beta_1$ and $\beta_2$ without specialised modification. 
+In previous work we have developed and validated \DIFaddbegin \DIFadd{explicit }\DIFaddend numerical methods for a conservative reformulation of the SGNE \cite{Zoppou-2014,Zoppou-etal-2016,Zoppou-etal-2017,Pitt-2019} given by $\beta_1 = 2/3$ and $\beta_2 =0$ in the gSGNE. These numerical methods have all been based on the following approach\DIFdelbegin \DIFdel{, firstly }\DIFdelend \DIFaddbegin \DIFadd{: first }\DIFaddend solve an auxiliary elliptic equation for the non-conservative quantity \DIFdelbegin \DIFdel{. Secondly, }\DIFdelend \DIFaddbegin \DIFadd{and secondly }\DIFaddend evolve the equations in conservation law form using the finite volume method which requires the non-conserved quantity. The \DIFdelbegin \DIFdel{benefit }\DIFdelend \DIFaddbegin \DIFadd{benefits }\DIFaddend of the approach was its ability to maintain the fundamental conservation properties of the SGNE \cite{Pitt-2019}\DIFdelbegin \DIFdel{and }\DIFdelend \DIFaddbegin \DIFadd{, }\DIFaddend the robustness of the method in the presence of steep gradients \DIFaddbegin \DIFadd{and its ability to resolve high frequency structures }\DIFaddend \cite{Pitt-2018-61}. The approach has been shown to produce the theoretical accuracy of the underlying methods \cite{Zoppou-etal-2017,Pitt-2019} with the desired conservation and linear dispersion properties \cite{Pitt-2019}. It was demonstrated by \citet{Clamond-Dutykh-2018-237} that the gSGNE can also be written in conservation law form and thus the technique described above for the SGNE can be extended to the gSGNE with arbitrary $\beta_1$ and $\beta_2$. 
+%DIF > Since the numerical scheme's foundation is a finite volume method for an equation in conservation law shown to work well for nonlinear non-dispersive equations \cite{Kurganov-Petrova-2007-707} this scheme should be valid for all values of $\beta_1$ and $\beta_2$ without specialised modification. 
 
-This paper begins by introducing the gSGNE and highlighting their important properties. Of particular note, the free parameters $\beta_1$ and $\beta_2$ provide control of the width and relative location of the dispersive wave train. This allows for the family of equations to be classified by their respective dispersive wave train limits, and provides the basis for previously unobserved behaviour of dispersive wave trains. The second-order extension of the numerical scheme of \citet{Zoppou-etal-2017} is then described. The numerical method is then validated against analytic solutions of the SGNE and the shallow water wave equations (SWWE) which are solutions of the gSGNE for the appropriate $\beta$ values, demonstrating its convergence rate and conservation properties. Forced solutions are also used to validate that all terms in the gSGNE are being approximated to the correct order of accuracy with arbitrary $\beta_1$ and $\beta_2$ values. Forced solutions are necessary to validate the numerical method for other members of this family of equations, because no analytic solutions are currently known. Finally, various members of the gSGNE family are compared to experimental results for the evolution of rectangular depression waves to demonstrate the necessity of including dispersion and the effect of improving the accuracy of the dispersion relationship in realistic fluid problems. Together these validations demonstrate the capability of the numerical scheme to produce robust and accurate numerical solutions and the ability of the scheme to reproduce experimental results. Thus the first numerical scheme capable of solving the gSGNE for arbitrary values of $\beta_1$ and $\beta_2$ is demonstrated and validated. 
+This paper begins by introducing the gSGNE and highlighting their important properties. Of particular note, \DIFdelbegin \DIFdel{is that }\DIFdelend the free parameters $\beta_1$ and $\beta_2$ provide control of the width and relative location of the dispersive wave train. This allows for the family of equations to be classified by their respective dispersive wave train limits, and provides the basis for previously unobserved \DIFdelbegin \DIFdel{behaviours in }\DIFdelend \DIFaddbegin \DIFadd{behaviour of }\DIFaddend dispersive wave trains. The second-order extension of the numerical scheme of \citet{Zoppou-etal-2017} is then described. \DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend The numerical method is then validated against analytic solutions of the SGNE and the \DIFdelbegin \DIFdel{Shallow Water Wave Equations }\DIFdelend \DIFaddbegin \DIFadd{shallow water wave equations }\DIFaddend (SWWE) which are solutions of the gSGNE for the appropriate $\beta$ values, demonstrating its convergence rate and conservation properties. Forced solutions are also used to validate that all terms in the gSGNE are being approximated to the correct order of accuracy with arbitrary $\beta_1$ and $\beta_2$ values. Forced solutions are necessary to validate the numerical method for other members of this family of equations, because no analytic solutions are currently known. Finally, various members of the gSGNE family are compared to experimental results for the evolution of rectangular depression waves to demonstrate the necessity of including dispersion and the effect of improving the accuracy of the dispersion relationship in realistic fluid problems. Together these validations demonstrate the capability of the numerical scheme to produce robust and accurate numerical solutions and the ability of \DIFdelbegin \DIFdel{these numerical methods to reproduce experiments. %DIF < []
+}\DIFdelend \DIFaddbegin \DIFadd{the scheme to reproduce experimental results. Thus the first numerical scheme capable of solving the gSGNE for arbitrary values of $\beta_1$ and $\beta_2$ is produced and validated. 
+}\DIFaddend 
 
 %-------------------------------------------------
 \section{Generalised Serre-Green-Naghdi Equations}
@@ -144,7 +253,10 @@ When $\beta_1 = \beta_2 = 0$ these equations reduce to the SWWE and the SGNE are
 Equation \eqref{eq:gSGNE} contains three partial differential equations with only two unknowns, $h$ and $u$. Since there are only two unknowns it is sufficient to solve only two of the three equations, typically either the conservation of mass  \eqref{eq:gSGNEh} and the conservation of momentum equations \eqref{eq:gSGNEuh} or the conservation of mass  \eqref{eq:gSGNEh} and the conservation of energy equations \eqref{eq:gSGNEE}. If $h$ and $u$ are sufficiently smooth, then the solution of any pair of these equations will produce identical results. However for non-smooth solutions of $h$ and $u$ these pairs of equations will produce different results \cite{Pu-2018-1361}. Since the mass \eqref{eq:gSGNEh} and momentum \eqref{eq:gSGNEuh} equations are commonly solved this results in dissipation of energy around discontinuities in the solution. Conversely, when the mass \eqref{eq:gSGNEh} and energy equations \eqref{eq:gSGNEE} are solved this results in dissipation of momentum and an incorrect propagation speed for discontinuities in the solution.
 
 When solutions are sufficiently smooth all equations hold simultaneously and the total amounts of all these quantities remain constant in time if the system is closed. This can be seen by integrating \eqref{eq:gSGNE} over the domain, and observing that the temporal derivative of the spatial integrals of mass ($h$), momentum ($uh$) and energy ($\mathcal{E}$) is zero when there is no flux across the domain boundaries. This conservation property of the gSGNE will be used to validate the numerical method and its solution. 
-\subsection{Linearised gSGNE}
+\DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \subsection{Linearised gSGNE}
 The linear dispersion properties of water wave equations have been of particular interest \cite{Clamond-et.al-2017-245,Filippini-etal-2016-381,DoCarmo-2019-125}, as the scope of wave modelling expands to include dispersive effects. Indeed, the gSGNE are especially relevant because they provide better dispersion properties when compared to the linear theory for water waves \cite{Whitham-1967-399} than the SWWE where $\beta_1 = \beta_2 = 0$.
 
 The linearised gSGNE \eqref{eq:gSGNE} are obtained by considering small perturbations, $h_1(x,t)$ in depth and $u_1(x,t)$ in velocity with a background mean water depth $h_0$ and a mean velocity $u_0$. By using these assumptions and neglecting all terms significantly smaller than the perturbations we arrive at the linearised gSGNE
@@ -162,7 +274,10 @@ The linearised gSGNE \eqref{eq:gSGNE} are obtained by considering small perturba
 	\label{eq:gSGNE_linear}
 \end{subequations}
 The presence of the $\beta_2$ term and the choice of $\beta_1$ values distinguishes the linearised gSGNE from the linearised SGNE \cite{Zoppou-etal-2017}.
-\subsubsection{Dispersion Relation}
+\DIFdelbegin %DIFDELCMD < 
+
+%DIFDELCMD < %%%
+\DIFdelend \subsubsection{Dispersion Relation}
 The dispersion relationship of the linearised gSGNE is obtained by seeking non-trivial travelling wave solutions of the form $\exp\left(i (k x - \omega t)\right)$ of \eqref{eq:gSGNE_linear} for $h_1(x,t)$ and $u_1(x,t)$. By substituting in the assumed solution form, we obtain the following relationship between the frequency $\omega$ in time and the wavenumber $k$ in space
 \begin{equation}
 \omega^\pm_\text{gSGNE} = u_0 k \pm k \sqrt{gh_0} \sqrt{\dfrac{\beta_2 h_0^2 k^2 + 2}{\beta_1 h_0^2 k^2 + 2} }.
@@ -320,7 +435,7 @@ The second-order central finite difference approximation to \eqref{eq:G_divergen
 {\vecn{u}}^n = \vecn{A}^{-1} {\vecn{G}}^n
 \label{eq:FDGeqn}
 \end{equation}
-where $\vecn{A}$ is a tri-diagonal matrix with the sub-diagonal, diagonal and super-diagonal elements given by
+where $\vecn{A}$ is a tri-diagonal matrix with the sub-diagonal, diagonal and super-diagonal elements \DIFdelbegin \DIFdel{are }\DIFdelend given by
 \begin{subequations}
 \begin{align}
 A_{j,j-1} &=  -\frac{\beta_1}{2}  \left[  \dfrac{\left(h_j^n\right)^3}{\Delta x^2} -  \dfrac{3\left(h_j^n\right)^2}{2\Delta x} \dfrac{h_{j+1}^n - h_{j-1}^n}{2\Delta x}\right] \\
@@ -469,7 +584,7 @@ C_1\left(\vecn{q}^0,\vecn{q}^n\right) = \left \lbrace \begin{array}{l c r}
 
 \subsection{Analytic Solutions}
 \label{sec:AnaSol}
-The analytic solutions used to validate the numerical method, are the solitary travelling wave solution of the SGNE and the dam-break solution of the SWWE. The solitary travelling wave solution is a smooth travelling wave solution, where the nonlinear and dispersive terms are in balance in the gSGNE. Whereas the dam-break solution of the SWWE demonstrates the robustness of the method in the presence of steep gradients. 
+The analytic solutions used to validate the numerical method, are the solitary travelling wave solution of the SGNE and the dam-break solution of the SWWE. The solitary travelling wave solution is a smooth travelling wave solution, where the \DIFdelbegin \DIFdel{non-linear }\DIFdelend \DIFaddbegin \DIFadd{nonlinear }\DIFaddend and dispersive terms are in balance in the gSGNE. Whereas the dam-break solution of the SWWE demonstrates the robustness of the method in the presence of steep gradients. 
 
 \subsubsection{SGNE - Solitary Travelling Wave Solution}
 When $\beta_1 = 2/3$ and $\beta_2 = 0$ the gSGNE are equivalent to the SGNE which admit the following travelling wave solution \cite{El-etal-2006}
@@ -492,7 +607,7 @@ When $\beta_1 = 2/3$ and $\beta_2 = 0$ the gSGNE are equivalent to the SGNE whic
 \end{subequations}
 is the speed of the wave.
 
-This travelling wave solution is maintained due to a balance between the dispersive terms and the nonlinear terms in the momentum equation \eqref{eq:gSGNEuh}. This balance results in a solitary wave that is advected with a constant speed without a changing shape. Validating the numerical solutions for the gSGNE solver using this solution tests the balance between these terms in \eqref{eq:gSGNEuh}, and allows us to verify the method's conservation of energy as the solution is smooth. To enable a comparison between the numerical method and the SGNE solver of \citet{Zoppou-etal-2017} and \citet{Pitt-2019}, the chosen solitary travelling wave parameters were $a_0 = 1m$ and $a_1 = 0.7m$ and the acceleration due to gravity at the Earth's surface, $g = 9.81 m^2/s$ was used.
+This travelling wave solution is maintained due to a balance between the dispersive terms and the \DIFdelbegin \DIFdel{non-linear }\DIFdelend \DIFaddbegin \DIFadd{nonlinear }\DIFaddend terms in the momentum equation \eqref{eq:gSGNEuh}. This balance results in a solitary wave that is advected with a constant speed without a changing shape. Validating the numerical solutions for the gSGNE solver using this solution tests the balance between these terms in \eqref{eq:gSGNEuh}, and allows us to verify the method's conservation of energy as the solution is smooth. To enable a comparison between the numerical method and the SGNE solver of \citet{Zoppou-etal-2017} and \citet{Pitt-2019}, the chosen solitary travelling wave parameters were $a_0 = 1m$ and $a_1 = 0.7m$ and the acceleration due to gravity at the Earth's surface, $g = 9.81 m^2/s$ was used.
 
 
 The numerical solution was solved over the domain $\left[-200m,200m\right]$ from $t=0s$ until $t=30s$. The spatial resolution was varied like so $\Delta x = 400 / (100 \times 2^{l})$, where $l$ was increased from $0$ to $12$. To satisfy the CFL condition \eqref{eqn:CFLcond} the time step $\Delta t = \Delta x  / ( 2 \sqrt{g(a_0 + a_1)})$ was chosen. The limiting parameter $\theta = 1.2$, was chosen to match previous numerical experiments \cite{Zoppou-etal-2017,Pitt-2019}.
@@ -728,7 +843,7 @@ Figure \ref{Fig:FS_Conv} demonstrates the convergence of the numerical scheme as
 
 \section{Experimental Comparison for Dispersive Shock Waves}
 
-The numerical solutions of particular members of the gSGNE family will now be compared to the experimental results of \citet{Hammack-Segur-1978-337} which observed the evolution of an initial rectangular depression in the free surface. The experiments were conducted in a wave tank $0.394m$ wide, $31.6m$ long and $0.61m$ high filled by water $h_0 = 0.1m$ deep. The initial wave was generated by a $0.61m$ long piston with its left edge flush with the left edge of the wave tank. The piston is originally in the up position with the water stationary, the piston is then dropped creating the rectangular depression in the surface, which generates a dispersive shock wave. The generated depression has its rarefaction fan component propagate up the wave tank, while the dispersive shock wave reflects from the left edge of the wave tank and then propagates up the wave tank. The evolution of the free surface is recorded over time by Wave Gauges (WG) located $0m$ (WG1), $5m$ (WG2), $10m$ (WG3), $15m$ (WG4) and $20m$ (WG5) away from the right edge of the piston. Two heights of the generated rectangular wave were investigated $h_0 - h_1 = 0.01m$ and $h_0 - h_1 = 0.03m$ where $h_1$ is the height of the water above the piston after it drops.
+The numerical solutions of particular members of the gSGNE family will now be compared to the experimental results of \citet{Hammack-Segur-1978-337} which observed the evolution of an initial rectangular depression in the free surface. The experiments were conducted in a wave tank $0.394m$ wide, $31.6m$ long and $0.61m$ high filled by water $h_0 = 0.1m$ deep. The initial wave was generated by a $0.61m$ long piston with its left edge flush with the left edge of the wave tank. The piston is originally in the up position with the water stationary, the piston is then dropped creating the rectangular depression in the surface, which generates a dispersive shock wave. The generated depression has its rarefaction fan component propagate up the wave tank, while the dispersive shock wave reflects from the left edge of the wave tank and then propagates up the wave tank. The evolution of the free surface is recorded over time by Wave Gauges (WG) located $0m$ (WG1), $5m$ (WG2), $10m$ (WG3), $15m$ (WG4) and $20m$ (WG5) away from the right edge of the piston. Two heights of the \DIFaddbegin \DIFadd{generated }\DIFaddend rectangular wave were investigated $h_0 - h_1 = 0.01m$ and $h_0 - h_1 = 0.03m$ where $h_1$ is the height of the water above the piston after it drops.
 
 The rectangular wave experiments were modelled numerically by reflecting the problem around the left wall of the wave tank to reproduce the reflection off it. The initial conditions for this reflected problem are
 \begin{equation*}
@@ -745,34 +860,65 @@ G(x,0) = 0
 \quad
 u(x,0) = 0
 \end{equation*}
-which produces the depression above the piston reflected around the left edge of the wave tank. The numerical solutions were computed on a spatial domain of $[-60m,60m]$ from $t = 0 s$ to $50s$ with acceleration due to gravity, $g = 9.81m/s^2$. The spatial resolution of $\Delta x = 0.01m$ was used with a temporal resolution of $\Delta t = 0.5 \Delta x / \sqrt{g \; h_0}$ chosen to satisfy the CFL condition \eqref{eqn:CFLcond}. The reconstruction limiting parameter $\theta = 1.2$ was used in all numerical solutions. Three pairs of $\beta$ values were used to demonstrate the effect of changing the dispersion relationship; the SWWE with $\beta_1=\beta_2=0$, the classical SGNE with $\beta_1=2/3$ and $\beta_2=0$ as well as the improved dispersion SGNE with  $\beta_1=4/5$ and $\beta_2=2/15$.
+which produces the depression above the piston reflected around the left edge of the wave tank. The numerical solutions were computed on a spatial domain of $[-60m,60m]$ from $t = 0 s$ to $50s$ with acceleration due to gravity, $g = 9.81m/s^2$. The spatial resolution of $\Delta x = 0.01m$ was used with a temporal resolution of $\Delta t = 0.5 \Delta x / \sqrt{g \; h_0}$ chosen to satisfy the CFL condition \eqref{eqn:CFLcond}. The reconstruction limiting parameter $\theta = 1.2$ was used in all numerical solutions. Three pairs of $\beta$ values were used to demonstrate the effect of changing the dispersion relationship; the SWWE with $\beta_1=\beta_2=0$, the classical \DIFdelbegin \DIFdel{SGN equations }\DIFdelend \DIFaddbegin \DIFadd{SGNE }\DIFaddend with $\beta_1=2/3$ and $\beta_2=0$ as well as the improved dispersion \DIFdelbegin \DIFdel{SGN equations }\DIFdelend \DIFaddbegin \DIFadd{SGNE }\DIFaddend with  $\beta_1=4/5$ and $\beta_2=2/15$.
 
-%Discussion here
+%DIF > Discussion here
+\DIFaddbegin 
 
-The comparison of the numerical simulations and the experimental results for all wave gauges in the $h_0 - h_1 = 0.01m$ and $h_0 - h_1 = 0.03m$ experiments are plotted in Figures \ref{Fig:Neg_Wave_1cm} and \ref{Fig:Neg_Wave_3cm} respectively. The plots demonstrate that the numerical solutions arrive at the wave gauges earlier than the experiment due to physical effects not captured by the equations. The most significant is that the piston does not move vertically instantaneously and thus a perfectly rectangular wave profile is not produced, as demonstrated by WG1 for small times.  Additionally, effects such as bed and side wall friction as well as fluid viscosity act to slow the advance of the wave train compared to the numerical solutions, as observed. Despite these factors the numerical solutions replicate the behaviour well.
+\DIFaddend The comparison of the numerical simulations and the experimental results for all wave gauges \DIFdelbegin \DIFdel{and both experiments is plotted in Figure \ref{Fig:Neg_Wave}}\DIFdelend \DIFaddbegin \DIFadd{in the $h_0 - h_1 = 0.01m$ and $h_0 - h_1 = 0.03m$ experiments are plotted in Figures \ref{Fig:Neg_Wave_1cm} and \ref{Fig:Neg_Wave_3cm} respectively}\DIFaddend . The plots demonstrate that the numerical solutions arrive at the wave gauges earlier than the experiment due to physical effects not captured by the equations. The most significant is that the piston \DIFdelbegin \DIFdel{could }\DIFdelend \DIFaddbegin \DIFadd{does }\DIFaddend not move vertically instantaneously and thus a perfectly rectangular wave profile is not produced, as demonstrated by WG1 for small times.  Additionally, effects such as bed and side wall friction as well as fluid viscosity \DIFdelbegin \DIFdel{will }\DIFdelend act to slow the \DIFdelbegin \DIFdel{experiment down }\DIFdelend \DIFaddbegin \DIFadd{advance of the wave train }\DIFaddend compared to the numerical solutions, as observed. Despite these factors \DIFdelbegin \DIFdel{working against }\DIFdelend the numerical solutions \DIFdelbegin \DIFdel{, the results do }\DIFdelend replicate the behaviour well\DIFdelbegin \DIFdel{when these physical effects are taken into account}\DIFdelend .
 
-The experimental results demonstrate the necessity of including dispersion when resolving the evolution of steep gradients in fluids. The non-dispersive SWWE solutions are inadequate at replicating the dispersive wave train generated in the experiment. However, the SWWE shock speed is capable of approximating the speed of the dispersive wave front for this experiment. Although, as the height of the rectangular wave increases the agreement deteriorates, and SWWE shock speed underestimates the speed of dispersive shock waves \cite{Pitt-2018-61} as predicted by the modulation theory \cite{El-etal-2006}.
+The experimental results demonstrate the necessity of \DIFdelbegin \DIFdel{dispersion for }\DIFdelend \DIFaddbegin \DIFadd{including dispersion when }\DIFaddend resolving the evolution of steep gradients in fluids\DIFdelbegin \DIFdel{, as the }\DIFdelend \DIFaddbegin \DIFadd{. The }\DIFaddend non-dispersive SWWE solutions are inadequate at replicating the \DIFdelbegin \DIFdel{experiment. The shock speed of the SWWE does well approximate the }\DIFdelend \DIFaddbegin \DIFadd{dispersive wave train generated in the experiment. However, the SWWE shock speed is capable of approximating the }\DIFaddend speed of the dispersive wave front for this experiment. \DIFdelbegin \DIFdel{However}\DIFdelend \DIFaddbegin \DIFadd{Although}\DIFaddend , as the height of the rectangular wave increases the agreement \DIFdelbegin \DIFdel{gets worse, and the SWWE shocks begin to underestimate }\DIFdelend \DIFaddbegin \DIFadd{deteriorates, and SWWE shock speed underestimates }\DIFaddend the speed of \DIFdelbegin \DIFdel{the }\DIFdelend dispersive shock waves \cite{Pitt-2018-61} as predicted by the modulation theory \cite{El-etal-2006}.
 
-The numerical solutions to the classical SGNE with $\beta_1 = 2/3$ and $\beta_2 = 0$ compare well to other numerical solutions to this experimental set up reported by \citet{Zoppou-etal-2017} and \citet{Pitt-2019}. The numerical solutions to the SGNE reproduce the front of the dispersive wave train well, particularly for the $h_1 - h_0 = 0.01m$ experiment, however this agreement worsens as time and the location of the wave gauge increases. The SGNE predict significantly more and higher oscillations in the tail of the dispersive wave train. This is due to their lack of diffusive physical effects, such as viscosity and wall friction which act to damp the dispersive wave train in the experiment \cite{Pitt-2018-61}. Wave envelopes produced by the trends in oscillation height shown in the highlighted regions for all but the first wave gauge are longer and arrive later than the experimental results.
+The numerical solutions to the classical \DIFdelbegin \DIFdel{SGN equations }\DIFdelend \DIFaddbegin \DIFadd{SGNE }\DIFaddend with $\beta_1 = 2/3$ and $\beta_2 = 0$ compare well to other numerical solutions to this experimental set up reported by \citet{Zoppou-etal-2017} and \citet{Pitt-2019}. The numerical solutions to the \DIFdelbegin \DIFdel{SGN capture }\DIFdelend \DIFaddbegin \DIFadd{SGNE reproduce }\DIFaddend the front of the dispersive wave train well, particularly for the $h_1 - h_0 = 0.01m$ experiment, however this agreement worsens as time and the location of the wave gauge increases. The \DIFdelbegin \DIFdel{SGN equations }\DIFdelend \DIFaddbegin \DIFadd{SGNE }\DIFaddend predict significantly more and higher oscillations in the tail of the dispersive wave train\DIFdelbegin \DIFdel{, }\DIFdelend \DIFaddbegin \DIFadd{. This is }\DIFaddend due to their lack of diffusive physical effects, such as viscosity and wall friction which \DIFdelbegin \DIFdel{would }\DIFdelend act to damp the dispersive wave train in the experiment \cite{Pitt-2018-61}. \DIFaddbegin \DIFadd{Wave envelopes produced by the trends in oscillation height shown in the highlighted regions for all but the first wave gauge are longer and arrive later than the experimental results.
+}\DIFaddend 
 
-The most accurate results are obtained using the improved dispersion SGNE with $\beta_1 = 4/5$ and $\beta_2 = 2/15$. The improved SGN, maintain the good agreement of the classical SGNE at the front of the dispersive wave train, and improve it everywhere else. In particular, the single oscillation observed at WG1 on the depression before the dispersive wave train arrives is in better agreement than the other equations. The improved SGNE also better replicate the low oscillation regions observed in the experimental results and thus better reproduce the associated wave envelopes and their speeds. The enhanced reproduction of observed wave envelopes is demonstrated in the highlighted regions of all but the first wave gauge for both experiments, showing the best replication of oscillation height trends. The improved SGNE produce the most accurate number and heights of oscillations, although the equations still overestimate them due to diffusive physical effects in the experiment not captured by the equations. The speed of these oscillations is also best matched by the solutions of the improved SGNE. These results for the improved dispersion SGNE agree with the findings of \citet{DoCarmo-2018} for the evolution of an undular bore, which demonstrated the ability of the improved dispersion equations to best resolve the speeds and heights of the generated dispersive wave train. While the improved SGNE produce the best agreement, the experimental effects not included in the model are the dominant source of disagreement with numerical solutions.
+The \DIFdelbegin \DIFdel{numerical solutions of }\DIFdelend \DIFaddbegin \DIFadd{most accurate results are obtained using }\DIFaddend the improved dispersion \DIFdelbegin \DIFdel{SGN }\DIFdelend \DIFaddbegin \DIFadd{SGNE }\DIFaddend with $\beta_1 = 4/5$ and $\beta_2 = 2/15$\DIFdelbegin \DIFdel{best replicate the experimental results}\DIFdelend . The improved SGN, maintain the good agreement of the classical \DIFdelbegin \DIFdel{SGN }\DIFdelend \DIFaddbegin \DIFadd{SGNE }\DIFaddend at the front of the dispersive wave train, and improve it everywhere else. In particular, the \DIFdelbegin \DIFdel{oscillations }\DIFdelend \DIFaddbegin \DIFadd{single oscillation }\DIFaddend observed at WG1 on the \DIFdelbegin \DIFdel{dip }\DIFdelend \DIFaddbegin \DIFadd{depression }\DIFaddend before the dispersive wave train arrives \DIFdelbegin \DIFdel{better agree with the experimental results which only shows one prominent oscillation}\DIFdelend \DIFaddbegin \DIFadd{is in better agreement than the other equations}\DIFaddend . The improved \DIFdelbegin \DIFdel{SGN equations due to their limited dispersive wave regions }\DIFdelend \DIFaddbegin \DIFadd{SGNE also }\DIFaddend better replicate the \DIFdelbegin \DIFdel{flat }\DIFdelend \DIFaddbegin \DIFadd{low oscillation }\DIFaddend regions observed in the experimental results and thus better reproduce the associated wave envelopes \DIFdelbegin \DIFdel{. The improved SGN equations }\DIFdelend \DIFaddbegin \DIFadd{and their speeds. The enhanced reproduction of observed wave envelopes is demonstrated in the highlighted regions of all but the first wave gauge for both experiments, showing the best replication of oscillation height trends. The improved SGNE }\DIFaddend produce the most accurate number and heights of oscillations, although the equations still overestimate them due to diffusive physical effects \DIFaddbegin \DIFadd{in the experiment }\DIFaddend not captured by the equations. The speed of these oscillations is also best matched by the solutions of the improved \DIFdelbegin \DIFdel{SGN}\DIFdelend \DIFaddbegin \DIFadd{SGNE}\DIFaddend . These results for the improved dispersion \DIFdelbegin \DIFdel{SGN }\DIFdelend \DIFaddbegin \DIFadd{SGNE }\DIFaddend agree with the findings of \citet{DoCarmo-2018} for the evolution of an undular bore, which demonstrated the ability of \DIFaddbegin \DIFadd{the }\DIFaddend improved dispersion equations to \DIFdelbegin \DIFdel{better }\DIFdelend \DIFaddbegin \DIFadd{best }\DIFaddend resolve the speeds and heights of the generated dispersive wave train. While the improved \DIFdelbegin \DIFdel{SGN equations }\DIFdelend \DIFaddbegin \DIFadd{SGNE }\DIFaddend produce the best agreement, the experimental effects not included in the model are the dominant source of disagreement with \DIFdelbegin \DIFdel{the }\DIFdelend numerical solutions.
 
-%Better match discussion of results to Figures!!!!!
+%DIF < 
+%DIF > Better match discussion of results to Figures!!!!!
 \begin{figure}
 	\centering
-	\includegraphics[width=\textwidth]{Figure-11.pdf}
-	\caption{Rectangular negative wave experiments ($h_0 - h_1 = 0.01m$) time series at the five Wave Gauges (WG) for simulation with the improved SGNE with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (\solidrule), the classical SGNE with $\beta_1 = 2/3$ and $\beta_2 = 0$ ({\color{blue}\solidrule}), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ ({\color{green!80!black}\dashedrule}) compared to the experimental results ({\color{red}\solidrule}). The left time series show the entire duration with  highlighted region ({\color{gray}\dashedrule}) shown on the right. }
+	\DIFdelbeginFL %DIFDELCMD < \begin{subfigure}{0.49\textwidth}
+%DIFDELCMD < 		%%%
+\DIFdelendFL \DIFaddbeginFL \includegraphics[width=\textwidth]{Figure-11.pdf}
+	\caption{\DIFaddFL{Rectangular negative wave experiments ($h_0 - h_1 = 0.01m$) time series at the five Wave Gauges (WG) for simulation with the improved SGNE with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (}\solidrule\DIFaddFL{), the classical SGNE with $\beta_1 = 2/3$ and $\beta_2 = 0$ (}{\color{blue}\solidrule}\DIFaddFL{), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ (}{\color{green!80!black}\dashedrule}\DIFaddFL{) compared to the experimental results (}{\color{red}\solidrule}\DIFaddFL{). The left time series show the entire duration with  highlighted region (}{\color{gray}\dashedrule}\DIFaddFL{) shown on the right. }}
 	\label{Fig:Neg_Wave_1cm}
 \end{figure}
 
 \begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{Figure-12.pdf}
-	\caption{Rectangular negative wave experiments ($h_0 - h_1 = 0.03m$) time series at the five Wave Gauges (WG) for simulation with the improved SGNE with $\beta_1 = 4/5$ and $\beta_2 = 2/15$ (\solidrule), the classical SGNE with $\beta_1 = 2/3$ and $\beta_2 = 0$ ({\color{blue}\solidrule}), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ ({\color{green!80!black}\dashedrule}) compared to the experimental results ({\color{red}\solidrule}). The left time series show the entire duration with  highlighted region ({\color{gray}\dashedrule}) shown on the right. }
-	\label{Fig:Neg_Wave_3cm}
-\end{figure}
+	\DIFaddendFL \centering
+	\DIFdelbeginFL %DIFDELCMD < \includegraphics[width=\textwidth]{Figure-11a.pdf}
+%DIFDELCMD < 		%%%
+\DIFdelendFL \DIFaddbeginFL \includegraphics[width=\textwidth]{Figure-12.pdf}
+	\DIFaddendFL \caption{\DIFdelbeginFL \DIFdelFL{$h_0 - h_1 = 0.01m$}\DIFdelendFL \DIFaddbeginFL \DIFaddFL{Rectangular negative wave experiments ($h_0 - h_1 = 0.03m$) time series at the five Wave Gauges (WG) for simulation with the improved SGNE with $\beta_1 = 4/5$ and $\beta_2 = 2/15$ (}\solidrule\DIFaddFL{), the classical SGNE with $\beta_1 = 2/3$ and $\beta_2 = 0$ (}{\color{blue}\solidrule}\DIFaddFL{), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ (}{\color{green!80!black}\dashedrule}\DIFaddFL{) compared to the experimental results (}{\color{red}\solidrule}\DIFaddFL{). The left time series show the entire duration with  highlighted region (}{\color{gray}\dashedrule}\DIFaddFL{) shown on the right. }\DIFaddendFL }
+	\DIFdelbeginFL %DIFDELCMD < \label{Fig:Neg_Wave_1}
+%DIFDELCMD < 	\end{subfigure}
+%DIFDELCMD < 	\begin{subfigure}{0.49\textwidth}
+%DIFDELCMD < 		\centering
+%DIFDELCMD < 		\includegraphics[width=\textwidth]{Figure-11b.pdf}
+%DIFDELCMD < 		%%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{$h_0 - h_1 = 0.03m$}}
+		%DIFAUXCMD
+%DIFDELCMD < \label{Fig:Neg_Wave_2}
+%DIFDELCMD < 	\end{subfigure}
+%DIFDELCMD < 	%%%
+%DIFDELCMD < \caption{%
+{%DIFAUXCMD
+\DIFdelFL{Rectangular negative wave experiments time series at the five Wave Gauges (WG) for simulation with the improved SGN with $\beta_1 = 2/3 + 2/15$ and $\beta_2 = 2/15$ (}%DIFDELCMD < \solidrule%%%
+\DIFdelFL{), the classical SGN with $\beta_1 = 2/3$ and $\beta_2 = 0$ (}%DIFDELCMD < {\color{blue}\solidrule}%%%
+\DIFdelFL{), the SWWE with $\beta_1 = 0$ and $\beta_2 = 0$ (}%DIFDELCMD < {\color{green!80!black}\dashedrule}%%%
+\DIFdelFL{) compared to the experimental results (}%DIFDELCMD < {\color{red}\solidrule}%%%
+\DIFdelFL{).}}
+	%DIFAUXCMD
+%DIFDELCMD < \label{Fig:Neg_Wave}
+%DIFDELCMD < %%%
+\DIFdelendFL \DIFaddbeginFL \label{Fig:Neg_Wave_3cm}
+\DIFaddendFL \end{figure}
+%DIF < 
 
-The errors in conservation for all numerical simulations used to produce Figures \ref{Fig:Neg_Wave_1cm} and \ref{Fig:Neg_Wave_3cm} are displayed in Table \ref{tab:Neg_Wave_Cons}. All numerical solutions conserve $h$ and $G$ to machine precision due to their use of a finite volume method. The energy $\mathcal{E}$ is also well conserved by each numerical solution for both experiments, demonstrating that the numerical solutions are well resolved with the used spatial and temporal resolutions. However, larger rectangular waves do lead to worse conservation of energy. 
+The errors in conservation for all numerical simulations used to produce \DIFdelbegin \DIFdel{Figure \ref{Fig:Neg_Wave} }\DIFdelend \DIFaddbegin \DIFadd{Figures \ref{Fig:Neg_Wave_1cm} and \ref{Fig:Neg_Wave_3cm} }\DIFaddend are displayed in Table \ref{tab:Neg_Wave_Cons}. All numerical solutions conserve $h$ and $G$ to machine precision due to their use of a finite volume method. The energy $\mathcal{E}$ is also well conserved by each numerical solution for both experiments, demonstrating that the numerical solutions are well resolved with the used spatial and temporal resolutions. However, larger rectangular waves do lead to worse conservation of energy. 
 
 \begin{table}
 	\centering
@@ -794,9 +940,10 @@ The errors in conservation for all numerical simulations used to produce Figures
 
 
 \section{Conclusion}
-The gSGNE family of equations encompasses nonlinear wave equations from the non-dispersive SWWE to the improved dispersion SGNE by varying two free parameters $\beta_1$ and $\beta_2$. This family of equations was classified using  $\beta_1$ and $\beta_2$ according to the width and relative location of their dispersive wave trains using the dispersion relationship of the linearised equations. Example numerical solutions for select members of this family of equations were used to demonstrate that the full nonlinear gSGNE exhibit the same behaviour. 
+%DIF < include experimental results
+\DIFdelbegin \DIFdel{The members of the gSGN }\DIFdelend \DIFaddbegin \DIFadd{The gSGNE family of equations encompasses nonlinear wave equations from the non-dispersive SWWE to the improved dispersion SGNE by varying two free parameters $\beta_1$ and $\beta_2$. This }\DIFaddend family of equations \DIFdelbegin \DIFdel{were classified }\DIFdelend \DIFaddbegin \DIFadd{was classified using  $\beta_1$ and $\beta_2$ }\DIFaddend according to the width and relative location of their dispersive wave trains using the dispersion relationship of the linearised equations. Example numerical solutions for select members of this family of equations were used to demonstrate that the full nonlinear \DIFdelbegin \DIFdel{gSGN equations }\DIFdelend \DIFaddbegin \DIFadd{gSGNE }\DIFaddend exhibit the same behaviour. 
 
-The numerical method used to generate these solutions was then described as a second-order implementation of a modified version of the numerical scheme for the SGNE outlined by \citet{Zoppou-etal-2017}. The numerical method was validated against analytic solutions of the SGNE and SWWE and forced solutions. The analytic solutions demonstrate that the gSGNE solver accurately reproduces important members of the family of equations described by the gSGNE whilst conserving the quantities of interest. The forced solutions demonstrate that the method remains second-order for all values of the free parameters, $\beta_1$ and $\beta_2$. The numerical solutions compared well to the experimental results for the evolution of a rectangular depression, with improved dispersion properties improving the reproduction of the experimental observations. The gSGNE method described above is the first validated numerical method applicable to all members of the gSGNE family and its validation supports the provided classification of members of the gSGNE using their linear dispersive properties.
+The numerical method used to generate these solutions was then described as a \DIFaddbegin \DIFadd{second-order implementation of a }\DIFaddend modified version of the numerical scheme for the SGNE outlined by \citet{Zoppou-etal-2017}. \DIFdelbegin \DIFdel{This numerical scheme for the gSGNE was validated by describing a fully second-order implementation of the numerical method . This numerical method }\DIFdelend \DIFaddbegin \DIFadd{The numerical method }\DIFaddend was validated against analytic solutions of the SGNE and SWWE and forced solutions. The analytic solutions demonstrate that the gSGNE solver accurately reproduces important members of the family of equations described by the gSGNE whilst conserving the quantities of interest. The forced solutions demonstrate that the method remains second-order for all values of the free parameters, $\beta_1$ and $\beta_2$. The numerical solutions compared well to the experimental results for the evolution of a rectangular depression, with improved dispersion properties improving the reproduction of the experimental observations. The gSGNE method described above is the first validated numerical method for \DIFdelbegin \DIFdel{the gSGNE }\DIFdelend \DIFaddbegin \DIFadd{arbitrary members of the gSGNE family }\DIFaddend and its validation supports the provided classification of members of the \DIFdelbegin \DIFdel{gSGN }\DIFdelend \DIFaddbegin \DIFadd{gSGNE }\DIFaddend using their linear dispersive properties.
 
 
 \bibliographystyle{elsarticle-num-names} 

@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  25 JUN 2022 10:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2021.4.5)  25 JUN 2022 10:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**gSGNpaper_diff.tex
-(./gSGNpaper_diff.tex
+**gSGNEpaper_diff.tex
+(./gSGNEpaper_diff.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-18>
 (c:/texlive/2021/texmf-dist/tex/latex/elsarticle/elsarticle.cls
@@ -86,7 +86,7 @@ File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 \@sep=\skip49
 \@@sep=\skip50
 
-(./gSGNpaper_diff.spl) (c:/texlive/2021/texmf-dist/tex/latex/natbib/natbib.sty
+(./gSGNEpaper_diff.spl) (c:/texlive/2021/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip51
 \bibsep=\skip52
@@ -94,7 +94,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count195
 )
 \splwrite=\write3
-\openout3 = `gSGNpaper_diff.spl'.
+\openout3 = `gSGNEpaper_diff.spl'.
 
 \appnamewidth=\dimen145
 ) (c:/texlive/2021/texmf-dist/tex/latex/pgfplots/pgfplots.sty
@@ -1025,8 +1025,8 @@ File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
 
-(./gSGNpaper_diff.aux)
-\openout1 = `gSGNpaper_diff.aux'.
+(./gSGNEpaper_diff.aux)
+\openout1 = `gSGNEpaper_diff.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 168.
 LaTeX Font Info:    ... okay on input line 168.
@@ -1126,9 +1126,9 @@ LaTeX Info: Redefining \ref on input line 168.
 LaTeX Info: Redefining \pageref on input line 168.
 LaTeX Info: Redefining \nameref on input line 168.
 
-(./gSGNpaper_diff.out) (./gSGNpaper_diff.out)
+(./gSGNEpaper_diff.out) (./gSGNEpaper_diff.out)
 \@outlinefile=\write6
-\openout6 = `gSGNpaper_diff.out'.
+\openout6 = `gSGNEpaper_diff.out'.
 
 
 (c:/texlive/2021/texmf-dist/tex/latex/fmtcount/fc-english.def
@@ -1305,22 +1305,22 @@ Overfull \hbox (6.79999pt too wide) in paragraph at lines 892--893
 LaTeX Warning: Reference `Fig:Neg_Wave' on page 20 undefined on input line 921.
 
 
-[20 <./Figure-11.pdf>] [21 <./Figure-12.pdf>] (./gSGNpaper_diff.bbl [22]
-[23]) [24] (./gSGNpaper_diff.aux)
+[20 <./Figure-11.pdf>] [21 <./Figure-12.pdf>] (./gSGNEpaper_diff.bbl [22]
+[23]) [24] (./gSGNEpaper_diff.aux)
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `gSGNpaper_diff.out' has not changed.
+Package rerunfilecheck Info: File `gSGNEpaper_diff.out' has not changed.
 (rerunfilecheck)             Checksum: F418C50FC9E52AA221808E123EC8BCDD;4957.
  ) 
 Here is how much of TeX's memory you used:
  37228 strings out of 478994
- 823142 string characters out of 5862208
- 1413523 words of memory out of 5000000
+ 823163 string characters out of 5862208
+ 1413529 words of memory out of 5000000
  53933 multiletter control sequences out of 15000+600000
  411240 words of font info for 53 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,18n,103p,3064b,1017s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 102i,18n,103p,3065b,1017s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2021/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/tex
 live/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texlive/202
 1/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2021/texmf-d
@@ -1348,7 +1348,7 @@ ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2021/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb><c:/texlive/2021/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmti8.pfb><c:/texlive/2021/texmf-dist/fonts/type
 1/public/cm-super/sfti0800.pfb>
-Output written on gSGNpaper_diff.pdf (24 pages, 1235769 bytes).
+Output written on gSGNEpaper_diff.pdf (24 pages, 1235747 bytes).
 PDF statistics:
  1043 PDF objects out of 1200 (max. 8388607)
  948 compressed objects within 10 object streams
